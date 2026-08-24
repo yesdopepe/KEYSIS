@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nextjs-ebys",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "teknofest-ebys-web"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}
