@@ -1,0 +1,349 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@font-face {
+  font-family: "Tinos";
+  src: url("/fonts/Tinos-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tinos";
+  src: url("/fonts/Tinos-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tinos";
+  src: url("/fonts/Tinos-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tinos";
+  src: url("/fonts/Tinos-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Lets Tailwind see the utility classes streamdown/@streamdown/* ship inside
+   their own compiled JS, since those files live outside this project's
+   normal content scan (src/**). One @source per installed streamdown
+   package — message.tsx (AI Elements) pulls in the cjk/code/math/mermaid
+   plugins even though this agent only ever needs GFM + code blocks, because
+   the registry component bundles all four unconditionally. */
+@source "../../node_modules/streamdown/dist/*.js";
+@source "../../node_modules/@streamdown/cjk/dist/*.js";
+@source "../../node_modules/@streamdown/code/dist/*.js";
+@source "../../node_modules/@streamdown/math/dist/*.js";
+@source "../../node_modules/@streamdown/mermaid/dist/*.js";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Government Portal / Civic Services palette — single light theme.
+     Brand color (primary/accent) is reserved for interactive elements;
+     text uses neutral slate so it never competes with the brand color. */
+  --color-primary: #1e40af;
+  --color-primary-hover: #1e3a8a;
+  --color-on-primary: #ffffff;
+
+  /* Brand green — the government portal's own accent color for highlighted
+     actions (Tamamla, Kabul Et, etc.). Named "brand" rather than "accent"
+     because shadcn/ui components (Button ghost/outline hover, DropdownMenu,
+     Select, Tabs) hard-code `bg-accent`/`text-accent` as a *subtle neutral
+     hover tint* — a saturated green there would tint every hover state in
+     the app. `--color-accent` below is repointed to that neutral meaning. */
+  --color-brand: #16a34a;
+  --color-brand-hover: #15803d;
+  --color-brand-foreground: #ffffff;
+
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-border: #e2e8f0;
+
+  --color-destructive: #dc2626;
+  --color-destructive-hover: #b91c1c;
+  --color-on-destructive: #ffffff;
+  --color-destructive-bg: #fef2f2;
+  --color-destructive-border: #fecaca;
+  --color-warning: #b45309;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fcd34d;
+  --color-success: #15803d;
+  --color-success-bg: #dcfce7;
+  --color-success-border: #86efac;
+  --color-info: #1e40af;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+
+  --color-ring: #1e40af;
+
+  --radius-card: 0.625rem;
+  --radius-control: 0.5rem;
+
+  /* Reading measure for the assistant thread and its composer. Both are
+     centred on this width so a line of prose stays ~75-90 characters no
+     matter how wide the window (or the document canvas beside it) gets. */
+  --sohbet-olcu: 48rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-on-primary: var(--color-on-primary);
+
+  --color-brand: var(--color-brand);
+  --color-brand-hover: var(--color-brand-hover);
+  --color-brand-foreground: var(--color-brand-foreground);
+  /* Tailwind's bg-accent/hover:bg-accent is shadcn's own subtle neutral
+     hover tint (Button ghost/outline, DropdownMenu, Select, Tabs) — point
+     it at shadcn's generated gray, not the brand green. Use bg-brand for
+     the actual green. */
+  --color-accent: var(--accent);
+
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+
+  --color-destructive: var(--color-destructive);
+  --color-destructive-hover: var(--color-destructive-hover);
+  --color-on-destructive: var(--color-on-destructive);
+  --color-destructive-bg: var(--color-destructive-bg);
+  --color-destructive-border: var(--color-destructive-border);
+  --color-warning: var(--color-warning);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-warning-border: var(--color-warning-border);
+  --color-success: var(--color-success);
+  --color-success-bg: var(--color-success-bg);
+  --color-success-border: var(--color-success-border);
+  --color-info: var(--color-info);
+  --color-info-bg: var(--color-info-bg);
+  --color-info-border: var(--color-info-border);
+
+  --color-ring: var(--color-ring);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-belge: var(--font-belge);
+
+  --radius-card: var(--radius-card);
+  --radius-control: var(--radius-control);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-input: var(--input);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Ensure document paper headings and all descendants strictly inherit the document font (Times New Roman) */
+[contenteditable="true"] h1,
+[contenteditable="true"] h2,
+[contenteditable="true"] h3,
+[contenteditable="true"] h4,
+[contenteditable="true"] h5,
+[contenteditable="true"] h6,
+.resmi-belge-sayfasi h1,
+.resmi-belge-sayfasi h2,
+.resmi-belge-sayfasi h3,
+.resmi-belge-sayfasi h4,
+.resmi-belge-sayfasi h5,
+.resmi-belge-sayfasi h6 {
+  font-family: inherit !important;
+}
+
+/* Visible, high-contrast focus ring for keyboard navigation everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Live document-drafting caret (BelgeCanliTaslak) — blinks at the end of
+   the text streamed in so far, like a text editor's insertion point. Picked
+   up by the prefers-reduced-motion rule above like any other animation. */
+@keyframes belge-imlec {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.dark {
+  /* Dark theme for the palette above. Opt-in only — nothing switches to it
+     unless the user picks it (see TemaDegistirici); the default stays the
+     light government-portal look this project shipped with.
+
+     The light palette can lean on one dark blue for BOTH "primary button
+     background" and "primary text", because a dark blue reads on white and
+     white reads on it. On a dark ground that single color can't do both, so
+     the roles invert the way shadcn's own dark theme inverts them: primary
+     becomes a light blue that reads as text on the background, and
+     on-primary becomes the near-black that reads on top of it. Same
+     inversion for brand/destructive. Every pair below clears WCAG AA (4.5:1)
+     against both --color-background and --color-card. */
+  --color-primary: #8ab4f8;
+  --color-primary-hover: #a8c7fa;
+  --color-on-primary: #0f172a;
+
+  --color-brand: #4ade80;
+  --color-brand-hover: #86efac;
+  --color-brand-foreground: #052e16;
+
+  --color-background: #171717;
+  --color-foreground: #ececec;
+  --color-card: #212121;
+  --color-card-foreground: #ececec;
+
+  --color-muted: #2a2a2a;
+  --color-muted-foreground: #a1a1a1;
+  --color-border: #343434;
+
+  --color-destructive: #f87171;
+  --color-destructive-hover: #fca5a5;
+  --color-on-destructive: #450a0a;
+  --color-destructive-bg: #2c1618;
+  --color-destructive-border: #7f1d1d;
+  --color-warning: #fbbf24;
+  --color-warning-bg: #2b2110;
+  --color-warning-border: #78350f;
+  --color-success: #4ade80;
+  --color-success-bg: #11291b;
+  --color-success-border: #166534;
+  --color-info: #8ab4f8;
+  --color-info-bg: #1c2a41;
+  --color-info-border: #1e40af;
+
+  --color-ring: #8ab4f8;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}

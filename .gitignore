@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Next.js & Build outputs
+.next/
+out/
+build/
+dist/
+coverage/
+
+# Environment files
+.env*
+!.env.example
+
+# Databases & local storage
+*.db
+*.db-*
+*.sqlite3
+data/*.db
+data/sohbet-ekleri/
+.qdrant/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.pem
+.idea/
+.vscode/
+*.tsbuildinfo
+next-env.d.ts

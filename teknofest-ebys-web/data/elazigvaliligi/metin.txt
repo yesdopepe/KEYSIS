@@ -1,0 +1,1222 @@
+VALİLİK VE KAYMAKAMLIK BİRİMLERİ TEŞKİLAT, GÖREV VE ÇALIŞMA YÖNETMELİĞİ
+ 
+BİRİNCİ KISIM
+Temel İlkeler ve Birimlerin Teşkilatı
+ 
+BİRİNCİ BÖLÜM
+Amaç, Kapsam, Dayanak, Tanım ve İlkeler
+ 
+Amaç
+MADDE 1 ‒ (1) Bu Yönetmeliğin amacı;
+a) Valilik ve kaymakamlık birimlerinin teşkilatını, bu birimlerde görevli personelin görev, yetki ve sorumluluklarını belirlemek,
+b) İl ve ilçelerdeki genel idare kuruluşlarının valilikler ve kaymakamlıklar kanalı ile yapacakları yazışmaların esaslarını belirlemek,
+c) Valiliklere ve kaymakamlıklara gelen ve giden evrakın giriş, çıkış, kayıt, değerlendirme, ilgili birimlere gönderilme, teslim edilme, dosyalama ve arşivleme esaslarını düzenlemek,
+suretiyle valilik ve kaymakamlık birimleri iş ve işlemlerinin idarenin amaçlarına, belirlenmiş politikalara ve mevzuata uygun olarak düzenli, vatandaş odaklı, uyumlu, hızlı, etkili ve verimli bir şekilde yapılmasını sağlamaktır.
+Kapsam
+MADDE 2 ‒ (1) Bu Yönetmelik;
+a) Valilik ve kaymakamlık birimlerinin teşkilat, görev, yetki ve sorumlulukları ile iş ve işlemlerini,
+b) İl ve ilçelerdeki genel idare kuruluşlarının valilikler ve kaymakamlıklar kanalı ile yapacakları yazışmaların esaslarını,
+kapsar.
+(2) (Değişik:RG-30/8/2014-29104) İl Planlama ve Koordinasyon, İl Dernekler, İl Nüfus ve Vatandaşlık, İlçe Nüfus Müdürlükleri, Büyükşehir Belediyesi bulunan illerde Yatırım İzleme ve Koordinasyon Başkanlıkları ile 112 Acil Çağrı Merkezi Müdürlükleri bu Yönetmelik kapsamında tanımlanan birimlerden olup, bunların il ve ilçe teşkilatlarının kuruluş, görev, yetki ve sorumlulukları özel mevzuatında gösterilir. Ancak söz konusu birimler, özel mevzuatlarındaki düzenlemeler dışında bu Yönetmelik hükümlerine tabidir.
+(3) 5442 sayılı İl İdaresi Kanunu uyarınca, sivil hava meydanları, limanlar ve sınır kapılarında görevli mülki idare amirlerine bağlı olarak çalışan birimlerin özel mevzuatındaki hükümleri saklıdır.
+(4) İl ve ilçelerde teşkilatı olmayan veya görevlisi bulunmayan bakanlıklara ve diğer kamu kurum ve kuruluşlarına ait hizmetlerin yürütülmesinde de bu Yönetmelik hükümleri uygulanır.
+Hukuki dayanak
+MADDE 3 ‒ (1) Bu Yönetmelik, 5442 sayılı İl İdaresi Kanunu ile 3152 sayılı İçişleri Bakanlığı Teşkilat ve Görevleri Hakkında Kanunun 28 inci ve 33 üncü maddelerine dayanılarak hazırlanmıştır.
+Tanımlar
+MADDE 4 ‒ (1) Bu Yönetmeliğin uygulanmasında;
+a) Bakanlık: İçişleri Bakanlığını,
+b) (Değişik:RG-30/8/2014-29104) Birim: Valilik ve Kaymakamlıklarda hizmetlerin yürütüldüğü başkanlık, il müdürlüğü, ilçe müdürlüğü, şube müdürlüğü ve müstakil şefliği,
+c) (Değişik:RG-30/8/2014-29104) Birim amirleri: Birimlerde çalışan başkan, il müdürü, ilçe müdürü, şube müdürü ve müstakil şefleri,
+ç) Dilekçe: Yetkili bir makama sunulan veya elektronik ortamda usulüne uygun olarak gönderilen, kişilerin kendileriyle veya kamu ile ilgili istek ve şikâyetlerini kapsayan bir veya daha çok imzalı müracaatı,
+d) Elektronik belge: Elektronik ortamda oluşturulan, gönderilen ve saklanan her türlü belgeyi,
+e) Elektronik defter: Valilik ve kaymakamlık birimlerince tutulması zorunlu olan defterlerde yer alan bilgileri kapsayan elektronik kayıtların bütününü,
+f) Elektronik ortam: Belge ve bilgilerin üzerinde bulunduğu her türlü bilgisayarı, gezgin elektronik araçları, bilgi ve iletişim teknolojisi ürünlerini,
+g) Evrak: İl ve ilçelerde görülen hizmetler, yapılan iş, işlemler ve haberleşmeler sırasında veya sonucunda kamu kuruluşlarının kendi aralarında, gerçek veya tüzel kişilerle iletişimlerini sağlamak amacıyla yazılan yazı, resmi belge, resmi bilgi ve elektronik belgeyi,
+ğ) Evrak sayısı: Birim tarafından hazırlanan evraka imza süreçleri tamamlandıktan sonra sistem tarafından verilen numarayı,
+h) Gelen evrak kayıt numarası: Dışarıdan gelen ve birim içinde dağıtılmak üzere sisteme kaydedilen evraka sistem tarafından verilen kayıt numarasını,
+ı) Güvenli elektronik imza: 5070 sayılı Elektronik İmza Kanununa göre; münhasıran imza sahibine bağlı olan, sadece imza sahibinin tasarrufunda bulunan güvenli elektronik imza oluşturma aracı ile oluşturulan, nitelikli elektronik sertifikaya dayanarak imza sahibinin kimliğinin ve imzalanmış elektronik veride sonradan herhangi bir değişiklik yapılıp yapılmadığının tespitini sağlayan elektronik imzayı,
+i) İl genel idare kuruluşları: İl mülkî idare bölümü içinde hizmet gören ve valiye bağlı olarak çalışan, merkezi idarenin il kademesindeki birimlerini,
+j) İlçe genel idare kuruluşları: İlçe mülkî idare bölümü içinde hizmet gören ve kaymakama bağlı olarak çalışan, merkezi idarenin ilçe kademesindeki birimlerini,
+k) İmzaya yetkili amir: Vali, kaymakam veya bunların evrak havale ve imzaya yetkili kıldığı görevliyi,
+l) Koli: Basılı kâğıt veya evrakın posta kurallarına göre paketlenmiş, toparlanmış veya kutulanmış şeklini,
+m) Mahallî idareler: İl özel idareleri, belediyeleri ve köyleri,
+n) Mahallî idare birliği: Birden fazla mahallî idarenin, yürütmekle görevli oldukları hizmetlerden bazılarını birlikte görmek üzere kendi aralarında kurdukları kamu tüzel kişisini,
+o) Merkezi idarenin merkez kuruluşları: Başbakanlık ve Bakanlıklar ile bağlı kurum ve kuruluşların merkezi kademe birimlerini,
+ö) Resmî belge: Kamu kurum ve kuruluşlarının kendi aralarında veya gerçek ve tüzel kişilerle iletişimlerini sağlamak amacıyla oluşturdukları, gönderdikleri veya sakladıkları belirli bir standart ve içeriği olan belgeleri,
+p) Resmî bilgi: Kamu kurum ve kuruluşlarının kendi aralarında veya gerçek ve tüzel kişilerle iletişimleri sırasında metin, ses ve görüntü şeklinde oluşturdukları, gönderdikleri veya sakladıkları bilgileri,
+r) Sistem: Birimlerin iş ve işlemlerinin elektronik ortamda yürütülmesini sağlamak üzere geliştirilen e-İçişleri uygulamaları ile bu uygulamaların yürütülmesini sağlayan donanım, yazılım ve ağ alt yapısını,
+s) Yazışma: Yazılı veya elektronik ortamda yapılan yazışmaları,
+ş) (Ek:RG-4/6/2020-31145) GAMER: Bakanlık ve illerde kurulan güvenlik ve acil durumlar koordinasyon merkezlerini,
+ifade eder.
+İş ve işlemlerin yürütülme esasları
+MADDE 5 – (1) Bu Yönetmelikle birimler tarafından yürütülmesi öngörülen her türlü iş ve işlemin elektronik ortamda yapılması esastır.
+(2) Elektronik ortamda yürütülen her türlü iş ve işlem ilgili mevzuatta belirtilen güvenlik önlemlerine uyularak yapılır.
+(3) Resmî yazışmalarda Başbakanlık tarafından belirlenen kodlama sistemine ve dosya planına uyulması zorunludur.
+ 
+İKİNCİ BÖLÜM
+Evrak Türleri
+ 
+Evrak türleri
+MADDE 6 ‒ (1) Bu Yönetmelik açısından;
+a) Özellik taşıyan evrak: Üzerinde ayrı bir gizlilik veya ivedilik derecesi bulunan gizli, hizmete özel, kişiye özel, ivedi ve günlü işareti taşıyan,
+1) Gizli evrak: İzinsiz olarak açıklandığı takdirde millî güvenliği ve millî menfaatleri tehlikeye düşürecek olan,
+2) Hizmete özel evrak: Hizmeti yürütmesi gerekenlerden başkası tarafından bilinmesine ihtiyaç duyulmayan,
+3) Kişiye özel evrak: Gizlilik dereceli olmayıp ancak gittiği yerde ve önceki işlemlerinde belirli şahısların, amir veya sadece onun yetki verdiği personelin açabileceği veya makam sahibinin adına gelen,
+4) İvedi evrak: Kapsamı bakımından derhâl ve süratle cevap verilmesi gereken,
+5) Günlü evrak: Belirli bir zamanda veya evrakta belirtilen süre içinde bitirilerek muhatabı olan makama cevap verilmesi gereken,
+b) Değerli evrak: Teminat mektupları ve para ihbarnameleri ile kendisi veya ekleri para, pul, çek, bono, hisse senedi gibi paraya çevrilebilen,
+c) Normal evrak: Özellik taşıyan ve değerli evrak dışında kalan,
+evraktır.
+ 
+ÜÇÜNCÜ BÖLÜM
+Yazışma Kanalları
+ 
+Kuruluşların yazışmaları
+MADDE 7 – (1) Merkezi idarenin merkez kuruluşları ile il ve ilçe kuruluşları arasındaki yazışmalar valilik kanalı ile yapılır. Ancak, talep niteliği taşımayan veya valilerin bilmeleri gerekmeyen, hesap ve teknik hususlara, ayrıntıya ilişkin istatistikî bilgilere, bazı maddi olay ve durumların kaydına, tespitine, belirlenmesine, bilinmesine veya aksettirilmesine ilişkin yazışmalar, valilik kanalından geçirilmeden, il kuruluşları ile merkezi idarenin merkez kuruluşları arasında yapılabilir. Hangi evrakın bu nitelikte olduğu valilikçe çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+(2) Farklı illere bağlı il genel idare kuruluşlarının; il merkezlerinde ve ilçelerdeki genel idare kuruluşları arasındaki yazışmalar valilik ve kaymakamlık kanalı ile yapılır. Ancak, talep ve talimat niteliği taşımayan veya vali ve kaymakamların bilmeleri gerekmeyen, hesap ve teknik hususlara, ayrıntıya ilişkin istatistikî bilgilere, bazı maddi olay ve durumların kaydına, tespitine, belirlenmesine, bilinmesine veya aksettirilmesine ilişkin yazışmalar, valilik ve kaymakamlık kanalından geçirilmeden, doğrudan ilgili kuruluşlar arasında yapılabilir. Hangi evrakın bu nitelikte olduğu valilik ve kaymakamlıkça çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+(3) Aynı ile bağlı il genel idare kuruluşlarının; il ve ilçe kademeleri, il merkezi ile aynı ya da farklı ilçelerdeki diğer kuruluşlar, bölge kuruluşları, mahalli idareler ve mahallî idare birlikleri arasındaki yazışmaların doğrudan yapılması esastır. Ancak, talimat niteliği taşıyan veya vali ve kaymakamlarca bilinmesi gereken yazışmalar valilik ve kaymakamlık kanalı ile yapılır. Hangi evrakın bu nitelikte olduğu valilik ve kaymakamlıkça çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+ 
+DÖRDÜNCÜ BÖLÜM
+Birimlerin Teşkilatı
+ 
+Birimlerin teşkilatı
+MADDE 8 – (1) Valiliklerin il müdürlüğü, şube müdürlüğü ve şeflik; kaymakamlıkların ilçe müdürlüğü ve şeflik şeklinde teşkilatlanması esastır.
+İllerde bulunan birimler
+MADDE 9 – (1) İllerde aşağıdaki birimler bulunur:
+a) İl Yazı İşleri Müdürlüğü,
+1) Evrak Şefliği,
+2) İşlemler Şefliği,
+3) (Mülga:RG-30/8/2014-29104)
+b) İl İdare Kurulu Müdürlüğü,
+c) (Değişik:RG-12/9/2018-30533) İdare ve Denetim Müdürlüğü,
+ç) İl Basın ve Halkla İlişkiler Müdürlüğü,
+d) Özel Kalem Müdürlüğü,
+1) İdari Hizmetler ve Koordinasyon Şefliği,
+2) Protokol Şefliği: Büyükşehir belediyesi olmayan illerde,
+e) Protokol Şube Müdürlüğü: Büyükşehir belediyesi olan illerde,
+f) Hukuk İşleri Şube Müdürlüğü,
+1) Hukuk İşleri Şefliği,
+2) Dava İşleri Şefliği,
+g) İl Sosyal Etüt ve Proje Müdürlüğü,
+ğ) (Değişik:RG-30/8/2014-29104) İdari Hizmetler Şube Müdürlüğü, 
+h) Bilgi İşlem Şube Müdürlüğü.
+ı) (Ek:RG-4/4/2020-31089) Açık Kapı Şube Müdürlüğü.
+İlçelerde bulunan birimler
+MADDE 10 – (1) İlçelerde aşağıdaki birimler bulunur:
+a) İlçe Yazı İşleri Müdürlüğü,
+1) Evrak Şefliği,
+2) İşlemler Şefliği,
+b) İlçe Hukuk İşleri Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+c) (Değişik:RG-12/9/2018-30533) İdare ve Denetim Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+ç) İlçe Bilgi İşlem Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+d) İlçe Sosyal Etüt ve Proje Şefliği: Bakanlıkça uygun görülen ilçelerde.
+e) (Ek:RG-4/4/2020-31089) Açık Kapı Şefliği: Bakanlıkça uygun görülen ilçelerde.
+(2) Toplam nüfusu ellibinin altında olan ilçelerde de birinci fıkrada sayılan müstakil şefliklerden biri ya da birkaçı; ilçenin yatırım, basın ve yayın faaliyetleri, güvenlik durumu, protokol, sivil toplum hizmetleri, nüfus hareketleri, afet ve acil durum ihtiyaçları, sınır ve liman işleri, belediye ve köy sayıları birlikte veya ayrı ayrı dikkate alınarak, Bakanlık onayı ile kurulabilir.
+Birimler ile ilgili düzenleme 
+MADDE 11 – (1) İl ve ilçelerde teşkilatı olmayan veya görevlisi bulunmayan Bakanlıklara ve diğer kamu kurum ve kuruluşlarına ait hizmetler bir birim ile ilişkilendirilerek yürütülür.
+(2) Başbakanlık ve bakanlıkların düzenleyici işlemleri ile belirli hizmet, faaliyet ve işlerin yürütülmesinin valilik ve kaymakamlıklardan istenmesi halinde ya da hizmetlerin vatandaşa en yakın yerden sunulabilmesi amacıyla gerekli görülen mahallerde, bir birim ile ilişkilendirilerek, geçici veya sürekli bürolar açılabilir.
+(3) İl ve ilçelerde bu maddede belirtilen düzenleme ve değişiklikler vali ve kaymakamlar tarafından yapılır.
+ 
+BEŞİNCİ BÖLÜM
+Birimlerin Bağlılığı, Yetki ve Sorumluluk
+ 
+Birimlerin bağlılığı
+MADDE 12 – (1) İllerde bulunan birimlerden; özel kalem müdürlüğü valiye, diğer müdürlükler vali tarafından görevlendirilen vali yardımcısına veya mülki idare amiri sınıfından olan il hukuk işleri müdürüne bağlı olarak çalışır. Ancak, valiler bu birimlerden istediklerini doğrudan kendilerine bağlı olarak çalıştırabilirler. 
+(2) İlçelerde bulunan birimler kaymakama bağlı olarak çalışır.
+Birim amirlerinin yetki ve sorumluluğu 
+MADDE 13 – (1) Birim amirleri, birimin iş ve işlemlerini sürekli gözetim ve denetimleri altında bulundurur, hizmetin aksamaması için gerekli tedbirleri alırlar.
+(2) Birim amirleri, birimlerinde görevli personelin ödüllendirilmesi ve tecziyesi hakkında illerde ilgili vali yardımcısı aracılığı ile valiye, ilçelerde kaymakama görüş ve teklif sunabilirler.
+(3) Birim amirleri;
+a) Hizmetle ilgili olarak birime başvuran kişilerin muhatabıdır.
+b) Birimdeki iş ve işlemlerin iş akışına uygun olarak süratli, güvenli, etkin ve verimli yürütülmesini sağlamakla sorumludur.
+c) Birimin iş ve işlemlerinin yürütülmesinde gerekli iş bölümünü yapar, işbirliğini sağlar, birimdeki personelin görev dağılımında geçici olarak değişiklikler yapabilir.
+ç) Birim içinde koordinasyonu sağlar.
+d) Yapmakla yükümlü bulundukları hizmet veya görevleri sıralı olarak bağlı oldukları amirlerinin gözetim ve denetimi altında ve onların emir ve direktifleri yönünde; mevzuata, plan ve programlara uygun olarak düzenlemek ve yürütülmesini sağlamakla sorumludur.
+Görevlilerin sorumluluğu
+MADDE 14 – (1) Birimde çalışan bütün görevliler, kendilerine verilen işleri hızlı, verimli ve nitelikli olarak yapmaktan hiyerarşik olarak üstlerine karşı sorumludur.
+ 
+İKİNCİ KISIM
+Birimlerin Görevleri
+ 
+BİRİNCİ BÖLÜM
+İl Birimlerinin Görevleri
+ 
+İl yazı işleri müdürlüğünün görevleri 
+MADDE 15 ‒ (1) İl Yazı İşleri Müdürlüğünün görevleri şunlardır:
+a) Evrak Şefliği;
+1) Valiliğe posta veya elektronik ortamda gönderilen; kişilerce veya kurum ve kuruluşların görevli dağıtıcılarınca elden getirilen her nevi dilekçeyi kabul etmek ve İmza Yetkileri Yönergesi gereğince yetki verilen görevlilerin havalesine ve imzasına hazırlamak, imzalanmasını takip etmek ve ilgili yerlere intikalini sağlamak ve sonuçlanmasını izlemek,
+2) Valilik adına posta veya elektronik ortamda gelen ve valilik birimlerinden çıkan evrakı almak, kaydetmek, görevli merci, kişi veya ilgili birimlere dağıtmak, ulaştırmak ve postalamak,
+3) Evrak hareketi ile ilgili istatistikî bilgi ve raporları sistem üzerinden sorgulamak ve hazırlamak,
+4) Vali tarafından verilen diğer görevleri yapmak.
+b) İşlemler Şefliği;
+1) Valiliğin kanun, tüzük, yönetmelik ve Bakanlar Kurulu kararlarının yayımlanması ile ilgili görevleri yerine getirmek ve genelge çıkarılması ile ilgili işlemleri yürütmek,
+2) Vali, vali yardımcısı, kaymakam, hukuk işleri müdürü, kaymakam adayı gibi Bakanlık personelinin il kademesinde izlenmesi gereken özlük işleri ile bu Yönetmelikte düzenlenen birim personeli ve sözleşmeli personelin atanma, yer ve görev değiştirme, kademe ilerlemesi, derece yükselmesi, askerliğinin ertelenmesi ve diğer özlük işlerini yürütmek,
+3) Tayini valiliğe ait aday memurların özlük dosyalarını tutmak, asil memurluğa geçirilmesi ve yemin işlerini düzenlemek, disiplin cezası ve ödüllendirme işlerini yürütmek, izin, memurluğun sona ermesi ve emeklilik işlerini düzenlemek, yürütmek ve izlemek,
+4) Hizmet içi eğitim çalışmalarını yürütmek ve geliştirmek,
+5) İldeki kamu personelinin günlük çalışma saatlerinin tespiti ile ilgili konularda gerekli işlemleri yapmak,
+6) Özel kanunlarına göre yapılan; milletvekili, mahalli idareler seçimleri ve Anayasa değişikliklerinin halkoyuna sunulmasında, valiliği ilgilendiren iş ve işlemler ile yazışmaları yapmak,
+7) Etik Kurulu ile ilgili iş ve işlemleri yürütmek,
+8) Tanıtıcı bayrakların kullanma iznine ve tescil işlemlerine ait iş ve işlemleri yapmak,
+9) Valilik İmza Yetkileri Yönergesini hazırlamak, ilgili kurum ve kuruluşlara dağıtmak ve uygulanmasını izlemek,
+10) Valiliğin, adli ve askeri teşkilat dışında kalan bütün Devlet daire, müessese ve işletmeler ve özel işyerleri üzerindeki gözetim, denetim ve teftiş yetkilerinin kullanılmasına ilişkin iş ve işlemleri yürütmek,
+11) (Ek:RG-30/8/2014-29104) Elektronik evrak dışındaki genel evrak arşiv hizmet ve faaliyetlerini düzenlemek ve yürütmek,
+12) (Ek:RG-30/8/2014-29104) Genel bütçeden gönderilen ödeneklerin giderin gerçekleştirilmesini yapmak ve mutemetlik iş ve işlemlerini yürütmek, Valiliğin mali işlerle ilgili hizmetlerini yürütmek; valilik ve birimlerin cari ve yatırım bütçe tekliflerini hazırlamak ve cari ödeneklerinin teminini takip etmek,
+13) (Ek:RG-30/8/2014-29104) İl yazı işleri müdürlüğü bünyesinde kimlik masası oluşturmak, il ve ilçelerde görev yapan personel için kimlik kartı talebinde bulunmak, ilgili personele teslimini sağlamak ve kimlik kartı ile ilgili her türlü iş ve işlemleri yürütmek ve Bakanlık Personel Genel Müdürlüğünü bilgilendirmek,
+14) (Ek:RG-30/8/2014-29104) Yürüttüğü hizmetler ile ilgili eğitim programları düzenlemek, ilgili kayıtları tutmak ve değerlendirmek,
+15)(2) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+c) (Mülga:RG-30/8/2014-29104)
+İl idare kurulu müdürlüğünün görevleri 
+MADDE 16 – (1) İl İdare Kurulu Müdürlüğünün görevleri şunlardır:
+a) 4483 sayılı Memurlar ve Diğer Kamu Görevlilerinin Yargılanması Hakkında Kanunun uygulanması ile ilgili iş ve işlemleri yürütmek,
+b) 2547 sayılı Yükseköğretim Kanunu uyarıca; yükseköğretim kuruluş ve kurumlarının 657 sayılı Devlet Memurları Kanununa tabi memurlarının görevleri dolayısıyla ya da görevlerini yaptıkları sırada işledikleri suçlar hakkında il idare kurulunun verdiği kararlarla ilgili işlemleri yapmak,
+c) İl idare kurulu ve il disiplin kurulu görevlerine ilişkin iş ve işlemleri hazırlamak ve yürütmek,
+ç) Valilikçe kamu görevlileri hakkında inceleme yapılması, disiplin soruşturması açılması, bunların görevden uzaklaştırılması, cezalandırılması, bu konudaki izin verme yetkilerinin kullanılması işlemlerini yürütmek, sonuçlarını takip etmek,
+d) 3091 sayılı Taşınmaz Mal Zilyetliğine Yapılan Tecavüzlerin Önlenmesi Hakkında Kanunun uygulanması ile ilgili işlemleri yürütmek,
+e) Mülki idare amirlerinin muhtelif kanunlardan kaynaklanan men ve tahliye yetkilerinin kullanılması ile ilgili iş ve işlemleri yürütmek,
+f) 2022 sayılı 65 Yaşını Doldurmuş Muhtaç, Güçsüz ve Kimsesiz Türk Vatandaşlarına Aylık Bağlanması Hakkında Kanun ve diğer kanunlarla istenilen kararlar ve belgelerin düzenlenmesi işlemlerini yürütmek,
+g) Köy kurulması ve kaldırılması, bağlanması ve ayrılması, sınır anlaşmazlıkları, köy, yerleşim yeri ve tabiî yer adlarının değiştirilmesi işlerini yürütmek,
+ğ) Harita işlerini yürütmek ve gizliliği olan haritaları valilik adına koruyup saklamak,
+h) Coğrafi yer adları ile ilgili iş ve işlemleri yürütmek,
+ı) 2942 sayılı Kamulaştırma Kanunu gereğince verilen görevleri yapmak,
+i) (Değişik:RG-5/8/2012-28375) Mevzuatta mülki amir veya il ve ilçe idare kurulları tarafından verileceği hüküm altına alınan idari para cezası, idari tedbirler ve mülkiyetin kamuya geçirilmesi yaptırımlarının sadece onay ve karar işlemlerini yapmak. Bu bendin uygulanmasında; cezaların, tedbirlerin ve yaptırımlarının hazırlık ve teklif işlemleri ile mülki amirin onayı veya il ve ilçe idare kurullarının kararlarını müteakip yapılacak tebligat, itiraz ve infaz süreçlerinin izlenmesine dair bütün iş ve işlemlerin sekreteryası cezaya konu fiil veya haller mevzuatla kendilerine görev olarak verilen ilgili kamu kurum veya kuruluşu tarafından yapılır. 
+j) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İdare ve denetim müdürlüğünün görevleri (3)
+MADDE 17 – (1) (Değişik cümle:RG-12/9/2018-30533) İçişleri Bakanlığının görev alanına ilişkin olarak İdare ve Denetim Müdürlüğünün görevleri şunlardır:
+a) 5302 sayılı İl Özel İdaresi Kanunu, 5393 sayılı Belediye Kanunu ve 5216 sayılı Büyükşehir Belediyesi Kanunu gereği valiliğe gönderilen kararlar ile ilgili işlemleri yapmak,
+b) 5355 sayılı Mahalli İdare Birlikleri Kanunu gereğince, mahalli idare birliklerinin denetimini yapmak, denetim sırasında tespit edilecek kişi borçlarını karar alınmak üzere ilgili birliğe bildirmek, yetkili birlik organlarınca alınan kişi borcu kararlarını inceleyerek idari yargıya başvurulması gerekenleri Hukuk İşleri Şube Müdürlüğüne göndermek,
+c) Valiliğin, mahalli idareler ve mahalli idarelerin kurdukları işletme, müessese, teşekkül ve birlikleri üzerindeki gözetim ve denetim yetkisi ile diğer vesayet görev ve yetkilerinin kullanılmasına ilişkin iş ve işlemleri yürütmek,
+ç) Belediyelerin kurulması, bazı köylerin veya bağlıların belediyelerle birleşmesi işlemlerini yürütmek,
+d) Mahalli idareler ve mahallî idare birliklerinin hukuki konularda görüş taleplerini cevaplamak, Bakanlık görüşü oluşturulması gerekenleri Bakanlığa göndermek,
+e) Köy ve mahalle muhtarlarının izin, hastalık, görevden uzaklaştırma, istifa, ölüm gibi iş ve işlemlerini yürütmek,
+f) 5302 sayılı İl Özel İdaresi Kanunu, 5393 sayılı Belediye Kanunu, 5216 sayılı Büyükşehir Belediyesi Kanunu ve 5355 sayılı Mahalli İdare Birlikleri Kanunu ve diğer kanunlar uyarınca, valilik ve kaymakamlıklarca yapılması gereken mahallî idareler ve mahallî idare birlikleri ile ilgili iş ve işlemleri yürütmek,
+g) (Değişik:RG-12/9/2018-30533) Güvenlik korucuları ve gönüllü güvenlik korucularıyla ilgili iş ve işlemlerin yürütülmesini sağlamak,
+ğ) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İl basın ve halkla ilişkiler müdürlüğünün görevleri
+MADDE 18(1) ‒ (1) İl Basın ve Halkla İlişkiler Müdürlüğünün görevleri şunlardır:
+a) Yazılı ve görsel basın ve diğer kitle iletişim araçlarında il ve valilik ile ilgili çıkan bilgi ve haberleri izlemek ve değerlendirmek,
+b) Valinin talimatı doğrultusunda basın bültenini hazırlamak ve basına bilgi vermek, valiliğin basın toplantılarıyla ilgili işlerini yapmak,
+c) Basın ilan ve basın-yayın ve enformasyon mevzuatının valilikler ile ilgili iş ve işlemlerini yürütmek,
+ç) 10/8/1990 tarihli ve 90/748 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Mal Bildiriminde Bulunulması Hakkında Yönetmelik hükümlerine göre, gazete sahibi gerçek kişiler ile gazete sahibi şirketlerin yönetim ve denetim kurulu üyeleri, sorumlu müdürleri, başyazarları ve fıkra yazarlarının mal bildirim beyannameleri ile ilgili iş ve işlemleri yapmak ve beyannameleri muhafaza etmek,
+d) Gazete, dergi, haber ajansları ve medya izleme merkezleri ile ilgili abonelik iş ve işlemlerini yapmak,
+e) Sarı basın kartı başvurusu ile ilgili iş ve işlemleri yapmak,
+f) 4982 sayılı Bilgi Edinme Hakkı Kanununa göre yapılacak başvuruları kabul etmek, izlemek, sonuçlandırmak ve başvuru sahibine bilgi vermek,
+g) Başbakanlık İletişim Merkezi (BİMER) ile ilgili her türlü iş ve işlemleri yapmak,
+ğ) Basın ve halkla ilişkiler ile ilgili diğer iş ve işlemleri yürütmek,
+h) (Ek:RG-20/12/2013-28857)(1) 5681 sayılı Matbaalar Kanunu ve 5187 sayılı Basın Kanununun uygulanmasında öngörülen bildirimleri kabul etmek ve valiliği ilgilendiren iş ve işlemleri yapmak,
+ı)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+Özel kalem müdürlüğünün görevleri 
+MADDE 19 ‒ (1) Özel Kalem Müdürlüğünün görevleri şunlardır:
+a) İdari Hizmetler ve Koordinasyon Şefliği;
+1) Valinin özel haberleşme ve gizlilik taşıyan yazışmaları ile görev ve izin işlerini yürütmek,
+2) Vali tarafından; başarı belgesi, üstün başarı belgesi ve ödül verilmesi ile ilgili işleri yürütmek,
+3) Vali için gerekli bilgi notları, kurumsal sunumlar ve toplantı dokümanlarının hazırlanmasını ve muhafazasını sağlamak,
+4) Valiye gönderilen dilekçe, evrak ve faksların kabulünü yapmak, valinin talimatı doğrultusunda gereğinin yerine getirilmesini sağlamak,
+5) Valinin ziyaret, davet, randevu ve programlarının yazışmalarını yapmak, takibi ve koordinasyonunu sağlamak,
+6) Valinin koruma hizmetleri ile ilgili iş ve işlemleri yürütmek,
+7) Özel kalem müdürlüğüne bağlı birimlerin evrak, arşiv ve dokümantasyon işlerini yürütmek,
+8) Makamın güvenlik güçleriyle ilgili işlemlerini yürütmek, günlük asayiş raporlarını muhafaza etmek, valinin direktifine göre bu konudaki haberleşme ve yazışmaları yapmak,
+9) Sıkıyönetim ve olağanüstü hallerde valilik makamının silahlı kuvvetlerle olan ilişkilerini valinin direktifi altında yürütmek,
+10) Askeri birliklerden yardım istenmesini zorunlu kılan durumlarda valiye İl İdaresi Kanunu ile tanınan yetkinin kullanılmasına ilişkin haberleşme ve yazışmaları yapmak,
+11) Olağanüstü hal ilan edilmesi durumunda; 2935 sayılı Olağanüstü Hâl Kanunu ile 21/2/1984 tarihli ve 84/7778 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Olağanüstü Hal Kurulu ve Bürolarının Kuruluş ve Görevleri ile Yükümlülüklerinin Karşılığının Tesbit ve Ödenmesi Hakkında Yönetmeliğin gerekli gördüğü büro oluşuncaya kadar ve sözü geçen büroların kaldırılması durumunda, yazışma, dosyalama ve arşivleme işlerini sağlamak,
+12) Makama gelen istihbarat, sınır görüşmeleri gibi özel amaçlı ödenek ve harcama belgelerini valinin direktifi doğrultusunda muhafaza ve gerektiğinde usulünce imha etmek,
+13) Koruyucu güvenlik mevzuatı uyarınca, özel kalem müdürlüğünü ilgilendiren işleri yürütmek,
+14) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+b) Protokol Şefliği;
+1) Protokol şube müdürlüğü bulunmayan illerde bu müdürlüğün görevlerini yapmak.
+Protokol şube müdürlüğünün görevleri
+MADDE 20 – (1) Protokol Şube Müdürlüğünün görevleri şunlardır:
+a) Ulusal ve resmi bayramlar ile tarihi günlerde yapılacak törenlerde; protokol düzenini uygulamak, anıtlara konulacak çelenklerin hazırlanma, taşınma ve sunulması işlerini organize ederek protokol düzenine göre yapılmasını sağlamak,
+b) 26/6/2006 tarihli ve 2006/11187 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Devlet Cenaze Törenleri Yönetmeliğine göre düzenlenecek ulusal, resmi ve kurumsal cenaze törenleri ile ilgili işlemleri yapmak,
+c) İl kutlama ve anma komitelerinin toplantılarını organize etmek, kutlama ve anma törenlerinin ilgili kanun ve yönetmelikler çerçevesinde icra edilmesi için yetkili ve görevli kurum ve kuruluşlar ile gerekli işbirliği ve koordinasyonu sağlamak,
+ç) Resmi ziyaretler kapsamında; devlet büyüklerinin yurtiçi ve yurtdışı ziyaretleri ile yabancı devlet erkânının ülkemizi ziyaretlerinde, Dışişleri Bakanlığı Protokol Genel Müdürlüğü veya Cumhurbaşkanlığı, Başbakanlık, Bakanlık veya diğer kurum ve kuruluşlarının il teşkilatı düzeyinde hazırladıkları programlarını ilgili birimlere ulaştırmak ve gerekli koordinasyonu sağlamak,
+d) İl protokol listesinin güncel olarak tutulmasını ve valilik internet sitesinde yayınlanmasını sağlamak,
+e) Kamu ve toplum yaşamında uygulanan protokol kuralları olarak: Bayrak ve taşıt protokolü; toplantı, brifing ve tören protokolü; görev devir-teslim ve imza törenleri; kurumsal törenler ve etkinlikler, temel atma, açılış, anma, kutlama, festival, şenlik ve benzerleri; oturma düzenleri ve konuşma sıraları; davet, karşılama, ağırlama, uğurlama ile resepsiyon, kokteyl ve resmî yemekler; protokol yazıları; dini bayramlarda bayramlaşma ve benzeri temsil ile ilgili valiliğin protokol işlerini düzenlemek ve ilgili kuruluşlarla işbirliği halinde yürütmek,
+f) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+Hukuk işleri şube müdürlüğünün görevleri 
+MADDE 21(1) – (1) Hukuk İşleri Şube Müdürlüğünün görevleri şunlardır:
+a) Hukuk İşleri Şefliği;
+1) 1961 tarihli Yabancı Resmi Belgelerin Tasdiki Mecburiyetinin Kaldırılmasına İlişkin Lahey Sözleşmesinin 6 ncı maddesi gereğince; bir belgenin gerçekliğinin tasdik edilerek başka bir ülkede yasal olarak kullanılmasını sağlayan, apostil tasdik şerhi verilmesi ile ilgili iş ve işlemleri yürütmek,
+2) Lahey Sözleşmesine taraf olmayan ülkelerde kullanılacak evrakın tasdik işlemleri ile ildeki yabancı ülke temsilciliklerince düzenlenmiş veya onaylanmış belgelerin tasdik işlemleri ile ilgili iş ve işlemleri ilgili mevzuat çerçevesinde yürütmek,
+3) Valiliğe sorulan hukuki konular ile hukuki, mali, cezai sonuç doğuracak işlemler hakkında görüş bildirmek, hukuki danışmanlık hizmeti yapmak,
+4) Valiliğin menfaatlerini koruyucu, anlaşmazlıkları önleyici hukuki tedbirleri zamanında almak, anlaşma ve sözleşmelerin bu esaslara uygun olarak yapılmasına yardımcı olmak,
+5) Valiliğin amaçlarını gerçekleştirmek, mevzuata ve plan ve programa uygun çalışmasını temin etmek amacıyla gerekli hukuki teklifleri hazırlamak ve Valiye sunmak,
+6) Mevzuatın uygulanmasına ilişkin bilgileri toplamak, değerlendirmek ve söz konusu mevzuatın geliştirilmesine yönelik çalışmaları yürütmek,
+7) Valilik birimleri ve diğer müdürlüklerin hazırlamış oldukları yönerge ve diğer düzenleyici işlemler ile ilgili görüş bildirmek,
+8) Mevzuatın valilik hukuk işleri şube müdürlüğünce yapılmasını gerekli gördüğü inceleme, denetleme hizmetlerine ilişkin sekretarya işlerini yapmak ve işlemlerini yürütmek,
+9) Valiliğin, Dernekler İl Müdürlüğünün görev alanına girmeyen, sivil toplum kuruluşları ile kamu tüzel kişiliğine sahip meslek kuruluşları üzerindeki gözetim ve denetim yetkileri ile ilgili iş ve işlemleri yürütmek,
+10) 5233 sayılı Terör ve Terörle Mücadeleden Doğan Zararların Karşılanması Hakkında Kanunun uygulanmasında valiliği ilgilendiren iş ve işlemleri yürütmek,
+11) 23/11/2003 tarihli ve 25298 sayılı İl ve İlçe İnsan Hakları Kurullarının Kuruluş, Görev ve Çalışma Esasları Hakkında Yönetmelik hükümleri gereği Kurulun sekretarya hizmetlerini yürütmek,
+12) Lozan Antlaşması hükümleri çerçevesinde, azınlıklara ait dini, hayri, sıhhi, sosyal, eğitsel ve kültürel müesseseler ile bunların kamu kurum ve kuruluşlarıyla ilgili iş ve işlemlerini yürütmek,
+13) (Ek:RG-20/12/2013-28857)(1) 2911 sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu ile 2559 sayılı Polis Vazife ve Salahiyet Kanununun Ek 1 inci maddesinde yer alan bildirimleri kabul etmek,
+14)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+b) Dava İşleri Şefliği;
+1) Adlî ve idarî yargı mercilerinde takip edilmesi gerekli dava ve konularla ilgili işlemleri yürütmek, gerekli bilgileri hazırlamak, kamu görevlilerine haksız suç isnadında bulunanlar hakkında kamu davası açılması talebini hazırlamak ve ilgili yargı yerlerine ulaştırmak,
+2) İhtiyaç halinde, ilgili mevzuat hükümlerine göre serbest avukatlardan veya avukatlık ortaklıklarından hizmet satın alma iş ve işlemlerini yapmak,
+3) 5355 sayılı Mahalli İdare Birlikleri Kanunu gereğince, kişi borçlarının tahsili konusunda yargıya yapılacak başvurular ile ilgili iş ve işlemleri yürütmek,
+4) 4353 sayılı Kanunun 24 üncü maddesine göre; hazineyi ilgilendiren idari davaların Muhakemat Müdürlüğüne bildirilmesi iş ve işlemlerini yürütmek,
+5) Adli yargı yerlerinde görülmekte olan ve Hazine Avukatlarınca takip edilen davalarda onlara yardımcı olmak ve işbirliği yapmak, 
+6) Dava dosyaları ve yargılama süreci ile ilgili istatistikî bilgileri toplamak ve değerlendirmek,
+7) Mahkemelerce verilen kararların yerine getirilmesini takip etmek, sonuçları hakkında bilgi toplamak ve makamı bilgilendirmek,
+8) (Ek: RG-20/12/2013-28857)(1) 2911 sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu, 5681 sayılı Matbaalar Kanunu, 5187 sayılı Basın Kanunu ve 2559 sayılı Polis Vazife ve Salahiyet Kanununun Ek 1 inci maddesinde valiliği ilgilendiren davalarla ilgili iş ve işlemleri yürütmek,
+9)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İl sosyal etüt ve proje müdürlüğünün görevleri
+MADDE 22 – (1) İl Sosyal Etüt ve Proje Müdürlüğünün görevleri şunlardır:
+a) Bakanlıkça ilin güvenlik ve sosyo-ekonomik politikaları konularında uygulanmak üzere gönderilen tedbir ve faaliyetlerin, ilgili birimler ile koordine edilerek il düzeyinde uygulanmasını sağlamak ve uygulamada varsa karşılaşılan sorunlar ile çözüm önerilerini içeren sonuç raporlarını Bakanlığa göndermek,
+b) Görev alanı ile ilgili;
+1) Bilgi ve belgeleri toplamak, tasnif etmek, analiz ve değerlendirmeler yapmak,
+2) Proje ve araştırma yapmak, yaptırmak ve bu alandaki bilimsel çalışmaları desteklemek,
+3) Kamuoyu araştırması yapmak, yaptırmak,
+4) Toplantı, sempozyum, seminer, eğitim ve benzeri etkinlikler düzenlemek,
+5) Yapılması planlanan veya yapılan faaliyetlerin hedef kitleye duyurulması için gereken iş ve işlemleri yapmak veya yaptırmak, 
+c) İlde toplum desteğinin sağlanmasına yönelik faaliyetleri yürütmek,
+ç) İl genelinde göçün meydana getirdiği sorunlarla ilgili çalışmalar yapmak,
+d) Tedbir, faaliyet ve hizmetlere ait dosyalama, gelen ve giden evrakın kayıt, dağıtım ve arşivlenmesini sağlamak,
+e) (Ek:RG-4/6/2020-31145)(5) 24/10/2019 tarihli ve 30928 sayılı Resmî Gazete’de yayımlanan Güvenlik ve Acil Durumlar Koordinasyon Merkezi Teşkilat, Görev, Yetki, Çalışma Usul ve Esasları Hakkında Yönetmeliğin 13 üncü maddesinde belirtilen görevleri yerine getirmek.
+f) Mevzuat veya vali tarafından verilen benzeri görevleri yapmak.
+İdari hizmetler şube müdürlüğünün görevleri
+MADDE 23 – (Başlığı ile birlikte değişik:RG-30/8/2014-29104) 
+(1) İdari Hizmetler Şube Müdürlüğünün görevleri şunlardır:
+a) 3/11/1980 tarihli ve 2330 sayılı Nakdi Tazminat ve Aylık Bağlanması Hakkında Kanun ve 25/11/1992 tarihli ve 92/3809 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Nakdi Tazminat ve Aylık Bağlanması Hakkında Yönetmelik kapsamındaki iş ve işlemleri yürütmek,
+b) Hükümet konağının bakım ve onarımı ile bina ve çevre temizliğinin yapılmasını, elektrik, su, doğal gaz, kalorifer gibi tesisatların düzenli çalışmasını sağlamak, Valiliğe ait toplantı salonları ve teknik cihazları her zaman hizmete hazır bulundurmak,
+c) Valilikte bulunan taşıtların bakım, onarım, kiralama, akaryakıt ve sigorta işlemlerini yapmak, personel servisi ile hizmet araçlarının belirlenen kurallar çerçevesinde düzenli çalışmasını sağlamak,
+ç) Valilik personeline öğle yemeği için verilen yardım giderlerine ait bütçe tekliflerini hazırlamak ve ödeneklerinin teminine ait iş ve işlemleri yürütmek,
+d) 9/11/1983 tarihli ve 2946 sayılı Kamu Konutları Kanunu ve 16/7/1984 tarihli ve 84/8345 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Kamu Konutları Yönetmeliği hükümlerine göre valiliğe ait lojmanlarla ilgili işlemleri yürütmek,
+e) Hükümet konağı ve ek binalarında 22/9/1983 tarihli ve 2893 sayılı Türk Bayrağı Kanunu hükümlerinin uygulamasını sağlamak,
+f) Hükümet konağı ve ek binalarında sivil savunma ve koruyucu güvenlik ile ilgili mevzuatının uygulamasını sağlamak, takip etmek ve iş ve işlemlerini birimlerle koordine ederek yürütmek,
+g) Valilik haber merkezinin hizmet ve faaliyetlerini düzenlemek ve yürütmek,
+ğ) 28/12/2006 tarihli ve 2006/11545 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Taşınır Mal Yönetmeliği gereğince yapılacak iş ve işlemler ile valilik ve birimler için gerekli araç, gereç ve malzemenin temini, kayıtlarının tutulması ve ihtiyaç duyulan bina ve arazinin kiralanması ve satın alınması ile ilgili iş ve işlemleri yürütmek,
+h) Vali tarafından verilen diğer görevleri yapmak.
+Bilgi işlem şube müdürlüğünün görevleri
+MADDE 24 ‒ (1) Bilgi İşlem Şube Müdürlüğünün görevleri şunlardır:
+a) Valilik birimlerinin bilişim hizmet ve işlemlerinin; etkin, verimli, hızlı ve güvenli bir biçimde yürütülmesini sağlayacak sistemler ve ağlar kurmak, sürekli ve kesintisiz işleyişini sağlamak,
+b) Valilik birimlerinin bilgisayar, yazıcı, tarayıcı, faks, fotokopi, modem ve benzeri bilişim cihazları ve sarf malzemeleri ihtiyacını Bakanlıkça belirlenen standartlara uygun olarak tespit etmek, gerektiğinde bunları temin etmek, donanımların bakım ve onarımlarını yapmak veya yaptırmak,
+c) 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi ve Bu Yayınlar Yoluyla İşlenen Suçlarla Mücadele Edilmesi Hakkında Kanun ve ilgili mevzuat gereğince sağlanan hizmetlere ilişkin trafik bilgilerini saklamak ve bu bilgilerin doğruluğunu, bütünlüğünü ve gizliliğini korumak,
+ç) 1/11/2007 tarihli ve 26687 sayılı Resmî Gazete’de yayımlanan İnternet Toplu Kullanım Sağlayıcıları Hakkında Yönetmelik gereği, ticari amaçla internet toplu kullanım sağlayıcılarına izin belgesi verilmesi, işletmecilerin eğitimi ve denetlenmesine ilişkin iş ve işlemleri yapmak,
+d) Başta e-İçişleri Projesi olmak üzere, valilik ve kaymakamlıklara bağlı birimlerde uygulanacak her türlü bilgi işlem projesi ile ilgili koordinasyon ve işbirliğini sağlamak,
+e) Bakanlıkça belirlenecek eğitim programlarının uygulanmasını sağlamak, eğitmen ve kullanıcıların eğitim ihtiyacını belirlemek ve bu ihtiyaçları karşılayacak eğitim organizasyonları yapmak,
+f) Valilik internet sitesinin sürekli, güvenli ve güncel olarak yayınını sağlamak,
+g) İlçe birimlerine bilgi işlem konularında destek vermek,
+ğ) Mevzuat ve Vali tarafından verilen diğer görevleri yapmak.
+Açık kapı şube müdürlüğünün görevleri
+MADDE 24/A- (Ek:RG-4/4/2020-31089)
+(1) Açık kapı şube müdürlükleri illerde vali veya görevlendireceği vali yardımcısına bağlı olarak aşağıdaki görevleri yerine getirir:
+a) Valiliklere bizzat, web sitesi, mobil uygulama, e-devlet ya da diğer yöntemler ile yapılan başvuruları elektronik sisteme kaydederek ilgili hizmet birimlerine iletmek, başvuruların öngörülen süre içerisinde cevaplandırılmasını sağlamak ve süreci sonuçlandırılıncaya kadar takip etmek,
+b) Valiliğe bizzat başvuran vatandaşları karşılamak, vatandaşın talep ve beklentilerine hızlı ve etkin bir şekilde çözüm bulmak,
+c) Vatandaşın başvurusu esnasında her türlü dilek ve taleplerini dinleyerek başvurusuna ilişkin soruları ayrıntılı olarak cevaplamak,
+ç) Kamu hizmetlerine Dijital Türkiye üzerinden başvuru yapmakta zorluk yaşayan vatandaşlara danışmanlık ve rehberlik etmek, vatandaşın dijital ortama erişimini sağlamak,
+d) Şehit yakınları, gaziler ile gazi yakınları, altmış beş yaş üstü vatandaşlar, hamileler ve engellilere yönelik danışma ve mihmandarlık hizmetinin etkin bir şekilde yerine getirilmesini sağlamak,
+e) Başvuru sahiplerinin sürecin her aşamasında bilgilendirilmesini sağlamak,
+f) Hizmet birimlerinden gelen cevapları kontrol ederek,  uygun olmayan cevapları ilgili mülki idare amirine bildirmek ve düzeltilmesini sağlamak,
+g) Veri tabanındaki bilgiler doğrultusunda ilin yoğunluklu başvuru türleri, sorun alanları ve aksayan yönlerini coğrafi, demografik ve sosyo-ekonomik açılardan analiz etmek, raporlamak ve istatistiki bilgiler hazırlamak,
+ğ) Mülki idare amiri başkanlığında, gerekli izleme ve değerlendirmeleri yapmak amacıyla Ocak ve Temmuz aylarında olmak üzere yılda iki defa toplantı yapmak ve toplantıya müteakip tutanağın rapor halinde Bakanlığa gönderilmesini sağlamak,
+h) Açık Kapı şube müdürlükleri arasında, ilde bulunan diğer Açık Kapı birimleri ile ilgili hizmet birimleriyle gerekli iletişim ve koordinasyonu sağlamak,
+ı) Vali tarafından verilecek diğer görevleri yapmak.
+ 
+İKİNCİ BÖLÜM
+İlçe Birimlerinin Görevleri
+ 
+İlçe birimlerinin görevleri
+MADDE 25 – (1) İl birimleri tarafından yürütülen hizmetler ilçelerde;
+a) İl yazı işleri, il basın ve halkla ilişkiler, özel kalem ve protokol şube müdürlüklerince yürütülen hizmetler; ilçe yazı işleri müdürlüğü,
+b) (Değişik ibare:RG-12/9/2018-30533) İdare ve denetim, il planlama ve koordinasyon ve (Değişik ibare:RG-30/8/2014-29104) idari hizmetler şube müdürlüklerince yürütülen hizmetler; (Değişik ibare:RG-12/9/2018-30533) İdare ve denetim şefliği,
+c) İl idare kurulu ve hukuk işleri şube müdürlüklerince yürütülen hizmetler; ilçe hukuk işleri şefliği,
+ç) Bilgi işlem şube müdürlüğünce yürütülen hizmetler; ilçe bilgi işlem şefliği,
+d) İl sosyal etüt ve proje müdürlüğünce yürütülen hizmetler; ilçe sosyal etüt ve proje şefliği,
+e) (Ek:RG-4/4/2020-31089)(4) Açık kapı şube müdürlüğünce yürütülen hizmetler; açık kapı şefliği,
+f) Müstakil şeflikleri bulunmayan ilçelerde bu müdürlüklere ait hizmetler; ilçe yazı işleri müdürlüğü,
+tarafından yürütülür.
+(2) İl'de olağanüstü hal uygulandığı takdirde ilçe olağanüstü hal bürosunun sekretarya hizmetleri, ilçe yazı işleri müdürlüğünce yürütülür.
+ 
+ÜÇÜNCÜ KISIM
+Birimlerin Çalışması
+ 
+BİRİNCİ BÖLÜM
+Evrak Kabul, Havale ve Dağıtım İşleri
+ 
+İş bölümü
+MADDE 26 – (1) Valiliğe gelen her türlü evrakın kabulü, elektronik ortama kaydı, verilmiş yetki çerçevesinde havalesi ve dağıtımı ile birimlerden gönderilecek evrakın dağıtım ve postalama işleri İl Yazı İşleri Müdürlüğü Evrak Şefliği tarafından yapılır.
+(2) Gelen evrakın niteliğine göre hangi görevli veya görevliler tarafından ilgili birim veya mercilere havale edileceği, valilik tarafından çıkarılacak İmza Yetkileri Yönergesi ile belirlenir. Doğrudan vali tarafından havale ve imza edilecek evrak da bu Yönergede gösterilir.
+(3) İsme gelen veya elden verilen evrak, havale edildikten sonra evrak servisine verilir ve bu maddenin birinci fıkrasındaki işleme tabi tutulur.
+(4) Özellik taşıyan evrak; çalışma gün ve saatleri dışında, posta yoluyla, güvenlik güçlerinin haberleşme görevlileri tarafından valiye, özel kalem müdürüne, şifre memuruna veya yetki verilen görevlilere teslim edilebilir.
+(5) (Değişik ibare:RG-12/9/2018-30533) Cumhurbaşkanlığı ve TBMM Başkanlığı Genel Sekreterliğinden gelen evrak ile (Mülga ibare:RG-12/9/2018-30533) (...) Bakan imzasını taşıyan evrak, özellik taşıyan evrak gibi işlem görür.
+(6) Evrak şefliği ilke olarak; kabul ve ayırma, normal evrak, gizli evrak ve dağıtım masalarına ayrılır:
+a) Kabul ve ayırma masasında; elektronik ortamda ve elektronik ortam haricinde gelen evrakın alınması, açılması ve ayrılarak ilgili masalara aktarılması,
+b) Normal evrak masasında; elektronik ortamda ve elektronik ortam haricinde gelen normal evrakın ve dilekçelerin yetkilisince havalesi ve imzalattırılması ve kaydı,
+c) Gizli evrak masasında; özellik taşıyan ve değerli evrakın yetkilisince havalesi, imzalattırılması ve kaydı,
+ç) Dağıtım masasında; gelen evrakın havale olunduğu birimlere dağıtımı, valilik ve kaymakamlık birimlerinden giden evrakın ilgili yerlere gönderilmesi,
+işleri görülür.
+(7) İş hacminin çok yüksek olduğu illerde ihtiyaca göre ayrı masalar teşkil edilebileceği gibi iş hacminin düşük olduğu yerlerde birden fazla masanın işleri bir masada gördürülebilir.
+(8) Gizli evrak masası hizmetleri, imkânlara bağlı olarak, şeflik içinde ayrı bir oda veya bölmede yürütülür.
+Evrak kabul görevlileri ve dağıtıcılar 
+MADDE 27 – (1) Evrak kabul edecek görevliler ile dağıtıcıların isim, unvan ve imza örnekleri resmi dairelerce karşılıklı olarak birbirlerine bildirilir. Değişiklikler de aynı işleme tabi tutulur.
+Evrakın kabulü
+MADDE 28 – (1) Elektronik ortamda gelen evrak, evrak kabul görevlisi tarafından teslim alınma işlemi ile kabul edilir. 
+(2) Posta, kurye, kurum ve kuruluşların dağıtıcıları ve iş sahibi kişiler yahut bunların kanuni temsilcilerince elden verilen her türlü evrak, dilekçe ve koliler evrak kabul ve ayırma görevlilerince alınır.
+(3) Evraktan;
+a) Zimmetle gelen evrak; alan görevlinin kimliğini belirtecek şekilde adı, soyadı ve kabul tarihi yazılmak ve imzalanmak suretiyle,
+b) Diğerleri; zimmetsiz olarak,
+c) Özellik taşıyan evrak; zarflarının kabul tarih ve saati belirtilerek,
+teslim alınır.
+(4) Müracaatın niteliği bakımından herhangi bir sakınca görülmediği hallerde, dilekçe ve evrakın iş sahiplerince veya kanuni temsilcilerince elden takibine imkân verilebilir.
+(5) Bir dilekçeyi veya evrakı elden getiren kişiye, sahibini, konusunu, kayıt sayısı ile alınış tarihini belirtir bir evrak kabul ve kayıt fişi verilir.
+(6) Zarfından yahut açık ise başlık ve kapsamından yanlış getirildiği anlaşılan evrak ve dilekçeler dağıtıcısına veya elden getiren kişiye iade edilir.
+(7) İdareye güvenli elektronik imzayla imzalanarak elektronik ortamda gelen ve muhatabı olunmayan belge, belgeyi gönderene elektronik ortamda gerekçeli olarak iade edilir. Bu durumda belgenin bir kopyası elektronik ortamda muhafaza edilir.
+Zarfların açılması
+MADDE 29 – (1) Kişiler adına gelen zarflar ilgililerine verilmek üzere dağıtım masasına; gizli, kişiye özel, hizmete özel işaretli zarflar açılmadan gizli evrak masasına elden verilir.
+(2) Diğer zarflar, özen gösterilerek açılır.
+(3) Zarftan çıkan evrak;
+a) Evrakın geldiği yer ve kuruluşu belli olup, hitap yeri boş, belirsiz ve içeriğinden de muhatabın anlaşılamadığı durumlarda zarfı ile birlikte iade edilmek üzere,
+b) Hitap yerinde başka bir kuruluş adı yazılı ise, yanlışlığı belirtir bir not ile gideceği yere gönderilmek üzere,
+c) İmzasız ise, bir not ile geri verilmek üzere,
+ç) Kişilere hitap ediyorsa, zarfına eklenerek ilgili kişiye verilmek üzere,
+dağıtım masasına verilir.
+(4) Adressiz ve imzasız dilekçeler;
+a) 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun gereğince işlem yapılmak üzere ilgili şefine verilir.
+b) İsim ve adres sadece zarfta yazılı ise yahut gerek zarfta gerekse dilekçede herhangi bir isim ve adres yoksa zarf dilekçeye eklenerek aynı işleme tabi tutulur.
+c) Elektronik ortamda gelen dilekçeler de aynı işleme tabi tutulur.
+Evrakın ayrılması
+MADDE 30 – (1) Kabul ve ayırma masasına gelen evraktan;
+a) Normal evrak ve dilekçeler; normal evrak masası görevlilerine,
+b) Özellik taşıyan ve değerli evrak; gizli evrak masası görevlilerine,
+verilir.
+c) Değerli evrak niteliği taşımayan ve belirli bir daireye veya kuruluşa teslimi gereken koliler, daireye veya kuruluş ilgililerine teslim edilmek üzere dağıtım masasına verilir.
+Normal evrakın havalesi
+MADDE 31 – (1) Elektronik ortamda gelen evrak, evrak kabul görevlisi tarafından teslim alındıktan sonra havale ve imza için yetkilisine iletilir.
+(2) Elektronik ortam haricinde normal evrak masası görevlilerine gelen evrak ve dilekçeler, elektronik ortamda kaydı yapılarak, valilik birimlerine ait olanların taraması yapıldıktan sonra elektronik ortamda havale ve imza için yetkilisine sunulur.
+(3) Havale, evrakın havale olduğu yer, havale tarihi ve havaleyi imzaya yetkili kişinin sıfatı yazılmak sureti ile elektronik ortamda yapılır.
+(4) Havalesi doğrudan vali tarafından yapılacak evrak, şefi tarafından ayrılır. Tereddüt halinde il yazı işleri müdürünün görüşüne başvurulur.
+(5) Teslim alınan evrakın aynı zamanda kabulü de yapılmış olduğundan dilekçelere ve normal evraka gelen evrak kayıt numarası verilir.
+(6) Genel sayı, evrak için takvim yılı başında (1)’den başlamak ve yılsonuna kadar birbirini izlemek suretiyle verilir.
+Gizli evrakın havalesi
+MADDE 32 – (1) Elektronik ortamda gelen gizli evrak, yetkili evrak kabul görevlisi tarafından teslim alındıktan sonra havalesi yapılmak üzere yetkilisine iletilir.
+(2) Özellik taşıyan ve değerli evraktan elektronik ortam haricinde gelenler, gidecekleri yerlere göre ayrılır ve havalesi yapılır. Valilik birimlerine gönderilen evrak, yetkili amirin uygun görüşü ile taraması yapıldıktan sonra, elektronik ortamda ilgilisine havalesi yapılır.
+(3) Gizli evrak da normal evrak gibi elektronik ortamdan genel sayı alır.
+Evrakın kaydı ve dağıtım masasına verilmesi
+MADDE 33 – (1) Elektronik ortamda gelen evrak, görevlinin evrakı kabulü ile otomatik olarak sayısını sistemden alır ve kaydı tamamlanır. Postayla veya elden gelen evrak ise birimi ilgilendiriyorsa taraması yapıldıktan sonra sistem üzerinden evrakın türü, geldiği yer, sayısı, tarihi, varsa ek sayısı, konusu, havale olunduğu yer başlıklarına göre belirlenecek sütunlara gerekli bilgilerin yazılması suretiyle kaydolunur.
+(2) Kayıt alan evrak dağıtıma verilir.
+Dilekçelere uygulanacak işlem
+MADDE 34 – (1) Evrak şefliğine elektronik ortamda, postayla veya kurum ve kuruluşların dağıtıcılarınca getirilen dilekçeler, havale ve imza işlemi yapıldıktan sonra, ilgili daire, kurum veya kuruluşa gönderilir.
+(2) İçişleri birimlerini ilgilendiren dilekçeler, taraması yapıldıktan sonra, ilgili birime gönderilir.
+(3) İlgili birim tarafından dilekçenin gereği yapılarak sonucu hakkında müracaat sahibine bilgi verilir ve işlem kapatılır. 
+Evrakın gönderilmesi ve dağıtımı
+MADDE 35 – (1) Elektronik ortamda hazırlanan evrak imzalandıktan sonra sistemden otomatik olarak evrak sayısı alarak postalanmaya hazır hale gelir ve ilgili görevli tarafından elektronik ortamda gönderilir. Elektronik ortam haricinde dağıtım masasına gelen evrak süratle dağıtıma tabi tutulur.
+(2) Bu Yönetmelikte düzenlenen valilik birimlerine gidecek, özellik taşıyan ve değerli evrak ile evrak şefinin gerekli gördüğü normal evrak zimmetle; diğer normal evrak zimmetsiz olarak verilir. Diğer evrak gidecekleri yere göre ayrılır. Bunlardan gizlilik dereceli olmayanlar zarflanmadan, gizlilik dereceli olanlar ise zarflanarak, havale edildikleri yerlere zimmetle verilir.
+(3) Sistem içi ve sistem dışı gelen zimmetli evrak; elektronik ortamda düzenlenen teslim fişinin çıktısı alınarak ilgilisine imzalatılır. Bu imkân yoksa zimmet kaydı yapılmak suretiyle teslim edilir.
+(4) Zimmet kaydında; kayıt edilen evrakın türü, geliş yeri, konusu, varsa eki, valilik evrak şefliğinde aldığı genel sayı, havale edildiği veya gönderildiği yer, teslim edildiği tarih ve teslim alanın ad ve soyadı, görev unvanı ve imza sütunları bulunur.
+(5) Dağıtımı yapılacak evrak, günde en az bir defa, dağıtıcılar tarafından ilgili birimlere ulaştırılır.
+(6) İvedi dereceli evrak, havale edildikçe dağıtıma verilir veya ilgili birimlerce özel görevli ile aldırılmaları sağlanır.
+ 
+İKİNCİ BÖLÜM
+Valilik Birimlerinde Evraka Uygulanacak İşlem
+ 
+Birimlerde evrakın alınması
+MADDE 36 – (1) Evrak Şefliğinden valilik birimlerine gönderilen evrak, elektronik ortamda ya da gerekiyorsa kâğıt kullanılarak, görevli memur tarafından teslim alınır ve öncesinin olup olmadığı araştırılır. Evrakın öncesi varsa onunla birleştirilmek suretiyle; yoksa dosya plânına göre yeni bir dosya açılarak, birim amirine veya yetkilendirilen görevliye verilir. 
+(2) Gelen evrakın öncesi olup dosyası yerinde değilse, konu koduna göre geçici bir dosya açılır ve asıl dosyanın kimde olduğu dosya üzerinde gösterilerek birinci fıkradaki işlem yapılır.
+(3) Birim amiri veya yetkilendirilen görevli evrakı, niteliğine göre, ilgili gördüğü memura havale eder.
+Birimlerde evrakın incelenmesi ve gereğinin yapılması
+MADDE 37 – (1) Evrak havale edildiği memur tarafından incelenir. İlgili memur tarafından evrakın gereği, amirlerinin görüş, tavsiye ve talimatları doğrultusunda elektronik ortamda ya da gerekiyorsa kâğıt kullanılarak yapılır.
+(2) Yazışmalar, Resmî Yazışmalarda Uygulanacak Esas ve Usuller Hakkında Yönetmelik hükümleri dikkate alınarak yapılır.
+Birimlerde işlemi tamamlanan evrakın gönderilmesi
+MADDE 38 – (1) Valilik birimlerinde hazırlanan ve imzalanan evrak, evrak sayısını elektronik ortamda alır ve evrakı postalayacak görevliye sistem üzerinden ulaşır. Kaydının tamamlanmasını müteakip kurum, kuruluş veya kişilere elektronik ortamda gönderilir. Elektronik olarak teslimi mümkün olmayan kurumlara iletilecek yazılar ise kâğıda dökülerek gönderilir.
+(2) Güvenli elektronik imzayla imzalanarak üretilmiş bir belgeden çıktı alınıp gönderilmesine ihtiyaç duyulması hâlinde bu işlem sadece idarece yetkilendirilmiş görevli tarafından gerçekleştirilir. Çıktının uygun bir yerine Belgenin Aslı Elektronik İmzalıdır ibaresi konulur. Çıktı, idarece yetkilendirilmiş görevlinin adı, soyadı ve unvanı belirtilmek suretiyle görevli tarafından imzalanır ve kırmızı ya da mavi mühürle mühürlenir. İmza ile mührün üst üste gelmemesine dikkat edilir.
+(3) Resmî yazılar, yazının içeriği ve ivedilik durumuna göre faks ile de gönderilebilir. Faks ile yapılan yazışmalarda, yazıda belirtilen hususlarda hemen işlem yapılır. Faks ile yapılan yazışmaların beş gün içerisinde resmî yazı ile teyidi yapılır.
+(4) Birimlerden gönderilen evrakın, taahhütlü veya iadeli taahhütlü, Acele Posta Servisi veya kargo gibi özellik taşıyan posta ile gönderilmesi düşünülüyorsa; hangi posta ile gönderilmesi gerektiği, ilgilisince, dağıtım masasına bildirilir.
+(5) Dağıtım masasına sevk edilmek üzere bırakılan evrak, ya dağıtıcı aracılığı ile yahut evrakın niteliğine göre gerekiyorsa zarflanma ve pullanma işleri de yapılarak posta ile ilgili birimlere ulaştırılır.
+(6) Bu Yönetmelikte belirtilen valilik birimlerinin gidecek olan evrakı zimmetsiz; bu birimler dışında kalan fakat evrak kabul ve sevk işlemleri valilik evrak şefliklerince yürütülen Bakanlık birimlerinin gidecek evrakı ise zimmetle dağıtım masası görevlilerine teslim edilir.
+ 
+ÜÇÜNCÜ BÖLÜM
+İlçelerde Evrak Kabul, Havale ve Dağıtım İşleri ve Kaymakamlık
+Birimlerinde Evraka Uygulanacak İşlem
+ 
+İlçelerde evraka uygulanacak işlem
+MADDE 39 – (1) Kaymakamlığa gelen her türlü evrakın kabulü, elektronik ortama kaydı, verilmiş yetki çerçevesinde havalesi ve dağıtımı ile birimlerden gönderilecek evrakın dağıtım ve postalama işleri, İl Yazı İşleri Müdürlüğü Evrak Şefliğindeki esaslara paralel şekilde “İlçe Yazı İşleri Müdürlüğü Evrak Şefliği” tarafından yapılır.
+(2) Gelen evrakın niteliğine göre hangi görevli veya görevliler tarafından ilgili birim veya mercilere havale edileceği, kaymakamlıkça çıkarılan İmza Yetkileri Yönergesi ile belirlenir.
+(3) Özellik taşıyan evrak; çalışma gün ve saatleri dışında, posta yoluyla, güvenlik güçlerinin haberleşme görevlileri tarafından kaymakamlara veya bunlar adına yetki verilen görevlilere teslim edilebilir.
+(4) Elektronik ortam haricinde normal evrak masası görevlilerine gelen evrak ve dilekçeler, elektronik ortamda kaydı yapılarak, kaymakamlık birimlerine ait olanların taraması yapıldıktan sonra elektronik ortamda havale ve imza için yetkilisine sunulur.
+(5) Özellik taşıyan ve değerli evraktan elektronik ortam haricinde gelenler, gidecekleri yerlere göre ayrılır ve havalesi yapılır. Kaymakamlık birimlerine gönderilen evrak, yetkili amirin uygun görüşü ile taraması yapıldıktan sonra, elektronik ortamda ilgilisine havalesi yapılır.
+(6) Havalesi doğrudan kaymakam tarafından yapılacak evrak, şefi tarafından ayrılır. Tereddüt halinde ilçe yazı işleri müdürünün görüşüne başvurulur.
+(7) İş hacminin çok yüksek olduğu ilçelerde ihtiyaca göre ayrı evrak masaları teşkil edilebileceği gibi iş hacminin düşük olduğu yerlerde birden fazla masanın işleri bir masada gördürülebilir.
+(8) Yukarıdaki fıkralar dışında Kaymakamlıklarda, evrak kabul, havale ve dağıtım işleri Üçüncü Kısım Birinci Bölümde düzenlenen valilik birimlerindeki esaslara paralel biçimde yapılır.
+Kaymakamlık birimlerinde evraka uygulanacak işlem
+MADDE 40 – (1) Kaymakamlık birimlerinde evraka uygulanacak işlem, Üçüncü Kısım İkinci Bölümde düzenlenen valilik birimlerindeki esaslara paralel biçimde yürütülür.
+(2) Kaymakamlık birimlerinde de defterler elektronik ortamda tutulur.
+ 
+DÖRDÜNCÜ BÖLÜM
+Dosyalama İşleri
+ 
+Dosyalama ilkesi
+MADDE 41 – (1) Birimlerin görev alanına giren konularda Standart Dosya Planına göre dosya açılır. Dosyalama öncelikle elektronik ortamda yapılır. Kâğıt ortamında gelen evrakın taraması yapıldıktan sonra e-İçişleri ortamında dosyalanır ve ilgili dosyasına konulur.
+Ana dosya ve açılma şekli
+MADDE 42 – (1) Ana dosya; ana konu kapsamına giren bütün konuları ve işlemleri kapsayan evrakın toplandığı konu kodunun adıdır. Bu grup tek bir klasörden oluşabileceği gibi işlemlerin fazlalığı halinde birden çok klasörden de oluşabilir. Ana dosya, o dosya numarasını taşıyan bir yazı gönderildiği veya geldiği zaman Standart Dosya Planındaki konu kodlarına göre açılır. Ana dosya ile ilgili olmasına rağmen alt bölümlemelerde tanımlanmayan konulara ait yazıların dosyalanması için “diğer” adı altında ayrı bir dosya açılır.
+(2) Standart Dosya Planındaki konu kodlarının yetersiz kalması halinde valiliklerce, Ekim sonuna kadar, yapılacak talep üzerine Bakanlıkça yeni konu kodları yılda bir defa Aralık ayında belirlenir ve Devlet Arşivleri Genel Müdürlüğüne bildirilir.
+Ana dosya anahtarı
+MADDE 43 – (1) Standart Dosya Planındaki ana dosya sayıları ve konuları numara sırası alt alta yazılmak suretiyle bir dosya anahtarı hazırlanır ve bu dosya anahtarı birimin merkezi bir yerine asılır. Ana dosyalara sayı ve konu bu dosya anahtarından verilir.
+Tali dosya ve açılma şekli
+MADDE 44 – (1) Tali dosya; ana dosya kapsamına giren çeşitli konu, iş ve işlemlere ait evrakın toplandığı dosyaların adıdır.
+(2) Bu işlemlerin her biri ayrı bir dosya gömleğinde toplanır ve ana dosya klasörleri arasına konur.
+(3) Bu dosyalar ilgili memurun talebi üzerine müdür tarafından açılır.
+Ana dosyanın numaralanması ve konu yazılması
+MADDE 45 – (1) Ana dosya klasörünün kapak sırtına dosyayı tanımlayan “kurum adı, birim adı, dosya numarası, konu adı ve yılı” yazılır.
+Tali dosya fihristleri 
+MADDE 46 – (1) Bir ana dosya içerisindeki bütün tali dosyaların sıra sayısı ve konusu alt alta yazılmak suretiyle bir fihrist hazırlanır. Fihrist ilgili ana dosya klasörü kapağının iç yüzüne yapıştırılır.
+Tali dosyanın numaralanması ve konu yazılması
+MADDE 47 – (1) Tali dosya gömleklerinin üzerine dosya numarası ve dosya konusu yazılır.
+(2) Tali dosya numarası ana dosya sıra sayısı ile tali dosya fihristinden alınmış konu ve sıra sayısının bir arada yazılmasından oluşur.
+Tali dosyaların bölünmesi
+MADDE 48 – (1) Tali dosya açılması sırasında konu kapsamı mümkün olduğu kadar dar tutulur. İşlemlerin yürütülmesi sırasında konunun yeni dosyalara bölünmesi ihtiyacı ortaya çıktığı takdirde yeni açılan dosyaya fihristten yeni numara verilir.
+Geçici dosya ve açılma şekli
+MADDE 49 – (1) Geçici dosya; birime gelen herhangi bir evraka ait ana dosyanın bir başka birimde, ayrı bir kişi veya yerde ve benzeri bulunması ve o sırada geri alınmasının mümkün olmaması halinde açılacak dosyanın adıdır.
+(2) Bu dosya ilgili memurun talebi üzerine müdür tarafından açılır. Dosyanın üzerine geçici olduğu ve asıl dosyanın numarası yazılır.
+(3) Geçici dosyadaki evrak en kısa zamanda asıl dosyaya aktarılır ve geçici dosya iptal edilir.
+Evrakın dosyalara konulması
+MADDE 50 – (1) Birimlerin görevleri ile ilgili evrak Standart Dosya Planına göre ana dosyalara konulur.
+Birden fazla dosyayı ilgilendiren evrakın dosyalanması 
+MADDE 51 – (1) Gelen evrak, birden fazla dosya ile ilişkili ise evrakın aslı en çok ilgili olduğu dosyaya konur. İlgili diğer dosyalara evrakın birer fotokopisi veya geldiği yer, gün, sayı ve konusunu gösteren bir not eklenir.
+Beklemeli evrak 
+MADDE 52 – (1) Bir birimin, işlemlerini üstlenip üstlenmemesi henüz belirgin hale gelmemiş konuları kapsayan evrak, beklemeli evrak sayılır. Bunlardan birime ait oldukları kabul edilenler, konuları ile bağlantılı açılmış veya açılacak dosyaya konulur.
+Görevliler tarafından özel dosya açılamaması
+MADDE 53 – (1) Görevliler tarafından, evrak kendilerinde kalmak üzere, özel dosya açılmaması esastır. Ancak vali, vali yardımcıları, kaymakamlar, il hukuk işleri müdürleri, özel kalem müdürleri ve valilerin yetki vereceği birim müdürleri hizmetin gerektirdiği hallerde özel dosya açabilir ve işlemleri bu dosyadan izleyip sonuçlandırabilir.
+Dosya istenmesi ve iadesi
+MADDE 54 – (1) İşlemleri yapmakla görevli kişi dosyalamadan sorumlu memurdan ilgili dosyayı yazılı bir fişle isteyebilir.
+(2) Zorunlu hallerde sorumlusunun bilgisi olmadan dosyayı almak durumunda kalan görevli dosya memuruna en kısa zamanda bilgi verir.
+(3) Alınan dosya, işlemi biter bitmez görevlisine iade edilir.
+(4) Dosyalamadan sorumlu görevli tarafından gerekli görülen hallerde işleme verilen dosya; numarası, konusu, verildiği görevlinin adı ve unvanı ve veriliş tarihi bir karta yazılmak suretiyle izlenir.
+Dosyanın tekrar görülmek istenmesi
+MADDE 55 – (1) Görevli kişi, bir dosyayı belli bir süre sonra tekrar görmek istiyorsa adını, görev unvanını ve görmek istediği tarihi belirten yazılı bir fişi dosyaya ekleyerek dosyalama memuruna verir.
+(2) Dosyalama memuru, tekrar görülmek istenilen evrakı fişte belirtilen tarihte fiş sahibine verir ve usulüne göre takip eder.
+Dosyadan evrak çıkarılması ve koyulması
+MADDE 56 – (1) Kural olarak evrak, dosyası ile birlikte işleme verilir ve alınır, dosyasından ayrılmaz. Evrakın dosyasından çıkarılmasının zorunlu olduğu hallerde, dosyasındaki yerine, evrakın geldiği veya gittiği yeri, verildiği kişiyi, tarihini, sayısını, konusunu ve belli ise geri verileceği tarihi belirten bir ilgi fişi konulur.
+Klasör ve dosya cinsleri
+MADDE 57 – (1) Evrakın dosyalanmasında, standartlara göre yapılmış dosya ve klasörler kullanılır.
+(2) Özellikleri bakımından dosyalara veya klasörlere sığdırılamayacak evrak özelliklerinin gerektirdiği yerde ve biçimde saklanır.
+Dosyaların saklanması
+MADDE 58 – (1) Dosyalar, standartlara uygun dosya dolaplarında saklanır.
+(2) Klasörler, dolap ve raflara dosya anahtarındaki sıralamaya uygun olarak ve taşıdıkları numara ve ad kolayca görülebilecek biçimde sıralanır. Raf veya dolap üzerine o bölümde yer alan klasörlerin ilk ve son numaraları yazılır.
+Dosyaların saklanmasında sorumluluk
+MADDE 59 – (1) Valilik ve kaymakamlık birimlerinde dosyalar, görevli memurun sorumluluğundadır ve ondan habersiz alınamaz. Zorunlu hallerde ise dosyanın yerine alındığına dair bir yazılı belge konulur.
+(2) Evrak veya dosyanın kurum dışına çıkarılması ilke olarak yasaktır. Vali, vali yardımcısı, kaymakam, müdür, şifre memuru gibi görevlilerin, hizmetin gerektirdiği hallerde, kurum dışına evrak götürmek zorunda kalmaları halinde en kısa sürede bu evrak veya dosya ilgili memuruna geri verilir.
+(3) Gizlilik dereceli ve muhafazası özel mevzuatı ile kurallara bağlanmış evrakın, gizli evrak için konulmuş esaslar içinde yangına, tabii afetlere, hırsızlığa karşı korunacak biçimde saklanmasından dosyalama memuru ile varsa o gizli evrakı muhafaza ile özel olarak görevlendirilmiş kişiler ortaklaşa sorumludur.
+ 
+BEŞİNCİ BÖLÜM
+Kurul veya Komisyonların Çalışmaları
+ 
+Kurul veya komisyonların toplanması
+MADDE 60 – (1) İşlemleri, valilik ve kaymakamlık birimlerini ilgilendiren kurul veya komisyonlar;
+a) Özel mevzuatında belirtilmişse belirtilen zaman ve sürede,
+b) Özel mevzuatında belirtilmemişse kurul veya komisyonun tespit edeceği zaman veya sürede,
+c) Özel mevzuatında engelleyici bir hüküm yoksa Başkanın çağrısı üzerine olağanüstü olarak,
+toplanır.
+(2) Kurul veya komisyonlar, Başkanlıkça belirlenen gündem uyarınca toplanır.
+(3) Gündem hakkında toplantıdan önce üyelere bilgi verilir.
+Kararların alınması
+MADDE 61 – (1) Kurullar, özel mevzuatında ayrıca bir hüküm yoksa üyelerinin yarısından fazlasının katılımıyla toplanır ve kararlar mevcut üyelerin çoğunluğu ile alınır.
+a) Toplantıda bulunmayan üyelerin özürleri karar tutanağında belirtilir.
+b) Çoğunluk kararına aykırı görüşte olan üyelerin karşı oy gerekçeleri karar altında özet olarak gösterilir.
+c) Toplantıları başkan açar ve kapatır. Oylamada eşitlik olursa başkanın bulunduğu taraf çoğunluk sayılır.
+ç) Üzerinde görüşme yapılan dosya hakkında kesin karar verilmesine imkân vermeyen eksiklikler söz konusu ise eksikliklerin tamamlanması için ara kararı alınarak makul bir süre verilir. Ara kararı doğrultusunda eksiği tamamlanan dosya kurulda yeniden görüşülerek karara bağlanır.
+Kurulların sekretarya hizmetleri
+MADDE 62 – (1) İşlemleri valilik veya kaymakamlık birimlerini ilgilendiren kurul veya komisyonların sekretarya hizmetleri ilgili birimince yürütülür.
+(2) Kurulda ancak, başkanlıkça havale edilmiş konular görüşülebilir.
+(3) Kurulca, mevzuatta toplanması öngörülen toplantı zamanında, görüşülecek herhangi bir konu yoksa toplantı yapılmaz; ancak durum sekretarya görevlileri tarafından elektronik ortamda düzenlenen karar defterinde belirtilir ve çıktısı alınarak başkan tarafından imzalanır.
+(4) Başkanlığını vali, vali yardımcısı veya kaymakamın yaptığı ve sekretarya hizmetleri valilik ve kaymakamlık birimleri dışındaki kuruluşlarca yürütülen kurullarda alınan kararların birer sureti, karar tarihini takip eden en geç bir hafta içinde valilik veya kaymakamlığa gönderilir. Kararların bir sureti İçişleri Bakanlığı Standart Dosya Planında valilik ve kaymakamlık bölümü altındaki kararlar ile ilgili işler konu kodlu dosyada muhafaza edilir. 
+ 
+ALTINCI BÖLÜM
+Birimlerde Tutulacak Defterler
+ 
+İdare kurulu karar özetleri defteri
+MADDE 63 – (1) Çeşitli kanunlarla il ve ilçe idare kurullarına görev olarak verilen konulara ait olup kurullara havale edilen evrakın kaydı, verilen kararın özetinin tespiti ve daha sonra gördüğü işlemlerin sonucunun bir arada görülmesini sağlamak üzere, idare kurulu biriminde elektronik ortamda İdare Kurulu Karar Özetleri Defteri tutulur.
+(2) Alınan kararlar bu deftere elektronik ortamda işlenir ve çıktısı alındıktan sonra başkan ve üyelerce imzalanır. İmza işleri toplantı ve karar tarihinden itibaren en kısa zamanda tamamlanır ve çıktılar dosyalanır.
+(3) Özetleri deftere işlenmiş olan kararlar, gerekçeli asıl kararlar olarak elektronik ortamda yeterli sayıda çıktısı alınarak başkan ve üyelere ayrıca imzalattırılır.
+(4) Gerekçeli bu kararların imzalı asılları numara sırasıyla dizilir, ayrı bir dosyaya konur ve bu dosyalar klasörlerde muhafaza edilir. Kararların diğer örnekleri dosyalara bağlanarak işleme konulur.
+Memurların yargılanmalarına ilişkin defterler
+MADDE 64 – (1) 4483 sayılı Memurlar ve Diğer Kamu Görevlilerinin Yargılanması Hakkında Kanun gereğince verilen kararlar, Ön İnceleme Karar Özetleri Defterine elektronik ortamda kaydedilir. Kararların birer örneği bu Yönetmeliğin 63 üncü maddesinde belirtilen şekilde muhafaza edilir.
+(2) 2547 sayılı Yükseköğretim Kanunu uyarınca verilen kararlar, Akademik Personel Haricinde Kalan Üniversite Personelinin Yargılanması Hakkında Karar Özetleri Defterine elektronik ortamda kaydedilir. 
+(3) Birinci ve ikinci fıkralarda verilen kararlar ilgili memurun özlük dosyasına konulmak üzere kurumuna gönderilir.
+(4) Yargı mercilerine tevdi edilen dosyalar hakkında verilen kesin kararlar da izlenerek, deftere elektronik ortamda işlenir ve ilgili görevlinin özlük dosyasına konulmak üzere kurumuna gönderilir.
+Araştırma, inceleme ve soruşturma emirleri takip defteri
+MADDE 65 – (1) Vali ve kaymakamlarca verilen araştırma, inceleme ve soruşturma emirlerinin takibi için Araştırma, İnceleme ve Soruşturma Emirleri Takip Defteri elektronik ortamda tutulur.
+İl disiplin kurulu karar özetleri defteri
+MADDE 66 – (1) 657 sayılı Devlet Memurları Kanunu, özel kanun, tüzük ve yönetmeliklere göre işlem yapılmak üzere il disiplin kuruluna intikal ettirilen evrakın kaydı ve verilen karar özetinin yazılması amacıyla il idare kurulu müdürlüğünce elektronik ortamda İl Disiplin Kurulu Karar Özetleri Defteri tutulur.
+(2) Söz konusu kararların deftere işlenmesi, imzalanması, gerekçeli asıl kararların hazırlanması, işleme konulması, birer örneğinin klasörde saklanması bu Yönetmeliğin 63 üncü maddesinde zikredilen defter için uygulanan usule tabidir.
+3091 sayılı taşınmaz mal zilyetliğine yapılan tecavüzlerin önlenmesi hakkında kanun hükümleri gereğince alınan karar özetleri defteri
+MADDE 67 – (1) 3091 sayılı Taşınmaz Mal Zilyetliğine Yapılan Tecavüzlerin Önlenmesi Hakkında Kanun hükümlerince valilik ve kaymakamlığa yapılacak müracaatların kaydı, verilen kararların yazılması ve daha sonra yapılan işlemlerle ilgili sonucun bir arada görülmesini sağlamak üzere il idare kurulu müdürlüğünde 3091 Sayılı Kanun Gereğince Alınan Karar Özetleri Defteri elektronik ortamda tutulur.
+(2) Kararların asılları numara sırasına göre ayrı bir dosyada saklanır ve yılsonunda klasörüne konulur.
+Belediye meclis kararları kayıt defteri
+MADDE 68 – (1) Mevzuatı gereği mülki idare amirine gönderilmesi gereken belediye meclis kararları Belediye Meclis Kararları Kayıt Defterine elektronik ortamda kaydedilir.
+Defterlere ilişkin ortak hükümler
+MADDE 69 – (1) Defterlerdeki sıra numaraları, Tanıtıcı Bayrak Kayıt Defteri, Apostil Kayıt Defteri gibi özellik taşıyanlar hariç, her takvim yılında (1)’ den başlanarak verilir.
+(2) Yılsonunda elektronik ortamda tutulan defterlerin raporları alınarak birim müdürü tarafından imzalanır ve dosyasında saklanır.
+(3) Maddi hatalar vali, ilgili vali yardımcısı ve kaymakam onayıyla düzeltilir.
+(4) Bu Yönetmelikte öngörülen defterlerin şekilleri, halen uygulanmakta olan şekillerdir. Ancak Bakanlıkça lüzum görülmesi halinde, defterlerin şekilleri yeniden belirlenir ve bir genelge ile valiliklere duyurulur.
+ 
+YEDİNCİ BÖLÜM
+Arşivleme
+ 
+İl ve ilçe arşivleri
+MADDE 70 – (1) Her il ve ilçede ilgili birim amirinin yetki ve sorumluluğunda bir arşiv bulunur.
+(2) Hükümet konaklarında bu maksatla yeterli hacim ve nitelikte bir yer arşiv olarak hazırlanır.
+(3) İşlemlerde kullanılmayan, fakat gerektiğinde başvurmak üzere belirli bir süre saklanması zorunlu görülen, evrak arşivlik malzeme olarak adlandırılır.
+(4) Arşiv yerinin düzenlenmesi, arşivlik malzemenin ayıklanması ve diğer arşiv işleri, İçişleri Bakanlığı Merkez ve Taşra Teşkilatı Arşiv Hizmetleri Yönetmeliği hükümlerine göre yapılır.
+(5) Evrakın el değiştirmesi ve muhafazası konusunda koruyucu güvenlik mevzuatı hükümleri saklıdır.
+(6) e-İçişleri kapsamında evrak elektronik imza ile imzalandıktan sonra elektronik ortamda arşivlenir. Ancak, günün ihtiyaç ve şartlarına göre bu konudaki uygulama Bakanlıkça belirlenir.
+ 
+DÖRDÜNCÜ KISIM
+Çeşitli ve Son Hükümler
+ 
+İş ve işlemlerin yürütülmesinde devamlılık
+MADDE 71 – (1) Bakanlık, sistemin işleyişi ile ilgili ilke ve usulleri değişen şartlara göre düzenleyebilir.
+(2) Bu Yönetmelikle belirlenen iş ve işlemlerin mücbir sebeplerle elektronik ortamda yürütülememesi durumunda Bakanlıkça yapılacak duyuruya göre yazılı olarak yürütülebilir.
+Atıflar
+MADDE 72 – (1) 10/9/1988 tarihli ve 19925 sayılı Resmî Gazete’de yayımlanan Valilik ve Kaymakamlık Büroları Kuruluş, Görev ve Çalışma Yönetmeliğine yapılmış olan atıflar bu Yönetmeliğe yapılmış sayılır.
+(2) Diğer yönetmeliklerle valilik ve kaymakamlık birimlerine verilen görevlerin yürütülmesinde bu Yönetmelik hükümleri uygulanır.
+Temsil
+MADDE 72/A – (Ek:RG-28/7/2018-30492)
+(1) Vali ilde Devletin ve Cumhurbaşkanının temsilcisi ve idari yürütme vasıtası; kaymakam ilçede Cumhurbaşkanının temsilcisi ve idari yürütme vasıtasıdır.
+Hizmetlerin aynı birimde gördürülmesi
+GEÇİCİ MADDE 1 – (1) Bu Yönetmelikte sayılan yeni birimlerin il ve ilçelerde kurulması, kadro ve personel sağlanması işlemleri tamamlanıncaya kadar bu şube müdürlükleri veya şefliklerin işleri diğer bir şube müdürlüğüne veya şefliğe gördürülebilir.
+(2) İl ve ilçelerde bu maddede belirtilen düzenleme ve değişiklikler vali ve kaymakamlar tarafından yapılır.
+Yürürlükten kaldırma
+MADDE 73 ‒ (1) 10/9/1988 tarihli ve 19925 sayılı Resmî Gazete’de yayımlanan Valilik ve Kaymakamlık Büroları Kuruluş, Görev ve Çalışma Yönetmeliği yürürlükten kaldırılmıştır.
+Yürürlük 
+MADDE 74 ‒ (1) Bu Yönetmelik yayımı tarihinde yürürlüğe girer.
+Yürütme 
+MADDE 75 – (1) Bu Yönetmelik hükümlerini İçişleri Bakanı yürütür. 
+ 
+(1) 20/12/2013 tarihli ve 28857 sayılı Resmi Gazete’de yayımlanan Yönetmelik değişikliği ile  bu Yönetmeliğin 18 inci maddesinin birinci fıkrasının (ğ) bendinden sonra gelmek üzere (h) bendi eklenmiş; 21 inci maddesinin birinci fıkrasının (a) bendine (12) numaralı alt bentten sonra gelmek üzere (13) numaralı alt bent; (b) bendinin (7) numaralı alt bendinden sonra gelmek üzere (8) numaralı alt bent eklenmiş ve müteakip bentler buna göre teselsül ettirilmiştir.
+(2) Bu değişiklikle 15 inci maddesinin birinci fıkrasının (b) bendine (10) numaralı alt bentten sonra gelmek üzere alt bentler eklenmiş, mevcut (11) numaralı alt bent buna göre teselsül ettirilmiştir. 
+(3) 12/9/2018 tarihli ve 30533 sayılı Resmi Gazete’de yayımlanan değişiklik ile Yönetmeliğin 17 nci maddesinin başlığı ‘’ İl mahalli idareler müdürlüğünün görevleri’’ iken yönetmeliğe işlendiği şekilde değiştirilmiştir.
+(4) 4/4/2020 tarihli ve 31089 sayılı Resmî Gazete’de yayımlanan değişiklik ile Yönetmeliğin 25 inci maddesinin birinci fıkrasına (d) bendinden sonra gelmek üzere bent eklenmiş ve takip eden bent buna göre teselsül ettirilmiştir.
+(5) 4/6/2020 tarihli ve 31145 sayılı Resmî Gazete’de yayımlanan değişiklik ile Yönetmeliğin 22 nci maddesinin birinci fıkrasına (d) bendinden sonra gelmek üzere bent eklenmiş ve takip eden bent buna göre teselsül ettirilmiştir.
+ 
+	Yönetmeliğin Yayımlandığı Resmî Gazete’nin	
+	Tarihi	Sayısı
+	8/6/2011	27958
+	Yönetmelikte Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin	
+	Tarihi	Sayısı
+1.	5/8/2012	28375
+2.	20/12/2013	28857
+3.	30/8/2014	29104
+4.	28/7/2018	30492
+5.	12/9/2018	30533
+6.	4/4/2020	31089
+7.	4/6/2020	31145
+VALİLİK VE KAYMAKAMLIK BİRİMLERİ TEŞKİLAT, GÖREV VE ÇALIŞMA YÖNETMELİĞİ
+ 
+BİRİNCİ KISIM
+Temel İlkeler ve Birimlerin Teşkilatı
+ 
+BİRİNCİ BÖLÜM
+Amaç, Kapsam, Dayanak, Tanım ve İlkeler
+ 
+Amaç
+MADDE 1 ‒ (1) Bu Yönetmeliğin amacı;
+a) Valilik ve kaymakamlık birimlerinin teşkilatını, bu birimlerde görevli personelin görev, yetki ve sorumluluklarını belirlemek,
+b) İl ve ilçelerdeki genel idare kuruluşlarının valilikler ve kaymakamlıklar kanalı ile yapacakları yazışmaların esaslarını belirlemek,
+c) Valiliklere ve kaymakamlıklara gelen ve giden evrakın giriş, çıkış, kayıt, değerlendirme, ilgili birimlere gönderilme, teslim edilme, dosyalama ve arşivleme esaslarını düzenlemek,
+suretiyle valilik ve kaymakamlık birimleri iş ve işlemlerinin idarenin amaçlarına, belirlenmiş politikalara ve mevzuata uygun olarak düzenli, vatandaş odaklı, uyumlu, hızlı, etkili ve verimli bir şekilde yapılmasını sağlamaktır.
+Kapsam
+MADDE 2 ‒ (1) Bu Yönetmelik;
+a) Valilik ve kaymakamlık birimlerinin teşkilat, görev, yetki ve sorumlulukları ile iş ve işlemlerini,
+b) İl ve ilçelerdeki genel idare kuruluşlarının valilikler ve kaymakamlıklar kanalı ile yapacakları yazışmaların esaslarını,
+kapsar.
+(2) (Değişik:RG-30/8/2014-29104) İl Planlama ve Koordinasyon, İl Dernekler, İl Nüfus ve Vatandaşlık, İlçe Nüfus Müdürlükleri, Büyükşehir Belediyesi bulunan illerde Yatırım İzleme ve Koordinasyon Başkanlıkları ile 112 Acil Çağrı Merkezi Müdürlükleri bu Yönetmelik kapsamında tanımlanan birimlerden olup, bunların il ve ilçe teşkilatlarının kuruluş, görev, yetki ve sorumlulukları özel mevzuatında gösterilir. Ancak söz konusu birimler, özel mevzuatlarındaki düzenlemeler dışında bu Yönetmelik hükümlerine tabidir.
+(3) 5442 sayılı İl İdaresi Kanunu uyarınca, sivil hava meydanları, limanlar ve sınır kapılarında görevli mülki idare amirlerine bağlı olarak çalışan birimlerin özel mevzuatındaki hükümleri saklıdır.
+(4) İl ve ilçelerde teşkilatı olmayan veya görevlisi bulunmayan bakanlıklara ve diğer kamu kurum ve kuruluşlarına ait hizmetlerin yürütülmesinde de bu Yönetmelik hükümleri uygulanır.
+Hukuki dayanak
+MADDE 3 ‒ (1) Bu Yönetmelik, 5442 sayılı İl İdaresi Kanunu ile 3152 sayılı İçişleri Bakanlığı Teşkilat ve Görevleri Hakkında Kanunun 28 inci ve 33 üncü maddelerine dayanılarak hazırlanmıştır.
+Tanımlar
+MADDE 4 ‒ (1) Bu Yönetmeliğin uygulanmasında;
+a) Bakanlık: İçişleri Bakanlığını,
+b) (Değişik:RG-30/8/2014-29104) Birim: Valilik ve Kaymakamlıklarda hizmetlerin yürütüldüğü başkanlık, il müdürlüğü, ilçe müdürlüğü, şube müdürlüğü ve müstakil şefliği,
+c) (Değişik:RG-30/8/2014-29104) Birim amirleri: Birimlerde çalışan başkan, il müdürü, ilçe müdürü, şube müdürü ve müstakil şefleri,
+ç) Dilekçe: Yetkili bir makama sunulan veya elektronik ortamda usulüne uygun olarak gönderilen, kişilerin kendileriyle veya kamu ile ilgili istek ve şikâyetlerini kapsayan bir veya daha çok imzalı müracaatı,
+d) Elektronik belge: Elektronik ortamda oluşturulan, gönderilen ve saklanan her türlü belgeyi,
+e) Elektronik defter: Valilik ve kaymakamlık birimlerince tutulması zorunlu olan defterlerde yer alan bilgileri kapsayan elektronik kayıtların bütününü,
+f) Elektronik ortam: Belge ve bilgilerin üzerinde bulunduğu her türlü bilgisayarı, gezgin elektronik araçları, bilgi ve iletişim teknolojisi ürünlerini,
+g) Evrak: İl ve ilçelerde görülen hizmetler, yapılan iş, işlemler ve haberleşmeler sırasında veya sonucunda kamu kuruluşlarının kendi aralarında, gerçek veya tüzel kişilerle iletişimlerini sağlamak amacıyla yazılan yazı, resmi belge, resmi bilgi ve elektronik belgeyi,
+ğ) Evrak sayısı: Birim tarafından hazırlanan evraka imza süreçleri tamamlandıktan sonra sistem tarafından verilen numarayı,
+h) Gelen evrak kayıt numarası: Dışarıdan gelen ve birim içinde dağıtılmak üzere sisteme kaydedilen evraka sistem tarafından verilen kayıt numarasını,
+ı) Güvenli elektronik imza: 5070 sayılı Elektronik İmza Kanununa göre; münhasıran imza sahibine bağlı olan, sadece imza sahibinin tasarrufunda bulunan güvenli elektronik imza oluşturma aracı ile oluşturulan, nitelikli elektronik sertifikaya dayanarak imza sahibinin kimliğinin ve imzalanmış elektronik veride sonradan herhangi bir değişiklik yapılıp yapılmadığının tespitini sağlayan elektronik imzayı,
+i) İl genel idare kuruluşları: İl mülkî idare bölümü içinde hizmet gören ve valiye bağlı olarak çalışan, merkezi idarenin il kademesindeki birimlerini,
+j) İlçe genel idare kuruluşları: İlçe mülkî idare bölümü içinde hizmet gören ve kaymakama bağlı olarak çalışan, merkezi idarenin ilçe kademesindeki birimlerini,
+k) İmzaya yetkili amir: Vali, kaymakam veya bunların evrak havale ve imzaya yetkili kıldığı görevliyi,
+l) Koli: Basılı kâğıt veya evrakın posta kurallarına göre paketlenmiş, toparlanmış veya kutulanmış şeklini,
+m) Mahallî idareler: İl özel idareleri, belediyeleri ve köyleri,
+n) Mahallî idare birliği: Birden fazla mahallî idarenin, yürütmekle görevli oldukları hizmetlerden bazılarını birlikte görmek üzere kendi aralarında kurdukları kamu tüzel kişisini,
+o) Merkezi idarenin merkez kuruluşları: Başbakanlık ve Bakanlıklar ile bağlı kurum ve kuruluşların merkezi kademe birimlerini,
+ö) Resmî belge: Kamu kurum ve kuruluşlarının kendi aralarında veya gerçek ve tüzel kişilerle iletişimlerini sağlamak amacıyla oluşturdukları, gönderdikleri veya sakladıkları belirli bir standart ve içeriği olan belgeleri,
+p) Resmî bilgi: Kamu kurum ve kuruluşlarının kendi aralarında veya gerçek ve tüzel kişilerle iletişimleri sırasında metin, ses ve görüntü şeklinde oluşturdukları, gönderdikleri veya sakladıkları bilgileri,
+r) Sistem: Birimlerin iş ve işlemlerinin elektronik ortamda yürütülmesini sağlamak üzere geliştirilen e-İçişleri uygulamaları ile bu uygulamaların yürütülmesini sağlayan donanım, yazılım ve ağ alt yapısını,
+s) Yazışma: Yazılı veya elektronik ortamda yapılan yazışmaları,
+ş) (Ek:RG-4/6/2020-31145) GAMER: Bakanlık ve illerde kurulan güvenlik ve acil durumlar koordinasyon merkezlerini,
+ifade eder.
+İş ve işlemlerin yürütülme esasları
+MADDE 5 – (1) Bu Yönetmelikle birimler tarafından yürütülmesi öngörülen her türlü iş ve işlemin elektronik ortamda yapılması esastır.
+(2) Elektronik ortamda yürütülen her türlü iş ve işlem ilgili mevzuatta belirtilen güvenlik önlemlerine uyularak yapılır.
+(3) Resmî yazışmalarda Başbakanlık tarafından belirlenen kodlama sistemine ve dosya planına uyulması zorunludur.
+ 
+İKİNCİ BÖLÜM
+Evrak Türleri
+ 
+Evrak türleri
+MADDE 6 ‒ (1) Bu Yönetmelik açısından;
+a) Özellik taşıyan evrak: Üzerinde ayrı bir gizlilik veya ivedilik derecesi bulunan gizli, hizmete özel, kişiye özel, ivedi ve günlü işareti taşıyan,
+1) Gizli evrak: İzinsiz olarak açıklandığı takdirde millî güvenliği ve millî menfaatleri tehlikeye düşürecek olan,
+2) Hizmete özel evrak: Hizmeti yürütmesi gerekenlerden başkası tarafından bilinmesine ihtiyaç duyulmayan,
+3) Kişiye özel evrak: Gizlilik dereceli olmayıp ancak gittiği yerde ve önceki işlemlerinde belirli şahısların, amir veya sadece onun yetki verdiği personelin açabileceği veya makam sahibinin adına gelen,
+4) İvedi evrak: Kapsamı bakımından derhâl ve süratle cevap verilmesi gereken,
+5) Günlü evrak: Belirli bir zamanda veya evrakta belirtilen süre içinde bitirilerek muhatabı olan makama cevap verilmesi gereken,
+b) Değerli evrak: Teminat mektupları ve para ihbarnameleri ile kendisi veya ekleri para, pul, çek, bono, hisse senedi gibi paraya çevrilebilen,
+c) Normal evrak: Özellik taşıyan ve değerli evrak dışında kalan,
+evraktır.
+ 
+ÜÇÜNCÜ BÖLÜM
+Yazışma Kanalları
+ 
+Kuruluşların yazışmaları
+MADDE 7 – (1) Merkezi idarenin merkez kuruluşları ile il ve ilçe kuruluşları arasındaki yazışmalar valilik kanalı ile yapılır. Ancak, talep niteliği taşımayan veya valilerin bilmeleri gerekmeyen, hesap ve teknik hususlara, ayrıntıya ilişkin istatistikî bilgilere, bazı maddi olay ve durumların kaydına, tespitine, belirlenmesine, bilinmesine veya aksettirilmesine ilişkin yazışmalar, valilik kanalından geçirilmeden, il kuruluşları ile merkezi idarenin merkez kuruluşları arasında yapılabilir. Hangi evrakın bu nitelikte olduğu valilikçe çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+(2) Farklı illere bağlı il genel idare kuruluşlarının; il merkezlerinde ve ilçelerdeki genel idare kuruluşları arasındaki yazışmalar valilik ve kaymakamlık kanalı ile yapılır. Ancak, talep ve talimat niteliği taşımayan veya vali ve kaymakamların bilmeleri gerekmeyen, hesap ve teknik hususlara, ayrıntıya ilişkin istatistikî bilgilere, bazı maddi olay ve durumların kaydına, tespitine, belirlenmesine, bilinmesine veya aksettirilmesine ilişkin yazışmalar, valilik ve kaymakamlık kanalından geçirilmeden, doğrudan ilgili kuruluşlar arasında yapılabilir. Hangi evrakın bu nitelikte olduğu valilik ve kaymakamlıkça çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+(3) Aynı ile bağlı il genel idare kuruluşlarının; il ve ilçe kademeleri, il merkezi ile aynı ya da farklı ilçelerdeki diğer kuruluşlar, bölge kuruluşları, mahalli idareler ve mahallî idare birlikleri arasındaki yazışmaların doğrudan yapılması esastır. Ancak, talimat niteliği taşıyan veya vali ve kaymakamlarca bilinmesi gereken yazışmalar valilik ve kaymakamlık kanalı ile yapılır. Hangi evrakın bu nitelikte olduğu valilik ve kaymakamlıkça çıkarılan İmza Yetkileri Yönergesinde belirtilir.
+ 
+DÖRDÜNCÜ BÖLÜM
+Birimlerin Teşkilatı
+ 
+Birimlerin teşkilatı
+MADDE 8 – (1) Valiliklerin il müdürlüğü, şube müdürlüğü ve şeflik; kaymakamlıkların ilçe müdürlüğü ve şeflik şeklinde teşkilatlanması esastır.
+İllerde bulunan birimler
+MADDE 9 – (1) İllerde aşağıdaki birimler bulunur:
+a) İl Yazı İşleri Müdürlüğü,
+1) Evrak Şefliği,
+2) İşlemler Şefliği,
+3) (Mülga:RG-30/8/2014-29104)
+b) İl İdare Kurulu Müdürlüğü,
+c) (Değişik:RG-12/9/2018-30533) İdare ve Denetim Müdürlüğü,
+ç) İl Basın ve Halkla İlişkiler Müdürlüğü,
+d) Özel Kalem Müdürlüğü,
+1) İdari Hizmetler ve Koordinasyon Şefliği,
+2) Protokol Şefliği: Büyükşehir belediyesi olmayan illerde,
+e) Protokol Şube Müdürlüğü: Büyükşehir belediyesi olan illerde,
+f) Hukuk İşleri Şube Müdürlüğü,
+1) Hukuk İşleri Şefliği,
+2) Dava İşleri Şefliği,
+g) İl Sosyal Etüt ve Proje Müdürlüğü,
+ğ) (Değişik:RG-30/8/2014-29104) İdari Hizmetler Şube Müdürlüğü, 
+h) Bilgi İşlem Şube Müdürlüğü.
+ı) (Ek:RG-4/4/2020-31089) Açık Kapı Şube Müdürlüğü.
+İlçelerde bulunan birimler
+MADDE 10 – (1) İlçelerde aşağıdaki birimler bulunur:
+a) İlçe Yazı İşleri Müdürlüğü,
+1) Evrak Şefliği,
+2) İşlemler Şefliği,
+b) İlçe Hukuk İşleri Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+c) (Değişik:RG-12/9/2018-30533) İdare ve Denetim Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+ç) İlçe Bilgi İşlem Şefliği: Nüfusu elli bin ve üzeri olan ilçelerde,
+d) İlçe Sosyal Etüt ve Proje Şefliği: Bakanlıkça uygun görülen ilçelerde.
+e) (Ek:RG-4/4/2020-31089) Açık Kapı Şefliği: Bakanlıkça uygun görülen ilçelerde.
+(2) Toplam nüfusu ellibinin altında olan ilçelerde de birinci fıkrada sayılan müstakil şefliklerden biri ya da birkaçı; ilçenin yatırım, basın ve yayın faaliyetleri, güvenlik durumu, protokol, sivil toplum hizmetleri, nüfus hareketleri, afet ve acil durum ihtiyaçları, sınır ve liman işleri, belediye ve köy sayıları birlikte veya ayrı ayrı dikkate alınarak, Bakanlık onayı ile kurulabilir.
+Birimler ile ilgili düzenleme 
+MADDE 11 – (1) İl ve ilçelerde teşkilatı olmayan veya görevlisi bulunmayan Bakanlıklara ve diğer kamu kurum ve kuruluşlarına ait hizmetler bir birim ile ilişkilendirilerek yürütülür.
+(2) Başbakanlık ve bakanlıkların düzenleyici işlemleri ile belirli hizmet, faaliyet ve işlerin yürütülmesinin valilik ve kaymakamlıklardan istenmesi halinde ya da hizmetlerin vatandaşa en yakın yerden sunulabilmesi amacıyla gerekli görülen mahallerde, bir birim ile ilişkilendirilerek, geçici veya sürekli bürolar açılabilir.
+(3) İl ve ilçelerde bu maddede belirtilen düzenleme ve değişiklikler vali ve kaymakamlar tarafından yapılır.
+ 
+BEŞİNCİ BÖLÜM
+Birimlerin Bağlılığı, Yetki ve Sorumluluk
+ 
+Birimlerin bağlılığı
+MADDE 12 – (1) İllerde bulunan birimlerden; özel kalem müdürlüğü valiye, diğer müdürlükler vali tarafından görevlendirilen vali yardımcısına veya mülki idare amiri sınıfından olan il hukuk işleri müdürüne bağlı olarak çalışır. Ancak, valiler bu birimlerden istediklerini doğrudan kendilerine bağlı olarak çalıştırabilirler. 
+(2) İlçelerde bulunan birimler kaymakama bağlı olarak çalışır.
+Birim amirlerinin yetki ve sorumluluğu 
+MADDE 13 – (1) Birim amirleri, birimin iş ve işlemlerini sürekli gözetim ve denetimleri altında bulundurur, hizmetin aksamaması için gerekli tedbirleri alırlar.
+(2) Birim amirleri, birimlerinde görevli personelin ödüllendirilmesi ve tecziyesi hakkında illerde ilgili vali yardımcısı aracılığı ile valiye, ilçelerde kaymakama görüş ve teklif sunabilirler.
+(3) Birim amirleri;
+a) Hizmetle ilgili olarak birime başvuran kişilerin muhatabıdır.
+b) Birimdeki iş ve işlemlerin iş akışına uygun olarak süratli, güvenli, etkin ve verimli yürütülmesini sağlamakla sorumludur.
+c) Birimin iş ve işlemlerinin yürütülmesinde gerekli iş bölümünü yapar, işbirliğini sağlar, birimdeki personelin görev dağılımında geçici olarak değişiklikler yapabilir.
+ç) Birim içinde koordinasyonu sağlar.
+d) Yapmakla yükümlü bulundukları hizmet veya görevleri sıralı olarak bağlı oldukları amirlerinin gözetim ve denetimi altında ve onların emir ve direktifleri yönünde; mevzuata, plan ve programlara uygun olarak düzenlemek ve yürütülmesini sağlamakla sorumludur.
+Görevlilerin sorumluluğu
+MADDE 14 – (1) Birimde çalışan bütün görevliler, kendilerine verilen işleri hızlı, verimli ve nitelikli olarak yapmaktan hiyerarşik olarak üstlerine karşı sorumludur.
+ 
+İKİNCİ KISIM
+Birimlerin Görevleri
+ 
+BİRİNCİ BÖLÜM
+İl Birimlerinin Görevleri
+ 
+İl yazı işleri müdürlüğünün görevleri 
+MADDE 15 ‒ (1) İl Yazı İşleri Müdürlüğünün görevleri şunlardır:
+a) Evrak Şefliği;
+1) Valiliğe posta veya elektronik ortamda gönderilen; kişilerce veya kurum ve kuruluşların görevli dağıtıcılarınca elden getirilen her nevi dilekçeyi kabul etmek ve İmza Yetkileri Yönergesi gereğince yetki verilen görevlilerin havalesine ve imzasına hazırlamak, imzalanmasını takip etmek ve ilgili yerlere intikalini sağlamak ve sonuçlanmasını izlemek,
+2) Valilik adına posta veya elektronik ortamda gelen ve valilik birimlerinden çıkan evrakı almak, kaydetmek, görevli merci, kişi veya ilgili birimlere dağıtmak, ulaştırmak ve postalamak,
+3) Evrak hareketi ile ilgili istatistikî bilgi ve raporları sistem üzerinden sorgulamak ve hazırlamak,
+4) Vali tarafından verilen diğer görevleri yapmak.
+b) İşlemler Şefliği;
+1) Valiliğin kanun, tüzük, yönetmelik ve Bakanlar Kurulu kararlarının yayımlanması ile ilgili görevleri yerine getirmek ve genelge çıkarılması ile ilgili işlemleri yürütmek,
+2) Vali, vali yardımcısı, kaymakam, hukuk işleri müdürü, kaymakam adayı gibi Bakanlık personelinin il kademesinde izlenmesi gereken özlük işleri ile bu Yönetmelikte düzenlenen birim personeli ve sözleşmeli personelin atanma, yer ve görev değiştirme, kademe ilerlemesi, derece yükselmesi, askerliğinin ertelenmesi ve diğer özlük işlerini yürütmek,
+3) Tayini valiliğe ait aday memurların özlük dosyalarını tutmak, asil memurluğa geçirilmesi ve yemin işlerini düzenlemek, disiplin cezası ve ödüllendirme işlerini yürütmek, izin, memurluğun sona ermesi ve emeklilik işlerini düzenlemek, yürütmek ve izlemek,
+4) Hizmet içi eğitim çalışmalarını yürütmek ve geliştirmek,
+5) İldeki kamu personelinin günlük çalışma saatlerinin tespiti ile ilgili konularda gerekli işlemleri yapmak,
+6) Özel kanunlarına göre yapılan; milletvekili, mahalli idareler seçimleri ve Anayasa değişikliklerinin halkoyuna sunulmasında, valiliği ilgilendiren iş ve işlemler ile yazışmaları yapmak,
+7) Etik Kurulu ile ilgili iş ve işlemleri yürütmek,
+8) Tanıtıcı bayrakların kullanma iznine ve tescil işlemlerine ait iş ve işlemleri yapmak,
+9) Valilik İmza Yetkileri Yönergesini hazırlamak, ilgili kurum ve kuruluşlara dağıtmak ve uygulanmasını izlemek,
+10) Valiliğin, adli ve askeri teşkilat dışında kalan bütün Devlet daire, müessese ve işletmeler ve özel işyerleri üzerindeki gözetim, denetim ve teftiş yetkilerinin kullanılmasına ilişkin iş ve işlemleri yürütmek,
+11) (Ek:RG-30/8/2014-29104) Elektronik evrak dışındaki genel evrak arşiv hizmet ve faaliyetlerini düzenlemek ve yürütmek,
+12) (Ek:RG-30/8/2014-29104) Genel bütçeden gönderilen ödeneklerin giderin gerçekleştirilmesini yapmak ve mutemetlik iş ve işlemlerini yürütmek, Valiliğin mali işlerle ilgili hizmetlerini yürütmek; valilik ve birimlerin cari ve yatırım bütçe tekliflerini hazırlamak ve cari ödeneklerinin teminini takip etmek,
+13) (Ek:RG-30/8/2014-29104) İl yazı işleri müdürlüğü bünyesinde kimlik masası oluşturmak, il ve ilçelerde görev yapan personel için kimlik kartı talebinde bulunmak, ilgili personele teslimini sağlamak ve kimlik kartı ile ilgili her türlü iş ve işlemleri yürütmek ve Bakanlık Personel Genel Müdürlüğünü bilgilendirmek,
+14) (Ek:RG-30/8/2014-29104) Yürüttüğü hizmetler ile ilgili eğitim programları düzenlemek, ilgili kayıtları tutmak ve değerlendirmek,
+15)(2) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+c) (Mülga:RG-30/8/2014-29104)
+İl idare kurulu müdürlüğünün görevleri 
+MADDE 16 – (1) İl İdare Kurulu Müdürlüğünün görevleri şunlardır:
+a) 4483 sayılı Memurlar ve Diğer Kamu Görevlilerinin Yargılanması Hakkında Kanunun uygulanması ile ilgili iş ve işlemleri yürütmek,
+b) 2547 sayılı Yükseköğretim Kanunu uyarıca; yükseköğretim kuruluş ve kurumlarının 657 sayılı Devlet Memurları Kanununa tabi memurlarının görevleri dolayısıyla ya da görevlerini yaptıkları sırada işledikleri suçlar hakkında il idare kurulunun verdiği kararlarla ilgili işlemleri yapmak,
+c) İl idare kurulu ve il disiplin kurulu görevlerine ilişkin iş ve işlemleri hazırlamak ve yürütmek,
+ç) Valilikçe kamu görevlileri hakkında inceleme yapılması, disiplin soruşturması açılması, bunların görevden uzaklaştırılması, cezalandırılması, bu konudaki izin verme yetkilerinin kullanılması işlemlerini yürütmek, sonuçlarını takip etmek,
+d) 3091 sayılı Taşınmaz Mal Zilyetliğine Yapılan Tecavüzlerin Önlenmesi Hakkında Kanunun uygulanması ile ilgili işlemleri yürütmek,
+e) Mülki idare amirlerinin muhtelif kanunlardan kaynaklanan men ve tahliye yetkilerinin kullanılması ile ilgili iş ve işlemleri yürütmek,
+f) 2022 sayılı 65 Yaşını Doldurmuş Muhtaç, Güçsüz ve Kimsesiz Türk Vatandaşlarına Aylık Bağlanması Hakkında Kanun ve diğer kanunlarla istenilen kararlar ve belgelerin düzenlenmesi işlemlerini yürütmek,
+g) Köy kurulması ve kaldırılması, bağlanması ve ayrılması, sınır anlaşmazlıkları, köy, yerleşim yeri ve tabiî yer adlarının değiştirilmesi işlerini yürütmek,
+ğ) Harita işlerini yürütmek ve gizliliği olan haritaları valilik adına koruyup saklamak,
+h) Coğrafi yer adları ile ilgili iş ve işlemleri yürütmek,
+ı) 2942 sayılı Kamulaştırma Kanunu gereğince verilen görevleri yapmak,
+i) (Değişik:RG-5/8/2012-28375) Mevzuatta mülki amir veya il ve ilçe idare kurulları tarafından verileceği hüküm altına alınan idari para cezası, idari tedbirler ve mülkiyetin kamuya geçirilmesi yaptırımlarının sadece onay ve karar işlemlerini yapmak. Bu bendin uygulanmasında; cezaların, tedbirlerin ve yaptırımlarının hazırlık ve teklif işlemleri ile mülki amirin onayı veya il ve ilçe idare kurullarının kararlarını müteakip yapılacak tebligat, itiraz ve infaz süreçlerinin izlenmesine dair bütün iş ve işlemlerin sekreteryası cezaya konu fiil veya haller mevzuatla kendilerine görev olarak verilen ilgili kamu kurum veya kuruluşu tarafından yapılır. 
+j) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İdare ve denetim müdürlüğünün görevleri (3)
+MADDE 17 – (1) (Değişik cümle:RG-12/9/2018-30533) İçişleri Bakanlığının görev alanına ilişkin olarak İdare ve Denetim Müdürlüğünün görevleri şunlardır:
+a) 5302 sayılı İl Özel İdaresi Kanunu, 5393 sayılı Belediye Kanunu ve 5216 sayılı Büyükşehir Belediyesi Kanunu gereği valiliğe gönderilen kararlar ile ilgili işlemleri yapmak,
+b) 5355 sayılı Mahalli İdare Birlikleri Kanunu gereğince, mahalli idare birliklerinin denetimini yapmak, denetim sırasında tespit edilecek kişi borçlarını karar alınmak üzere ilgili birliğe bildirmek, yetkili birlik organlarınca alınan kişi borcu kararlarını inceleyerek idari yargıya başvurulması gerekenleri Hukuk İşleri Şube Müdürlüğüne göndermek,
+c) Valiliğin, mahalli idareler ve mahalli idarelerin kurdukları işletme, müessese, teşekkül ve birlikleri üzerindeki gözetim ve denetim yetkisi ile diğer vesayet görev ve yetkilerinin kullanılmasına ilişkin iş ve işlemleri yürütmek,
+ç) Belediyelerin kurulması, bazı köylerin veya bağlıların belediyelerle birleşmesi işlemlerini yürütmek,
+d) Mahalli idareler ve mahallî idare birliklerinin hukuki konularda görüş taleplerini cevaplamak, Bakanlık görüşü oluşturulması gerekenleri Bakanlığa göndermek,
+e) Köy ve mahalle muhtarlarının izin, hastalık, görevden uzaklaştırma, istifa, ölüm gibi iş ve işlemlerini yürütmek,
+f) 5302 sayılı İl Özel İdaresi Kanunu, 5393 sayılı Belediye Kanunu, 5216 sayılı Büyükşehir Belediyesi Kanunu ve 5355 sayılı Mahalli İdare Birlikleri Kanunu ve diğer kanunlar uyarınca, valilik ve kaymakamlıklarca yapılması gereken mahallî idareler ve mahallî idare birlikleri ile ilgili iş ve işlemleri yürütmek,
+g) (Değişik:RG-12/9/2018-30533) Güvenlik korucuları ve gönüllü güvenlik korucularıyla ilgili iş ve işlemlerin yürütülmesini sağlamak,
+ğ) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İl basın ve halkla ilişkiler müdürlüğünün görevleri
+MADDE 18(1) ‒ (1) İl Basın ve Halkla İlişkiler Müdürlüğünün görevleri şunlardır:
+a) Yazılı ve görsel basın ve diğer kitle iletişim araçlarında il ve valilik ile ilgili çıkan bilgi ve haberleri izlemek ve değerlendirmek,
+b) Valinin talimatı doğrultusunda basın bültenini hazırlamak ve basına bilgi vermek, valiliğin basın toplantılarıyla ilgili işlerini yapmak,
+c) Basın ilan ve basın-yayın ve enformasyon mevzuatının valilikler ile ilgili iş ve işlemlerini yürütmek,
+ç) 10/8/1990 tarihli ve 90/748 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Mal Bildiriminde Bulunulması Hakkında Yönetmelik hükümlerine göre, gazete sahibi gerçek kişiler ile gazete sahibi şirketlerin yönetim ve denetim kurulu üyeleri, sorumlu müdürleri, başyazarları ve fıkra yazarlarının mal bildirim beyannameleri ile ilgili iş ve işlemleri yapmak ve beyannameleri muhafaza etmek,
+d) Gazete, dergi, haber ajansları ve medya izleme merkezleri ile ilgili abonelik iş ve işlemlerini yapmak,
+e) Sarı basın kartı başvurusu ile ilgili iş ve işlemleri yapmak,
+f) 4982 sayılı Bilgi Edinme Hakkı Kanununa göre yapılacak başvuruları kabul etmek, izlemek, sonuçlandırmak ve başvuru sahibine bilgi vermek,
+g) Başbakanlık İletişim Merkezi (BİMER) ile ilgili her türlü iş ve işlemleri yapmak,
+ğ) Basın ve halkla ilişkiler ile ilgili diğer iş ve işlemleri yürütmek,
+h) (Ek:RG-20/12/2013-28857)(1) 5681 sayılı Matbaalar Kanunu ve 5187 sayılı Basın Kanununun uygulanmasında öngörülen bildirimleri kabul etmek ve valiliği ilgilendiren iş ve işlemleri yapmak,
+ı)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+Özel kalem müdürlüğünün görevleri 
+MADDE 19 ‒ (1) Özel Kalem Müdürlüğünün görevleri şunlardır:
+a) İdari Hizmetler ve Koordinasyon Şefliği;
+1) Valinin özel haberleşme ve gizlilik taşıyan yazışmaları ile görev ve izin işlerini yürütmek,
+2) Vali tarafından; başarı belgesi, üstün başarı belgesi ve ödül verilmesi ile ilgili işleri yürütmek,
+3) Vali için gerekli bilgi notları, kurumsal sunumlar ve toplantı dokümanlarının hazırlanmasını ve muhafazasını sağlamak,
+4) Valiye gönderilen dilekçe, evrak ve faksların kabulünü yapmak, valinin talimatı doğrultusunda gereğinin yerine getirilmesini sağlamak,
+5) Valinin ziyaret, davet, randevu ve programlarının yazışmalarını yapmak, takibi ve koordinasyonunu sağlamak,
+6) Valinin koruma hizmetleri ile ilgili iş ve işlemleri yürütmek,
+7) Özel kalem müdürlüğüne bağlı birimlerin evrak, arşiv ve dokümantasyon işlerini yürütmek,
+8) Makamın güvenlik güçleriyle ilgili işlemlerini yürütmek, günlük asayiş raporlarını muhafaza etmek, valinin direktifine göre bu konudaki haberleşme ve yazışmaları yapmak,
+9) Sıkıyönetim ve olağanüstü hallerde valilik makamının silahlı kuvvetlerle olan ilişkilerini valinin direktifi altında yürütmek,
+10) Askeri birliklerden yardım istenmesini zorunlu kılan durumlarda valiye İl İdaresi Kanunu ile tanınan yetkinin kullanılmasına ilişkin haberleşme ve yazışmaları yapmak,
+11) Olağanüstü hal ilan edilmesi durumunda; 2935 sayılı Olağanüstü Hâl Kanunu ile 21/2/1984 tarihli ve 84/7778 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Olağanüstü Hal Kurulu ve Bürolarının Kuruluş ve Görevleri ile Yükümlülüklerinin Karşılığının Tesbit ve Ödenmesi Hakkında Yönetmeliğin gerekli gördüğü büro oluşuncaya kadar ve sözü geçen büroların kaldırılması durumunda, yazışma, dosyalama ve arşivleme işlerini sağlamak,
+12) Makama gelen istihbarat, sınır görüşmeleri gibi özel amaçlı ödenek ve harcama belgelerini valinin direktifi doğrultusunda muhafaza ve gerektiğinde usulünce imha etmek,
+13) Koruyucu güvenlik mevzuatı uyarınca, özel kalem müdürlüğünü ilgilendiren işleri yürütmek,
+14) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+b) Protokol Şefliği;
+1) Protokol şube müdürlüğü bulunmayan illerde bu müdürlüğün görevlerini yapmak.
+Protokol şube müdürlüğünün görevleri
+MADDE 20 – (1) Protokol Şube Müdürlüğünün görevleri şunlardır:
+a) Ulusal ve resmi bayramlar ile tarihi günlerde yapılacak törenlerde; protokol düzenini uygulamak, anıtlara konulacak çelenklerin hazırlanma, taşınma ve sunulması işlerini organize ederek protokol düzenine göre yapılmasını sağlamak,
+b) 26/6/2006 tarihli ve 2006/11187 sayılı Bakanlar Kurulu Kararıyla yürürlüğe giren Devlet Cenaze Törenleri Yönetmeliğine göre düzenlenecek ulusal, resmi ve kurumsal cenaze törenleri ile ilgili işlemleri yapmak,
+c) İl kutlama ve anma komitelerinin toplantılarını organize etmek, kutlama ve anma törenlerinin ilgili kanun ve yönetmelikler çerçevesinde icra edilmesi için yetkili ve görevli kurum ve kuruluşlar ile gerekli işbirliği ve koordinasyonu sağlamak,
+ç) Resmi ziyaretler kapsamında; devlet büyüklerinin yurtiçi ve yurtdışı ziyaretleri ile yabancı devlet erkânının ülkemizi ziyaretlerinde, Dışişleri Bakanlığı Protokol Genel Müdürlüğü veya Cumhurbaşkanlığı, Başbakanlık, Bakanlık veya diğer kurum ve kuruluşlarının il teşkilatı düzeyinde hazırladıkları programlarını ilgili birimlere ulaştırmak ve gerekli koordinasyonu sağlamak,
+d) İl protokol listesinin güncel olarak tutulmasını ve valilik internet sitesinde yayınlanmasını sağlamak,
+e) Kamu ve toplum yaşamında uygulanan protokol kuralları olarak: Bayrak ve taşıt protokolü; toplantı, brifing ve tören protokolü; görev devir-teslim ve imza törenleri; kurumsal törenler ve etkinlikler, temel atma, açılış, anma, kutlama, festival, şenlik ve benzerleri; oturma düzenleri ve konuşma sıraları; davet, karşılama, ağırlama, uğurlama ile resepsiyon, kokteyl ve resmî yemekler; protokol yazıları; dini bayramlarda bayramlaşma ve benzeri temsil ile ilgili valiliğin protokol işlerini düzenlemek ve ilgili kuruluşlarla işbirliği halinde yürütmek,
+f) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+Hukuk işleri şube müdürlüğünün görevleri 
+MADDE 21(1) – (1) Hukuk İşleri Şube Müdürlüğünün görevleri şunlardır:
+a) Hukuk İşleri Şefliği;
+1) 1961 tarihli Yabancı Resmi Belgelerin Tasdiki Mecburiyetinin Kaldırılmasına İlişkin Lahey Sözleşmesinin 6 ncı maddesi gereğince; bir belgenin gerçekliğinin tasdik edilerek başka bir ülkede yasal olarak kullanılmasını sağlayan, apostil tasdik şerhi verilmesi ile ilgili iş ve işlemleri yürütmek,
+2) Lahey Sözleşmesine taraf olmayan ülkelerde kullanılacak evrakın tasdik işlemleri ile ildeki yabancı ülke temsilciliklerince düzenlenmiş veya onaylanmış belgelerin tasdik işlemleri ile ilgili iş ve işlemleri ilgili mevzuat çerçevesinde yürütmek,
+3) Valiliğe sorulan hukuki konular ile hukuki, mali, cezai sonuç doğuracak işlemler hakkında görüş bildirmek, hukuki danışmanlık hizmeti yapmak,
+4) Valiliğin menfaatlerini koruyucu, anlaşmazlıkları önleyici hukuki tedbirleri zamanında almak, anlaşma ve sözleşmelerin bu esaslara uygun olarak yapılmasına yardımcı olmak,
+5) Valiliğin amaçlarını gerçekleştirmek, mevzuata ve plan ve programa uygun çalışmasını temin etmek amacıyla gerekli hukuki teklifleri hazırlamak ve Valiye sunmak,
+6) Mevzuatın uygulanmasına ilişkin bilgileri toplamak, değerlendirmek ve söz konusu mevzuatın geliştirilmesine yönelik çalışmaları yürütmek,
+7) Valilik birimleri ve diğer müdürlüklerin hazırlamış oldukları yönerge ve diğer düzenleyici işlemler ile ilgili görüş bildirmek,
+8) Mevzuatın valilik hukuk işleri şube müdürlüğünce yapılmasını gerekli gördüğü inceleme, denetleme hizmetlerine ilişkin sekretarya işlerini yapmak ve işlemlerini yürütmek,
+9) Valiliğin, Dernekler İl Müdürlüğünün görev alanına girmeyen, sivil toplum kuruluşları ile kamu tüzel kişiliğine sahip meslek kuruluşları üzerindeki gözetim ve denetim yetkileri ile ilgili iş ve işlemleri yürütmek,
+10) 5233 sayılı Terör ve Terörle Mücadeleden Doğan Zararların Karşılanması Hakkında Kanunun uygulanmasında valiliği ilgilendiren iş ve işlemleri yürütmek,
+11) 23/11/2003 tarihli ve 25298 sayılı İl ve İlçe İnsan Hakları Kurullarının Kuruluş, Görev ve Çalışma Esasları Hakkında Yönetmelik hükümleri gereği Kurulun sekretarya hizmetlerini yürütmek,
+12) Lozan Antlaşması hükümleri çerçevesinde, azınlıklara ait dini, hayri, sıhhi, sosyal, eğitsel ve kültürel müesseseler ile bunların kamu kurum ve kuruluşlarıyla ilgili iş ve işlemlerini yürütmek,
+13) (Ek:RG-20/12/2013-28857)(1) 2911 sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu ile 2559 sayılı Polis Vazife ve Salahiyet Kanununun Ek 1 inci maddesinde yer alan bildirimleri kabul etmek,
+14)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+b) Dava İşleri Şefliği;
+1) Adlî ve idarî yargı mercilerinde takip edilmesi gerekli dava ve konularla ilgili işlemleri yürütmek, gerekli bilgileri hazırlamak, kamu görevlilerine haksız suç isnadında bulunanlar hakkında kamu davası açılması talebini hazırlamak ve ilgili yargı yerlerine ulaştırmak,
+2) İhtiyaç halinde, ilgili mevzuat hükümlerine göre serbest avukatlardan veya avukatlık ortaklıklarından hizmet satın alma iş ve işlemlerini yapmak,
+3) 5355 sayılı Mahalli İdare Birlikleri Kanunu gereğince, kişi borçlarının tahsili konusunda yargıya yapılacak başvurular ile ilgili iş ve işlemleri yürütmek,
+4) 4353 sayılı Kanunun 24 üncü maddesine göre; hazineyi ilgilendiren idari davaların Muhakemat Müdürlüğüne bildirilmesi iş ve işlemlerini yürütmek,
+5) Adli yargı yerlerinde görülmekte olan ve Hazine Avukatlarınca takip edilen davalarda onlara yardımcı olmak ve işbirliği yapmak, 
+6) Dava dosyaları ve yargılama süreci ile ilgili istatistikî bilgileri toplamak ve değerlendirmek,
+7) Mahkemelerce verilen kararların yerine getirilmesini takip etmek, sonuçları hakkında bilgi toplamak ve makamı bilgilendirmek,
+8) (Ek: RG-20/12/2013-28857)(1) 2911 sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu, 5681 sayılı Matbaalar Kanunu, 5187 sayılı Basın Kanunu ve 2559 sayılı Polis Vazife ve Salahiyet Kanununun Ek 1 inci maddesinde valiliği ilgilendiren davalarla ilgili iş ve işlemleri yürütmek,
+9)(1) Mevzuat veya vali tarafından verilen diğer görevleri yapmak.
+İl sosyal etüt ve proje müdürlüğünün görevleri
+MADDE 22 – (1) İl Sosyal Etüt ve Proje Müdürlüğünün görevleri şunlardır:
+a) Bakanlıkça ilin güvenlik ve sosyo-ekonomik politikaları konularında uygulanmak üzere gönderilen tedbir ve faaliyetlerin, ilgili birimler ile koordine edilerek il düzeyinde uygulanmasını sağlamak ve uygulamada varsa karşılaşılan sorunlar ile çözüm önerilerini içeren sonuç raporlarını Bakanlığa göndermek,
+b) Görev alanı ile ilgili;
+1) Bilgi ve belgeleri toplamak, tasnif etmek, analiz ve değerlendirmeler yapmak,
+2) Proje ve araştırma yapmak, yaptırmak ve bu alandaki bilimsel çalışmaları desteklemek,
+3) Kamuoyu araştırması yapmak, yaptırmak,
+4) Toplantı, sempozyum, seminer, eğitim ve benzeri etkinlikler düzenlemek,
+5) Yapılması planlanan veya yapılan faaliyetlerin hedef kitleye duyurulması için gereken iş ve işlemleri yapmak veya yaptırmak, 
+c) İlde toplum desteğinin sağlanmasına yönelik faaliyetleri yürütmek,
+ç) İl genelinde göçün meydana getirdiği sorunlarla ilgili çalışmalar yapmak,
+d) Tedbir, faaliyet ve hizmetlere ait dosyalama, gelen ve giden evrakın kayıt, dağıtım ve arşivlenmesini sağlamak,
+e) (Ek:RG-4/6/2020-31145)(5) 24/10/2019 tarihli ve 30928 sayılı Resmî Gazete’de yayımlanan Güvenlik ve Acil Durumlar Koordinasyon Merkezi Teşkilat, Görev, Yetki, Çalışma Usul ve Esasları Hakkında Yönetmeliğin 13 üncü maddesinde belirtilen görevleri yerine getirmek.
+f) Mevzuat veya vali tarafından verilen benzeri görevleri yapmak.
+İdari hizmetler şube müdürlüğünün görevleri
+MADDE 23 – (Başlığı ile birlikte değişik:RG-30/8/2014-29104) 
+(1) İdari Hizmetler Şube Müdürlüğünün görevleri şunlardır:
+a) 3/11/1980 tarihli ve 2330 sayılı Nakdi Tazminat ve Aylık Bağlanması Hakkında Kanun ve 25/11/1992 tarihli ve 92/3809 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Nakdi Tazminat ve Aylık Bağlanması Hakkında Yönetmelik kapsamındaki iş ve işlemleri yürütmek,
+b) Hükümet konağının bakım ve onarımı ile bina ve çevre temizliğinin yapılmasını, elektrik, su, doğal gaz, kalorifer gibi tesisatların düzenli çalışmasını sağlamak, Valiliğe ait toplantı salonları ve teknik cihazları her zaman hizmete hazır bulundurmak,
+c) Valilikte bulunan taşıtların bakım, onarım, kiralama, akaryakıt ve sigorta işlemlerini yapmak, personel servisi ile hizmet araçlarının belirlenen kurallar çerçevesinde düzenli çalışmasını sağlamak,
+ç) Valilik personeline öğle yemeği için verilen yardım giderlerine ait bütçe tekliflerini hazırlamak ve ödeneklerinin teminine ait iş ve işlemleri yürütmek,
+d) 9/11/1983 tarihli ve 2946 sayılı Kamu Konutları Kanunu ve 16/7/1984 tarihli ve 84/8345 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Kamu Konutları Yönetmeliği hükümlerine göre valiliğe ait lojmanlarla ilgili işlemleri yürütmek,
+e) Hükümet konağı ve ek binalarında 22/9/1983 tarihli ve 2893 sayılı Türk Bayrağı Kanunu hükümlerinin uygulamasını sağlamak,
+f) Hükümet konağı ve ek binalarında sivil savunma ve koruyucu güvenlik ile ilgili mevzuatının uygulamasını sağlamak, takip etmek ve iş ve işlemlerini birimlerle koordine ederek yürütmek,
+g) Valilik haber merkezinin hizmet ve faaliyetlerini düzenlemek ve yürütmek,
+ğ) 28/12/2006 tarihli ve 2006/11545 sayılı Bakanlar Kurulu Kararıyla yürürlüğe konulan Taşınır Mal Yönetmeliği gereğince yapılacak iş ve işlemler ile valilik ve birimler için gerekli araç, gereç ve malzemenin temini, kayıtlarının tutulması ve ihtiyaç duyulan bina ve arazinin kiralanması ve satın alınması ile ilgili iş ve işlemleri yürütmek,
+h) Vali tarafından verilen diğer görevleri yapmak.
+Bilgi işlem şube müdürlüğünün görevleri
+MADDE 24 ‒ (1) Bilgi İşlem Şube Müdürlüğünün görevleri şunlardır:
+a) Valilik birimlerinin bilişim hizmet ve işlemlerinin; etkin, verimli, hızlı ve güvenli bir biçimde yürütülmesini sağlayacak sistemler ve ağlar kurmak, sürekli ve kesintisiz işleyişini sağlamak,
+b) Valilik birimlerinin bilgisayar, yazıcı, tarayıcı, faks, fotokopi, modem ve benzeri bilişim cihazları ve sarf malzemeleri ihtiyacını Bakanlıkça belirlenen standartlara uygun olarak tespit etmek, gerektiğinde bunları temin etmek, donanımların bakım ve onarımlarını yapmak veya yaptırmak,
+c) 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi ve Bu Yayınlar Yoluyla İşlenen Suçlarla Mücadele Edilmesi Hakkında Kanun ve ilgili mevzuat gereğince sağlanan hizmetlere ilişkin trafik bilgilerini saklamak ve bu bilgilerin doğruluğunu, bütünlüğünü ve gizliliğini korumak,
+ç) 1/11/2007 tarihli ve 26687 sayılı Resmî Gazete’de yayımlanan İnternet Toplu Kullanım Sağlayıcıları Hakkında Yönetmelik gereği, ticari amaçla internet toplu kullanım sağlayıcılarına izin belgesi verilmesi, işletmecilerin eğitimi ve denetlenmesine ilişkin iş ve işlemleri yapmak,
+d) Başta e-İçişleri Projesi olmak üzere, valilik ve kaymakamlıklara bağlı birimlerde uygulanacak her türlü bilgi işlem projesi ile ilgili koordinasyon ve işbirliğini sağlamak,
+e) Bakanlıkça belirlenecek eğitim programlarının uygulanmasını sağlamak, eğitmen ve kullanıcıların eğitim ihtiyacını belirlemek ve bu ihtiyaçları karşılayacak eğitim organizasyonları yapmak,
+f) Valilik internet sitesinin sürekli, güvenli ve güncel olarak yayınını sağlamak,
+g) İlçe birimlerine bilgi işlem konularında destek vermek,
+ğ) Mevzuat ve Vali tarafından verilen diğer görevleri yapmak.
+Açık kapı şube müdürlüğünün görevleri
+MADDE 24/A- (Ek:RG-4/4/2020-31089)
+(1) Açık kapı şube müdürlükleri illerde vali veya görevlendireceği vali yardımcısına bağlı olarak aşağıdaki görevleri yerine getirir:
+a) Valiliklere bizzat, web sitesi, mobil uygulama, e-devlet ya da diğer yöntemler ile yapılan başvuruları elektronik sisteme kaydederek ilgili hizmet birimlerine iletmek, başvuruların öngörülen süre içerisinde cevaplandırılmasını sağlamak ve süreci sonuçlandırılıncaya kadar takip etmek,
+b) Valiliğe bizzat başvuran vatandaşları karşılamak, vatandaşın talep ve beklentilerine hızlı ve etkin bir şekilde çözüm bulmak,
+c) Vatandaşın başvurusu esnasında her türlü dilek ve taleplerini dinleyerek başvurusuna ilişkin soruları ayrıntılı olarak cevaplamak,
+ç) Kamu hizmetlerine Dijital Türkiye üzerinden başvuru yapmakta zorluk yaşayan vatandaşlara danışmanlık ve rehberlik etmek, vatandaşın dijital ortama erişimini sağlamak,
+d) Şehit yakınları, gaziler ile gazi yakınları, altmış beş yaş üstü vatandaşlar, hamileler ve engellilere yönelik danışma ve mihmandarlık hizmetinin etkin bir şekilde yerine getirilmesini sağlamak,
+e) Başvuru sahiplerinin sürecin her aşamasında bilgilendirilmesini sağlamak,
+f) Hizmet birimlerinden gelen cevapları kontrol ederek,  uygun olmayan cevapları ilgili mülki idare amirine bildirmek ve düzeltilmesini sağlamak,
+g) Veri tabanındaki bilgiler doğrultusunda ilin yoğunluklu başvuru türleri, sorun alanları ve aksayan yönlerini coğrafi, demografik ve sosyo-ekonomik açılardan analiz etmek, raporlamak ve istatistiki bilgiler hazırlamak,
+ğ) Mülki idare amiri başkanlığında, gerekli izleme ve değerlendirmeleri yapmak amacıyla Ocak ve Temmuz aylarında olmak üzere yılda iki defa toplantı yapmak ve toplantıya müteakip tutanağın rapor halinde Bakanlığa gönderilmesini sağlamak,
+h) Açık Kapı şube müdürlükleri arasında, ilde bulunan diğer Açık Kapı birimleri ile ilgili hizmet birimleriyle gerekli iletişim ve koordinasyonu sağlamak,
+ı) Vali tarafından verilecek diğer görevleri yapmak.
+ 
+İKİNCİ BÖLÜM
+İlçe Birimlerinin Görevleri
+ 
+İlçe birimlerinin görevleri
+MADDE 25 – (1) İl birimleri tarafından yürütülen hizmetler ilçelerde;
+a) İl yazı işleri, il basın ve halkla ilişkiler, özel kalem ve protokol şube müdürlüklerince yürütülen hizmetler; ilçe yazı işleri müdürlüğü,
+b) (Değişik ibare:RG-12/9/2018-30533) İdare ve denetim, il planlama ve koordinasyon ve (Değişik ibare:RG-30/8/2014-29104) idari hizmetler şube müdürlüklerince yürütülen hizmetler; (Değişik ibare:RG-12/9/2018-30533) İdare ve denetim şefliği,
+c) İl idare kurulu ve hukuk işleri şube müdürlüklerince yürütülen hizmetler; ilçe hukuk işleri şefliği,
+ç) Bilgi işlem şube müdürlüğünce yürütülen hizmetler; ilçe bilgi işlem şefliği,
+d) İl sosyal etüt ve proje müdürlüğünce yürütülen hizmetler; ilçe sosyal etüt ve proje şefliği,
+e) (Ek:RG-4/4/2020-31089)(4) Açık kapı şube müdürlüğünce yürütülen hizmetler; açık kapı şefliği,
+f) Müstakil şeflikleri bulunmayan ilçelerde bu müdürlüklere ait hizmetler; ilçe yazı işleri müdürlüğü,
+tarafından yürütülür.
+(2) İl'de olağanüstü hal uygulandığı takdirde ilçe olağanüstü hal bürosunun sekretarya hizmetleri, ilçe yazı işleri müdürlüğünce yürütülür.
+ 
+ÜÇÜNCÜ KISIM
+Birimlerin Çalışması
+ 
+BİRİNCİ BÖLÜM
+Evrak Kabul, Havale ve Dağıtım İşleri
+ 
+İş bölümü
+MADDE 26 – (1) Valiliğe gelen her türlü evrakın kabulü, elektronik ortama kaydı, verilmiş yetki çerçevesinde havalesi ve dağıtımı ile birimlerden gönderilecek evrakın dağıtım ve postalama işleri İl Yazı İşleri Müdürlüğü Evrak Şefliği tarafından yapılır.
+(2) Gelen evrakın niteliğine göre hangi görevli veya görevliler tarafından ilgili birim veya mercilere havale edileceği, valilik tarafından çıkarılacak İmza Yetkileri Yönergesi ile belirlenir. Doğrudan vali tarafından havale ve imza edilecek evrak da bu Yönergede gösterilir.
+(3) İsme gelen veya elden verilen evrak, havale edildikten sonra evrak servisine verilir ve bu maddenin birinci fıkrasındaki işleme tabi tutulur.
+(4) Özellik taşıyan evrak; çalışma gün ve saatleri dışında, posta yoluyla, güvenlik güçlerinin haberleşme görevlileri tarafından valiye, özel kalem müdürüne, şifre memuruna veya yetki verilen görevlilere teslim edilebilir.
+(5) (Değişik ibare:RG-12/9/2018-30533) Cumhurbaşkanlığı ve TBMM Başkanlığı Genel Sekreterliğinden gelen evrak ile (Mülga ibare:RG-12/9/2018-30533) (...) Bakan imzasını taşıyan evrak, özellik taşıyan evrak gibi işlem görür.
+(6) Evrak şefliği ilke olarak; kabul ve ayırma, normal evrak, gizli evrak ve dağıtım masalarına ayrılır:
+a) Kabul ve ayırma masasında; elektronik ortamda ve elektronik ortam haricinde gelen evrakın alınması, açılması ve ayrılarak ilgili masalara aktarılması,
+b) Normal evrak masasında; elektronik ortamda ve elektronik ortam haricinde gelen normal evrakın ve dilekçelerin yetkilisince havalesi ve imzalattırılması ve kaydı,
+c) Gizli evrak masasında; özellik taşıyan ve değerli evrakın yetkilisince havalesi, imzalattırılması ve kaydı,
+ç) Dağıtım masasında; gelen evrakın havale olunduğu birimlere dağıtımı, valilik ve kaymakamlık birimlerinden giden evrakın ilgili yerlere gönderilmesi,
+işleri görülür.
+(7) İş hacminin çok yüksek olduğu illerde ihtiyaca göre ayrı masalar teşkil edilebileceği gibi iş hacminin düşük olduğu yerlerde birden fazla masanın işleri bir masada gördürülebilir.
+(8) Gizli evrak masası hizmetleri, imkânlara bağlı olarak, şeflik içinde ayrı bir oda veya bölmede yürütülür.
+Evrak kabul görevlileri ve dağıtıcılar 
+MADDE 27 – (1) Evrak kabul edecek görevliler ile dağıtıcıların isim, unvan ve imza örnekleri resmi dairelerce karşılıklı olarak birbirlerine bildirilir. Değişiklikler de aynı işleme tabi tutulur.
+Evrakın kabulü
+MADDE 28 – (1) Elektronik ortamda gelen evrak, evrak kabul görevlisi tarafından teslim alınma işlemi ile kabul edilir. 
+(2) Posta, kurye, kurum ve kuruluşların dağıtıcıları ve iş sahibi kişiler yahut bunların kanuni temsilcilerince elden verilen her türlü evrak, dilekçe ve koliler evrak kabul ve ayırma görevlilerince alınır.
+(3) Evraktan;
+a) Zimmetle gelen evrak; alan görevlinin kimliğini belirtecek şekilde adı, soyadı ve kabul tarihi yazılmak ve imzalanmak suretiyle,
+b) Diğerleri; zimmetsiz olarak,
+c) Özellik taşıyan evrak; zarflarının kabul tarih ve saati belirtilerek,
+teslim alınır.
+(4) Müracaatın niteliği bakımından herhangi bir sakınca görülmediği hallerde, dilekçe ve evrakın iş sahiplerince veya kanuni temsilcilerince elden takibine imkân verilebilir.
+(5) Bir dilekçeyi veya evrakı elden getiren kişiye, sahibini, konusunu, kayıt sayısı ile alınış tarihini belirtir bir evrak kabul ve kayıt fişi verilir.
+(6) Zarfından yahut açık ise başlık ve kapsamından yanlış getirildiği anlaşılan evrak ve dilekçeler dağıtıcısına veya elden getiren kişiye iade edilir.
+(7) İdareye güvenli elektronik imzayla imzalanarak elektronik ortamda gelen ve muhatabı olunmayan belge, belgeyi gönderene elektronik ortamda gerekçeli olarak iade edilir. Bu durumda belgenin bir kopyası elektronik ortamda muhafaza edilir.
+Zarfların açılması
+MADDE 29 – (1) Kişiler adına gelen zarflar ilgililerine verilmek üzere dağıtım masasına; gizli, kişiye özel, hizmete özel işaretli zarflar açılmadan gizli evrak masasına elden verilir.
+(2) Diğer zarflar, özen gösterilerek açılır.
+(3) Zarftan çıkan evrak;
+a) Evrakın geldiği yer ve kuruluşu belli olup, hitap yeri boş, belirsiz ve içeriğinden de muhatabın anlaşılamadığı durumlarda zarfı ile birlikte iade edilmek üzere,
+b) Hitap yerinde başka bir kuruluş adı yazılı ise, yanlışlığı belirtir bir not ile gideceği yere gönderilmek üzere,
+c) İmzasız ise, bir not ile geri verilmek üzere,
+ç) Kişilere hitap ediyorsa, zarfına eklenerek ilgili kişiye verilmek üzere,
+dağıtım masasına verilir.
+(4) Adressiz ve imzasız dilekçeler;
+a) 3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun gereğince işlem yapılmak üzere ilgili şefine verilir.
+b) İsim ve adres sadece zarfta yazılı ise yahut gerek zarfta gerekse dilekçede herhangi bir isim ve adres yoksa zarf dilekçeye eklenerek aynı işleme tabi tutulur.
+c) Elektronik ortamda gelen dilekçeler de aynı işleme tabi tutulur.
+Evrakın ayrılması
+MADDE 30 – (1) Kabul ve ayırma masasına gelen evraktan;
+a) Normal evrak ve dilekçeler; normal evrak masası görevlilerine,
+b) Özellik taşıyan ve değerli evrak; gizli evrak masası görevlilerine,
+verilir.
+c) Değerli evrak niteliği taşımayan ve belirli bir daireye veya kuruluşa teslimi gereken koliler, daireye veya kuruluş ilgililerine teslim edilmek üzere dağıtım masasına verilir.
+Normal evrakın havalesi
+MADDE 31 – (1) Elektronik ortamda gelen evrak, evrak kabul görevlisi tarafından teslim alındıktan sonra havale ve imza için yetkilisine iletilir.
+(2) Elektronik ortam haricinde normal evrak masası görevlilerine gelen evrak ve dilekçeler, elektronik ortamda kaydı yapılarak, valilik birimlerine ait olanların taraması yapıldıktan sonra elektronik ortamda havale ve imza için yetkilisine sunulur.
+(3) Havale, evrakın havale olduğu yer, havale tarihi ve havaleyi imzaya yetkili kişinin sıfatı yazılmak sureti ile elektronik ortamda yapılır.
+(4) Havalesi doğrudan vali tarafından yapılacak evrak, şefi tarafından ayrılır. Tereddüt halinde il yazı işleri müdürünün görüşüne başvurulur.
+(5) Teslim alınan evrakın aynı zamanda kabulü de yapılmış olduğundan dilekçelere ve normal evraka gelen evrak kayıt numarası verilir.
+(6) Genel sayı, evrak için takvim yılı başında (1)’den başlamak ve yılsonuna kadar birbirini izlemek suretiyle verilir.
+Gizli evrakın havalesi
+MADDE 32 – (1) Elektronik ortamda gelen gizli evrak, yetkili evrak kabul görevlisi tarafından teslim alındıktan sonra havalesi yapılmak üzere yetkilisine iletilir.
+(2) Özellik taşıyan ve değerli evraktan elektronik ortam haricinde gelenler, gidecekleri yerlere göre ayrılır ve havalesi yapılır. Valilik birimlerine gönderilen evrak, yetkili amirin uygun görüşü ile taraması yapıldıktan sonra, elektronik ortamda ilgilisine havalesi yapılır.
+(3) Gizli evrak da normal evrak gibi elektronik ortamdan genel sayı alır.
+Evrakın kaydı ve dağıtım masasına verilmesi
+MADDE 33 – (1) Elektronik ortamda gelen evrak, görevlinin evrakı kabulü ile otomatik olarak sayısını sistemden alır ve kaydı tamamlanır. Postayla veya elden gelen evrak ise birimi ilgilendiriyorsa taraması yapıldıktan sonra sistem üzerinden evrakın türü, geldiği yer, sayısı, tarihi, varsa ek sayısı, konusu, havale olunduğu yer başlıklarına göre belirlenecek sütunlara gerekli bilgilerin yazılması suretiyle kaydolunur.
+(2) Kayıt alan evrak dağıtıma verilir.
+Dilekçelere uygulanacak işlem
+MADDE 34 – (1) Evrak şefliğine elektronik ortamda, postayla veya kurum ve kuruluşların dağıtıcılarınca getirilen dilekçeler, havale ve imza işlemi yapıldıktan sonra, ilgili daire, kurum veya kuruluşa gönderilir.
+(2) İçişleri birimlerini ilgilendiren dilekçeler, taraması yapıldıktan sonra, ilgili birime gönderilir.
+(3) İlgili birim tarafından dilekçenin gereği yapılarak sonucu hakkında müracaat sahibine bilgi verilir ve işlem kapatılır. 
+Evrakın gönderilmesi ve dağıtımı
+MADDE 35 – (1) Elektronik ortamda hazırlanan evrak imzalandıktan sonra sistemden otomatik olarak evrak sayısı alarak postalanmaya hazır hale gelir ve ilgili görevli tarafından elektronik ortamda gönderilir. Elektronik ortam haricinde dağıtım masasına gelen evrak süratle dağıtıma tabi tutulur.
+(2) Bu Yönetmelikte düzenlenen valilik birimlerine gidecek, özellik taşıyan ve değerli evrak ile evrak şefinin gerekli gördüğü normal evrak zimmetle; diğer normal evrak zimmetsiz olarak verilir. Diğer evrak gidecekleri yere göre ayrılır. Bunlardan gizlilik dereceli olmayanlar zarflanmadan, gizlilik dereceli olanlar ise zarflanarak, havale edildikleri yerlere zimmetle verilir.
+(3) Sistem içi ve sistem dışı gelen zimmetli evrak; elektronik ortamda düzenlenen teslim fişinin çıktısı alınarak ilgilisine imzalatılır. Bu imkân yoksa zimmet kaydı yapılmak suretiyle teslim edilir.
+(4) Zimmet kaydında; kayıt edilen evrakın türü, geliş yeri, konusu, varsa eki, valilik evrak şefliğinde aldığı genel sayı, havale edildiği veya gönderildiği yer, teslim edildiği tarih ve teslim alanın ad ve soyadı, görev unvanı ve imza sütunları bulunur.
+(5) Dağıtımı yapılacak evrak, günde en az bir defa, dağıtıcılar tarafından ilgili birimlere ulaştırılır.
+(6) İvedi dereceli evrak, havale edildikçe dağıtıma verilir veya ilgili birimlerce özel görevli ile aldırılmaları sağlanır.
+ 
+İKİNCİ BÖLÜM
+Valilik Birimlerinde Evraka Uygulanacak İşlem
+ 
+Birimlerde evrakın alınması
+MADDE 36 – (1) Evrak Şefliğinden valilik birimlerine gönderilen evrak, elektronik ortamda ya da gerekiyorsa kâğıt kullanılarak, görevli memur tarafından teslim alınır ve öncesinin olup olmadığı araştırılır. Evrakın öncesi varsa onunla birleştirilmek suretiyle; yoksa dosya plânına göre yeni bir dosya açılarak, birim amirine veya yetkilendirilen görevliye verilir. 
+(2) Gelen evrakın öncesi olup dosyası yerinde değilse, konu koduna göre geçici bir dosya açılır ve asıl dosyanın kimde olduğu dosya üzerinde gösterilerek birinci fıkradaki işlem yapılır.
+(3) Birim amiri veya yetkilendirilen görevli evrakı, niteliğine göre, ilgili gördüğü memura havale eder.
+Birimlerde evrakın incelenmesi ve gereğinin yapılması
+MADDE 37 – (1) Evrak havale edildiği memur tarafından incelenir. İlgili memur tarafından evrakın gereği, amirlerinin görüş, tavsiye ve talimatları doğrultusunda elektronik ortamda ya da gerekiyorsa kâğıt kullanılarak yapılır.
+(2) Yazışmalar, Resmî Yazışmalarda Uygulanacak Esas ve Usuller Hakkında Yönetmelik hükümleri dikkate alınarak yapılır.
+Birimlerde işlemi tamamlanan evrakın gönderilmesi
+MADDE 38 – (1) Valilik birimlerinde hazırlanan ve imzalanan evrak, evrak sayısını elektronik ortamda alır ve evrakı postalayacak görevliye sistem üzerinden ulaşır. Kaydının tamamlanmasını müteakip kurum, kuruluş veya kişilere elektronik ortamda gönderilir. Elektronik olarak teslimi mümkün olmayan kurumlara iletilecek yazılar ise kâğıda dökülerek gönderilir.
+(2) Güvenli elektronik imzayla imzalanarak üretilmiş bir belgeden çıktı alınıp gönderilmesine ihtiyaç duyulması hâlinde bu işlem sadece idarece yetkilendirilmiş görevli tarafından gerçekleştirilir. Çıktının uygun bir yerine Belgenin Aslı Elektronik İmzalıdır ibaresi konulur. Çıktı, idarece yetkilendirilmiş görevlinin adı, soyadı ve unvanı belirtilmek suretiyle görevli tarafından imzalanır ve kırmızı ya da mavi mühürle mühürlenir. İmza ile mührün üst üste gelmemesine dikkat edilir.
+(3) Resmî yazılar, yazının içeriği ve ivedilik durumuna göre faks ile de gönderilebilir. Faks ile yapılan yazışmalarda, yazıda belirtilen hususlarda hemen işlem yapılır. Faks ile yapılan yazışmaların beş gün içerisinde resmî yazı ile teyidi yapılır.
+(4) Birimlerden gönderilen evrakın, taahhütlü veya iadeli taahhütlü, Acele Posta Servisi veya kargo gibi özellik taşıyan posta ile gönderilmesi düşünülüyorsa; hangi posta ile gönderilmesi gerektiği, ilgilisince, dağıtım masasına bildirilir.
+(5) Dağıtım masasına sevk edilmek üzere bırakılan evrak, ya dağıtıcı aracılığı ile yahut evrakın niteliğine göre gerekiyorsa zarflanma ve pullanma işleri de yapılarak posta ile ilgili birimlere ulaştırılır.
+(6) Bu Yönetmelikte belirtilen valilik birimlerinin gidecek olan evrakı zimmetsiz; bu birimler dışında kalan fakat evrak kabul ve sevk işlemleri valilik evrak şefliklerince yürütülen Bakanlık birimlerinin gidecek evrakı ise zimmetle dağıtım masası görevlilerine teslim edilir.
+ 
+ÜÇÜNCÜ BÖLÜM
+İlçelerde Evrak Kabul, Havale ve Dağıtım İşleri ve Kaymakamlık
+Birimlerinde Evraka Uygulanacak İşlem
+ 
+İlçelerde evraka uygulanacak işlem
+MADDE 39 – (1) Kaymakamlığa gelen her türlü evrakın kabulü, elektronik ortama kaydı, verilmiş yetki çerçevesinde havalesi ve dağıtımı ile birimlerden gönderilecek evrakın dağıtım ve postalama işleri, İl Yazı İşleri Müdürlüğü Evrak Şefliğindeki esaslara paralel şekilde “İlçe Yazı İşleri Müdürlüğü Evrak Şefliği” tarafından yapılır.
+(2) Gelen evrakın niteliğine göre hangi görevli veya görevliler tarafından ilgili birim veya mercilere havale edileceği, kaymakamlıkça çıkarılan İmza Yetkileri Yönergesi ile belirlenir.
+(3) Özellik taşıyan evrak; çalışma gün ve saatleri dışında, posta yoluyla, güvenlik güçlerinin haberleşme görevlileri tarafından kaymakamlara veya bunlar adına yetki verilen görevlilere teslim edilebilir.
+(4) Elektronik ortam haricinde normal evrak masası görevlilerine gelen evrak ve dilekçeler, elektronik ortamda kaydı yapılarak, kaymakamlık birimlerine ait olanların taraması yapıldıktan sonra elektronik ortamda havale ve imza için yetkilisine sunulur.
+(5) Özellik taşıyan ve değerli evraktan elektronik ortam haricinde gelenler, gidecekleri yerlere göre ayrılır ve havalesi yapılır. Kaymakamlık birimlerine gönderilen evrak, yetkili amirin uygun görüşü ile taraması yapıldıktan sonra, elektronik ortamda ilgilisine havalesi yapılır.
+(6) Havalesi doğrudan kaymakam tarafından yapılacak evrak, şefi tarafından ayrılır. Tereddüt halinde ilçe yazı işleri müdürünün görüşüne başvurulur.
+(7) İş hacminin çok yüksek olduğu ilçelerde ihtiyaca göre ayrı evrak masaları teşkil edilebileceği gibi iş hacminin düşük olduğu yerlerde birden fazla masanın işleri bir masada gördürülebilir.
+(8) Yukarıdaki fıkralar dışında Kaymakamlıklarda, evrak kabul, havale ve dağıtım işleri Üçüncü Kısım Birinci Bölümde düzenlenen valilik birimlerindeki esaslara paralel biçimde yapılır.
+Kaymakamlık birimlerinde evraka uygulanacak işlem
+MADDE 40 – (1) Kaymakamlık birimlerinde evraka uygulanacak işlem, Üçüncü Kısım İkinci Bölümde düzenlenen valilik birimlerindeki esaslara paralel biçimde yürütülür.
+(2) Kaymakamlık birimlerinde de defterler elektronik ortamda tutulur.
+ 
+DÖRDÜNCÜ BÖLÜM
+Dosyalama İşleri
+ 
+Dosyalama ilkesi
+MADDE 41 – (1) Birimlerin görev alanına giren konularda Standart Dosya Planına göre dosya açılır. Dosyalama öncelikle elektronik ortamda yapılır. Kâğıt ortamında gelen evrakın taraması yapıldıktan sonra e-İçişleri ortamında dosyalanır ve ilgili dosyasına konulur.
+Ana dosya ve açılma şekli
+MADDE 42 – (1) Ana dosya; ana konu kapsamına giren bütün konuları ve işlemleri kapsayan evrakın toplandığı konu kodunun adıdır. Bu grup tek bir klasörden oluşabileceği gibi işlemlerin fazlalığı halinde birden çok klasörden de oluşabilir. Ana dosya, o dosya numarasını taşıyan bir yazı gönderildiği veya geldiği zaman Standart Dosya Planındaki konu kodlarına göre açılır. Ana dosya ile ilgili olmasına rağmen alt bölümlemelerde tanımlanmayan konulara ait yazıların dosyalanması için “diğer” adı altında ayrı bir dosya açılır.
+(2) Standart Dosya Planındaki konu kodlarının yetersiz kalması halinde valiliklerce, Ekim sonuna kadar, yapılacak talep üzerine Bakanlıkça yeni konu kodları yılda bir defa Aralık ayında belirlenir ve Devlet Arşivleri Genel Müdürlüğüne bildirilir.
+Ana dosya anahtarı
+MADDE 43 – (1) Standart Dosya Planındaki ana dosya sayıları ve konuları numara sırası alt alta yazılmak suretiyle bir dosya anahtarı hazırlanır ve bu dosya anahtarı birimin merkezi bir yerine asılır. Ana dosyalara sayı ve konu bu dosya anahtarından verilir.
+Tali dosya ve açılma şekli
+MADDE 44 – (1) Tali dosya; ana dosya kapsamına giren çeşitli konu, iş ve işlemlere ait evrakın toplandığı dosyaların adıdır.
+(2) Bu işlemlerin her biri ayrı bir dosya gömleğinde toplanır ve ana dosya klasörleri arasına konur.
+(3) Bu dosyalar ilgili memurun talebi üzerine müdür tarafından açılır.
+Ana dosyanın numaralanması ve konu yazılması
+MADDE 45 – (1) Ana dosya klasörünün kapak sırtına dosyayı tanımlayan “kurum adı, birim adı, dosya numarası, konu adı ve yılı” yazılır.
+Tali dosya fihristleri 
+MADDE 46 – (1) Bir ana dosya içerisindeki bütün tali dosyaların sıra sayısı ve konusu alt alta yazılmak suretiyle bir fihrist hazırlanır. Fihrist ilgili ana dosya klasörü kapağının iç yüzüne yapıştırılır.
+Tali dosyanın numaralanması ve konu yazılması
+MADDE 47 – (1) Tali dosya gömleklerinin üzerine dosya numarası ve dosya konusu yazılır.
+(2) Tali dosya numarası ana dosya sıra sayısı ile tali dosya fihristinden alınmış konu ve sıra sayısının bir arada yazılmasından oluşur.
+Tali dosyaların bölünmesi
+MADDE 48 – (1) Tali dosya açılması sırasında konu kapsamı mümkün olduğu kadar dar tutulur. İşlemlerin yürütülmesi sırasında konunun yeni dosyalara bölünmesi ihtiyacı ortaya çıktığı takdirde yeni açılan dosyaya fihristten yeni numara verilir.
+Geçici dosya ve açılma şekli
+MADDE 49 – (1) Geçici dosya; birime gelen herhangi bir evraka ait ana dosyanın bir başka birimde, ayrı bir kişi veya yerde ve benzeri bulunması ve o sırada geri alınmasının mümkün olmaması halinde açılacak dosyanın adıdır.
+(2) Bu dosya ilgili memurun talebi üzerine müdür tarafından açılır. Dosyanın üzerine geçici olduğu ve asıl dosyanın numarası yazılır.
+(3) Geçici dosyadaki evrak en kısa zamanda asıl dosyaya aktarılır ve geçici dosya iptal edilir.
+Evrakın dosyalara konulması
+MADDE 50 – (1) Birimlerin görevleri ile ilgili evrak Standart Dosya Planına göre ana dosyalara konulur.
+Birden fazla dosyayı ilgilendiren evrakın dosyalanması 
+MADDE 51 – (1) Gelen evrak, birden fazla dosya ile ilişkili ise evrakın aslı en çok ilgili olduğu dosyaya konur. İlgili diğer dosyalara evrakın birer fotokopisi veya geldiği yer, gün, sayı ve konusunu gösteren bir not eklenir.
+Beklemeli evrak 
+MADDE 52 – (1) Bir birimin, işlemlerini üstlenip üstlenmemesi henüz belirgin hale gelmemiş konuları kapsayan evrak, beklemeli evrak sayılır. Bunlardan birime ait oldukları kabul edilenler, konuları ile bağlantılı açılmış veya açılacak dosyaya konulur.
+Görevliler tarafından özel dosya açılamaması
+MADDE 53 – (1) Görevliler tarafından, evrak kendilerinde kalmak üzere, özel dosya açılmaması esastır. Ancak vali, vali yardımcıları, kaymakamlar, il hukuk işleri müdürleri, özel kalem müdürleri ve valilerin yetki vereceği birim müdürleri hizmetin gerektirdiği hallerde özel dosya açabilir ve işlemleri bu dosyadan izleyip sonuçlandırabilir.
+Dosya istenmesi ve iadesi
+MADDE 54 – (1) İşlemleri yapmakla görevli kişi dosyalamadan sorumlu memurdan ilgili dosyayı yazılı bir fişle isteyebilir.
+(2) Zorunlu hallerde sorumlusunun bilgisi olmadan dosyayı almak durumunda kalan görevli dosya memuruna en kısa zamanda bilgi verir.
+(3) Alınan dosya, işlemi biter bitmez görevlisine iade edilir.
+(4) Dosyalamadan sorumlu görevli tarafından gerekli görülen hallerde işleme verilen dosya; numarası, konusu, verildiği görevlinin adı ve unvanı ve veriliş tarihi bir karta yazılmak suretiyle izlenir.
+Dosyanın tekrar görülmek istenmesi
+MADDE 55 – (1) Görevli kişi, bir dosyayı belli bir süre sonra tekrar görmek istiyorsa adını, görev unvanını ve görmek istediği tarihi belirten yazılı bir fişi dosyaya ekleyerek dosyalama memuruna verir.
+(2) Dosyalama memuru, tekrar görülmek istenilen evrakı fişte belirtilen tarihte fiş sahibine verir ve usulüne göre takip eder.
+Dosyadan evrak çıkarılması ve koyulması
+MADDE 56 – (1) Kural olarak evrak, dosyası ile birlikte işleme verilir ve alınır, dosyasından ayrılmaz. Evrakın dosyasından çıkarılmasının zorunlu olduğu hallerde, dosyasındaki yerine, evrakın geldiği veya gittiği yeri, verildiği kişiyi, tarihini, sayısını, konusunu ve belli ise geri verileceği tarihi belirten bir ilgi fişi konulur.
+Klasör ve dosya cinsleri
+MADDE 57 – (1) Evrakın dosyalanmasında, standartlara göre yapılmış dosya ve klasörler kullanılır.
+(2) Özellikleri bakımından dosyalara veya klasörlere sığdırılamayacak evrak özelliklerinin gerektirdiği yerde ve biçimde saklanır.
+Dosyaların saklanması
+MADDE 58 – (1) Dosyalar, standartlara uygun dosya dolaplarında saklanır.
+(2) Klasörler, dolap ve raflara dosya anahtarındaki sıralamaya uygun olarak ve taşıdıkları numara ve ad kolayca görülebilecek biçimde sıralanır. Raf veya dolap üzerine o bölümde yer alan klasörlerin ilk ve son numaraları yazılır.
+Dosyaların saklanmasında sorumluluk
+MADDE 59 – (1) Valilik ve kaymakamlık birimlerinde dosyalar, görevli memurun sorumluluğundadır ve ondan habersiz alınamaz. Zorunlu hallerde ise dosyanın yerine alındığına dair bir yazılı belge konulur.
+(2) Evrak veya dosyanın kurum dışına çıkarılması ilke olarak yasaktır. Vali, vali yardımcısı, kaymakam, müdür, şifre memuru gibi görevlilerin, hizmetin gerektirdiği hallerde, kurum dışına evrak götürmek zorunda kalmaları halinde en kısa sürede bu evrak veya dosya ilgili memuruna geri verilir.
+(3) Gizlilik dereceli ve muhafazası özel mevzuatı ile kurallara bağlanmış evrakın, gizli evrak için konulmuş esaslar içinde yangına, tabii afetlere, hırsızlığa karşı korunacak biçimde saklanmasından dosyalama memuru ile varsa o gizli evrakı muhafaza ile özel olarak görevlendirilmiş kişiler ortaklaşa sorumludur.
+ 
+BEŞİNCİ BÖLÜM
+Kurul veya Komisyonların Çalışmaları
+ 
+Kurul veya komisyonların toplanması
+MADDE 60 – (1) İşlemleri, valilik ve kaymakamlık birimlerini ilgilendiren kurul veya komisyonlar;
+a) Özel mevzuatında belirtilmişse belirtilen zaman ve sürede,
+b) Özel mevzuatında belirtilmemişse kurul veya komisyonun tespit edeceği zaman veya sürede,
+c) Özel mevzuatında engelleyici bir hüküm yoksa Başkanın çağrısı üzerine olağanüstü olarak,
+toplanır.
+(2) Kurul veya komisyonlar, Başkanlıkça belirlenen gündem uyarınca toplanır.
+(3) Gündem hakkında toplantıdan önce üyelere bilgi verilir.
+Kararların alınması
+MADDE 61 – (1) Kurullar, özel mevzuatında ayrıca bir hüküm yoksa üyelerinin yarısından fazlasının katılımıyla toplanır ve kararlar mevcut üyelerin çoğunluğu ile alınır.
+a) Toplantıda bulunmayan üyelerin özürleri karar tutanağında belirtilir.
+b) Çoğunluk kararına aykırı görüşte olan üyelerin karşı oy gerekçeleri karar altında özet olarak gösterilir.
+c) Toplantıları başkan açar ve kapatır. Oylamada eşitlik olursa başkanın bulunduğu taraf çoğunluk sayılır.
+ç) Üzerinde görüşme yapılan dosya hakkında kesin karar verilmesine imkân vermeyen eksiklikler söz konusu ise eksikliklerin tamamlanması için ara kararı alınarak makul bir süre verilir. Ara kararı doğrultusunda eksiği tamamlanan dosya kurulda yeniden görüşülerek karara bağlanır.
+Kurulların sekretarya hizmetleri
+MADDE 62 – (1) İşlemleri valilik veya kaymakamlık birimlerini ilgilendiren kurul veya komisyonların sekretarya hizmetleri ilgili birimince yürütülür.
+(2) Kurulda ancak, başkanlıkça havale edilmiş konular görüşülebilir.
+(3) Kurulca, mevzuatta toplanması öngörülen toplantı zamanında, görüşülecek herhangi bir konu yoksa toplantı yapılmaz; ancak durum sekretarya görevlileri tarafından elektronik ortamda düzenlenen karar defterinde belirtilir ve çıktısı alınarak başkan tarafından imzalanır.
+(4) Başkanlığını vali, vali yardımcısı veya kaymakamın yaptığı ve sekretarya hizmetleri valilik ve kaymakamlık birimleri dışındaki kuruluşlarca yürütülen kurullarda alınan kararların birer sureti, karar tarihini takip eden en geç bir hafta içinde valilik veya kaymakamlığa gönderilir. Kararların bir sureti İçişleri Bakanlığı Standart Dosya Planında valilik ve kaymakamlık bölümü altındaki kararlar ile ilgili işler konu kodlu dosyada muhafaza edilir. 
+ 
+ALTINCI BÖLÜM
+Birimlerde Tutulacak Defterler
+ 
+İdare kurulu karar özetleri defteri
+MADDE 63 – (1) Çeşitli kanunlarla il ve ilçe idare kurullarına görev olarak verilen konulara ait olup kurullara havale edilen evrakın kaydı, verilen kararın özetinin tespiti ve daha sonra gördüğü işlemlerin sonucunun bir arada görülmesini sağlamak üzere, idare kurulu biriminde elektronik ortamda İdare Kurulu Karar Özetleri Defteri tutulur.
+(2) Alınan kararlar bu deftere elektronik ortamda işlenir ve çıktısı alındıktan sonra başkan ve üyelerce imzalanır. İmza işleri toplantı ve karar tarihinden itibaren en kısa zamanda tamamlanır ve çıktılar dosyalanır.
+(3) Özetleri deftere işlenmiş olan kararlar, gerekçeli asıl kararlar olarak elektronik ortamda yeterli sayıda çıktısı alınarak başkan ve üyelere ayrıca imzalattırılır.
+(4) Gerekçeli bu kararların imzalı asılları numara sırasıyla dizilir, ayrı bir dosyaya konur ve bu dosyalar klasörlerde muhafaza edilir. Kararların diğer örnekleri dosyalara bağlanarak işleme konulur.
+Memurların yargılanmalarına ilişkin defterler
+MADDE 64 – (1) 4483 sayılı Memurlar ve Diğer Kamu Görevlilerinin Yargılanması Hakkında Kanun gereğince verilen kararlar, Ön İnceleme Karar Özetleri Defterine elektronik ortamda kaydedilir. Kararların birer örneği bu Yönetmeliğin 63 üncü maddesinde belirtilen şekilde muhafaza edilir.
+(2) 2547 sayılı Yükseköğretim Kanunu uyarınca verilen kararlar, Akademik Personel Haricinde Kalan Üniversite Personelinin Yargılanması Hakkında Karar Özetleri Defterine elektronik ortamda kaydedilir. 
+(3) Birinci ve ikinci fıkralarda verilen kararlar ilgili memurun özlük dosyasına konulmak üzere kurumuna gönderilir.
+(4) Yargı mercilerine tevdi edilen dosyalar hakkında verilen kesin kararlar da izlenerek, deftere elektronik ortamda işlenir ve ilgili görevlinin özlük dosyasına konulmak üzere kurumuna gönderilir.
+Araştırma, inceleme ve soruşturma emirleri takip defteri
+MADDE 65 – (1) Vali ve kaymakamlarca verilen araştırma, inceleme ve soruşturma emirlerinin takibi için Araştırma, İnceleme ve Soruşturma Emirleri Takip Defteri elektronik ortamda tutulur.
+İl disiplin kurulu karar özetleri defteri
+MADDE 66 – (1) 657 sayılı Devlet Memurları Kanunu, özel kanun, tüzük ve yönetmeliklere göre işlem yapılmak üzere il disiplin kuruluna intikal ettirilen evrakın kaydı ve verilen karar özetinin yazılması amacıyla il idare kurulu müdürlüğünce elektronik ortamda İl Disiplin Kurulu Karar Özetleri Defteri tutulur.
+(2) Söz konusu kararların deftere işlenmesi, imzalanması, gerekçeli asıl kararların hazırlanması, işleme konulması, birer örneğinin klasörde saklanması bu Yönetmeliğin 63 üncü maddesinde zikredilen defter için uygulanan usule tabidir.
+3091 sayılı taşınmaz mal zilyetliğine yapılan tecavüzlerin önlenmesi hakkında kanun hükümleri gereğince alınan karar özetleri defteri
+MADDE 67 – (1) 3091 sayılı Taşınmaz Mal Zilyetliğine Yapılan Tecavüzlerin Önlenmesi Hakkında Kanun hükümlerince valilik ve kaymakamlığa yapılacak müracaatların kaydı, verilen kararların yazılması ve daha sonra yapılan işlemlerle ilgili sonucun bir arada görülmesini sağlamak üzere il idare kurulu müdürlüğünde 3091 Sayılı Kanun Gereğince Alınan Karar Özetleri Defteri elektronik ortamda tutulur.
+(2) Kararların asılları numara sırasına göre ayrı bir dosyada saklanır ve yılsonunda klasörüne konulur.
+Belediye meclis kararları kayıt defteri
+MADDE 68 – (1) Mevzuatı gereği mülki idare amirine gönderilmesi gereken belediye meclis kararları Belediye Meclis Kararları Kayıt Defterine elektronik ortamda kaydedilir.
+Defterlere ilişkin ortak hükümler
+MADDE 69 – (1) Defterlerdeki sıra numaraları, Tanıtıcı Bayrak Kayıt Defteri, Apostil Kayıt Defteri gibi özellik taşıyanlar hariç, her takvim yılında (1)’ den başlanarak verilir.
+(2) Yılsonunda elektronik ortamda tutulan defterlerin raporları alınarak birim müdürü tarafından imzalanır ve dosyasında saklanır.
+(3) Maddi hatalar vali, ilgili vali yardımcısı ve kaymakam onayıyla düzeltilir.
+(4) Bu Yönetmelikte öngörülen defterlerin şekilleri, halen uygulanmakta olan şekillerdir. Ancak Bakanlıkça lüzum görülmesi halinde, defterlerin şekilleri yeniden belirlenir ve bir genelge ile valiliklere duyurulur.
+ 
+YEDİNCİ BÖLÜM
+Arşivleme
+ 
+İl ve ilçe arşivleri
+MADDE 70 – (1) Her il ve ilçede ilgili birim amirinin yetki ve sorumluluğunda bir arşiv bulunur.
+(2) Hükümet konaklarında bu maksatla yeterli hacim ve nitelikte bir yer arşiv olarak hazırlanır.
+(3) İşlemlerde kullanılmayan, fakat gerektiğinde başvurmak üzere belirli bir süre saklanması zorunlu görülen, evrak arşivlik malzeme olarak adlandırılır.
+(4) Arşiv yerinin düzenlenmesi, arşivlik malzemenin ayıklanması ve diğer arşiv işleri, İçişleri Bakanlığı Merkez ve Taşra Teşkilatı Arşiv Hizmetleri Yönetmeliği hükümlerine göre yapılır.
+(5) Evrakın el değiştirmesi ve muhafazası konusunda koruyucu güvenlik mevzuatı hükümleri saklıdır.
+(6) e-İçişleri kapsamında evrak elektronik imza ile imzalandıktan sonra elektronik ortamda arşivlenir. Ancak, günün ihtiyaç ve şartlarına göre bu konudaki uygulama Bakanlıkça belirlenir.
+ 
+DÖRDÜNCÜ KISIM
+Çeşitli ve Son Hükümler
+ 
+İş ve işlemlerin yürütülmesinde devamlılık
+MADDE 71 – (1) Bakanlık, sistemin işleyişi ile ilgili ilke ve usulleri değişen şartlara göre düzenleyebilir.
+(2) Bu Yönetmelikle belirlenen iş ve işlemlerin mücbir sebeplerle elektronik ortamda yürütülememesi durumunda Bakanlıkça yapılacak duyuruya göre yazılı olarak yürütülebilir.
+Atıflar
+MADDE 72 – (1) 10/9/1988 tarihli ve 19925 sayılı Resmî Gazete’de yayımlanan Valilik ve Kaymakamlık Büroları Kuruluş, Görev ve Çalışma Yönetmeliğine yapılmış olan atıflar bu Yönetmeliğe yapılmış sayılır.
+(2) Diğer yönetmeliklerle valilik ve kaymakamlık birimlerine verilen görevlerin yürütülmesinde bu Yönetmelik hükümleri uygulanır.
+Temsil
+MADDE 72/A – (Ek:RG-28/7/2018-30492)
+(1) Vali ilde Devletin ve Cumhurbaşkanının temsilcisi ve idari yürütme vasıtası; kaymakam ilçede Cumhurbaşkanının temsilcisi ve idari yürütme vasıtasıdır.
+Hizmetlerin aynı birimde gördürülmesi
+GEÇİCİ MADDE 1 – (1) Bu Yönetmelikte sayılan yeni birimlerin il ve ilçelerde kurulması, kadro ve personel sağlanması işlemleri tamamlanıncaya kadar bu şube müdürlükleri veya şefliklerin işleri diğer bir şube müdürlüğüne veya şefliğe gördürülebilir.
+(2) İl ve ilçelerde bu maddede belirtilen düzenleme ve değişiklikler vali ve kaymakamlar tarafından yapılır.
+Yürürlükten kaldırma
+MADDE 73 ‒ (1) 10/9/1988 tarihli ve 19925 sayılı Resmî Gazete’de yayımlanan Valilik ve Kaymakamlık Büroları Kuruluş, Görev ve Çalışma Yönetmeliği yürürlükten kaldırılmıştır.
+Yürürlük 
+MADDE 74 ‒ (1) Bu Yönetmelik yayımı tarihinde yürürlüğe girer.
+Yürütme 
+MADDE 75 – (1) Bu Yönetmelik hükümlerini İçişleri Bakanı yürütür. 
+ 
+(1) 20/12/2013 tarihli ve 28857 sayılı Resmi Gazete’de yayımlanan Yönetmelik değişikliği ile  bu Yönetmeliğin 18 inci maddesinin birinci fıkrasının (ğ) bendinden sonra gelmek üzere (h) bendi eklenmiş; 21 inci maddesinin birinci fıkrasının (a) bendine (12) numaralı alt bentten sonra gelmek üzere (13) numaralı alt bent; (b) bendinin (7) numaralı alt bendinden sonra gelmek üzere (8) numaralı alt bent eklenmiş ve müteakip bentler buna göre teselsül ettirilmiştir.
+(2) Bu değişiklikle 15 inci maddesinin birinci fıkrasının (b) bendine (10) numaralı alt bentten sonra gelmek üzere alt bentler eklenmiş, mevcut (11) numaralı alt bent buna göre teselsül ettirilmiştir. 
+(3) 12/9/2018 tarihli ve 30533 sayılı Resmi Gazete’de yayımlanan değişiklik ile Yönetmeliğin 17 nci maddesinin başlığı ‘’ İl mahalli idareler müdürlüğünün görevleri’’ iken yönetmeliğe işlendiği şekilde değiştirilmiştir.
+(4) 4/4/2020 tarihli ve 31089 sayılı Resmî Gazete’de yayımlanan değişiklik ile Yönetmeliğin 25 inci maddesinin birinci fıkrasına (d) bendinden sonra gelmek üzere bent eklenmiş ve takip eden bent buna göre teselsül ettirilmiştir.
+(5) 4/6/2020 tarihli ve 31145 sayılı Resmî Gazete’de yayımlanan değişiklik ile Yönetmeliğin 22 nci maddesinin birinci fıkrasına (d) bendinden sonra gelmek üzere bent eklenmiş ve takip eden bent buna göre teselsül ettirilmiştir.
+ 
+ 
+Yönetmeliğin Yayımlandığı Resmî Gazete’nin
+Tarihi
+Sayısı
+8/6/2011
+27958
+Yönetmelikte Değişiklik Yapan Yönetmeliklerin Yayımlandığı Resmî Gazetelerin
+Tarihi
+Sayısı
+1.
+5/8/2012
+28375
+2. 
+20/12/2013
+28857
+3.
+30/8/2014
+29104
+4.
+28/7/2018
+30492
+5.
+12/9/2018
+30533
+6.
+4/4/2020
+31089
+7.
+4/6/2020
+31145

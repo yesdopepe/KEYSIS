@@ -1,0 +1,17 @@
+[Unit]
+Description=EBYS Docling Ingestion Service
+After=network.target
+
+[Service]
+Type=simple
+User=docling
+WorkingDirectory=/opt/docling-service
+# Leading "-" makes this file optional — matches main.py's opt-in auth
+# (no DOCLING_SHARED_SECRET line = no auth required, same as local dev).
+EnvironmentFile=-/opt/docling-service/.env
+ExecStart=/opt/docling-service/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 8100
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
