@@ -1,12 +1,19 @@
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import postgres from "postgres";
+import { drizzle } from "drizzle-orm/postgres-js";
 import * as schema from "./schema";
 
-const DB_PATH = process.env.DATABASE_PATH ?? "./data/ebys.db";
+const DATABASE_URL = process.env.DATABASE_URL;
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL ayarlanmamış (bkz. .env.local / .env.example).");
+}
 
-const sqlite = new Database(DB_PATH);
-sqlite.pragma("journal_mode = WAL");
-sqlite.pragma("foreign_keys = ON");
+// prepare: false is required for Supabase's pooled connection (port 6543,
+// PgBouncer in transaction mode) — that mode hands each statement to a
+// possibly different backend connection, so server-side prepared statements
+// (which are pinned to one backend) can't be used. Also safe against a
+// direct (non-pooled) connection, so this isn't conditional on which URL is
+// configured.
+const sql = postgres(DATABASE_URL, { prepare: false, ssl: "require" });
 
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(sql, { schema });
 export { schema };

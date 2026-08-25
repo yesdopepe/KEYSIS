@@ -206,7 +206,14 @@ async function main() {
   console.log("Seed tamamlandı.");
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main()
+  .catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  })
+  .finally(() => {
+    // The Postgres client (src/lib/db/index.ts) holds its socket open
+    // indefinitely for the app's long-running use — a one-shot script has
+    // to force the exit itself once done, or the process just hangs.
+    process.exit();
+  });

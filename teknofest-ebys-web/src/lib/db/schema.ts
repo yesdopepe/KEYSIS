@@ -1,20 +1,19 @@
-import { sql } from "drizzle-orm";
-import { sqliteTable, text, integer, real, unique } from "drizzle-orm/sqlite-core";
+import { pgTable, text, integer, real, boolean, timestamp, serial, unique } from "drizzle-orm/pg-core";
 
 /**
  * Kurumlar (institutions). Multi-institution routing is core to the demo:
  * a citizen dilekçe can land on any of these, not just one demo belediye.
  */
-export const kurumlar = sqliteTable("kurumlar", {
+export const kurumlar = pgTable("kurumlar", {
   id: text("id").primaryKey(),
   ad: text("ad").notNull(),
   haberlesmeKodu: text("haberlesme_kodu").notNull(),
   // Admin-authored context (src/app/yonetim), woven into a birim's
   // catch-all yazışma şablonu — see birimler.aciklama.
   aciklama: text("aciklama"),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -23,7 +22,7 @@ export const kurumlar = sqliteTable("kurumlar", {
  * onayZinciriSeviyeleri is a JSON array of hiyerarsiSeviyesi values that
  * must approve in order, e.g. "[2,3]" = şube müdürü then daire başkanı.
  */
-export const birimler = sqliteTable(
+export const birimler = pgTable(
   "birimler",
   {
     id: text("id").primaryKey(),
@@ -40,9 +39,9 @@ export const birimler = sqliteTable(
     // lib/birimler.ts) so the router agent can reach a birim that has no
     // hand-authored template — the actual mechanism this field powers.
     aciklama: text("aciklama"),
-    createdAt: integer("created_at", { mode: "timestamp" })
+    createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
       .notNull()
-      .default(sql`(unixepoch())`),
+      .defaultNow(),
   },
   (t) => ({
     // adaySablonlariGetir resolves a şablon's birim via kurumId+kod — this
@@ -63,16 +62,16 @@ export const birimler = sqliteTable(
  * hand-set. onaySeviyesi null means the role never participates in an
  * approval chain (e.g. a pure viewer/uploader role).
  */
-export const roller = sqliteTable("roller", {
+export const roller = pgTable("roller", {
   id: text("id").primaryKey(),
   ad: text("ad").notNull(),
   aciklama: text("aciklama"),
   onaySeviyesi: integer("onay_seviyesi"),
-  mevzuatYonetimi: integer("mevzuat_yonetimi", { mode: "boolean" }).notNull().default(false),
-  bilgiTabaniYonetimi: integer("bilgi_tabani_yonetimi", { mode: "boolean" }).notNull().default(false),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  mevzuatYonetimi: boolean("mevzuat_yonetimi").notNull().default(false),
+  bilgiTabaniYonetimi: boolean("bilgi_tabani_yonetimi").notNull().default(false),
+  createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -80,7 +79,7 @@ export const roller = sqliteTable("roller", {
  * 3 = daire başkanı. Drives both what a user can approve and dashboard
  * scoping (a user only sees cases in their own kurum/birim).
  */
-export const kullanicilar = sqliteTable("kullanicilar", {
+export const kullanicilar = pgTable("kullanicilar", {
   id: text("id").primaryKey(),
   kullaniciAdi: text("kullanici_adi").notNull().unique(),
   sifreHash: text("sifre_hash").notNull(),
@@ -96,14 +95,14 @@ export const kullanicilar = sqliteTable("kullanicilar", {
   // Nullable: null means this user predates the role system and keeps its
   // hand-set hiyerarsiSeviyesi/unvan untouched — see lib/roller.ts.
   rolId: text("rol_id").references(() => roller.id),
-  sistemYoneticisiMi: integer("sistem_yoneticisi_mi", { mode: "boolean" }).notNull().default(false),
+  sistemYoneticisiMi: boolean("sistem_yoneticisi_mi").notNull().default(false),
   // Access-revocation switch for a staff login, checked at girisYap — used
   // instead of deleting the row, since kullanicilar has wide FK fan-in
   // (belgeler, sohbetler, kurumBelgeleri, havaleler, ...).
-  aktifMi: integer("aktif_mi", { mode: "boolean" }).notNull().default(true),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  aktifMi: boolean("aktif_mi").notNull().default(true),
+  createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -112,7 +111,7 @@ export const kullanicilar = sqliteTable("kullanicilar", {
  * schema (drives missing-info detection, Görev 1) plus drafting style
  * rules (drives the Writer agent, Görev 2). One source of truth for both.
  */
-export const yazismaSablonlari = sqliteTable("yazisma_sablonlari", {
+export const yazismaSablonlari = pgTable("yazisma_sablonlari", {
   id: text("id").primaryKey(),
   kurumId: text("kurum_id")
     .notNull()
@@ -123,9 +122,9 @@ export const yazismaSablonlari = sqliteTable("yazisma_sablonlari", {
   gerekliAlanlar: text("gerekli_alanlar").notNull().default("[]"),
   taslakKurallari: text("taslak_kurallari").notNull().default(""),
   ilgiliBirimKodu: text("ilgili_birim_kodu"),
-  createdAt: integer("created_at", { mode: "timestamp" })
+  createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -134,16 +133,16 @@ export const yazismaSablonlari = sqliteTable("yazisma_sablonlari", {
  * corpus size (~20-30 madde). `embedding` is reserved for a future upgrade
  * to real vector search and stays unused/null for now.
  */
-export const mevzuatMaddeleri = sqliteTable("mevzuat_maddeleri", {
+export const mevzuatMaddeleri = pgTable("mevzuat_maddeleri", {
   id: text("id").primaryKey(),
   kodu: text("kodu").notNull(),
   baslik: text("baslik").notNull(),
   icerik: text("icerik").notNull(),
   kurumId: text("kurum_id").references(() => kurumlar.id),
   embedding: text("embedding"), // JSON float[], unused for now
-  createdAt: integer("created_at", { mode: "timestamp" })
+  createdAt: timestamp("created_at", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -151,7 +150,7 @@ export const mevzuatMaddeleri = sqliteTable("mevzuat_maddeleri", {
  * needed); kayitNo is the internal SDP-formatted registry number assigned
  * once classified. durum drives the whole pipeline as a state machine.
  */
-export const evraklar = sqliteTable("evraklar", {
+export const evraklar = pgTable("evraklar", {
   id: text("id").primaryKey(),
   takipNo: text("takip_no").notNull().unique(),
   kayitNo: text("kayit_no").unique(),
@@ -189,17 +188,15 @@ export const evraklar = sqliteTable("evraklar", {
 
   durum: text("durum").notNull().default("yeni"),
 
-  bildirimGonderildiMi: integer("bildirim_gonderildi_mi", { mode: "boolean" })
-    .notNull()
-    .default(false),
-  bildirimZamani: integer("bildirim_zamani", { mode: "timestamp" }),
+  bildirimGonderildiMi: boolean("bildirim_gonderildi_mi").notNull().default(false),
+  bildirimZamani: timestamp("bildirim_zamani", { mode: "date", withTimezone: true }),
 
-  olusturmaZamani: integer("olusturma_zamani", { mode: "timestamp" })
+  olusturmaZamani: timestamp("olusturma_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
-  guncellemeZamani: integer("guncelleme_zamani", { mode: "timestamp" })
+    .defaultNow(),
+  guncellemeZamani: timestamp("guncelleme_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -210,8 +207,8 @@ export const evraklar = sqliteTable("evraklar", {
  * chat-authored belge go through the identical sequential-gate mechanics in
  * src/lib/onay/adimlar.ts — one approval concept, not two parallel ones.
  */
-export const onayAdimlari = sqliteTable("onay_adimlari", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const onayAdimlari = pgTable("onay_adimlari", {
+  id: serial("id").primaryKey(),
   hedefTuru: text("hedef_turu").notNull(), // evrak | belge
   hedefId: text("hedef_id").notNull(),
   sira: integer("sira").notNull(),
@@ -219,7 +216,7 @@ export const onayAdimlari = sqliteTable("onay_adimlari", {
   durum: text("durum").notNull().default("bekliyor"), // bekliyor|onaylandi|reddedildi|duzeltme_istendi
   onaylayanKullaniciId: text("onaylayan_kullanici_id").references(() => kullanicilar.id),
   yorum: text("yorum"),
-  zaman: integer("zaman", { mode: "timestamp" }),
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true }),
 });
 
 /**
@@ -229,8 +226,8 @@ export const onayAdimlari = sqliteTable("onay_adimlari", {
  * instead of dead-ending on a bad initial routing decision. Polymorphic for
  * the same reason as onayAdimlari above.
  */
-export const havaleler = sqliteTable("havaleler", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const havaleler = pgTable("havaleler", {
+  id: serial("id").primaryKey(),
   hedefTuru: text("hedef_turu").notNull(), // evrak | belge
   hedefId: text("hedef_id").notNull(),
   eskiKurumId: text("eski_kurum_id"),
@@ -241,9 +238,9 @@ export const havaleler = sqliteTable("havaleler", {
   yapanKullaniciId: text("yapan_kullanici_id")
     .notNull()
     .references(() => kullanicilar.id),
-  zaman: integer("zaman", { mode: "timestamp" })
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -253,7 +250,7 @@ export const havaleler = sqliteTable("havaleler", {
  * count before either commits (the code between them awaits several LLM
  * calls), producing duplicate registry numbers.
  */
-export const evrakSayaclari = sqliteTable("evrak_sayaclari", {
+export const evrakSayaclari = pgTable("evrak_sayaclari", {
   kurumId: text("kurum_id")
     .primaryKey()
     .references(() => kurumlar.id),
@@ -269,7 +266,7 @@ export const evrakSayaclari = sqliteTable("evrak_sayaclari", {
  * named sections, the author decides the structure; `kaynaklar` holds the
  * citations the drafting agent attached.
  */
-export const belgeler = sqliteTable("belgeler", {
+export const belgeler = pgTable("belgeler", {
   id: text("id").primaryKey(),
   belgeTuru: text("belge_turu").notNull(), // tutanak | sozlesme | karar
   baslik: text("baslik").notNull(),
@@ -300,24 +297,24 @@ export const belgeler = sqliteTable("belgeler", {
   // Set when the chat's belgeTaslagiHazirla tool created this belge, so
   // "Belgelerim" can deep-link back to the conversation that made it.
   sohbetId: text("sohbet_id"),
-  olusturmaZamani: integer("olusturma_zamani", { mode: "timestamp" })
+  olusturmaZamani: timestamp("olusturma_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
-  guncellemeZamani: integer("guncelleme_zamani", { mode: "timestamp" })
+    .defaultNow(),
+  guncellemeZamani: timestamp("guncelleme_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /** Lightweight audit log — cheap to keep, useful for the HITL demo story. */
-export const auditLog = sqliteTable("audit_log", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const auditLog = pgTable("audit_log", {
+  id: serial("id").primaryKey(),
   evrakId: text("evrak_id").references(() => evraklar.id),
   islem: text("islem").notNull(),
   kullanici: text("kullanici").notNull().default("sistem"),
   detay: text("detay").notNull().default("{}"), // JSON
-  zaman: integer("zaman", { mode: "timestamp" })
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -327,8 +324,8 @@ export const auditLog = sqliteTable("audit_log", {
  * safe. `oncekiMetin` is kept so an accept can detect that the section
  * moved on underneath a pending suggestion instead of silently clobbering it.
  */
-export const belgeOnerileri = sqliteTable("belge_onerileri", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const belgeOnerileri = pgTable("belge_onerileri", {
+  id: serial("id").primaryKey(),
   hedefTuru: text("hedef_turu").notNull(), // belge | evrak
   hedefId: text("hedef_id").notNull(),
   oncekiMetin: text("onceki_metin").notNull(),
@@ -338,10 +335,10 @@ export const belgeOnerileri = sqliteTable("belge_onerileri", {
   olusturanKullaniciId: text("olusturan_kullanici_id").references(() => kullanicilar.id),
   durum: text("durum").notNull().default("bekliyor"), // bekliyor | kabul | red
   kararVerenKullaniciId: text("karar_veren_kullanici_id").references(() => kullanicilar.id),
-  kararZamani: integer("karar_zamani", { mode: "timestamp" }),
-  olusturmaZamani: integer("olusturma_zamani", { mode: "timestamp" })
+  kararZamani: timestamp("karar_zamani", { mode: "date", withTimezone: true }),
+  olusturmaZamani: timestamp("olusturma_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -350,7 +347,7 @@ export const belgeOnerileri = sqliteTable("belge_onerileri", {
  * chat assistant answers only from these plus the mevzuat corpus, and cites
  * which one it used.
  */
-export const kurumBelgeleri = sqliteTable("kurum_belgeleri", {
+export const kurumBelgeleri = pgTable("kurum_belgeleri", {
   id: text("id").primaryKey(),
   kurumId: text("kurum_id")
     .notNull()
@@ -361,9 +358,9 @@ export const kurumBelgeleri = sqliteTable("kurum_belgeleri", {
   yukleyenKullaniciId: text("yukleyen_kullanici_id")
     .notNull()
     .references(() => kullanicilar.id),
-  olusturmaZamani: integer("olusturma_zamani", { mode: "timestamp" })
+  olusturmaZamani: timestamp("olusturma_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -371,8 +368,8 @@ export const kurumBelgeleri = sqliteTable("kurum_belgeleri", {
  * chunk so every retrieval query can filter by institution in one WHERE —
  * cross-institution leakage would otherwise be one forgotten join away.
  */
-export const kurumBelgeParcalari = sqliteTable("kurum_belge_parcalari", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const kurumBelgeParcalari = pgTable("kurum_belge_parcalari", {
+  id: serial("id").primaryKey(),
   kurumBelgesiId: text("kurum_belgesi_id")
     .notNull()
     .references(() => kurumBelgeleri.id),
@@ -388,7 +385,7 @@ export const kurumBelgeParcalari = sqliteTable("kurum_belge_parcalari", {
  * on kullaniciId AND kurumId together, so neither a colleague nor another
  * institution can reach one by guessing an id.
  */
-export const sohbetler = sqliteTable("sohbetler", {
+export const sohbetler = pgTable("sohbetler", {
   id: text("id").primaryKey(),
   baslik: text("baslik").notNull().default("Yeni sohbet"),
   kullaniciId: text("kullanici_id")
@@ -400,12 +397,12 @@ export const sohbetler = sqliteTable("sohbetler", {
   birimId: text("birim_id")
     .notNull()
     .references(() => birimler.id),
-  olusturmaZamani: integer("olusturma_zamani", { mode: "timestamp" })
+  olusturmaZamani: timestamp("olusturma_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
-  guncellemeZamani: integer("guncelleme_zamani", { mode: "timestamp" })
+    .defaultNow(),
+  guncellemeZamani: timestamp("guncelleme_zamani", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -414,7 +411,7 @@ export const sohbetler = sqliteTable("sohbetler", {
  * and image references all live in there, so a reloaded conversation renders
  * identically to the live one instead of degrading to plain text.
  */
-export const sohbetMesajlari = sqliteTable("sohbet_mesajlari", {
+export const sohbetMesajlari = pgTable("sohbet_mesajlari", {
   id: text("id").primaryKey(),
   sohbetId: text("sohbet_id")
     .notNull()
@@ -425,9 +422,9 @@ export const sohbetMesajlari = sqliteTable("sohbet_mesajlari", {
   rol: text("rol").notNull(), // user | assistant | system
   sira: integer("sira").notNull(),
   parcalar: text("parcalar").notNull().default("[]"), // JSON: UIMessage["parts"]
-  zaman: integer("zaman", { mode: "timestamp" })
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });
 
 /**
@@ -437,7 +434,7 @@ export const sohbetMesajlari = sqliteTable("sohbet_mesajlari", {
  * institution-wide search. Images carry no rawText — they go to the vision
  * model directly instead of being chunked.
  */
-export const sohbetEkleri = sqliteTable("sohbet_ekleri", {
+export const sohbetEkleri = pgTable("sohbet_ekleri", {
   id: text("id").primaryKey(),
   sohbetId: text("sohbet_id")
     .notNull()
@@ -456,7 +453,7 @@ export const sohbetEkleri = sqliteTable("sohbet_ekleri", {
   diskYolu: text("disk_yolu").notNull(),
   rawText: text("raw_text"),
   tur: text("tur").notNull(), // gorsel | belge
-  zaman: integer("zaman", { mode: "timestamp" })
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true })
     .notNull()
-    .default(sql`(unixepoch())`),
+    .defaultNow(),
 });

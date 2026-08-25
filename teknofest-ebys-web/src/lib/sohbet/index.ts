@@ -26,7 +26,9 @@ import {
  *     institution-wide knowledge base search.
  */
 
-const VERI_DIZINI = path.dirname(process.env.DATABASE_PATH ?? "./data/ebys.db");
+// Where chat attachments land on disk — independent of the database now
+// that it's remote Postgres rather than a file (see src/lib/db/index.ts).
+const VERI_DIZINI = "./data";
 
 export interface SohbetSahibi {
   userId: string;

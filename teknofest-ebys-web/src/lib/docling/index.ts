@@ -1,7 +1,9 @@
 import "server-only";
 import { Agent } from "undici";
 
-const DOCLING_URL = process.env.DOCLING_SERVICE_URL ?? "http://localhost:8100";
+// Trailing slash stripped so `${DOCLING_URL}/convert` can't become
+// `.../convert` with a doubled slash (a bare "https://host/" 404s otherwise).
+const DOCLING_URL = (process.env.DOCLING_SERVICE_URL ?? "http://localhost:8100").replace(/\/+$/, "");
 /** Only needed once the service runs somewhere other than localhost — see services/docling-service/main.py. */
 const DOCLING_SHARED_SECRET = process.env.DOCLING_SHARED_SECRET;
 

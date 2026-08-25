@@ -10,7 +10,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:seed": "tsx src/lib/db/seed.ts",
+    "db:seed": "tsx --env-file=.env.local src/lib/db/seed.ts",
+    "db:ingest-kurumlar": "tsx --env-file=.env.local src/scripts/ingest-ek-kurumlar.ts",
     "docling:dev": "cd services/docling-service && uvicorn main:app --reload --port 8100",
     "qdrant:dev": "cd .qdrant && qdrant"
   },
@@ -47,6 +48,7 @@
     "motion": "^13.1.1",
     "nanoid": "^6.0.1",
     "next": "16.3.1",
+    "postgres": "^3.4.9",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-jsx-parser": "^2.4.1",
