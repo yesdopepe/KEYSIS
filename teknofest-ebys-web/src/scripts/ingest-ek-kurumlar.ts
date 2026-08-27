@@ -382,6 +382,10 @@ const KURUMLAR: KurumTanimi[] = [
     kullanicilar: [
       { kullaniciAdi: "memur_meb", adSoyad: "Elif Arslan", birimKod: "YZI", rolId: "rol_memur" },
       { kullaniciAdi: "mudur_meb", adSoyad: "Caner Yıldırım", birimKod: "YZI", rolId: "rol_sube_muduru" },
+      // PER's onayZinciriSeviyeleri is [2,3] — baskan_meb alone can't move a
+      // belge's approval chain past its first (seviye 2) step, so PER needs
+      // its own şube müdürü too, not just YZI's.
+      { kullaniciAdi: "mudur_meb_per", adSoyad: "Tolga Erdem", birimKod: "PER", rolId: "rol_sube_muduru" },
       { kullaniciAdi: "baskan_meb", adSoyad: "Nurcan Demirtaş", birimKod: "PER", rolId: "rol_daire_baskani" },
     ],
   },

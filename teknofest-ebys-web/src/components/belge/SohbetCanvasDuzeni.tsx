@@ -66,23 +66,23 @@ export function SohbetCanvasDuzeni({
    *  *new* draft starts. */
   otomatikAcilsinMi?: boolean;
 }) {
-  const [acik, setAcik] = useState(false);
+  const [acik, setAcik] = useState(() => Boolean(canvasSlot || otomatikAcilsinMi));
   // Matches Tailwind's `md`. Server-rendered as wide: the pane layout is the
   // one this screen is designed around, and it degrades to a narrow viewport
   // far more gracefully than the reverse.
   const genisEkran = useMedyaSorgusu("(min-width: 48rem)", true);
 
-  // Adjusted during render (React's documented pattern for reacting to a
-  // prop change), not in an effect — an effect would setState a render
-  // after the flip, one extra cascading pass for something render can just
-  // decide directly. Comparing against the previous prop value, rather
-  // than an unconditional `if (otomatikAcilsinMi) setAcik(true)`, is what
-  // keeps this edge-triggered: it only forces the panel open on the
-  // false→true transition, so a user closing it again mid-stream sticks.
   const [oncekiOtomatikAcilsinMi, setOncekiOtomatikAcilsinMi] = useState(otomatikAcilsinMi);
   if (otomatikAcilsinMi !== oncekiOtomatikAcilsinMi) {
     setOncekiOtomatikAcilsinMi(otomatikAcilsinMi);
     if (otomatikAcilsinMi) setAcik(true);
+  }
+
+  const [oncekiCanvasVarMi, setOncekiCanvasVarMi] = useState(Boolean(canvasSlot));
+  const canvasVarMi = Boolean(canvasSlot);
+  if (canvasVarMi !== oncekiCanvasVarMi) {
+    setOncekiCanvasVarMi(canvasVarMi);
+    if (canvasVarMi) setAcik(true);
   }
 
   // No document — chat gets the whole frame, no toggle, nothing to open.

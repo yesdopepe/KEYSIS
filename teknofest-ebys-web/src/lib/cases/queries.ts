@@ -49,6 +49,47 @@ export async function onayimBekleyenEvraklarGetir(birimId: string, hiyerarsiSevi
   return sonuc;
 }
 
+/**
+ * Belgeler in a birim whose approval is in the multi-level chain, annotated
+ * with whether it's this user's turn — the belge-side counterpart of
+ * onayimBekleyenEvraklarGetir above, kept separate (rather than merged into
+ * one polymorphic query) because the two callers in app/panel/page.tsx need
+ * each target type's own rows to render its own section.
+ */
+export async function onayimBekleyenBelgelerGetir(birimId: string, hiyerarsiSeviyesi: number) {
+  const belgeler = await db
+    .select()
+    .from(schema.belgeler)
+    .where(and(eq(schema.belgeler.birimId, birimId), eq(schema.belgeler.durum, "onay_zincirinde")))
+    .orderBy(asc(schema.belgeler.olusturmaZamani));
+  if (belgeler.length === 0) return [];
+
+  const adimlar = await db
+    .select()
+    .from(schema.onayAdimlari)
+    .where(
+      and(
+        eq(schema.onayAdimlari.hedefTuru, "belge"),
+        inArray(schema.onayAdimlari.hedefId, belgeler.map((b) => b.id))
+      )
+    )
+    .orderBy(asc(schema.onayAdimlari.sira));
+
+  const sonuc: Array<{ belge: (typeof belgeler)[number]; benimSiram: boolean; adimlar: typeof adimlar }> = [];
+
+  for (const belge of belgeler) {
+    const belgeAdimlari = adimlar.filter((a) => a.hedefId === belge.id);
+    const siradakiAdim = belgeAdimlari.find((a) => a.durum === "bekliyor");
+    sonuc.push({
+      belge,
+      benimSiram: siradakiAdim?.gerekliHiyerarsiSeviyesi === hiyerarsiSeviyesi,
+      adimlar: belgeAdimlari,
+    });
+  }
+
+  return sonuc;
+}
+
 export async function evrakDetayGetir(evrakId: string) {
   const [evrak] = await db.select().from(schema.evraklar).where(eq(schema.evraklar.id, evrakId));
   if (!evrak) return null;

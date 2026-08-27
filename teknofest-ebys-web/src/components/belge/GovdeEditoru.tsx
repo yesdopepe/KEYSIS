@@ -128,18 +128,22 @@ function initSingleRootDocument(root: HTMLElement, model: ResmiBelge, defaultVal
   hitapP.textContent = model.hitap || "İLGİLİ MAKAMA";
   root.appendChild(hitapP);
 
-  // 4. Gövde Metni Blokları
+  // 4. Gövde Metni Blokları — wrapped in a marked container so
+  // documentToData can serialize *only* the body back out, not the
+  // surrounding antet/meta/hitap/imza/ekler chrome appended around it.
+  const govdeBody = document.createElement("div");
+  govdeBody.setAttribute("data-govde-body", "");
   const metin = defaultValue || model.govdeMetni;
   const bloklar = govdeBloklariniAyir(metin);
   if (bloklar.length === 0) {
-    root.appendChild(bosParagraf());
+    govdeBody.appendChild(bosParagraf());
   } else {
     for (const blok of bloklar) {
       if (blok.tur === "baslik") {
         const h2 = document.createElement("h2");
         h2.className = "font-bold text-[12pt] uppercase mt-5 mb-2 text-zinc-950 [text-indent:0]";
         h2.textContent = blok.metin;
-        root.appendChild(h2);
+        govdeBody.appendChild(h2);
       } else if (blok.tur === "liste") {
         const ul = document.createElement("ul");
         ul.className = "list-disc pl-[12mm] my-2.5 space-y-1 [text-indent:0]";
@@ -148,15 +152,16 @@ function initSingleRootDocument(root: HTMLElement, model: ResmiBelge, defaultVal
           li.textContent = oge;
           ul.appendChild(li);
         }
-        root.appendChild(ul);
+        govdeBody.appendChild(ul);
       } else {
         const p = document.createElement("p");
         p.className = "mb-3 text-justify leading-[1.5] [text-indent:10mm] text-zinc-950";
         p.textContent = blok.metin;
-        root.appendChild(p);
+        govdeBody.appendChild(p);
       }
     }
   }
+  root.appendChild(govdeBody);
 
   // 5. İmza Bloğu
   const imzaContainer = document.createElement("div");
@@ -220,7 +225,12 @@ function documentToData(root: HTMLElement): {
     serbestMetin = "";
   };
 
-  for (const cocuk of Array.from(root.childNodes)) {
+  // Only the marked body container round-trips into govdeMetni — the
+  // antet/meta/hitap/imza/ekler chrome around it is always re-derived from
+  // `model` on load (see initSingleRootDocument) and must never be captured
+  // back into the body text, or it duplicates into it on every save.
+  const govdeBody = root.querySelector<HTMLElement>("[data-govde-body]") ?? root;
+  for (const cocuk of Array.from(govdeBody.childNodes)) {
     if (cocuk.nodeType === Node.TEXT_NODE) {
       serbestMetin += cocuk.textContent ?? "";
       continue;
@@ -264,11 +274,15 @@ function documentToData(root: HTMLElement): {
   };
 }
 
+function ustSeviyeMi(el: HTMLElement | null, root: HTMLElement): boolean {
+  return el === root || (el instanceof HTMLElement && el.hasAttribute("data-govde-body"));
+}
+
 function suankiBlok(root: HTMLElement): HTMLElement | null {
   const secim = window.getSelection();
   if (!secim || secim.rangeCount === 0) return null;
   let dugum: Node | null = secim.getRangeAt(0).startContainer;
-  while (dugum && dugum.parentElement !== root) {
+  while (dugum && !ustSeviyeMi(dugum.parentElement, root)) {
     dugum = dugum.parentElement;
   }
   return dugum instanceof HTMLElement && root.contains(dugum) ? dugum : null;

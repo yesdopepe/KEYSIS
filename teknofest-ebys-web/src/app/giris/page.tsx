@@ -46,7 +46,11 @@ export default function GirisSayfasi() {
           </Button>
 
           <p className="text-center text-xs text-muted-foreground">
-            Demo: memur_fen / mudur_fen / baskan_fen (şifre: ebys123)
+            Demo (MEB): memur_meb / mudur_meb / baskan_meb
+            <br />
+            Demo (Valilik): memur_elazig / mudur_elazig / baskan_elazig
+            <br />
+            (şifre: ebys123)
           </p>
         </form>
       </Card>

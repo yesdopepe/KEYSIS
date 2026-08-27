@@ -3,7 +3,8 @@ import { eq } from "drizzle-orm";
 import { ClipboardText, CheckCircle, PaperPlaneTilt, CaretRight } from "@phosphor-icons/react/ssr";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
-import { birimEvraklariGetir, onayimBekleyenEvraklarGetir } from "@/lib/cases/queries";
+import { birimEvraklariGetir, onayimBekleyenEvraklarGetir, onayimBekleyenBelgelerGetir } from "@/lib/cases/queries";
+import { belgeTuruGetir } from "@/lib/belgeler/turler";
 import { StaffShell } from "@/components/StaffShell";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -18,6 +19,9 @@ export default async function PanelSayfasi() {
   const onayBekleyenler = await onayimBekleyenEvraklarGetir(session.birimId, session.hiyerarsiSeviyesi);
   const benimSiramOlanlar = onayBekleyenler.filter((o) => o.benimSiram);
   const gonderilenler = await birimEvraklariGetir(session.birimId, ["gonderildi"]);
+
+  const onayBekleyenBelgeler = await onayimBekleyenBelgelerGetir(session.birimId, session.hiyerarsiSeviyesi);
+  const benimSiramOlanBelgeler = onayBekleyenBelgeler.filter((o) => o.benimSiram);
 
   return (
     <StaffShell
@@ -49,7 +53,7 @@ export default async function PanelSayfasi() {
           />
           <StatKart
             baslik="Onayımı Bekleyen"
-            sayi={benimSiramOlanlar.length}
+            sayi={benimSiramOlanlar.length + benimSiramOlanBelgeler.length}
             ikon={<CheckCircle size={20} aria-hidden="true" />}
             ton="bilgi"
           />
@@ -70,6 +74,11 @@ export default async function PanelSayfasi() {
           baslik="Onayımı Bekleyen Evraklar"
           evraklar={benimSiramOlanlar.map((o) => o.evrak)}
           bosMesaj="Onay bekleyen evrak yok."
+        />
+        <BelgeBolumu
+          baslik="Onayımı Bekleyen Belgeler"
+          belgeler={benimSiramOlanBelgeler.map((o) => o.belge)}
+          bosMesaj="Onay bekleyen belge yok."
         />
         <EvrakBolumu baslik="Gönderilenler" evraklar={gonderilenler} bosMesaj="Henüz gönderilen evrak yok." />
       </main>
@@ -104,6 +113,53 @@ function StatKart({
         <p className="text-xs font-medium text-muted-foreground">{baslik}</p>
       </div>
     </Card>
+  );
+}
+
+function BelgeBolumu({
+  baslik,
+  belgeler,
+  bosMesaj,
+}: {
+  baslik: string;
+  belgeler: Array<typeof schema.belgeler.$inferSelect>;
+  bosMesaj: string;
+}) {
+  return (
+    <section>
+      <h2 className="mb-3 font-heading text-sm font-semibold text-foreground">
+        {baslik}
+        <span className="ml-2 rounded-full bg-muted px-2 py-0.5 text-xs font-semibold text-muted-foreground">
+          {belgeler.length}
+        </span>
+      </h2>
+      {belgeler.length === 0 ? (
+        <Card className="p-4 text-sm text-muted-foreground">{bosMesaj}</Card>
+      ) : (
+        <Card className="divide-y divide-border overflow-hidden">
+          {belgeler.map((b) => {
+            const tur = belgeTuruGetir(b.belgeTuru);
+            const durum = durumBilgisiGetir(b.durum);
+            return (
+              <Link
+                key={b.id}
+                href={`/panel/belge/${b.id}`}
+                className="flex min-h-11 items-center justify-between gap-3 px-4 py-3.5 hover:bg-muted transition-colors"
+              >
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-foreground">{b.baslik}</p>
+                  <p className="truncate text-xs text-muted-foreground">{tur?.ad ?? b.belgeTuru}</p>
+                </div>
+                <div className="flex shrink-0 items-center gap-2">
+                  <Badge ton={durum.ton}>{durum.etiket}</Badge>
+                  <CaretRight size={16} className="text-muted-foreground" aria-hidden="true" />
+                </div>
+              </Link>
+            );
+          })}
+        </Card>
+      )}
+    </section>
   );
 }
 

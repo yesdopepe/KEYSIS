@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import type { UIMessage } from "ai";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
@@ -22,7 +22,7 @@ export default async function SohbetSayfasi({
   searchParams: Promise<{ belge?: string }>;
 }) {
   const { sohbetId } = await params;
-  const { belge: belgeId } = await searchParams;
+  const { belge: belgeParam } = await searchParams;
   const session = await oturumZorunluKil();
 
   const sahip = {
@@ -36,6 +36,19 @@ export default async function SohbetSayfasi({
   const sohbet = await sohbetGetir(sahip, sohbetId);
   if (!sohbet) notFound();
 
+  let aktifBelgeId = belgeParam;
+  if (!aktifBelgeId) {
+    const [sonBelge] = await db
+      .select({ id: schema.belgeler.id })
+      .from(schema.belgeler)
+      .where(eq(schema.belgeler.sohbetId, sohbetId))
+      .orderBy(desc(schema.belgeler.olusturmaZamani))
+      .limit(1);
+    if (sonBelge) {
+      aktifBelgeId = sonBelge.id;
+    }
+  }
+
   const [birim] = await db.select().from(schema.birimler).where(eq(schema.birimler.id, session.birimId));
   const [kurum] = await db.select().from(schema.kurumlar).where(eq(schema.kurumlar.id, session.kurumId));
 
@@ -43,11 +56,11 @@ export default async function SohbetSayfasi({
     sohbetleriListele(sahip),
     mesajlariGetir(sahip, sohbetId),
     sohbetEkleriniListele(sahip, sohbetId),
-    belgeId
+    aktifBelgeId
       ? db
           .select({ baslik: schema.belgeler.baslik })
           .from(schema.belgeler)
-          .where(eq(schema.belgeler.id, belgeId))
+          .where(eq(schema.belgeler.id, aktifBelgeId))
           .then((r) => r[0]?.baslik)
       : Promise.resolve(undefined),
   ]);
@@ -85,9 +98,9 @@ export default async function SohbetSayfasi({
           baslangicMesajlari={baslangicMesajlari}
           baslangicEkleri={baslangicEkleri}
           yeniMi={false}
-          belgeId={belgeId}
+          belgeId={aktifBelgeId}
           belgeBasligi={belgeBasligi}
-          belgeNode={belgeId ? <BelgeTuvali belgeId={belgeId} /> : null}
+          belgeNode={aktifBelgeId ? <BelgeTuvali belgeId={aktifBelgeId} /> : null}
         />
       </SohbetDuzeni>
     </StaffShell>

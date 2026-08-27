@@ -15,6 +15,7 @@ import { DefaultChatTransport, isDataUIPart, isToolUIPart, type UIMessage } from
 import Link from "next/link";
 import { SohbetCanvasDuzeni } from "@/components/belge/SohbetCanvasDuzeni";
 import { BelgeCanliTaslak, type BelgeCanliTaslakVerisi } from "@/components/belge/BelgeCanliTaslak";
+import { BelgeTuvaliIstemci } from "@/components/belge/BelgeTuvaliIstemci";
 import {
   Sparkle,
   MagnifyingGlass,
@@ -226,6 +227,13 @@ export function AsistanSohbet({
   const [ekler, setEkler] = useState<YuklenenEk[]>(baslangicEkleri);
   const [yukleniyor, setYukleniyor] = useState(false);
   const [ekHatasi, setEkHatasi] = useState<string | null>(null);
+  const [aktifBelgeId, setAktifBelgeId] = useState<string | undefined>(belgeId);
+
+  useEffect(() => {
+    if (belgeId && belgeId !== aktifBelgeId) {
+      setAktifBelgeId(belgeId);
+    }
+  }, [belgeId, aktifBelgeId]);
 
   const sonBelgeSurumRef = useRef<Map<string, number>>(new Map());
   const islenmisMesajIdRef = useRef<Set<string>>(new Set());
@@ -243,17 +251,34 @@ export function AsistanSohbet({
         }
       }
     }
-    if (!son || son.belgeId === belgeId) return null;
+    // Live stream preview is shown only while actively drafting ("yazılıyor").
+    // As soon as it is "tamam", the document is saved in DB and BelgeTuvaliIstemci renders the full WYSIWYG editor.
+    if (!son || son.durum !== "yazılıyor") return null;
     return son;
-  }, [messages, belgeId]);
+  }, [messages]);
+
+  useEffect(() => {
+    for (const m of messages) {
+      for (const part of m.parts) {
+        if (isDataUIPart(part) && part.type === "data-belge-taslak") {
+          const data = part.data as BelgeCanliTaslakVerisi;
+          if (data?.belgeId && data.durum === "tamam" && aktifBelgeId !== data.belgeId) {
+            setAktifBelgeId(data.belgeId);
+          }
+        }
+      }
+    }
+  }, [messages, aktifBelgeId]);
 
   useEffect(() => {
     if (yeniMi && status === "ready" && messages.length > 0) {
-      router.replace(`/panel/asistan/${sohbetId}`);
+      const hedefUrl = aktifBelgeId
+        ? `/panel/asistan/${sohbetId}?belge=${aktifBelgeId}`
+        : `/panel/asistan/${sohbetId}`;
+      router.replace(hedefUrl);
+      return;
     }
-  }, [yeniMi, status, messages.length, sohbetId, router]);
 
-  useEffect(() => {
     if (mesgul) return;
     const son = messages[messages.length - 1];
     if (!son || son.role !== "assistant" || islenmisMesajIdRef.current.has(son.id)) return;
@@ -272,6 +297,10 @@ export function AsistanSohbet({
     islenmisMesajIdRef.current.add(son.id);
     if (!hedefBelgeId) return;
 
+    if (aktifBelgeId !== hedefBelgeId) {
+      setAktifBelgeId(hedefBelgeId);
+    }
+
     const oncekiSurum = sonBelgeSurumRef.current.get(hedefBelgeId);
     sonBelgeSurumRef.current.set(hedefBelgeId, hedefSurum);
 
@@ -280,7 +309,17 @@ export function AsistanSohbet({
     } else if (oncekiSurum !== hedefSurum) {
       router.refresh();
     }
-  }, [messages, mesgul, sohbetId, router]);
+  }, [messages, mesgul, sohbetId, router, yeniMi, status, aktifBelgeId]);
+
+  const canvasIcerik = useMemo(() => {
+    if (canliTaslak && canliTaslak.durum === "yazılıyor") {
+      return <BelgeCanliTaslak taslak={canliTaslak} />;
+    }
+    if (aktifBelgeId) {
+      return <BelgeTuvaliIstemci key={aktifBelgeId} belgeId={aktifBelgeId} />;
+    }
+    return belgeNode ?? null;
+  }, [canliTaslak, aktifBelgeId, belgeNode]);
 
   async function dosyaSecildi(e: ChangeEvent<HTMLInputElement>) {
     const dosya = e.target.files?.[0];
@@ -326,8 +365,8 @@ export function AsistanSohbet({
     <SohbetCanvasDuzeni
       belgeBasligi={canliTaslak?.baslik ?? belgeBasligi}
       belgeAltBasligi={canliTaslak?.turAdi}
-      otomatikAcilsinMi={canliTaslak !== null}
-      canvasSlot={canliTaslak ? <BelgeCanliTaslak taslak={canliTaslak} /> : (belgeNode ?? null)}
+      otomatikAcilsinMi={Boolean(canliTaslak || aktifBelgeId)}
+      canvasSlot={canvasIcerik}
       chatSlot={
         <div className="flex h-full flex-col">
           <div className="flex min-h-0 flex-1 flex-col justify-end">
