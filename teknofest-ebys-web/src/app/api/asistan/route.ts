@@ -170,8 +170,8 @@ class DayanaksizAtifHatasi extends GuvenlikDurdurmaHatasi {
 /** Any tool result's `link`/`baglanti` field is a real, verified citation
  *  target — see the `sonuclar`/`baglanti` shapes each tool in POST returns
  *  below. */
-const IC_BAGLANTI_ONEKI = /^\/panel\/(mevzuat|kurum-belgeleri|belge|evrak)\//;
-const ATIF_DESENI = /\]\((\/panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)\/[^)\s]*)\)/g;
+const IC_BAGLANTI_ONEKI = /^\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan)/;
+const ATIF_DESENI = /\]\((\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan)[^)\s]*)\)/g;
 
 function icBaglantilariTopla(deger: unknown, hedef: Set<string>) {
   if (typeof deger === "string") {
@@ -507,7 +507,9 @@ export async function POST(req: Request) {
                   belgeId: id,
                   tur: tur.ad,
                   baslik,
-                  baglanti: `/panel/belge/${id}`,
+                  baglanti: vatandasMi
+                    ? `/basvuru/asistan/${sohbetId}?belge=${id}`
+                    : `/panel/belge/${id}`,
                   // A change marker the canvas panel compares against what it last
                   // rendered, to know a tool touched "its" document and refresh.
                   surum: Date.now(),

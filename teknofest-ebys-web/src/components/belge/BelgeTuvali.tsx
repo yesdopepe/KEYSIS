@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
-import { oturumZorunluKil } from "@/lib/auth/require-session";
+import { getSession } from "@/lib/auth/session";
 import { belgeTuruGetir } from "@/lib/belgeler/turler";
-import { belgeyiOkuyabilirMi } from "@/lib/belgeler/erisim";
+import { belgeyiOkuyabilirMi, vatandasBelgesiMi } from "@/lib/belgeler/erisim";
 import { belgedenModel } from "@/lib/belgeler/modelle";
 import { bekleyenOnerileriGetir } from "@/lib/belgeler/oneriler";
 import { onayAdimlariGetir } from "@/lib/onay";
@@ -18,19 +18,21 @@ import type { BelgeKaynagi } from "@/lib/agents/belge-yazar";
  * the multi-mode editing/preview/workflow UI to BelgeCalismaAlani.
  */
 export async function BelgeTuvali({ belgeId }: { belgeId: string }) {
-  const session = await oturumZorunluKil();
+  const session = await getSession();
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
   // Not "yetkiniz yok": a belge outside this birim reads as missing so an id
   // cannot be probed for existence — the same convention sohbetGetir follows.
   if (!belge || !belgeyiOkuyabilirMi(belge, session)) {
     return (
       <Card className="p-5">
-        <p className="text-sm text-destructive">Belge bulunamadı.</p>
+        <p className="text-sm text-destructive">Belge bulunamadı veya erişim yetkiniz yok.</p>
       </Card>
     );
   }
 
-  const yetkili = belge.birimId === session.birimId;
+  const yetkili =
+    (session && belge.birimId === session.birimId) ||
+    vatandasBelgesiMi(belge);
   const tur = belgeTuruGetir(belge.belgeTuru);
   const kaynaklar: BelgeKaynagi[] = JSON.parse(belge.kaynaklar || "[]");
   const durum = durumBilgisiGetir(belge.durum);
@@ -57,7 +59,11 @@ export async function BelgeTuvali({ belgeId }: { belgeId: string }) {
     ? onayAdimlari.filter((a) => a.sira < siradakiAdim.sira).every((a) => a.durum === "onaylandi")
     : false;
   const benimSiram =
-    yetkili && siradakiAdim && oncekiTamam && siradakiAdim.gerekliHiyerarsiSeviyesi === session.hiyerarsiSeviyesi;
+    yetkili &&
+    siradakiAdim &&
+    oncekiTamam &&
+    session &&
+    siradakiAdim.gerekliHiyerarsiSeviyesi === session.hiyerarsiSeviyesi;
 
   const { birimler } = belge.durum === "taslak" || belge.durum === "tamamlandi"
     ? await tumKurumVeBirimler()

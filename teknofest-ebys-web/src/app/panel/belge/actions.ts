@@ -27,9 +27,7 @@ async function auditYaz(kullanici: string, islem: string, detay: object = {}) {
 async function belgeYetkiKontrol(belgeId: string, birimId: string, userId?: string) {
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
   if (!belge) throw new Error("Belge bulunamadı.");
-  const vatandasaAit =
-    (belge.olusturanKullaniciId === "u_vatandas" || belge.belgeTuru === "dilekce") &&
-    (userId === "u_vatandas" || !userId);
+  const vatandasaAit = vatandasBelgesiMi(belge);
   if (belge.birimId !== birimId && !vatandasaAit) throw new Error("Bu belge sizin biriminize ait değil.");
   return belge;
 }
@@ -442,7 +440,7 @@ export async function belgeDetayGetirAction(belgeId: string): Promise<BelgeCalis
 
   const yetkili =
     belge.birimId === session.birimId ||
-    (vatandasBelgesiMi(belge) && session.hiyerarsiSeviyesi === 0);
+    vatandasBelgesiMi(belge);
   const tur = belgeTuruGetir(belge.belgeTuru);
   const kaynaklar: BelgeKaynagi[] = JSON.parse(belge.kaynaklar || "[]");
   const durum = durumBilgisiGetir(belge.durum);

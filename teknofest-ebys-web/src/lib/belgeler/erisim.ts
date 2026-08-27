@@ -37,9 +37,8 @@ export function vatandasBelgesiMi(belge: BelgeErisimKaydi): boolean {
  * what makes the receiving birim able to act on it.
  */
 export function belgeyiOkuyabilirMi(belge: BelgeErisimKaydi, session: ErisimOturumu): boolean {
-  // hiyerarsiSeviyesi 0 is the vatandaş identity; a real staff session is
-  // always >= 1, so this exception never widens what staff can reach.
-  if (vatandasBelgesiMi(belge) && (!session || session.hiyerarsiSeviyesi === 0)) return true;
+  // Citizen documents (dilekçe) can be read by citizens and reviewing staff alike
+  if (vatandasBelgesiMi(belge)) return true;
   if (!session) return false;
   return belge.birimId === session.birimId;
 }
