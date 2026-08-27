@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { sohbetleriListele } from "@/lib/sohbet";
+import { getVatandasSohbetIdleri } from "@/lib/auth/vatandas-session";
+import { vatandasSohbetleriListele } from "@/lib/sohbet";
 import { SohbetDuzeni } from "@/components/sohbet/sohbet-duzeni";
 import { AsistanSohbet } from "@/app/panel/asistan/asistan-sohbet";
 import { PublicShell } from "@/components/PublicShell";
@@ -11,13 +12,8 @@ export const metadata = {
 };
 
 export default async function VatandasAsistanSayfasi() {
-  const sahip = {
-    userId: "u_vatandas",
-    kurumId: "belediye_ornek",
-    birimId: "belediye_ornek:YZI",
-  };
-
-  const sohbetler = await sohbetleriListele(sahip);
+  const vatandasSohbetIdleri = await getVatandasSohbetIdleri();
+  const sohbetler = await vatandasSohbetleriListele(vatandasSohbetIdleri);
   const yeniSohbetId = randomUUID();
 
   return (

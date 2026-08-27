@@ -13,6 +13,7 @@ import {
 import { and, eq, or } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
 import { getSession } from "@/lib/auth/session";
+import { vatandasSohbetiEkle } from "@/lib/auth/vatandas-session";
 import { getAgentModel } from "@/lib/ai/client";
 import { loadPrompt } from "@/lib/ai/prompt";
 import { bilgiTabanindaAra } from "@/lib/bilgi-tabani";
@@ -256,7 +257,10 @@ function guvenliHataMesaji(error: unknown): string {
 
 export async function POST(req: Request) {
   let session = await getSession();
-  if (!session) {
+  const referer = req.headers.get("referer") ?? "";
+  const vatandasModu = !session || session.hiyerarsiSeviyesi === 0 || referer.includes("/basvuru/asistan");
+
+  if (!session || vatandasModu) {
     session = {
       userId: "u_vatandas",
       kullaniciAdi: "vatandas",
@@ -280,6 +284,11 @@ export async function POST(req: Request) {
   };
 
   const sohbetId = id ?? randomUUID();
+
+  if (vatandasModu) {
+    await vatandasSohbetiEkle(sohbetId);
+  }
+
   const mevcut = await sohbetGetir(sahip, sohbetId);
   if (!mevcut) await sohbetiSagla(sahip, sohbetId);
 

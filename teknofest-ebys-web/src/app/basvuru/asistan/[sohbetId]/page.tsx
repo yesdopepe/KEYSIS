@@ -4,10 +4,13 @@ import type { UIMessage } from "ai";
 import { db, schema } from "@/lib/db";
 import { PublicShell } from "@/components/PublicShell";
 import {
+  getVatandasSohbetIdleri,
+  vatandasSohbetiEkle,
+} from "@/lib/auth/vatandas-session";
+import {
   mesajlariGetir,
   sohbetEkleriniListele,
-  sohbetGetir,
-  sohbetleriListele,
+  vatandasSohbetleriListele,
 } from "@/lib/sohbet";
 import { BelgeTuvali } from "@/components/belge/BelgeTuvali";
 import { SohbetDuzeni } from "@/components/sohbet/sohbet-duzeni";
@@ -27,14 +30,33 @@ export default async function VatandasSohbetSayfasi({
   const { sohbetId } = await params;
   const { belge: belgeParam } = await searchParams;
 
+  // Authorization: Only resolve citizen-scoped conversations (kullaniciId: u_vatandas).
+  // Staff conversations can never be viewed from the citizen portal.
+  const [sohbet] = await db
+    .select()
+    .from(schema.sohbetler)
+    .where(
+      and(
+        eq(schema.sohbetler.id, sohbetId),
+        eq(schema.sohbetler.kullaniciId, "u_vatandas")
+      )
+    );
+
+  if (!sohbet) notFound();
+
+  // Track this conversation in the current citizen browser session
+  await vatandasSohbetiEkle(sohbetId);
+
+  const vatandasSohbetIdleri = await getVatandasSohbetIdleri();
+  const sohbetIdListesi = vatandasSohbetIdleri.includes(sohbetId)
+    ? vatandasSohbetIdleri
+    : [sohbetId, ...vatandasSohbetIdleri];
+
   const sahip = {
     userId: "u_vatandas",
-    kurumId: "belediye_ornek",
-    birimId: "belediye_ornek:YZI",
+    kurumId: sohbet.kurumId,
+    birimId: sohbet.birimId,
   };
-
-  const sohbet = await sohbetGetir(sahip, sohbetId);
-  if (!sohbet) notFound();
 
   // Same reasoning as the staff page: ?belge= is client input, so it only
   // resolves within this conversation's own documents — otherwise any belge
@@ -53,7 +75,7 @@ export default async function VatandasSohbetSayfasi({
   const belgeBasligi = aktifBelge?.baslik;
 
   const [sohbetler, kayitliMesajlar, ekler] = await Promise.all([
-    sohbetleriListele(sahip),
+    vatandasSohbetleriListele(sohbetIdListesi),
     mesajlariGetir(sahip, sohbetId),
     sohbetEkleriniListele(sahip, sohbetId),
   ]);

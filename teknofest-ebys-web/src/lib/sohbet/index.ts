@@ -2,7 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { mkdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
 import { metniParcala } from "@/lib/bilgi-tabani";
 import { dosyadanMetinCikar } from "@/lib/docling";
@@ -63,6 +63,27 @@ export async function sohbetleriListele(sahip: SohbetSahibi) {
       and(
         eq(schema.sohbetler.kullaniciId, sahip.userId),
         eq(schema.sohbetler.kurumId, sahip.kurumId)
+      )
+    )
+    .orderBy(desc(schema.sohbetler.guncellemeZamani));
+}
+
+/**
+ * Lists only the conversations that belong to this citizen's anonymous session.
+ */
+export async function vatandasSohbetleriListele(sohbetIdleri: string[]) {
+  if (!sohbetIdleri || sohbetIdleri.length === 0) return [];
+  return db
+    .select({
+      id: schema.sohbetler.id,
+      baslik: schema.sohbetler.baslik,
+      guncellemeZamani: schema.sohbetler.guncellemeZamani,
+    })
+    .from(schema.sohbetler)
+    .where(
+      and(
+        inArray(schema.sohbetler.id, sohbetIdleri),
+        eq(schema.sohbetler.kullaniciId, "u_vatandas")
       )
     )
     .orderBy(desc(schema.sohbetler.guncellemeZamani));
