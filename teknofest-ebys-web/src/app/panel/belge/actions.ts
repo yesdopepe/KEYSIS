@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
 import { belgeTuruGetir } from "@/lib/belgeler/turler";
+import { belgeyiOkuyabilirMi, vatandasBelgesiMi } from "@/lib/belgeler/erisim";
 import { belgedenModel } from "@/lib/belgeler/modelle";
 import { belgeOnerisiOlustur, type BelgeKaynagi } from "@/lib/agents/belge-yazar";
 import { oneriEkle, oneriGetir, oneriKararKaydet, bekleyenOnerileriGetir } from "@/lib/belgeler/oneriler";
@@ -17,23 +18,37 @@ import type { YanitTaslagi } from "@/lib/belgeler/yanit-taslagi";
 // Document creation (belgeOlusturAction) moved into the chat assistant's
 // belgeTaslagiHazirla tool (src/app/api/asistan/route.ts) — the agent is now
 // the only way to create a belge, per the same reasoning as every other
-// authoring surface this project moved into chat.
+import { getSession } from "@/lib/auth/session";
 
 async function auditYaz(kullanici: string, islem: string, detay: object = {}) {
   await db.insert(schema.auditLog).values({ islem, kullanici, detay: JSON.stringify(detay) });
 }
 
-async function belgeYetkiKontrol(belgeId: string, birimId: string) {
+async function belgeYetkiKontrol(belgeId: string, birimId: string, userId?: string) {
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
   if (!belge) throw new Error("Belge bulunamadı.");
-  if (belge.birimId !== birimId) throw new Error("Bu belge sizin biriminize ait değil.");
+  const vatandasaAit =
+    (belge.olusturanKullaniciId === "u_vatandas" || belge.belgeTuru === "dilekce") &&
+    (userId === "u_vatandas" || !userId);
+  if (belge.birimId !== birimId && !vatandasaAit) throw new Error("Bu belge sizin biriminize ait değil.");
   return belge;
 }
 
 /** Saves edits to the document body — this is the "report editing" surface. */
 export async function belgeGuncelle(belgeId: string, formData: FormData) {
-  const session = await oturumZorunluKil();
-  const belge = await belgeYetkiKontrol(belgeId, session.birimId);
+  const session = (await getSession()) || {
+    userId: "u_vatandas",
+    kullaniciAdi: "vatandas",
+    adSoyad: "Vatandaş",
+    kurumId: "belediye_ornek",
+    birimId: "belediye_ornek:YZI",
+    hiyerarsiSeviyesi: 0,
+    unvan: "Vatandaş",
+    sistemYoneticisiMi: false,
+    mevzuatYonetimi: false,
+    bilgiTabaniYonetimi: false,
+  };
+  const belge = await belgeYetkiKontrol(belgeId, session.birimId, session.userId);
 
   // Finished — editing an approved document outright would let its text
   // diverge from what every approver actually signed off on.
@@ -308,7 +323,10 @@ export async function belgeRevizyonuOner(params: {
 }): Promise<{ basarili: boolean; gerekce?: string; hata?: string }> {
   const belge = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, params.belgeId)).then((r) => r[0]);
   if (!belge) return { basarili: false, hata: "Belge bulunamadı." };
-  if (belge.birimId !== params.birimId) return { basarili: false, hata: "Bu belge sizin biriminize ait değil." };
+  const vatandasaAit =
+    (belge.olusturanKullaniciId === "u_vatandas" || belge.belgeTuru === "dilekce") &&
+    params.kullaniciAdi === "vatandas";
+  if (belge.birimId !== params.birimId && !vatandasaAit) return { basarili: false, hata: "Bu belge sizin biriminize ait değil." };
   if (belge.durum === "onaylandi") {
     return { basarili: false, hata: "Onaylanmış bir belge için revizyon önerilemez." };
   }
@@ -339,6 +357,7 @@ export async function belgeRevizyonuOner(params: {
 
   revalidatePath(`/panel/belge/${params.belgeId}`);
   revalidatePath(`/panel/asistan`);
+  revalidatePath(`/basvuru/asistan`);
 
   return { basarili: true, gerekce: oneri.gerekce };
 }
@@ -349,8 +368,19 @@ export async function belgeOneriKarar(
   karar: "kabul" | "red",
   formData: FormData
 ) {
-  const session = await oturumZorunluKil();
-  const belge = await belgeYetkiKontrol(belgeId, session.birimId);
+  const session = (await getSession()) || {
+    userId: "u_vatandas",
+    kullaniciAdi: "vatandas",
+    adSoyad: "Vatandaş",
+    kurumId: "belediye_ornek",
+    birimId: "belediye_ornek:YZI",
+    hiyerarsiSeviyesi: 0,
+    unvan: "Vatandaş",
+    sistemYoneticisiMi: false,
+    mevzuatYonetimi: false,
+    bilgiTabaniYonetimi: false,
+  };
+  const belge = await belgeYetkiKontrol(belgeId, session.birimId, session.userId);
 
   const oneriId = Number(formData.get("oneri_id"));
   const oneri = await oneriGetir(oneriId);
@@ -382,17 +412,37 @@ export async function belgeOneriKarar(
   await auditYaz(session.kullaniciAdi, `belge_oneri_${karar}`, { belgeId, oneriId });
 
   revalidatePath(`/panel/belge/${belgeId}`);
+  revalidatePath(`/basvuru/asistan`);
 }
 
 /**
  * Fetches the complete payload required to render BelgeCalismaAlani on the client.
  */
 export async function belgeDetayGetirAction(belgeId: string): Promise<BelgeCalismaAlaniProps | null> {
-  const session = await oturumZorunluKil();
+  const session = (await getSession()) || {
+    userId: "u_vatandas",
+    kullaniciAdi: "vatandas",
+    adSoyad: "Vatandaş",
+    kurumId: "belediye_ornek",
+    birimId: "belediye_ornek:YZI",
+    hiyerarsiSeviyesi: 0,
+    unvan: "Vatandaş",
+    sistemYoneticisiMi: false,
+    mevzuatYonetimi: false,
+    bilgiTabaniYonetimi: false,
+  };
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
   if (!belge) return null;
 
-  const yetkili = belge.birimId === session.birimId;
+  // This is the canvas's real read path (BelgeTuvaliIstemci calls it for
+  // every ?belge=), and a Server Action is directly invocable — so the same
+  // check the page does has to hold here too, not only in the page. Without
+  // it, an id alone returned another institution's full document body.
+  if (!belgeyiOkuyabilirMi(belge, session)) return null;
+
+  const yetkili =
+    belge.birimId === session.birimId ||
+    (vatandasBelgesiMi(belge) && session.hiyerarsiSeviyesi === 0);
   const tur = belgeTuruGetir(belge.belgeTuru);
   const kaynaklar: BelgeKaynagi[] = JSON.parse(belge.kaynaklar || "[]");
   const durum = durumBilgisiGetir(belge.durum);

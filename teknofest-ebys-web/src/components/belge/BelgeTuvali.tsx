@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
 import { belgeTuruGetir } from "@/lib/belgeler/turler";
+import { belgeyiOkuyabilirMi } from "@/lib/belgeler/erisim";
 import { belgedenModel } from "@/lib/belgeler/modelle";
 import { bekleyenOnerileriGetir } from "@/lib/belgeler/oneriler";
 import { onayAdimlariGetir } from "@/lib/onay";
@@ -19,7 +20,9 @@ import type { BelgeKaynagi } from "@/lib/agents/belge-yazar";
 export async function BelgeTuvali({ belgeId }: { belgeId: string }) {
   const session = await oturumZorunluKil();
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
-  if (!belge) {
+  // Not "yetkiniz yok": a belge outside this birim reads as missing so an id
+  // cannot be probed for existence — the same convention sohbetGetir follows.
+  if (!belge || !belgeyiOkuyabilirMi(belge, session)) {
     return (
       <Card className="p-5">
         <p className="text-sm text-destructive">Belge bulunamadı.</p>

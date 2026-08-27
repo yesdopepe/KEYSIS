@@ -62,7 +62,10 @@ const qdrant = new QdrantClient({
   port: qdrantUrl.port ? Number(qdrantUrl.port) : qdrantUrl.protocol === "https:" ? 443 : 6333,
   apiKey: QDRANT_API_KEY,
   prefix: QDRANT_PREFIX,
-  timeout: 600,
+  // Milliseconds (see the note in src/lib/vektor/qdrant.ts) — at 600 this
+  // aborted after 0.6s, which is why 45 of the articles this script inserted
+  // into Postgres never reached the index.
+  timeout: 120_000,
 });
 
 let koleksiyonlarHazir = false;

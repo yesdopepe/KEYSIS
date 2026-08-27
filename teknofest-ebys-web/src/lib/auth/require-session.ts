@@ -39,7 +39,15 @@ const IZIN_MESAJLARI: Record<YoneticiIzni, string> = {
  */
 export async function oturumIzinliKil(izin: YoneticiIzni): Promise<SessionPayload> {
   const session = await oturumZorunluKil();
-  const izinliMi = session.hiyerarsiSeviyesi >= IZIN_SEVIYELERI[izin] || session[izin] === true;
+  const izinliMi =
+    // A third grant path, alongside the level threshold and the role flag:
+    // the system administrator. The seeded sistem_admin has hiyerarsiSeviyesi
+    // 1 and no role, so both other paths resolve to false and the account that
+    // administers everything else could not upload a single mevzuat article —
+    // with no alternative route, since /yonetim only covers kurum/birim/rol.
+    session.sistemYoneticisiMi ||
+    session.hiyerarsiSeviyesi >= IZIN_SEVIYELERI[izin] ||
+    session[izin] === true;
   if (!izinliMi) throw new Error(IZIN_MESAJLARI[izin]);
   return session;
 }

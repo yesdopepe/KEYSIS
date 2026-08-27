@@ -49,6 +49,7 @@ export interface Conversation {
 export interface AIChatHistoryProps {
   conversations: Conversation[];
   activeConversationId?: string;
+  baseHref?: string;
   onSelect?: (conversationId: string) => void;
   onNewConversation?: () => void;
   onRename?: (conversationId: string, newTitle: string) => Promise<void> | void;
@@ -119,6 +120,7 @@ function groupConversationsByDate(conversations: Conversation[]): {
 export function AIChatHistory({
   conversations,
   activeConversationId,
+  baseHref = "/panel/asistan",
   onSelect,
   onNewConversation,
   onRename,
@@ -207,7 +209,7 @@ export function AIChatHistory({
               </Button>
             ) : (
               <Link
-                href="/panel/asistan"
+                href={baseHref}
                 onClick={() => onSelect?.("")}
                 className={buttonClasses("primary", "sm", "h-8 min-h-0 px-2.5 text-xs gap-1.5 rounded-lg font-medium shrink-0 inline-flex items-center justify-center")}
               >
@@ -295,7 +297,7 @@ export function AIChatHistory({
                             />
                           ) : (
                             <Link
-                              href={`/panel/asistan/${conversation.id}`}
+                              href={`${baseHref}/${conversation.id}`}
                               onClick={() => onSelect?.(conversation.id)}
                               className="flex flex-col gap-0.5 text-left w-full"
                             >

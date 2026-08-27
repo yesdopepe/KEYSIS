@@ -17,6 +17,7 @@ export function StaffShell({
     hiyerarsiSeviyesi?: number;
     bilgiTabaniYonetimi?: boolean;
     mevzuatYonetimi?: boolean;
+    sistemYoneticisiMi?: boolean;
   };
 }) {
   const navItems: NavItem[] = [
@@ -28,7 +29,13 @@ export function StaffShell({
   // The knowledge base is curated, not crowd-sourced — only the level that
   // can issue a karar (or a role explicitly granted this) can decide what
   // the assistant answers from.
-  if ((session.hiyerarsiSeviyesi ?? 0) >= BILGI_TABANI_MIN_SEVIYE || session.bilgiTabaniYonetimi) {
+  // Mirrors oturumIzinliKil's three grant paths — a link the action would
+  // refuse is worse than no link, and so is hiding one it would allow.
+  if (
+    session.sistemYoneticisiMi ||
+    (session.hiyerarsiSeviyesi ?? 0) >= BILGI_TABANI_MIN_SEVIYE ||
+    session.bilgiTabaniYonetimi
+  ) {
     navItems.push({
       href: "/panel/kurum-belgeleri",
       label: "Kurum Bilgi Tabanı",
@@ -36,7 +43,11 @@ export function StaffShell({
     });
   }
 
-  if ((session.hiyerarsiSeviyesi ?? 0) >= MEVZUAT_MIN_SEVIYE || session.mevzuatYonetimi) {
+  if (
+    session.sistemYoneticisiMi ||
+    (session.hiyerarsiSeviyesi ?? 0) >= MEVZUAT_MIN_SEVIYE ||
+    session.mevzuatYonetimi
+  ) {
     navItems.push({
       href: "/panel/mevzuat",
       label: "Mevzuat",

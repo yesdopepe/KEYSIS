@@ -24,6 +24,18 @@ export interface BelgeTuruTanimi {
 
 export const BELGE_TURLERI: BelgeTuruTanimi[] = [
   {
+    id: "dilekce",
+    ad: "Dilekçe",
+    aciklama: "Vatandaşın kamu kurum ve kuruluşlarına sunduğu resmi başvuru, talep ve şikayet belgesi.",
+    minHiyerarsiSeviyesi: 0,
+    icerikRehberi:
+      "3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun ve resmi yazışma kurallarına uygun olarak şunları kapsar: " +
+      "Muhatap idare/makam başlığı (T.C. [Kurum Adı] / [Birim Adı] Başkanlığına/Müdürlüğüne), açık ve net konu başlığı, " +
+      "olayın/ihtiyacın gerekçeli ve somut açıklaması, varsa ada/parsel/adres detayları, kanuni dayanaklar (3071, 5393 vb.), " +
+      "idareden talep edilen somut netice/aksiyon, 'Gereğini saygılarımla arz ederim' kapanışı, tarih, " +
+      "başvuru sahibi adı-soyadı, T.C. Kimlik No, iletişim/adres bilgileri ve ekler listesi.",
+  },
+  {
     id: "tutanak",
     ad: "Tutanak",
     aciklama: "Bir olayın, tespitin veya toplantının resmi kaydı.",

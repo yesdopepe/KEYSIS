@@ -4,9 +4,9 @@ import { Sparkle } from "@phosphor-icons/react/ssr";
 import { Suggestion, Suggestions } from "@/components/ai-elements/suggestion";
 
 export const ORNEK_SORULAR = [
-  "Kurumumuzda kaldırım onarım talepleri hangi süreçle işleniyor?",
-  "İmar durumu başvurusunda hangi belgeler zorunlu?",
-  "Bu bilgilere dayanarak bir tutanak taslağı hazırla.",
+  "Sokağımızdaki yol ve kaldırım onarımı için Fen İşleri Müdürlüğüne resmi bir dilekçe hazırla.",
+  "İmar durumu ve inşaat ruhsatı başvurusunda hangi belgeler zorunludur?",
+  "Apartmandaki aşırı gürültü ve zabıta denetimi için resmi dilekçe taslağı oluştur.",
 ];
 
 /** The line above the composer before the first turn. */

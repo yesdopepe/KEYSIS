@@ -38,11 +38,13 @@ export function SohbetDuzeni({
   sohbetler,
   aktifId,
   baslik,
+  baseHref = "/panel/asistan",
   children,
 }: {
   sohbetler: SohbetOzeti[];
   aktifId?: string;
   baslik?: string;
+  baseHref?: string;
   children: ReactNode;
 }) {
   const [listeAcik, setListeAcik] = useState(false);
@@ -72,7 +74,7 @@ export function SohbetDuzeni({
         )}
       >
         <div className="w-72 h-full flex flex-col min-w-[18rem]">
-          <SohbetListesi sohbetler={sohbetler} aktifId={aktifId} />
+          <SohbetListesi sohbetler={sohbetler} aktifId={aktifId} baseHref={baseHref} />
         </div>
       </aside>
 
@@ -106,7 +108,7 @@ export function SohbetDuzeni({
 
             {!sidebarAcik && (
               <Link
-                href="/panel/asistan"
+                href={baseHref}
                 className="hidden md:flex h-7 px-2 text-xs gap-1.5 rounded-lg items-center text-muted-foreground hover:text-foreground hover:bg-muted font-medium transition-colors"
               >
                 <Plus size={13} className="text-primary" />
@@ -132,6 +134,7 @@ export function SohbetDuzeni({
           <SohbetListesi
             sohbetler={sohbetler}
             aktifId={aktifId}
+            baseHref={baseHref}
             onSecim={() => setListeAcik(false)}
           />
         </SheetContent>

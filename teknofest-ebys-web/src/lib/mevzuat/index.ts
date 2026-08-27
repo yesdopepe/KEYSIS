@@ -1,6 +1,6 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
-import { and, eq, isNull, or } from "drizzle-orm";
+import { and, eq, inArray, isNull, or } from "drizzle-orm";
 import { db, schema } from "@/lib/db";
 import {
   GLOBAL_KURUM_SENTINEL,
@@ -45,25 +45,41 @@ async function maddeleriKaydet(
     }))
   );
 
-  // The article body carries the meaning; the title alone is too short to
-  // embed well, so both go in.
-  const vektorler = await pasajGomVektorleri(
-    maddeler.map((m) => `${m.baslik}\n${m.icerik}`)
-  );
+  // Indexing failure must not leave the rows behind. Postgres has to be
+  // written first — the Qdrant point id *is* the row id — so the rows are
+  // rolled back by hand if embedding or indexing throws. Without this an
+  // upload that failed half way through still listed its articles in the UI
+  // while being permanently unsearchable, which is the state the pre-vector
+  // seed corpus was in and how ingest-ek-kurumlar.ts silently lost 45.
+  try {
+    // The article body carries the meaning; the title alone is too short to
+    // embed well, so both go in.
+    const vektorler = await pasajGomVektorleri(
+      maddeler.map((m) => `${m.baslik}\n${m.icerik}`)
+    );
 
-  await noktalariEkle(
-    KOLEKSIYONLAR.mevzuat,
-    maddeler.map((m, i) => ({
-      id: idler[i],
-      vector: vektorler[i],
-      payload: {
-        kurumId: kurumIdPayload(kurumId),
-        kodu: m.kodu,
-        baslik: m.baslik,
-        icerik: m.icerik,
-      },
-    }))
-  );
+    await noktalariEkle(
+      KOLEKSIYONLAR.mevzuat,
+      maddeler.map((m, i) => ({
+        id: idler[i],
+        vector: vektorler[i],
+        payload: {
+          kurumId: kurumIdPayload(kurumId),
+          kodu: m.kodu,
+          baslik: m.baslik,
+          icerik: m.icerik,
+        },
+      }))
+    );
+  } catch (err) {
+    await db.delete(schema.mevzuatMaddeleri).where(inArray(schema.mevzuatMaddeleri.id, idler));
+    throw new Error(
+      `Mevzuat indekslenemedi, hiçbir madde kaydedilmedi: ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+      { cause: err }
+    );
+  }
 
   return idler;
 }

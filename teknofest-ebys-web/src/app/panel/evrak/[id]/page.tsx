@@ -5,7 +5,6 @@ import {
   FileText,
   Sparkle,
   Scales,
-  PencilSimpleLine,
   ListChecks,
   ArrowsLeftRight,
   ClockCounterClockwise,
@@ -14,7 +13,13 @@ import {
   ArrowUUpLeft,
   WarningCircle,
   CircleDashed,
-  FloppyDisk,
+  Paperclip,
+  Eye,
+  DownloadSimple,
+  FilePdf,
+  FileImage,
+  ShieldCheck,
+  ShieldWarning,
 } from "@phosphor-icons/react/ssr";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
@@ -29,17 +34,25 @@ import {
 } from "../../actions";
 import { StaffShell } from "@/components/StaffShell";
 import { Card } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { inputClasses } from "@/components/ui/Field";
 import { durumBilgisiGetir } from "@/lib/ui/durum";
-import { ResmiBelgeOnizleme } from "@/components/belge/ResmiBelgeOnizleme";
-import { IndirmeButonlari } from "@/components/belge/IndirmeButonlari";
-import { OneriIncelemesi } from "@/components/belge/OneriIncelemesi";
+import { CevapYazisiPaneli } from "@/components/belge/CevapYazisiPaneli";
+import { DilekceOnizleme } from "@/components/belge/DilekceOnizleme";
+import { BelgeSayfaCercevesi } from "@/components/belge/BelgeSayfaCercevesi";
 import { evraktanModel } from "@/lib/belgeler/modelle";
+import { tarihFormatla } from "@/lib/belgeler/resmi-belge";
 import { bekleyenOnerileriGetir } from "@/lib/belgeler/oneriler";
 import { yanitTaslagiCoz } from "@/lib/belgeler/yanit-taslagi";
-import type { MevzuatEslesmesi } from "@/lib/agents/reader";
+import { guvenilirMevzuatEslesmeleri, type MevzuatEslesmesi } from "@/lib/agents/reader";
+import type { EkAnalizSonucu } from "@/lib/agents/ek-analiz";
 
 const HIYERARSI_ETIKET: Record<number, string> = { 1: "Memur", 2: "Şube Müdürü", 3: "Daire Başkanı" };
 
@@ -56,11 +69,23 @@ export default async function EvrakDetaySayfasi({
   const detay = await evrakDetayGetir(id);
   if (!detay) notFound();
 
-  const { evrak, kurum, birim, onayAdimlari, havaleler, auditKayitlari } = detay;
+  const { evrak, kurum, birim, onayAdimlari, havaleler, auditKayitlari, ekler } = detay;
   const yetkili = evrak.birimId === session.birimId;
-  const mevzuatEslesmeleri: MevzuatEslesmesi[] = evrak.mevzuatEslesmeleri
-    ? JSON.parse(evrak.mevzuatEslesmeleri)
-    : [];
+  // Filtered on read as well as on write, so cases filed before the
+  // confidence threshold existed stop showing their weak matches too.
+  const mevzuatEslesmeleri: MevzuatEslesmesi[] = guvenilirMevzuatEslesmeleri(
+    evrak.mevzuatEslesmeleri ? JSON.parse(evrak.mevzuatEslesmeleri) : []
+  );
+
+  const ekAnalizi: EkAnalizSonucu | null = evrak.ekAnalizi
+    ? (() => {
+        try {
+          return JSON.parse(evrak.ekAnalizi) as EkAnalizSonucu;
+        } catch {
+          return null;
+        }
+      })()
+    : null;
 
   const taslak = yanitTaslagiCoz(evrak.taslakYapisi);
   const yaziModeli = taslak
@@ -85,6 +110,10 @@ export default async function EvrakDetaySayfasi({
     yetkili && (evrak.durum === "onay_zincirinde" || evrak.durum === "taslak_hazirlaniyor");
 
   const durum = durumBilgisiGetir(evrak.durum);
+  // The classifier caps its own score when the lexical ranking disagrees with
+  // it (see mutabakatTavani), so anything under the top ceiling means the two
+  // signals did not line up — which is exactly when a clerk should look.
+  const dusukGuven = evrak.confidence != null && evrak.confidence < 0.8;
 
   return (
     <StaffShell
@@ -99,7 +128,7 @@ export default async function EvrakDetaySayfasi({
         kurumAdi: sessionKurum?.ad,
       }}
     >
-      <main className="mx-auto w-full max-w-3xl px-4 py-8 space-y-6">
+      <main className="mx-auto w-full max-w-4xl px-4 py-8 space-y-6">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="font-mono text-xs text-muted-foreground">{evrak.takipNo}</p>
@@ -120,49 +149,247 @@ export default async function EvrakDetaySayfasi({
           </Card>
         )}
 
-        <Card className="p-5 space-y-2">
-          <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
+        <Card className="overflow-hidden">
+          <h2 className="flex items-center gap-1.5 border-b border-border px-5 py-3.5 font-heading text-sm font-semibold text-foreground">
             <FileText size={17} className="text-primary" aria-hidden="true" />
             Dilekçe Metni
           </h2>
-          <p className="whitespace-pre-wrap text-sm text-foreground">{evrak.rawText}</p>
+          <div className="bg-muted p-4 sm:p-6">
+            <BelgeSayfaCercevesi>
+              <DilekceOnizleme
+                metin={evrak.rawText}
+                basvuruSahibiAdSoyad={evrak.basvuruSahibiAdSoyad}
+                basvuruSahibiIletisim={evrak.basvuruSahibiIletisim}
+                takipNo={evrak.takipNo}
+                kayitNo={evrak.kayitNo}
+                tarih={tarihFormatla(evrak.olusturmaZamani)}
+              />
+            </BelgeSayfaCercevesi>
+          </div>
         </Card>
 
         <Card className="p-5 space-y-3">
-          <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
+          <h2 className="flex flex-wrap items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
             <Sparkle size={17} className="text-primary" aria-hidden="true" />
             AI Analizi
-            <span className="ml-auto flex items-center gap-2 text-xs font-normal text-muted-foreground">
-              Güven skoru: {evrak.confidence != null ? Math.round(evrak.confidence * 100) : "-"}% · Öncelik: {evrak.onceligi}
+            <span className="ml-auto flex items-center gap-2 text-xs font-normal">
+              <span className={dusukGuven ? "font-semibold text-warning" : "text-muted-foreground"}>
+                Güven skoru: {evrak.confidence != null ? Math.round(evrak.confidence * 100) : "-"}%
+                {dusukGuven && " — elle kontrol edin"}
+              </span>
+              <span className="text-muted-foreground">· Öncelik: {evrak.onceligi}</span>
             </span>
           </h2>
-          <p className="text-sm text-foreground">{evrak.analizOzeti}</p>
+          {evrak.analizOzeti ? (
+            <p className="text-sm text-foreground">{evrak.analizOzeti}</p>
+          ) : (
+            // Distinct from an empty summary on purpose: an analysis that never
+            // ran should not be mistaken for one that found nothing to say.
+            <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
+              <WarningCircle size={16} className="shrink-0 text-warning" aria-hidden="true" />
+              Yapay zekâ analizi bu evrak için yapılamadı; dilekçeyi elle değerlendirin.
+            </p>
+          )}
+          {/* Collapsed by default: a mevzuat list is a reference the clerk
+              opens when they want it, not a claim worth four lines of the
+              summary card. Weak matches are already gone (see
+              guvenilirMevzuatEslesmeleri) — what is left is worth a click. */}
           {mevzuatEslesmeleri.length > 0 && (
-            <div className="border-t border-border pt-3">
-              <p className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-                <Scales size={14} aria-hidden="true" />
-                İlgili Mevzuat
-              </p>
-              <ul className="mt-1.5 space-y-1 text-xs text-muted-foreground">
-                {mevzuatEslesmeleri.map((m) => (
-                  <li key={m.maddeKodu}>
-                    {m.link ? (
-                      <Link
-                        href={m.link}
-                        className="font-semibold text-primary underline-offset-2 hover:underline"
-                      >
-                        {m.maddeKodu}
-                      </Link>
-                    ) : (
-                      <span className="font-semibold text-foreground">{m.maddeKodu}</span>
-                    )}{" "}
-                    — {m.baslik}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Accordion className="border-t border-border">
+              <AccordionItem value="mevzuat" className="border-b-0">
+                <AccordionTrigger className="text-xs font-semibold text-muted-foreground hover:no-underline">
+                  <span className="flex items-center gap-1.5">
+                    <Scales size={14} aria-hidden="true" />
+                    İlgili Mevzuat ({mevzuatEslesmeleri.length})
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul className="space-y-2.5">
+                    {mevzuatEslesmeleri.map((m) => (
+                      <li key={m.maddeKodu} className="text-xs">
+                        <div className="flex flex-wrap items-baseline gap-x-1.5">
+                          {m.link ? (
+                            <Link
+                              href={m.link}
+                              className="font-semibold text-primary underline-offset-2 hover:underline"
+                            >
+                              {m.maddeKodu}
+                            </Link>
+                          ) : (
+                            <span className="font-semibold text-foreground">{m.maddeKodu}</span>
+                          )}
+                          <span className="text-foreground">— {m.baslik}</span>
+                          <span className="ml-auto shrink-0 text-muted-foreground">
+                            benzerlik %{Math.round(m.benzerlikSkoru * 100)}
+                          </span>
+                        </div>
+                        {m.icerikOzeti && (
+                          <p className="mt-0.5 line-clamp-3 text-muted-foreground">
+                            {m.icerikOzeti}
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           )}
         </Card>
+
+        {/* Ek Belgeler (Attachments) Bölümü */}
+        {ekler.length > 0 ? (
+          <Card className="p-5 space-y-3">
+            <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
+              <Paperclip size={17} className="text-primary" aria-hidden="true" />
+              Başvuru Ekleri ({ekler.length})
+            </h2>
+            <div className="divide-y divide-border rounded-[var(--radius-control)] border border-border">
+              {ekler.map((ek) => {
+                const url = `/api/evrak/${evrak.id}/ek/${ek.id}`;
+                const DosyaIkon =
+                  ek.tur === "gorsel"
+                    ? FileImage
+                    : ek.tur === "pdf" || ek.mimeTur === "application/pdf"
+                    ? FilePdf
+                    : FileText;
+
+                return (
+                  <div
+                    key={ek.id}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 hover:bg-muted/40 transition-colors"
+                  >
+                    <div className="flex items-start gap-3 min-w-0">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-control)] bg-primary/10 text-primary">
+                        <DosyaIkon size={20} aria-hidden="true" />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-medium text-sm text-foreground truncate" title={ek.ad}>
+                          {ek.ad}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {(ek.boyut / 1024).toFixed(1)} KB · {ek.mimeTur}
+                          {ek.analizOzeti && (
+                            <span className="block sm:inline sm:ml-2 text-foreground/80 font-normal">
+                              — {ek.analizOzeti}
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-[var(--radius-control)] border border-border bg-card px-2.5 py-1.5 text-xs font-medium text-foreground hover:bg-muted transition-colors"
+                      >
+                        <Eye size={14} aria-hidden="true" />
+                        Görüntüle
+                      </a>
+                      <a
+                        href={url}
+                        download={ek.ad}
+                        className="inline-flex items-center gap-1.5 rounded-[var(--radius-control)] bg-primary/10 text-primary px-2.5 py-1.5 text-xs font-medium hover:bg-primary/20 transition-colors"
+                      >
+                        <DownloadSimple size={14} aria-hidden="true" />
+                        İndir
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Card>
+        ) : evrak.dosyaAdi ? (
+          <Card className="p-5 space-y-2">
+            <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
+              <Paperclip size={17} className="text-primary" aria-hidden="true" />
+              Başvuru Eki
+            </h2>
+            <div className="flex items-center justify-between rounded-[var(--radius-control)] border border-border p-3">
+              <span className="text-sm font-medium text-foreground">{evrak.dosyaAdi}</span>
+              <Badge ton="notr">Kayıtlı Belge</Badge>
+            </div>
+          </Card>
+        ) : null}
+
+        {/* Yapay Zekâ Ek Belge Analizi & Çapraz Doğrulama */}
+        {ekAnalizi && (
+          <Card className="p-5 space-y-4 border-primary/20 bg-primary/[0.02]">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
+                <Sparkle size={17} weight="fill" className="text-primary" aria-hidden="true" />
+                AI Ek Belge & Delil Analizi
+              </h2>
+              <Badge
+                ton={
+                  ekAnalizi.tutarlilikDurumu === "uyumlu"
+                    ? "basari"
+                    : ekAnalizi.tutarlilikDurumu === "incelenmeli"
+                    ? "uyari"
+                    : ekAnalizi.tutarlilikDurumu === "eksik"
+                    ? "bilgi"
+                    : "tehlike"
+                }
+              >
+                {ekAnalizi.tutarlilikDurumu === "uyumlu"
+                  ? "✓ Beyan ve Ekler Uyumlu"
+                  : ekAnalizi.tutarlilikDurumu === "incelenmeli"
+                  ? "⚠ Ek İnceleme Gerekir"
+                  : ekAnalizi.tutarlilikDurumu === "eksik"
+                  ? "ℹ Eksik Belge / Belirtilen Ek Yok"
+                  : "✕ Çelişki / Uyuşmazlık Tespiti"}
+              </Badge>
+            </div>
+
+            <p className="text-sm text-foreground leading-relaxed">{ekAnalizi.genelOzet}</p>
+
+            {ekAnalizi.tespitEdilenBelgeler.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs font-semibold text-muted-foreground mr-1">
+                  Tespit Edilen Belge Türleri:
+                </span>
+                {ekAnalizi.tespitEdilenBelgeler.map((tur, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-foreground"
+                  >
+                    {tur}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {ekAnalizi.caprazDogrulamaNotlari.length > 0 && (
+              <div className="rounded-[var(--radius-control)] bg-success-bg border border-success-border p-3.5 space-y-1.5">
+                <p className="flex items-center gap-1.5 text-xs font-semibold text-success">
+                  <ShieldCheck size={16} weight="fill" aria-hidden="true" />
+                  Çapraz Doğrulama Bulguları
+                </p>
+                <ul className="space-y-1 text-xs text-foreground/90 pl-5 list-disc">
+                  {ekAnalizi.caprazDogrulamaNotlari.map((not, idx) => (
+                    <li key={idx}>{not}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {ekAnalizi.eksikVeyaSupheliHususlar.length > 0 && (
+              <div className="rounded-[var(--radius-control)] bg-warning-bg border border-warning-border p-3.5 space-y-1.5">
+                <p className="flex items-center gap-1.5 text-xs font-semibold text-warning">
+                  <ShieldWarning size={16} weight="fill" aria-hidden="true" />
+                  Dikkat Edilmesi Gereken Hususlar & Eksikler
+                </p>
+                <ul className="space-y-1 text-xs text-foreground/90 pl-5 list-disc">
+                  {ekAnalizi.eksikVeyaSupheliHususlar.map((husus, idx) => (
+                    <li key={idx}>{husus}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </Card>
+        )}
 
         {evrak.durum === "ic_incelemede" && yetkili && (
           <Card className="border-info-border bg-info-bg p-5 space-y-4">
@@ -204,118 +431,17 @@ export default async function EvrakDetaySayfasi({
         )}
 
         {taslak && yaziModeli && (
-          <Card className="p-5 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="flex items-center gap-1.5 font-heading text-sm font-semibold text-foreground">
-                <PencilSimpleLine size={17} className="text-primary" aria-hidden="true" />
-                Cevap Yazısı
-              </h2>
-              <IndirmeButonlari temelHref={`/api/evrak/${evrak.id}/disa-aktar`} />
-            </div>
-
-            {yaziOnerileri.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-foreground">
-                  Bekleyen değişiklik önerileri ({yaziOnerileri.length})
-                </h3>
-                {yaziOnerileri.map((oneri) => (
-                  <OneriIncelemesi
-                    key={oneri.id}
-                    oneri={oneri}
-                    guncelMetin={taslak.govdeMetni}
-                    kabulEt={yaziOneriKarar.bind(null, evrak.id, "kabul")}
-                    reddet={yaziOneriKarar.bind(null, evrak.id, "red")}
-                    duzenlenebilir={taslakDuzenlenebilir}
-                  />
-                ))}
-              </div>
-            )}
-
-            <div className="grid gap-5 lg:grid-cols-2">
-              <div className="space-y-4">
-                {taslakDuzenlenebilir ? (
-                  <>
-                    <form action={taslakGuncelle.bind(null, evrak.id)} className="space-y-3">
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <div>
-                          <label htmlFor="konu" className="block text-sm font-semibold text-foreground">
-                            Konu
-                          </label>
-                          <input
-                            id="konu"
-                            name="konu"
-                            defaultValue={taslak.konu}
-                            className={`${inputClasses} mt-1.5`}
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="hitap" className="block text-sm font-semibold text-foreground">
-                            Muhatap
-                          </label>
-                          <input
-                            id="hitap"
-                            name="hitap"
-                            defaultValue={taslak.hitap}
-                            className={`${inputClasses} mt-1.5`}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="govde_metni" className="block text-sm font-semibold text-foreground">
-                          Yazı Metni
-                        </label>
-                        <p className="mt-0.5 text-xs text-muted-foreground">
-                          İlgi satırı, gövde ve kapanış dahil, tek bir yazı olarak düzenleyin.
-                        </p>
-                        <textarea
-                          id="govde_metni"
-                          name="govde_metni"
-                          defaultValue={taslak.govdeMetni}
-                          rows={16}
-                          className={`${inputClasses} mt-1.5 font-belge leading-relaxed`}
-                        />
-                      </div>
-                      <Button type="submit" variant="outline" size="sm">
-                        <FloppyDisk size={16} aria-hidden="true" />
-                        Yazıyı Kaydet
-                      </Button>
-                    </form>
-
-                    <div className="rounded-[var(--radius-control)] border border-border p-3.5">
-                      <h3 className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
-                        <Sparkle size={16} weight="fill" className="text-primary" aria-hidden="true" />
-                        Yapay zekâdan revizyon iste
-                      </h3>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
-                        Öneri yazıya doğrudan işlenmez; onayınızı bekler.
-                      </p>
-                      <form action={yaziOnerisiIste.bind(null, evrak.id)} className="mt-2.5 space-y-2.5">
-                        <input
-                          type="text"
-                          name="talimat"
-                          placeholder="Ne değişsin? (isteğe bağlı)"
-                          className={inputClasses}
-                        />
-                        <Button type="submit" variant="secondary" size="sm">
-                          <Sparkle size={16} aria-hidden="true" />
-                          Öneri Hazırla
-                        </Button>
-                      </form>
-                    </div>
-                  </>
-                ) : (
-                  <p className="text-sm text-muted-foreground">
-                    Bu aşamada yazı düzenlenemez. Düzenleme, taslak hazırlama ve onay zinciri
-                    aşamalarında ilgili birim tarafından yapılabilir.
-                  </p>
-                )}
-              </div>
-
-              <div className="overflow-x-auto rounded-[var(--radius-control)] bg-muted p-3">
-                <ResmiBelgeOnizleme belge={yaziModeli} />
-              </div>
-            </div>
-          </Card>
+          <CevapYazisiPaneli
+            taslak={taslak}
+            model={yaziModeli}
+            oneriler={yaziOnerileri}
+            duzenlenebilir={taslakDuzenlenebilir}
+            disaAktarHref={`/api/evrak/${evrak.id}/disa-aktar`}
+            kaydet={taslakGuncelle.bind(null, evrak.id)}
+            revizyonIste={yaziOnerisiIste.bind(null, evrak.id)}
+            oneriKabul={yaziOneriKarar.bind(null, evrak.id, "kabul")}
+            oneriRed={yaziOneriKarar.bind(null, evrak.id, "red")}
+          />
         )}
 
         {onayAdimlari.length > 0 && (

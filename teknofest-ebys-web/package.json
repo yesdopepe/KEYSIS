@@ -12,6 +12,7 @@
     "db:push": "drizzle-kit push",
     "db:seed": "tsx --env-file=.env.local src/lib/db/seed.ts",
     "db:ingest-kurumlar": "tsx --env-file=.env.local src/scripts/ingest-ek-kurumlar.ts",
+    "db:reindex-mevzuat": "tsx --env-file=.env.local src/scripts/reindex-mevzuat.ts",
     "docling:dev": "cd services/docling-service && uvicorn main:app --reload --port 8100",
     "qdrant:dev": "cd .qdrant && qdrant"
   },

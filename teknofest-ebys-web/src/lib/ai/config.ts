@@ -14,6 +14,8 @@ export const MODEL_ENV_VARS = {
   asistan_agent: "ASISTAN_AGENT_MODEL",
   asistan_gorsel_agent: "ASISTAN_GORSEL_AGENT_MODEL",
   sohbet_baslik_agent: "SOHBET_BASLIK_AGENT_MODEL",
+  ek_analiz_agent: "EK_ANALIZ_AGENT_MODEL",
+  vatandas_asistan_agent: "VATANDAS_ASISTAN_AGENT_MODEL",
 } as const;
 
 /**
@@ -35,6 +37,8 @@ export const MODEL_DEFAULTS = {
   // tool calling, since the assistant still needs its search tools.
   asistan_gorsel_agent: "llm-large",
   sohbet_baslik_agent: "llm-fast",
+  ek_analiz_agent: "llm-fast",
+  vatandas_asistan_agent: "llm-large",
 } as const;
 
 export const AGENT_TEMPERATURES = {
@@ -46,6 +50,8 @@ export const AGENT_TEMPERATURES = {
   asistan_agent: 0.3,
   asistan_gorsel_agent: 0.3,
   sohbet_baslik_agent: 0.2,
+  ek_analiz_agent: 0.2,
+  vatandas_asistan_agent: 0.3,
 } as const;
 
 /**
@@ -63,6 +69,8 @@ export const AGENT_MAX_OUTPUT_TOKENS = {
   asistan_agent: 8192,
   asistan_gorsel_agent: 8192,
   sohbet_baslik_agent: 128,
+  ek_analiz_agent: 4096,
+  vatandas_asistan_agent: 8192,
 } as const;
 
 export type AgentName = keyof typeof MODEL_DEFAULTS;

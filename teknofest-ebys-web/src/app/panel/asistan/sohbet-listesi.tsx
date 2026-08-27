@@ -17,10 +17,12 @@ export interface SohbetOzeti {
 export function SohbetListesi({
   sohbetler,
   aktifId,
+  baseHref = "/panel/asistan",
   onSecim,
 }: {
   sohbetler: SohbetOzeti[];
   aktifId?: string;
+  baseHref?: string;
   onSecim?: () => void;
 }) {
   const conversations: Conversation[] = useMemo(
@@ -47,6 +49,7 @@ export function SohbetListesi({
     <AIChatHistory
       conversations={conversations}
       activeConversationId={aktifId}
+      baseHref={baseHref}
       onSelect={onSecim}
       onRename={handleRename}
       onDelete={handleDelete}

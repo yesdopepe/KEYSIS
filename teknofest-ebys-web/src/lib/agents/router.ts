@@ -83,6 +83,37 @@ const SonucSemasi = z.object({
 });
 
 /**
+ * Ceilings applied to the model's self-reported confidence, by whether an
+ * independent signal agrees with its choice.
+ *
+ * The self-report on its own is not a measurement: across every case filed so
+ * far it came back as exactly 0.95 — including one where a kimlik kartı
+ * renewal was filed as "genel başvuru". A number that never varies cannot do
+ * the job the prompt asks of it ("düşük confidence bir memurun elle kontrol
+ * etmesini tetikler"), because the trigger never fires.
+ *
+ * The lexical ranking over the same candidate templates is computed here
+ * anyway, so it costs nothing to ask whether it agrees. Agreement between two
+ * methods that fail differently is evidence; one model's opinion of itself is
+ * not. The model can still report *lower* than the ceiling — this only caps.
+ */
+const MUTABAKAT_TAVANLARI = {
+  /** Lexical ranking's own top pick. */
+  birinci: 0.95,
+  /** Somewhere in the lexical top three. */
+  ilkUcte: 0.75,
+  /** The lexical ranking does not favour this template at all. */
+  ayrisiyor: 0.5,
+} as const;
+
+function mutabakatTavani(secilenId: string, siralamaIdleri: string[]): number {
+  const sira = siralamaIdleri.indexOf(secilenId);
+  if (sira === 0) return MUTABAKAT_TAVANLARI.birinci;
+  if (sira > 0 && sira < 3) return MUTABAKAT_TAVANLARI.ilkUcte;
+  return MUTABAKAT_TAVANLARI.ayrisiyor;
+}
+
+/**
  * Classifies a citizen's dilekçe into the correct (kurum, birim, evrakTuru)
  * by having the LLM pick among the known yazışma şablonları — constrained
  * choice, not free generation, so it can't hallucinate an institution that
@@ -124,6 +155,11 @@ export async function siniflandirDilekce(
     });
 
     const secilen = adaylar.find((a) => a.id === object.evrak_turu_id) ?? enIyiLexikal;
+    const tavan = mutabakatTavani(
+      secilen.id,
+      lexikalSiralama.map((l) => l.aday.id)
+    );
+
     return {
       evrakTuruId: secilen.id,
       evrakTuru: secilen.evrakTuru,
@@ -131,7 +167,7 @@ export async function siniflandirDilekce(
       kurumAdi: secilen.kurumAdi,
       birimId: secilen.birimId,
       sdpKodu: "",
-      confidence: object.confidence,
+      confidence: Math.min(object.confidence, tavan),
       aciklama: object.aciklama,
     };
   } catch (err) {

@@ -14,18 +14,60 @@ export interface MevzuatEslesmesi {
   link?: string;
 }
 
+/**
+ * Floor below which a mevzuat match is discarded outright.
+ *
+ * Deliberately low, because on this corpus similarity cannot separate related
+ * from unrelated on its own. Measured after the full re-index: correct matches
+ * land at 0.755 (4982/11 for a bilgi-edinme request), 0.648 (2872/8 for a
+ * refuse complaint) and 0.584 (5393/15 for a pavement repair) — while
+ * unrelated teacher-overtime articles reach 0.604 on an unrelated query. The
+ * bands overlap, so any line high enough to exclude the noise also vetoes a
+ * genuine match, and vice versa.
+ *
+ * What actually discriminates is the Reader's own selection: given six
+ * candidates it now names the one article that applies, and names none when
+ * nothing does. This floor only removes results too weak for that judgement to
+ * be worth trusting.
+ */
+export const MEVZUAT_GUVEN_ESIGI = 0.45;
+
+/**
+ * Keeps only matches confident enough to show. Applied both when the Reader
+ * writes them and when a page reads them back, so cases filed before the
+ * threshold existed are filtered too.
+ */
+export function guvenilirMevzuatEslesmeleri(eslesmeler: MevzuatEslesmesi[]): MevzuatEslesmesi[] {
+  return eslesmeler.filter((m) => m.benzerlikSkoru >= MEVZUAT_GUVEN_ESIGI);
+}
+
 export interface OkumaSonucu {
-  ozet: string;
+  /**
+   * Null when the analysis could not be produced. It used to fall back to the
+   * first 200 characters of the petition, which the case file then displayed
+   * under "AI Analizi" as though a model had written it — indistinguishable
+   * from a real summary, so a total outage looked like normal operation.
+   */
+  ozet: string | null;
   onceligi: "normal" | "acil" | "gunlu";
   mevzuatEslesmeleri: MevzuatEslesmesi[];
   anahtarBilgiler: Record<string, string>;
 }
 
+/**
+ * `anahtar_bilgiler` is a list of pairs rather than the open-ended map this
+ * once used (`z.record`). That map compiles to a JSON Schema with
+ * `additionalProperties`, which EVREN's guided decoding rejects outright: every
+ * call returned HTTP 500, three retries deep, so *every* case since had a
+ * sliced-text summary, "normal" priority and no real mevzuat reading. The pair
+ * list is expressible in the same schema dialect and the identical prompt then
+ * succeeds — so keep this shape closed; an open map silently disables the agent.
+ */
 const Sema = z.object({
   ozet: z.string(),
   oncelik: z.enum(["normal", "acil", "gunlu"]),
   ilgili_mevzuat_kodlari: z.array(z.string()),
-  anahtar_bilgiler: z.record(z.string(), z.string()),
+  anahtar_bilgiler: z.array(z.object({ anahtar: z.string(), deger: z.string() })),
 });
 
 /**
@@ -44,8 +86,6 @@ export async function evrakiOku(
   const adayMetni = adaylar
     .map((a) => `- kodu: "${a.kodu}" | başlık: ${a.baslik} | özet: ${a.icerik}`)
     .join("\n");
-
-  const varsayilanOzet = dilekceMetni.slice(0, 200);
 
   try {
     const { model, temperature, maxOutputTokens } = getAgentModel("reader_agent");
@@ -78,21 +118,25 @@ export async function evrakiOku(
     return {
       ozet: object.ozet,
       onceligi: object.oncelik,
-      mevzuatEslesmeleri: eslesmeler,
-      anahtarBilgiler: object.anahtar_bilgiler,
+      // Two conditions, not one: the model picked it *and* the retrieval score
+      // backs the pick. A model asked "which of these six apply" will name
+      // something rather than none.
+      mevzuatEslesmeleri: guvenilirMevzuatEslesmeleri(eslesmeler),
+      anahtarBilgiler: Object.fromEntries(
+        object.anahtar_bilgiler.map((b) => [b.anahtar, b.deger])
+      ),
     };
   } catch (err) {
-    console.warn("Reader LLM çağrısı başarısız, vektör sonucuyla devam ediliyor:", err);
+    // Loud, because the failure is otherwise invisible: nothing downstream
+    // distinguishes "no analysis" from "nothing noteworthy in this case".
+    console.error("Reader agent başarısız — evrak analizsiz kaydediliyor:", err);
     return {
-      ozet: varsayilanOzet,
+      ozet: null,
       onceligi: "normal",
-      mevzuatEslesmeleri: adaylar.slice(0, 3).map((a) => ({
-        maddeKodu: a.kodu,
-        baslik: a.baslik,
-        icerikOzeti: a.icerik,
-        benzerlikSkoru: a.skor,
-        link: a.link,
-      })),
+      // No fallback to the top vector hits. Nothing read the case here, so
+      // there is no judgement that these articles are related — listing the
+      // nearest three anyway is what put unrelated mevzuat on case files.
+      mevzuatEslesmeleri: [],
       anahtarBilgiler: {},
     };
   }

@@ -4,6 +4,7 @@ import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
 import { kurumBelgeleriniListele } from "@/lib/bilgi-tabani";
 import { StaffShell } from "@/components/StaffShell";
+import { YuklemeButonu } from "@/components/YuklemeButonu";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Field, inputClasses } from "@/components/ui/Field";
@@ -21,14 +22,20 @@ export default async function KurumBelgeleriSayfasi() {
     hiyerarsiSeviyesi: session.hiyerarsiSeviyesi,
     bilgiTabaniYonetimi: session.bilgiTabaniYonetimi,
     mevzuatYonetimi: session.mevzuatYonetimi,
+    sistemYoneticisiMi: session.sistemYoneticisiMi,
     birimAdi: birim?.ad,
     kurumAdi: kurum?.ad,
   };
 
   // Authorization is enforced in the action too — this only avoids showing a
   // form the user could not submit. Mirrors oturumIzinliKil's OR: the
-  // legacy level-3 rule or an explicit role grant, either is enough.
-  if (session.hiyerarsiSeviyesi < BILGI_TABANI_MIN_SEVIYE && !session.bilgiTabaniYonetimi) {
+  // legacy level-3 rule, an explicit role grant, or the system
+  // administrator — any one is enough.
+  if (
+    !session.sistemYoneticisiMi &&
+    session.hiyerarsiSeviyesi < BILGI_TABANI_MIN_SEVIYE &&
+    !session.bilgiTabaniYonetimi
+  ) {
     return (
       <StaffShell activeHref="/panel/kurum-belgeleri" session={shellSession}>
         <main className="mx-auto w-full max-w-2xl px-4 py-8">
@@ -93,10 +100,10 @@ export default async function KurumBelgeleriSayfasi() {
               <textarea id="metin" name="metin" rows={6} className={inputClasses} />
             </Field>
 
-            <Button type="submit">
+            <YuklemeButonu>
               <UploadSimple size={18} aria-hidden="true" />
               Bilgi Tabanına Ekle
-            </Button>
+            </YuklemeButonu>
           </form>
         </Card>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { eq, desc } from "drizzle-orm";
+import { and, eq, desc } from "drizzle-orm";
 import { CaretRight, ChatCircleText } from "@phosphor-icons/react/ssr";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
@@ -15,9 +15,30 @@ export default async function BelgelerimSayfasi() {
   const [birim] = await db.select().from(schema.birimler).where(eq(schema.birimler.id, session.birimId));
   const [kurum] = await db.select().from(schema.kurumlar).where(eq(schema.kurumlar.id, session.kurumId));
 
+  // The list is birim-wide on purpose ("Biriminizde oluşturulan belgeler") —
+  // that is what lets a müdür open and approve a memur's document. The chat
+  // that produced it, however, is private to its author: sohbetGetir resolves
+  // by (id, kullaniciId, kurumId), so deep-linking a colleague into it 404s.
+  // Join the conversation only when this user actually owns it, and fall back
+  // to the standalone canvas otherwise.
   const belgeler = await db
-    .select()
+    .select({
+      id: schema.belgeler.id,
+      baslik: schema.belgeler.baslik,
+      belgeTuru: schema.belgeler.belgeTuru,
+      durum: schema.belgeler.durum,
+      olusturmaZamani: schema.belgeler.olusturmaZamani,
+      sohbetId: schema.sohbetler.id,
+    })
     .from(schema.belgeler)
+    .leftJoin(
+      schema.sohbetler,
+      and(
+        eq(schema.sohbetler.id, schema.belgeler.sohbetId),
+        eq(schema.sohbetler.kullaniciId, session.userId),
+        eq(schema.sohbetler.kurumId, session.kurumId)
+      )
+    )
     .where(eq(schema.belgeler.birimId, session.birimId))
     .orderBy(desc(schema.belgeler.olusturmaZamani));
 
@@ -58,8 +79,9 @@ export default async function BelgelerimSayfasi() {
                 const durum = durumBilgisiGetir(b.durum);
                 // Documents made through chat stay reachable from that
                 // conversation (tool badges, the request that produced it);
-                // ones without a sohbetId (pre-chat, or the chat was
-                // deleted) open the standalone canvas page instead.
+                // ones whose chat this user does not own — a colleague's
+                // document, or one whose chat was deleted — open the
+                // standalone canvas page instead.
                 const href = b.sohbetId ? `/panel/asistan/${b.sohbetId}?belge=${b.id}` : `/panel/belge/${b.id}`;
                 return (
                   <Link

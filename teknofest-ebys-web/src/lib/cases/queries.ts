@@ -118,8 +118,13 @@ export async function evrakDetayGetir(evrakId: string) {
     .from(schema.auditLog)
     .where(eq(schema.auditLog.evrakId, evrakId))
     .orderBy(asc(schema.auditLog.zaman));
+  const ekler = await db
+    .select()
+    .from(schema.evrakEkleri)
+    .where(eq(schema.evrakEkleri.evrakId, evrakId))
+    .orderBy(asc(schema.evrakEkleri.zaman));
 
-  return { evrak, kurum, birim, sablon: sablon[0] ?? null, onayAdimlari, havaleler, auditKayitlari };
+  return { evrak, kurum, birim, sablon: sablon[0] ?? null, onayAdimlari, havaleler, auditKayitlari, ekler };
 }
 
 export async function tumKurumVeBirimler() {

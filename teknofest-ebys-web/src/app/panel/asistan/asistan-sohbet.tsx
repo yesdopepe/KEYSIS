@@ -91,6 +91,7 @@ export interface AsistanSohbetProps {
   baslangicMesajlari?: UIMessage[];
   baslangicEkleri?: YuklenenEk[];
   yeniMi: boolean;
+  baseHref?: string;
   belgeId?: string;
   belgeNode?: ReactNode;
   belgeBasligi?: string;
@@ -212,6 +213,7 @@ export function AsistanSohbet({
   baslangicMesajlari = [],
   baslangicEkleri = [],
   yeniMi,
+  baseHref = "/panel/asistan",
   belgeId,
   belgeNode,
   belgeBasligi,
@@ -273,8 +275,8 @@ export function AsistanSohbet({
   useEffect(() => {
     if (yeniMi && status === "ready" && messages.length > 0) {
       const hedefUrl = aktifBelgeId
-        ? `/panel/asistan/${sohbetId}?belge=${aktifBelgeId}`
-        : `/panel/asistan/${sohbetId}`;
+        ? `${baseHref}/${sohbetId}?belge=${aktifBelgeId}`
+        : `${baseHref}/${sohbetId}`;
       router.replace(hedefUrl);
       return;
     }
@@ -305,11 +307,11 @@ export function AsistanSohbet({
     sonBelgeSurumRef.current.set(hedefBelgeId, hedefSurum);
 
     if (oncekiSurum === undefined) {
-      router.replace(`/panel/asistan/${sohbetId}?belge=${hedefBelgeId}`, { scroll: false });
+      router.replace(`${baseHref}/${sohbetId}?belge=${hedefBelgeId}`, { scroll: false });
     } else if (oncekiSurum !== hedefSurum) {
       router.refresh();
     }
-  }, [messages, mesgul, sohbetId, router, yeniMi, status, aktifBelgeId]);
+  }, [messages, mesgul, sohbetId, router, yeniMi, status, aktifBelgeId, baseHref]);
 
   const canvasIcerik = useMemo(() => {
     if (canliTaslak && canliTaslak.durum === "yazılıyor") {

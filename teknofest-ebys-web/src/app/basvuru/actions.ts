@@ -6,18 +6,53 @@ import { basvuruIsle, type BasvuruSonucu } from "@/lib/cases/pipeline";
 import { evraktanModel } from "@/lib/belgeler/modelle";
 import type { ResmiBelge } from "@/lib/belgeler/resmi-belge";
 
-const DOCLING_URL = process.env.DOCLING_SERVICE_URL ?? "http://localhost:8100";
+import { randomUUID } from "node:crypto";
+import { mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { dosyadanMetinCikar } from "@/lib/docling";
+import type { BasvuruEkBilgisi } from "@/lib/cases/pipeline";
+import { belgeTuruGetir } from "@/lib/belgeler/turler";
+import { belgeTaslagiOlusturAkisli } from "@/lib/agents/belge-yazar";
+import { yerTutuculariDoldur } from "@/lib/basvuru/eksiklik";
 
-async function dosyadanMetinCikar(dosya: File): Promise<string> {
-  const formData = new FormData();
-  formData.append("file", dosya, dosya.name);
+const VERI_DIZINI = "./data";
 
-  const res = await fetch(`${DOCLING_URL}/convert`, { method: "POST", body: formData });
-  if (!res.ok) {
-    throw new Error(`Belge ayrıştırma servisi hata döndürdü (${res.status}).`);
+export async function aiDilekceOlusturAction(ozetKonu: string): Promise<string> {
+  if (!ozetKonu.trim()) {
+    throw new Error("Lütfen talebinizi kısaca açıklayın.");
   }
-  const data = (await res.json()) as { raw_text: string };
-  return data.raw_text;
+  const tur = belgeTuruGetir("dilekce");
+  if (!tur) throw new Error("Dilekçe türü tanımlı değil.");
+
+  const sonuc = await belgeTaslagiOlusturAkisli(
+    tur,
+    ozetKonu,
+    "Belediye Başkanlığı / Yetkili Kamu İdaresi",
+    "belediye_ornek"
+  );
+  return sonuc.govdeMetni;
+}
+
+async function metinCikarGuvenli(dosya: File): Promise<string> {
+  if (
+    dosya.type.startsWith("text/") ||
+    dosya.name.endsWith(".txt") ||
+    dosya.name.endsWith(".md") ||
+    dosya.name.endsWith(".csv") ||
+    dosya.name.endsWith(".json")
+  ) {
+    try {
+      return await dosya.text();
+    } catch {
+      // ignore
+    }
+  }
+  try {
+    return await dosyadanMetinCikar(dosya);
+  } catch (err) {
+    console.warn("Docling metin çıkarma hatası (fallback devrede):", err);
+    return `[Ek Dosya: ${dosya.name}, Boyut: ${(dosya.size / 1024).toFixed(1)} KB]`;
+  }
 }
 
 export type BasvuruFormSonucu = BasvuruSonucu & { dilekceMetni: string };
@@ -34,19 +69,67 @@ export async function basvuruGonder(input: {
   basvuruSahibiAdSoyad: string;
   basvuruSahibiIletisim: string;
   dosya?: File | null;
+  dosyalar?: File[];
 }): Promise<BasvuruFormSonucu> {
   let dilekceMetni = input.dilekceMetni;
 
+  // Process attachments
+  const gelenDosyalar: File[] = [];
   if (input.dosya && input.dosya.size > 0) {
-    const dosyaMetni = await dosyadanMetinCikar(input.dosya);
-    dilekceMetni = `${dilekceMetni}\n\n${dosyaMetni}`.trim();
+    gelenDosyalar.push(input.dosya);
+  }
+  if (input.dosyalar && input.dosyalar.length > 0) {
+    for (const d of input.dosyalar) {
+      if (d.size > 0 && !gelenDosyalar.some((g) => g.name === d.name && g.size === d.size)) {
+        gelenDosyalar.push(d);
+      }
+    }
+  }
+
+  const ekBilgileri: BasvuruEkBilgisi[] = [];
+
+  for (const dosya of gelenDosyalar) {
+    const ekId = randomUUID();
+    const gorselMi = dosya.type.startsWith("image/");
+    const pdfMi = dosya.type === "application/pdf" || dosya.name.endsWith(".pdf");
+    const uzanti = path.extname(dosya.name);
+    const goreliYol = path.join("evrak-ekleri", ekId, `${ekId}${uzanti}`);
+    const tamYol = path.join(VERI_DIZINI, goreliYol);
+
+    await mkdir(path.dirname(tamYol), { recursive: true });
+    await writeFile(tamYol, Buffer.from(await dosya.arrayBuffer()));
+
+    let rawText: string | null = null;
+    if (!gorselMi) {
+      rawText = await metinCikarGuvenli(dosya);
+    }
+
+    ekBilgileri.push({
+      id: ekId,
+      ad: dosya.name,
+      dosyaAdi: `${ekId}${uzanti}`,
+      mimeTur: dosya.type || "application/octet-stream",
+      boyut: dosya.size,
+      diskYolu: goreliYol,
+      rawText,
+      tur: gorselMi ? "gorsel" : pdfMi ? "pdf" : "belge",
+    });
   }
 
   if (input.ekCevaplar && Object.keys(input.ekCevaplar).length > 0) {
-    const ekMetin = Object.entries(input.ekCevaplar)
-      .map(([alan, deger]) => `${alan}: ${deger}`)
-      .join("\n");
-    dilekceMetni = `${dilekceMetni}\n\nEk Bilgiler:\n${ekMetin}`;
+    // Answers go back into the gaps they were asked for, so the petition reads
+    // as one finished document. Only answers with nowhere to go are appended:
+    // appending all of them left the "[EK BİLGİ GEREKLİ: …]" markers standing
+    // in the body, and the pipeline would refuse the resubmission for exactly
+    // the same gaps.
+    const { metin, artanlar } = yerTutuculariDoldur(dilekceMetni, input.ekCevaplar);
+    dilekceMetni = metin;
+
+    const artanGirdiler = Object.entries(artanlar);
+    if (artanGirdiler.length > 0) {
+      const ekMetin = artanGirdiler.map(([alan, deger]) => `${alan}: ${deger}`).join("\n");
+      dilekceMetni = `${dilekceMetni}\n\nEk Bilgiler:\n${ekMetin}`;
+    }
   }
 
   if (!dilekceMetni.trim()) {
@@ -57,7 +140,8 @@ export async function basvuruGonder(input: {
     dilekceMetni,
     basvuruSahibiAdSoyad: input.basvuruSahibiAdSoyad,
     basvuruSahibiIletisim: input.basvuruSahibiIletisim,
-    dosyaAdi: input.dosya?.name,
+    dosyaAdi: ekBilgileri.length > 0 ? ekBilgileri[0].ad : undefined,
+    ekler: ekBilgileri,
   });
 
   return { ...sonuc, dilekceMetni };

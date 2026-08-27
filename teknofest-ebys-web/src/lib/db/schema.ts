@@ -175,6 +175,9 @@ export const evraklar = pgTable("evraklar", {
   // JSON: Array<{ maddeKodu, baslik, icerikOzeti, benzerlikSkoru }>
   mevzuatEslesmeleri: text("mevzuat_eslesmeleri").notNull().default("[]"),
 
+  // JSON string: Analysis of uploaded attachments (document type, consistency, notes)
+  ekAnalizi: text("ek_analizi"),
+
   // JSON: YanitTaslagi (see lib/belgeler/yanit-taslagi.ts) — structured
   // fields rather than one flat blob, so the response letter renders through
   // the same official-document pipeline as staff-authored belgeler.
@@ -453,6 +456,31 @@ export const sohbetEkleri = pgTable("sohbet_ekleri", {
   diskYolu: text("disk_yolu").notNull(),
   rawText: text("raw_text"),
   tur: text("tur").notNull(), // gorsel | belge
+  zaman: timestamp("zaman", { mode: "date", withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+/**
+ * Attachments uploaded by citizens with their evraklar (petitions).
+ * Stored under ./data/evrak-ekleri/[evrakId]/[ekId] and analyzed by AI
+ * for authenticity, relevance, and consistency against petition claims.
+ */
+export const evrakEkleri = pgTable("evrak_ekleri", {
+  id: text("id").primaryKey(),
+  evrakId: text("evrak_id")
+    .notNull()
+    .references(() => evraklar.id),
+  ad: text("ad").notNull(),
+  dosyaAdi: text("dosya_adi").notNull(),
+  mimeTur: text("mime_tur").notNull(),
+  boyut: integer("boyut").notNull().default(0),
+  diskYolu: text("disk_yolu").notNull(),
+  rawText: text("raw_text"),
+  tur: text("tur").notNull().default("belge"), // gorsel | belge | pdf
+  analizOzeti: text("analiz_ozeti"),
+  uygunlukDurumu: text("uygunluk_durumu").default("uyumlu"), // uyumlu | incelenmeli | eksik | ilgisiz
+  uygunlukNotu: text("uygunluk_notu"),
   zaman: timestamp("zaman", { mode: "date", withTimezone: true })
     .notNull()
     .defaultNow(),

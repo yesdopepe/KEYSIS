@@ -68,9 +68,15 @@ function getIstemci(): QdrantClient {
       port: url.port ? Number(url.port) : url.protocol === "https:" ? 443 : 6333,
       apiKey: QDRANT_API_KEY,
       prefix: QDRANT_PREFIX,
-      // EVREN's instance is shared infra, not the near-instant local
-      // binary this used to always be — generous ceiling, not a slowdown.
-      timeout: 600,
+      // No `timeout` override on purpose. The option is milliseconds, not
+      // seconds — it goes straight to setTimeout(() => controller.abort()) —
+      // so the 600 that used to sit here meant 0.6s and aborted an ordinary
+      // upload mid-write (measured: a 16-point upsert ~520ms, a 40-point one
+      // dead at 617ms). An artificial deadline buys nothing here: a real
+      // failure surfaces as an error from the request itself, while a slow
+      // one is just slow — the upload UI says so rather than giving up on it.
+      // Omitting the option leaves the client's own 300s ceiling as the only
+      // stop, which is there to catch a genuinely hung connection.
     });
   }
   return istemci;
@@ -119,9 +125,42 @@ export async function sorguGomVektoru(metin: string): Promise<number[]> {
   return vektor;
 }
 
-/** Embeds passages to be stored, in one batch call. */
+/**
+ * Embedding-input safety cap. A bilgi-tabanı chunk (metniParcala, ≤900 chars)
+ * is always well under this; a mevzuat "madde" is unbounded — if OCR on a
+ * large scan misses a MADDE header, two articles merge into one and can exceed
+ * the embedding model's 8192-token context, which ingest-ek-kurumlar.ts hit
+ * for real (litellm.ContextWindowExceededError on a 22MB scanned yönerge).
+ * ~4 chars/token for Turkish leaves headroom. Only the embedding input is
+ * capped — Postgres still stores the full text for display and citation.
+ */
+const EMBED_METIN_SINIRI = 6000;
+
+/**
+ * How many passages go in one embedding request / one Qdrant upsert. A whole
+ * document is indexed in a single call from the layers above (every madde of a
+ * kanun, every 900-char chunk of a belge), which for a large file is hundreds
+ * of vectors in one request — split here so no single request has to carry it.
+ */
+const YIGIN_BOYUTU = 32;
+
+function yiginlaraBol<T>(ogeler: T[], boyut: number): T[][] {
+  const yiginlar: T[][] = [];
+  for (let i = 0; i < ogeler.length; i += boyut) yiginlar.push(ogeler.slice(i, i + boyut));
+  return yiginlar;
+}
+
+/** Embeds passages to be stored, in batches. */
 export async function pasajGomVektorleri(metinler: string[]): Promise<number[][]> {
-  return gomVektorleriAl(metinler);
+  const guvenli = metinler.map((m) =>
+    m.length > EMBED_METIN_SINIRI ? m.slice(0, EMBED_METIN_SINIRI) : m
+  );
+
+  const vektorler: number[][] = [];
+  for (const yigin of yiginlaraBol(guvenli, YIGIN_BOYUTU)) {
+    vektorler.push(...(await gomVektorleriAl(yigin)));
+  }
+  return vektorler;
 }
 
 export interface VektorNoktasi {
@@ -136,7 +175,9 @@ export async function noktalariEkle(
 ): Promise<void> {
   if (noktalar.length === 0) return;
   await koleksiyonlariHazirla();
-  await getIstemci().upsert(koleksiyon, { wait: true, points: noktalar });
+  for (const yigin of yiginlaraBol(noktalar, YIGIN_BOYUTU)) {
+    await getIstemci().upsert(koleksiyon, { wait: true, points: yigin });
+  }
 }
 
 export async function noktalariSil(

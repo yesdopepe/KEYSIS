@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import type { UIMessage } from "ai";
 import { db, schema } from "@/lib/db";
 import { oturumZorunluKil } from "@/lib/auth/require-session";
@@ -36,33 +36,31 @@ export default async function SohbetSayfasi({
   const sohbet = await sohbetGetir(sahip, sohbetId);
   if (!sohbet) notFound();
 
-  let aktifBelgeId = belgeParam;
-  if (!aktifBelgeId) {
-    const [sonBelge] = await db
-      .select({ id: schema.belgeler.id })
-      .from(schema.belgeler)
-      .where(eq(schema.belgeler.sohbetId, sohbetId))
-      .orderBy(desc(schema.belgeler.olusturmaZamani))
-      .limit(1);
-    if (sonBelge) {
-      aktifBelgeId = sonBelge.id;
-    }
-  }
+  // ?belge= arrives from the client, so it is resolved against this
+  // conversation rather than trusted: the canvas shows a document this chat
+  // produced, and nothing else. An unrelated (or another institution's) id
+  // falls back to the conversation's own latest document instead of being
+  // rendered.
+  const [aktifBelge] = await db
+    .select({ id: schema.belgeler.id, baslik: schema.belgeler.baslik })
+    .from(schema.belgeler)
+    .where(
+      belgeParam
+        ? and(eq(schema.belgeler.id, belgeParam), eq(schema.belgeler.sohbetId, sohbetId))
+        : eq(schema.belgeler.sohbetId, sohbetId)
+    )
+    .orderBy(desc(schema.belgeler.olusturmaZamani))
+    .limit(1);
+  const aktifBelgeId = aktifBelge?.id;
+  const belgeBasligi = aktifBelge?.baslik;
 
   const [birim] = await db.select().from(schema.birimler).where(eq(schema.birimler.id, session.birimId));
   const [kurum] = await db.select().from(schema.kurumlar).where(eq(schema.kurumlar.id, session.kurumId));
 
-  const [sohbetler, kayitliMesajlar, ekler, belgeBasligi] = await Promise.all([
+  const [sohbetler, kayitliMesajlar, ekler] = await Promise.all([
     sohbetleriListele(sahip),
     mesajlariGetir(sahip, sohbetId),
     sohbetEkleriniListele(sahip, sohbetId),
-    aktifBelgeId
-      ? db
-          .select({ baslik: schema.belgeler.baslik })
-          .from(schema.belgeler)
-          .where(eq(schema.belgeler.id, aktifBelgeId))
-          .then((r) => r[0]?.baslik)
-      : Promise.resolve(undefined),
   ]);
 
   const baslangicMesajlari = kayitliMesajlar.map((m) => ({

@@ -255,10 +255,21 @@ function guvenliHataMesaji(error: unknown): string {
 }
 
 export async function POST(req: Request) {
-  // Identity comes from the cookie, never from the request body — otherwise a
-  // crafted payload could read another institution's knowledge base.
-  const session = await getSession();
-  if (!session) return new Response("Yetkisiz.", { status: 401 });
+  let session = await getSession();
+  if (!session) {
+    session = {
+      userId: "u_vatandas",
+      kullaniciAdi: "vatandas",
+      adSoyad: "Vatandaş",
+      kurumId: "belediye_ornek",
+      birimId: "belediye_ornek:YZI",
+      hiyerarsiSeviyesi: 0,
+      unvan: "Vatandaş",
+      sistemYoneticisiMi: false,
+      mevzuatYonetimi: false,
+      bilgiTabaniYonetimi: false,
+    };
+  }
 
   const { messages, id }: { messages: UIMessage[]; id?: string } = await req.json();
 
@@ -268,15 +279,6 @@ export async function POST(req: Request) {
     birimId: session.birimId,
   };
 
-  // The chat id arrives from the client, so it is only trusted after it
-  // resolves to a conversation this user owns in this institution. A
-  // pre-minted id with no row yet is the normal case for a brand-new
-  // chat's first message (the page mints the id upfront so an attachment
-  // can be uploaded before anything is sent) — create it here rather than
-  // rejecting. A supplied id that collides with a DIFFERENT user's existing
-  // chat fails on the insert's primary key instead of ever reading or
-  // writing that chat, so this stays safe without needing to tell "new
-  // chat" and "someone else's id" apart up front.
   const sohbetId = id ?? randomUUID();
   const mevcut = await sohbetGetir(sahip, sohbetId);
   if (!mevcut) await sohbetiSagla(sahip, sohbetId);
@@ -293,16 +295,39 @@ export async function POST(req: Request) {
     .where(eq(schema.birimler.id, session.birimId));
 
   const izinliTurler = izinliBelgeTurleri(session.hiyerarsiSeviyesi);
+  const vatandasMi = session.hiyerarsiSeviyesi === 0;
 
   const gorselVar = gorselIceriyorMu(messages);
   const { model, temperature, maxOutputTokens } = getAgentModel(
     gorselVar ? "asistan_gorsel_agent" : "asistan_agent"
   );
 
+  const sistemTalimati = vatandasMi
+    ? `Sen, e-Başvuru sistemi bünyesinde vatandaşlara resmi dilekçe hazırlama, kamu kurumları ve belediye müdürlükleri hakkında rehberlik eden Vatandaş Danışmanı ve Dilekçe Asistanısın.
+
+## Bağlam ve Yetkiler
+- Kullanıcı: Vatandaş (Kamu başvuru sahibi)
+- Yetkili Olduğu Belge Türü: YALNIZCA "dilekce" (Resmi Dilekçe). Sözleşme (sozlesme), karar (karar) veya tutanak (tutanak) gibi kurum içi belgeleri vatandaşlar oluşturamaz. Kullanıcı böyle bir talepte bulunsa dahi vatandaşların yalnızca resmi dilekçe oluşturabileceğini açıkla.
+- Bugünün tarihi: ${new Date().toLocaleDateString("tr-TR")}
+
+## Görevlerin ve Kurallar
+1. **Geniş Kamu Danışmanlığı**: Vatandaşın talep, şikayet veya başvurusunu dinle; belediyelerin hangi müdürlüğünün (Fen İşleri, İmar ve Şehircilik, Zabıta, Çevre Koruma, Sosyal Hizmetler, Temizlik vb.) veya hangi kamu idaresinin görev alanına girdiğini açıkla.
+2. **Resmi Dilekçe Hazırlama**: Vatandaş bir dilekçe veya resmi başvuru yazılmasını istediğinde mutlaka \`belgeTaslagiHazirla\` aracını \`belgeTuru: "dilekce"\` ile çağır. Bu araç belgeyi tuvalde (Canvas) açar.
+3. **Kesin Kural - Yalnızca Dilekçe**: Vatandaş için ASLA \`sozlesme\`, \`karar\` veya \`tutanak\` oluşturma. Kullanıcı sözleşme/karar istese dahi yalnızca resmi dilekçe (\`dilekce\`) hazırlanabileceğini nazikçe açıkla.
+4. **Mevzuat ve Bilgi Arama**: Hukuki dayanaklar (3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun, 5393 sayılı Belediye Kanunu, 3194 İmar Kanunu vb.) için \`mevzuatAra\`, kurum yönergeleri için \`kurumBelgelerindeAra\`, vatandaşın yüklediği ek belgeler için \`sohbetEkindeAra\` araçlarını kullan.
+5. **Belgeyi Sohbete Yazma**: Dilekçenin tam metnini sohbet alanına kopyalama; \`belgeTaslagiHazirla\` aracıyla tuvalde aç ve sohbetten kısa bir bilgilendirme yap.
+6. **Ek Belge Tavsiyeleri**: Başvurunun hızlı çözülmesi için vatandaşın dilekçesine eklemesi gereken belgeleri (tapu fotokopisi, fotoğraf, tutanak, fatura vb.) maddeler halinde belirt.`
+    : loadPrompt("asistan-agent", {
+        kurum_adi: kurum?.ad ?? "Kurum",
+        birim_adi: birim?.ad ?? "-",
+        kullanici: `${session.adSoyad} (${session.unvan}, hiyerarşi seviyesi ${session.hiyerarsiSeviyesi})`,
+        izinli_belge_turleri:
+          izinliTurler.map((t) => `${t.id} (${t.ad})`).join(", ") || "(hiçbiri)",
+        bugun: new Date().toLocaleDateString("tr-TR"),
+      });
+
   return createUIMessageStreamResponse({
     stream: createUIMessageStream({
-      // Needed for onEnd to report the whole thread rather than just the
-      // newly generated message.
       originalMessages: messages,
       onError: guvenliHataMesaji,
       onEnd: async ({ messages: sonMesajlar }) => {
@@ -319,12 +344,6 @@ export async function POST(req: Request) {
           }
         }
       },
-      // Runs streamText ourselves (rather than handing it straight to
-      // toUIMessageStream) so belgeTaslagiHazirla's execute below can close
-      // over `writer` and push its own data-belge-taslak parts onto the
-      // SAME stream while it's still generating — that's what lets the
-      // canvas pop open and fill in live instead of only appearing once the
-      // whole draft (and this whole turn) is finished.
       execute: async ({ writer }) => {
         const result = streamText({
           model,
@@ -332,14 +351,7 @@ export async function POST(req: Request) {
           maxOutputTokens,
           stopWhen: stepCountIs(8),
           experimental_transform: [harmonyKacagiKoruyucusu, dayanaksizAtifKoruyucusu],
-          system: loadPrompt("asistan-agent", {
-            kurum_adi: kurum?.ad ?? "Kurum",
-            birim_adi: birim?.ad ?? "-",
-            kullanici: `${session.adSoyad} (${session.unvan}, hiyerarşi seviyesi ${session.hiyerarsiSeviyesi})`,
-            izinli_belge_turleri:
-              izinliTurler.map((t) => `${t.id} (${t.ad})`).join(", ") || "(hiçbiri)",
-            bugun: new Date().toLocaleDateString("tr-TR"),
-          }),
+          system: sistemTalimati,
           messages: await convertToModelMessages(messages),
           tools: {
             kurumBelgelerindeAra: {
@@ -380,8 +392,6 @@ export async function POST(req: Request) {
                 sorgu: z.string().describe("Ek belgede aranacak konu."),
               }),
               execute: async ({ sorgu }: { sorgu: string }) => {
-                // sohbetId comes from the validated server-side record, never from
-                // a model-supplied argument.
                 const sonuclar = await sohbetEkindeAra(session.kurumId, sohbetId, sorgu);
                 if (sonuclar.length === 0) {
                   return {
@@ -396,9 +406,9 @@ export async function POST(req: Request) {
 
             belgeTaslagiHazirla: {
               description:
-                "Kullanıcı adına yeni bir resmi belge taslağı (tutanak, sözleşme, karar) oluşturur ve düzenleme bağlantısını döndürür. Yalnızca kullanıcı açıkça belge oluşturulmasını istediğinde çağır.",
+                "Kullanıcı adına yeni bir resmi belge taslağı (dilekçe, tutanak, sözleşme, karar) oluşturur ve düzenleme tuvalinde açar. Vatandaşlar için YALNIZCA resmi dilekçe ('dilekce') oluşturulabilir; sözleşme, karar veya tutanak OLUŞTURULAMAZ.",
               inputSchema: z.object({
-                belgeTuru: z.string().describe("tutanak, sozlesme veya karar."),
+                belgeTuru: z.string().describe("dilekce, tutanak, sozlesme veya karar."),
                 baslik: z.string().describe("Belgenin kısa başlığı."),
                 baglam: z
                   .string()
@@ -413,12 +423,16 @@ export async function POST(req: Request) {
                 baslik: string;
                 baglam: string;
               }) => {
+                if (session.hiyerarsiSeviyesi === 0 && belgeTuru !== "dilekce") {
+                  return {
+                    basarili: false,
+                    hata: "Vatandaşlar yalnızca resmi dilekçe ('dilekce') oluşturabilir. Sözleşme, karar veya tutanak oluşturma yetkisi bulunmamaktadır.",
+                  };
+                }
                 const tur = belgeTuruGetir(belgeTuru);
                 if (!tur) {
                   return { basarili: false, hata: `Bilinmeyen belge türü: ${belgeTuru}` };
                 }
-                // Re-checked here, not just in the prompt: a model must not be able
-                // to talk its way past the hierarchy gate.
                 if (session.hiyerarsiSeviyesi < tur.minHiyerarsiSeviyesi) {
                   return {
                     basarili: false,

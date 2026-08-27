@@ -77,34 +77,50 @@ export async function kurumBelgesiEkle(params: {
 
   const parcalar = metniParcala(params.rawText);
   if (parcalar.length > 0) {
-    const satirlar = await db
-      .insert(schema.kurumBelgeParcalari)
-      .values(
-        parcalar.map((metin, sira) => ({
-          kurumBelgesiId: id,
-          kurumId: params.kurumId,
-          sira,
-          metin,
+    // Rows first, because a chunk's Qdrant point id is its row id. If
+    // embedding or indexing then fails, the document and its chunks are
+    // removed again: a belge that is listed but absent from the index is
+    // worse than one that failed outright, because the assistant answers as
+    // if it had never been uploaded while the UI insists it is there.
+    try {
+      const satirlar = await db
+        .insert(schema.kurumBelgeParcalari)
+        .values(
+          parcalar.map((metin, sira) => ({
+            kurumBelgesiId: id,
+            kurumId: params.kurumId,
+            sira,
+            metin,
+          }))
+        )
+        .returning({ id: schema.kurumBelgeParcalari.id, sira: schema.kurumBelgeParcalari.sira });
+
+      const vektorler = await pasajGomVektorleri(parcalar);
+
+      await noktalariEkle(
+        KOLEKSIYONLAR.kurumBelgeleri,
+        satirlar.map((satir) => ({
+          id: satir.id,
+          vector: vektorler[satir.sira],
+          payload: {
+            kurumId: params.kurumId,
+            kurumBelgesiId: id,
+            belgeAdi: params.ad,
+            sira: satir.sira,
+            metin: parcalar[satir.sira],
+          },
         }))
-      )
-      .returning({ id: schema.kurumBelgeParcalari.id, sira: schema.kurumBelgeParcalari.sira });
-
-    const vektorler = await pasajGomVektorleri(parcalar);
-
-    await noktalariEkle(
-      KOLEKSIYONLAR.kurumBelgeleri,
-      satirlar.map((satir) => ({
-        id: satir.id,
-        vector: vektorler[satir.sira],
-        payload: {
-          kurumId: params.kurumId,
-          kurumBelgesiId: id,
-          belgeAdi: params.ad,
-          sira: satir.sira,
-          metin: parcalar[satir.sira],
-        },
-      }))
-    );
+      );
+    } catch (err) {
+      await db
+        .delete(schema.kurumBelgeParcalari)
+        .where(eq(schema.kurumBelgeParcalari.kurumBelgesiId, id));
+      await db.delete(schema.kurumBelgeleri).where(eq(schema.kurumBelgeleri.id, id));
+      throw new Error(
+        `Belge indekslenemedi, kaydedilmedi: ${err instanceof Error ? err.message : String(err)}`,
+        { cause: err }
+      );
+    }
   }
 
   return { id, parcaSayisi: parcalar.length };

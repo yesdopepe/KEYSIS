@@ -40,6 +40,16 @@ import {
 } from "@/app/panel/belge/actions";
 import { cn } from "@/lib/utils";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { basvuruGonder } from "@/app/basvuru/actions";
+
 const HIYERARSI_ETIKET: Record<number, string> = { 1: "Memur", 2: "Şube Müdürü", 3: "Daire Başkanı" };
 
 export interface BelgeCalismaAlaniProps {
@@ -93,6 +103,14 @@ export function BelgeCalismaAlani({
   const [tamEkran, setTamEkran] = useState(false);
   const [isPending, startTransition] = useTransition();
 
+  // Send / Submit Dialog States
+  const [gonderModalAcik, setGonderModalAcik] = useState(false);
+  const [gonderAdSoyad, setGonderAdSoyad] = useState("");
+  const [gonderIletisim, setGonderIletisim] = useState("");
+  const [gonderYukleniyor, setGonderYukleniyor] = useState(false);
+  const [gonderHata, setGonderHata] = useState<string | null>(null);
+  const [gonderilenTakipNo, setGonderilenTakipNo] = useState<string | null>(null);
+
   const metinDuzenlenebilir = yetkili && belge.durum !== "onaylandi";
   const oneriBekliyor = oneriler.length > 0;
 
@@ -109,6 +127,34 @@ export function BelgeCalismaAlani({
     });
   }
 
+  async function handleDilekceGonder() {
+    if (!gonderAdSoyad.trim() || !gonderIletisim.trim()) {
+      setGonderHata("Lütfen Ad Soyad ve İletişim bilgilerini doldurun.");
+      return;
+    }
+    setGonderHata(null);
+    setGonderYukleniyor(true);
+    try {
+      const res = await basvuruGonder({
+        dilekceMetni: belge.govdeMetni,
+        basvuruSahibiAdSoyad: gonderAdSoyad.trim(),
+        basvuruSahibiIletisim: gonderIletisim.trim(),
+      });
+      if (res.durum === "tamamlandi") {
+        setGonderilenTakipNo(res.takipNo);
+      } else {
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("ebys_dilekce_taslak", belge.govdeMetni);
+          window.location.href = `/basvuru?dilekce_aktarildi=1`;
+        }
+      }
+    } catch (err) {
+      setGonderHata(err instanceof Error ? err.message : "Gönderim sırasında hata oluştu.");
+    } finally {
+      setGonderYukleniyor(false);
+    }
+  }
+
   return (
     <div className={cn("flex flex-col gap-2.5 w-full", tamEkran && "fixed inset-0 z-50 bg-background p-4 sm:p-6 overflow-y-auto")}>
       {/* Top Document Header */}
@@ -122,6 +168,23 @@ export function BelgeCalismaAlani({
         </div>
 
         <div className="flex items-center gap-1.5 shrink-0">
+          {belge.belgeTuru === "dilekce" && (
+            <Button
+              type="button"
+              variant="brand"
+              size="sm"
+              onClick={() => {
+                setGonderModalAcik(true);
+                setGonderilenTakipNo(null);
+                setGonderHata(null);
+              }}
+              className="h-7 text-xs gap-1.5 rounded-lg px-3 shadow-2xs font-semibold"
+            >
+              <PaperPlaneTilt size={13} weight="fill" />
+              <span>Başvuruyu Gönder</span>
+            </Button>
+          )}
+
           <Button
             type="button"
             variant="outline"
@@ -228,19 +291,38 @@ export function BelgeCalismaAlani({
           )}
         </div>
 
-        {aktifSekme === "belge" && yetkili && belge.durum === "taslak" && (
-          <Button
-            type="button"
-            size="sm"
-            variant="brand"
-            disabled={isPending}
-            onClick={handleTamamla}
-            className="h-7 text-xs gap-1 rounded-lg px-2.5"
-          >
-            <CheckCircle size={14} aria-hidden="true" />
-            <span>Taslağı Tamamla</span>
-          </Button>
-        )}
+        <div className="flex items-center gap-2">
+          {belge.belgeTuru === "dilekce" && (
+            <Button
+              type="button"
+              size="sm"
+              variant="brand"
+              onClick={() => {
+                setGonderModalAcik(true);
+                setGonderilenTakipNo(null);
+                setGonderHata(null);
+              }}
+              className="h-7 text-xs gap-1.5 rounded-lg px-2.5 shadow-2xs font-semibold"
+            >
+              <PaperPlaneTilt size={13} weight="fill" />
+              <span>Başvuruyu Gönder</span>
+            </Button>
+          )}
+
+          {aktifSekme === "belge" && yetkili && belge.durum === "taslak" && (
+            <Button
+              type="button"
+              size="sm"
+              variant="brand"
+              disabled={isPending}
+              onClick={handleTamamla}
+              className="h-7 text-xs gap-1 rounded-lg px-2.5"
+            >
+              <CheckCircle size={14} aria-hidden="true" />
+              <span>Taslağı Tamamla</span>
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Main Tab: Single-Root Continuous Document Editor */}
@@ -423,6 +505,121 @@ export function BelgeCalismaAlani({
           </ul>
         </Card>
       )}
+
+      {/* Dilekçe Gönderim Dialog */}
+      <Dialog open={gonderModalAcik} onOpenChange={setGonderModalAcik}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-base">
+              <PaperPlaneTilt size={20} weight="fill" className="text-primary" />
+              {gonderilenTakipNo ? "Başvurunuz Alındı!" : "Dilekçeyi Resmi Olarak Gönder"}
+            </DialogTitle>
+            <DialogDescription>
+              {gonderilenTakipNo
+                ? "Resmi dilekçeniz sisteme başarıyla kaydedildi ve işlem sırasına alındı."
+                : "Hazırladığınız resmi dilekçe e-Başvuru sistemine iletilecek ve yapay zekâ tarafından yetkili birime atanacaktır."}
+            </DialogDescription>
+          </DialogHeader>
+
+          {gonderilenTakipNo ? (
+            <div className="py-3 text-center space-y-4">
+              <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-success-bg text-success">
+                <CheckCircle size={28} weight="fill" />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Başvuru Takip Numaranız:</p>
+                <p className="mt-1 font-mono text-2xl font-bold tracking-wider text-foreground">
+                  {gonderilenTakipNo}
+                </p>
+              </div>
+              <p className="text-xs text-muted-foreground max-w-xs mx-auto">
+                Bu numara ile başvurunuzun durumunu, ilgili birim kararını ve resmi yanıt yazısını takip edebilirsiniz.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3.5 py-2">
+              <div className="rounded-lg bg-muted/40 p-3 border border-border/60 text-xs text-muted-foreground">
+                <p className="font-semibold text-foreground mb-1">{belge.baslik}</p>
+                <p className="line-clamp-3 font-mono text-[11px] leading-relaxed opacity-90">{belge.govdeMetni}</p>
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-foreground">Ad Soyad <span className="text-destructive">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={gonderAdSoyad}
+                  onChange={(e) => setGonderAdSoyad(e.target.value)}
+                  placeholder="Adınız ve Soyadınız"
+                  className={inputClasses}
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-foreground">E-posta veya Telefon <span className="text-destructive">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={gonderIletisim}
+                  onChange={(e) => setGonderIletisim(e.target.value)}
+                  placeholder="ornek@eposta.gov.tr veya 05XX XXX XX XX"
+                  className={inputClasses}
+                />
+              </div>
+
+              {gonderHata && (
+                <p role="alert" className="flex items-center gap-1.5 text-xs font-medium text-destructive">
+                  <XCircle size={14} weight="fill" aria-hidden="true" />
+                  {gonderHata}
+                </p>
+              )}
+            </div>
+          )}
+
+          <DialogFooter className="gap-2">
+            {gonderilenTakipNo ? (
+              <>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setGonderModalAcik(false)}
+                >
+                  Kapat
+                </Button>
+                <Link href={`/basvuru/durum?takip=${gonderilenTakipNo}`}>
+                  <Button variant="brand" size="sm" className="gap-1.5">
+                    <span>Durumu Takip Et →</span>
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setGonderModalAcik(false)}
+                  disabled={gonderYukleniyor}
+                >
+                  Vazgeç
+                </Button>
+                <Button
+                  type="button"
+                  variant="brand"
+                  size="sm"
+                  onClick={handleDilekceGonder}
+                  disabled={gonderYukleniyor || !gonderAdSoyad.trim() || !gonderIletisim.trim()}
+                  className="gap-1.5 font-semibold"
+                >
+                  <PaperPlaneTilt size={14} weight="fill" />
+                  {gonderYukleniyor ? "Başvuru Gönderiliyor..." : "Resmi Başvuruyu Gönder"}
+                </Button>
+              </>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

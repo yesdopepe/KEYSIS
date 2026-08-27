@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FileText, MagnifyingGlass, Buildings, IdentificationBadge, Clock } from "@phosphor-icons/react/ssr";
+import { FileText, MagnifyingGlass, Buildings, IdentificationBadge, Clock, Sparkle, Scales } from "@phosphor-icons/react/ssr";
 import { PublicShell } from "@/components/PublicShell";
 import { Card } from "@/components/ui/card";
 
@@ -17,10 +17,30 @@ export default function AnaSayfa() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Link href="/basvuru/asistan">
+            <Card className="group h-full p-5 transition-all hover:border-primary border-primary/30 bg-gradient-to-b from-primary/[0.04] to-card">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-control)] bg-primary text-on-primary shadow-2xs">
+                <Sparkle size={20} weight="fill" aria-hidden="true" />
+              </span>
+              <h2 className="mt-3 font-heading text-base font-semibold text-foreground flex items-center gap-1.5">
+                Dilekçe & Kurum Asistanı
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Yapay zekâ ile yetkili kurumu öğrenin, 3071 uyumlu resmi dilekçenizi hazırlayın.
+              </p>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                Asistanı başlat
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </span>
+            </Card>
+          </Link>
+
           <Link href="/basvuru">
             <Card className="group h-full p-5 transition-colors hover:border-primary">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-control)] bg-primary text-on-primary">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-control)] bg-primary/15 text-primary">
                 <FileText size={20} aria-hidden="true" />
               </span>
               <h2 className="mt-3 font-heading text-base font-semibold text-foreground">
