@@ -11,18 +11,18 @@ Model seçimleri ortam değişkenleri üzerinden yönetilir; böylece kod deği�
 
 ## Ajan Kayıt Defteri (Registry)
 
-| Ajan Anahtarı | Ortam Değişkeni | Varsayılan Model | Sıcaklık (Temp) | Maks Çıktı Jetonu | Prompt Dosyası |
-| --- | --- | --- | --- | --- | --- |
-| `router_agent` | `ROUTER_AGENT_MODEL` | `router` | 0.1 | 4096 | `router-agent.md` |
-| `reader_agent` | `READER_AGENT_MODEL` | `llm-fast` | 0.2 | 8192 | `reader-agent.md` |
-| `writer_agent` | `WRITER_AGENT_MODEL` | `llm-large` | 0.4 | 8192 | `writer-agent.md` |
-| `eksik_bilgi_agent` | `EKSIK_BILGI_AGENT_MODEL` | `llm-fast` | 0.1 | 2048 | `eksik-bilgi-agent.md` |
-| `belge_yazar_agent` | `BELGE_YAZAR_AGENT_MODEL` | `llm-large` | 0.3 | 8192 | `belge-yazar-agent.md`, `belge-onerisi-agent.md` |
-| `asistan_agent` | `ASISTAN_AGENT_MODEL` | `llm-large` | 0.3 | 8192 | `asistan-agent.md` |
-| `asistan_gorsel_agent` | `ASISTAN_GORSEL_AGENT_MODEL` | `llm-large` | 0.3 | 8192 | `asistan-agent.md` |
-| `sohbet_baslik_agent` | `SOHBET_BASLIK_AGENT_MODEL` | `llm-fast` | 0.2 | 128 | Kod içi (inline) |
-| `ek_analiz_agent` | `EK_ANALIZ_AGENT_MODEL` | `llm-fast` | 0.2 | 4096 | `ek-analiz-agent.md` |
-| `vatandas_asistan_agent` | `VATANDAS_ASISTAN_AGENT_MODEL` | `llm-large` | 0.3 | 8192 | `vatandas-asistan-agent.md` |
+| Ajan Anahtarı | Prompt Dosyası | Görevi / Kısa Özet |
+| :--- | :--- | :--- |
+| `router_agent` | `router-agent.md` | Gelen dilekçeyi analiz ederek yetkili kurum, birim ve evrak türüne sınıflandırır. |
+| `reader_agent` | `reader-agent.md` | Evrak metnini anlamlandırır, özet ve aciliyet çıkarır, ilgili mevzuat maddeleriyle eşleştirir (RAG). |
+| `writer_agent` | `writer-agent.md` | Kurum şablonuna ve resmi yazışma standartlarına uygun resmi cevap yazısı taslağı üretir. |
+| `eksik_bilgi_agent` | `eksik-bilgi-agent.md` | Dilekçeyi zorunlu alan şemasıyla karşılaştırarak eksik bilgileri ve vatandaşa yöneltilecek soruları belirler. |
+| `belge_yazar_agent` | `belge-yazar-agent.md`, `belge-onerisi-agent.md` | Personel belgelerini (tutanak, sözleşme, karar) tuvalde oluşturur ve metin revizyon önerileri üretir. |
+| `asistan_agent` | `asistan-agent.md` | Kurum personeline mevzuat, iç yönergeler ve belge üretiminde 10 farklı araçla akıllı rehberlik sağlar. |
+| `asistan_gorsel_agent` | `asistan-agent.md` | Görsel veya taranmış belge içeren personel sohbetlerinde çok modlu (multimodal) analiz ve destek sunar. |
+| `sohbet_baslik_agent` | Kod içi (inline) | Kullanıcının ilk mesajına göre 3-5 kelimelik kurumsal sohbet başlığı üretir. |
+| `ek_analiz_agent` | `ek-analiz-agent.md` | Yüklenen ek belgeleri (tapu, tutanak, fatura vb.) dilekçe metniyle çapraz doğrulayarak tutarlılık analizi yapar. |
+| `vatandas_asistan_agent` | `vatandas-asistan-agent.md` | Vatandaşlara yetkili idari merciyi bulma ve 3071 sayılı Kanuna uygun resmi dilekçe hazırlama danışmanlığı verir. |
 
 ---
 
