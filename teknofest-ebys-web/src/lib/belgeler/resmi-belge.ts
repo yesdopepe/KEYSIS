@@ -30,8 +30,16 @@ export interface ResmiBelgeImza {
 }
 
 export interface ResmiBelge {
-  /** Shown under the T.C. line, e.g. "ÇANKAYA BELEDİYE BAŞKANLIĞI". */
-  kurumAdi: string;
+  /**
+   * Shown under the T.C. line, e.g. "ÇANKAYA BELEDİYE BAŞKANLIĞI".
+   *
+   * Optional, and absent for a dilekçe: a petition is written *by* a citizen,
+   * so it carries no institutional letterhead at all. Every renderer omits the
+   * whole T.C. antet when this is empty rather than substituting a placeholder
+   * — a stamped institution name is a claim about who issued the document, and
+   * a wrong one is worse than none.
+   */
+  kurumAdi?: string;
   /** Second header line, e.g. "Fen İşleri Müdürlüğü". */
   birimAdi?: string;
   /** Document kind, used for the export filename and the preview label. */
@@ -65,6 +73,20 @@ export type GovdeBlogu =
   | { tur: "liste"; ogeler: string[] };
 
 const LISTE_DESENI = /^([-*•]|\d+[.)])\s+/;
+
+/**
+ * A labelled field line — "Tarih: …", "Ad Soyad: …", "T.C. Kimlik No: …".
+ *
+ * Consecutive non-empty lines are otherwise joined into one paragraph, because
+ * inside prose a single newline is only a soft wrap. That is wrong for a
+ * document's field blocks, whose line breaks *are* the formatting: a dilekçe's
+ * closing block came out as one run-on sentence
+ * ("Tarih: … Ad-Soyad: … T.C. Kimlik No: …"). A short label followed by a
+ * colon is never the continuation of the sentence above it, so it starts its
+ * own block. The label bound keeps ordinary prose that merely contains a colon
+ * from tripping it.
+ */
+const ETIKET_DESENI = /^[^:]{2,24}:\s/;
 
 /**
  * Splits a flowing body into typed blocks a renderer can lay out: headings
@@ -120,6 +142,10 @@ export function govdeBloklariniAyir(govdeMetni: string): GovdeBlogu[] {
     } else if (LISTE_DESENI.test(line)) {
       paragrafiKapat();
       mevcutListe.push(vurguTemizle(line.replace(LISTE_DESENI, "")));
+    } else if (ETIKET_DESENI.test(line)) {
+      paragrafiKapat();
+      listeyiKapat();
+      bloklar.push({ tur: "paragraf", metin: vurguTemizle(line) });
     } else {
       listeyiKapat();
       mevcutSatirlar.push(line);

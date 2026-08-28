@@ -15,14 +15,62 @@ import { db, schema } from "@/lib/db";
 
 export type OnayHedefTuru = "evrak" | "belge";
 
-/** Creates the ordered approval chain for one target, from its birim's configured levels. */
+/** The level every birim falls back to when its own configuration is unusable. */
+const VARSAYILAN_SEVIYELER = [2];
+
+/**
+ * `onayZinciriSeviyeleri` is a JSON array in a text column, so every value that
+ * ever reached the database has to be survivable here: `??` only catches
+ * null/undefined, so an empty string threw SyntaxError; a non-array parsed
+ * cleanly and then died on `.map`; and `"[]"` reached
+ * `db.insert().values([])`, which drizzle rejects outright. All three surfaced
+ * as an opaque 500 on "Onaya Gönder" because nothing in that path catches or
+ * logs. Fall back to the column's own default instead, and say so in the log.
+ */
+function seviyeleriCoz(birimId: string, ham: string | undefined): number[] {
+  let cozulen: unknown;
+  try {
+    cozulen = JSON.parse(ham ?? "[]");
+  } catch {
+    console.warn(`Birim ${birimId}: onayZinciriSeviyeleri okunamadı (${JSON.stringify(ham)}), varsayılana dönülüyor.`);
+    return VARSAYILAN_SEVIYELER;
+  }
+
+  if (
+    !Array.isArray(cozulen) ||
+    cozulen.length === 0 ||
+    !cozulen.every((s) => typeof s === "number" && Number.isFinite(s))
+  ) {
+    console.warn(`Birim ${birimId}: onayZinciriSeviyeleri geçersiz (${JSON.stringify(cozulen)}), varsayılana dönülüyor.`);
+    return VARSAYILAN_SEVIYELER;
+  }
+
+  return cozulen as number[];
+}
+
+/**
+ * Creates the ordered approval chain for one target, from its birim's
+ * configured levels.
+ *
+ * Any existing chain for this target is dropped first. A rejected or
+ * correction-requested document goes back to its author, and re-sending it used
+ * to *append* a second chain with a duplicate `sira` sequence — after which
+ * adimKararVer's `oncekiAdimlarTamam` (every earlier sira must be onaylandi) and
+ * `sonAdimMi` (compares against max sira) could never both resolve, and the
+ * document was stuck for good. Recreating is also what makes the operation
+ * idempotent, which is what a form with no pending state needs.
+ */
 export async function onayZinciriOlustur(
   hedefTuru: OnayHedefTuru,
   hedefId: string,
   birimId: string
 ): Promise<void> {
   const [birim] = await db.select().from(schema.birimler).where(eq(schema.birimler.id, birimId));
-  const seviyeler: number[] = JSON.parse(birim?.onayZinciriSeviyeleri ?? "[2]");
+  const seviyeler = seviyeleriCoz(birimId, birim?.onayZinciriSeviyeleri);
+
+  await db
+    .delete(schema.onayAdimlari)
+    .where(and(eq(schema.onayAdimlari.hedefTuru, hedefTuru), eq(schema.onayAdimlari.hedefId, hedefId)));
 
   await db.insert(schema.onayAdimlari).values(
     seviyeler.map((seviye, i) => ({

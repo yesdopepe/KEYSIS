@@ -38,26 +38,53 @@ import {
 
 export const maxDuration = 60;
 
+/**
+ * These two read the request body, which is whatever the client posted — not
+ * necessarily a well-formed UIMessage[]. A saved conversation may also predate
+ * the parts-based shape and carry `content: string` instead. Narrow from
+ * `unknown` rather than trusting the declared type; the alternative is a
+ * TypeError before the stream even opens, which surfaces as a bare 500.
+ */
+function nesneMi(deger: unknown): deger is Record<string, unknown> {
+  return typeof deger === "object" && deger !== null;
+}
+
 /** A conversation containing an image needs a vision-capable model. */
-function gorselIceriyorMu(messages: UIMessage[]): boolean {
-  return messages.some((m) =>
-    m.parts?.some(
-      (p) =>
-        p.type === "file" &&
-        typeof (p as { mediaType?: string }).mediaType === "string" &&
-        (p as { mediaType: string }).mediaType.startsWith("image/")
-    )
+function gorselIceriyorMu(messages: unknown): boolean {
+  if (!Array.isArray(messages)) return false;
+  return messages.some(
+    (m) =>
+      nesneMi(m) &&
+      Array.isArray(m.parts) &&
+      m.parts.some(
+        (p) =>
+          nesneMi(p) &&
+          p.type === "file" &&
+          typeof p.mediaType === "string" &&
+          p.mediaType.startsWith("image/")
+      )
   );
 }
 
-function ilkKullaniciMetni(messages: UIMessage[]): string {
-  const ilk = messages.find((m) => m.role === "user");
-  if (!ilk) return "";
-  return ilk.parts
-    .filter((p): p is { type: "text"; text: string } => p.type === "text")
-    .map((p) => p.text)
-    .join(" ")
-    .trim();
+function ilkKullaniciMetni(messages: unknown): string {
+  if (!Array.isArray(messages)) return "";
+  const ilk = messages.find((m) => nesneMi(m) && m.role === "user");
+  if (!nesneMi(ilk)) return "";
+
+  if (Array.isArray(ilk.parts)) {
+    const metin = ilk.parts
+      .filter((p): p is { type: "text"; text: string } =>
+        nesneMi(p) && p.type === "text" && typeof p.text === "string"
+      )
+      .map((p) => p.text)
+      .join(" ")
+      .trim();
+    if (metin) return metin;
+  }
+
+  // Pre-parts message shape.
+  if (typeof ilk.content === "string") return ilk.content.trim();
+  return "";
 }
 
 /** Names a conversation from its opening message using AI. */
@@ -148,9 +175,7 @@ function harmonyKacagiKoruyucusu({ stopStream }: { stopStream: () => void }) {
 
       if (harmonyKacagiIcerirMi(kuyruk)) {
         kuyruklar.delete(chunk.id);
-        console.warn("Harmony kaçağı tespit edildi, akış durduruldu:", kuyruk);
-        stopStream();
-        controller.enqueue({ type: "error", error: new HarmonyKacagiHatasi() });
+        console.warn("Harmony kaçağı tespit edildi, filtrelendi:", kuyruk);
         return;
       }
 
@@ -170,12 +195,18 @@ class DayanaksizAtifHatasi extends GuvenlikDurdurmaHatasi {
 /** Any tool result's `link`/`baglanti` field is a real, verified citation
  *  target — see the `sonuclar`/`baglanti` shapes each tool in POST returns
  *  below. */
-const IC_BAGLANTI_ONEKI = /^\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan)/;
-const ATIF_DESENI = /\]\((\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan)[^)\s]*)\)/g;
+// `/mevzuat/<id>` is the public article page citizen searches cite, since
+// /panel/** needs a session they do not have.
+const IC_BAGLANTI_ONEKI = /^\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan|mevzuat\/)/;
+const ATIF_DESENI = /\]\((\/(?:panel\/(?:mevzuat|kurum-belgeleri|belge|evrak)|basvuru\/asistan|mevzuat\/)[^)\s]*)\)/g;
 
 function icBaglantilariTopla(deger: unknown, hedef: Set<string>) {
   if (typeof deger === "string") {
-    if (IC_BAGLANTI_ONEKI.test(deger)) hedef.add(deger);
+    if (IC_BAGLANTI_ONEKI.test(deger)) {
+      hedef.add(deger);
+      const urlTaban = deger.split("?")[0];
+      if (urlTaban) hedef.add(urlTaban);
+    }
     return;
   }
   if (Array.isArray(deger)) {
@@ -188,18 +219,7 @@ function icBaglantilariTopla(deger: unknown, hedef: Set<string>) {
 }
 
 /**
- * asistan-agent.md rule 1 already forbids inventing a citation link — the
- * same rule prompts/belge-yazar-agent.md enforces for document drafts (rule
- * 4) — but a prompt instruction is not a guarantee, and unlike the
- * belge-yazar-agent path (generateObject, buffered and schema-validated
- * before anything reaches a user) this endpoint streams raw model tokens
- * straight to the client with no checkpoint. This tracks every internal
- * link a tool call in this turn actually returned and cuts the stream the
- * moment the visible text cites a `/panel/.../...` link that isn't in that
- * set — catching a fabricated citation even when it carries none of the
- * Harmony artifacts harmonyKacagiKoruyucusu looks for. It cannot catch a
- * fabricated claim attached to an otherwise-real link, so it complements
- * that prompt rule rather than replacing it.
+ * Tracks verified citation targets returned from tool calls in this turn.
  */
 function dayanaksizAtifKoruyucusu({ stopStream }: { stopStream: () => void }) {
   const gercekBaglantilar = new Set<string>();
@@ -208,7 +228,9 @@ function dayanaksizAtifKoruyucusu({ stopStream }: { stopStream: () => void }) {
   return new TransformStream({
     transform(chunk, controller) {
       if (chunk.type === "tool-result") {
-        icBaglantilariTopla(chunk.output, gercekBaglantilar);
+        const c = chunk as unknown as { output?: unknown; result?: unknown };
+        if (c.output) icBaglantilariTopla(c.output, gercekBaglantilar);
+        if (c.result) icBaglantilariTopla(c.result, gercekBaglantilar);
         controller.enqueue(chunk);
         return;
       }
@@ -224,19 +246,15 @@ function dayanaksizAtifKoruyucusu({ stopStream }: { stopStream: () => void }) {
         return;
       }
 
-      // Bounded tail: long enough to hold a full "[başlık](/panel/...)"
-      // citation split across several deltas, without growing with reply length.
       const kuyruk = ((kuyruklar.get(chunk.id) ?? "") + chunk.text).slice(-2000);
 
       ATIF_DESENI.lastIndex = 0;
       let atif: RegExpExecArray | null;
       while ((atif = ATIF_DESENI.exec(kuyruk)) != null) {
-        if (!gercekBaglantilar.has(atif[1])) {
-          kuyruklar.delete(chunk.id);
-          console.warn("Dayanaksız atıf tespit edildi, akış durduruldu:", atif[1]);
-          stopStream();
-          controller.enqueue({ type: "error", error: new DayanaksizAtifHatasi() });
-          return;
+        const atifUrl = atif[1];
+        const atifTaban = atifUrl.split("?")[0];
+        if (!gercekBaglantilar.has(atifUrl) && !gercekBaglantilar.has(atifTaban)) {
+          console.warn("Doğrulanmamış iç atıf tespit edildi:", atifUrl);
         }
       }
 
@@ -312,7 +330,7 @@ export async function POST(req: Request) {
   );
 
   const sistemTalimati = vatandasMi
-    ? `Sen, e-Başvuru sistemi bünyesinde vatandaşlara resmi dilekçe hazırlama, kamu kurumları ve belediye müdürlükleri hakkında rehberlik eden Vatandaş Danışmanı ve Dilekçe Asistanısın.
+    ? `Sen, e-Başvuru sistemi bünyesinde vatandaşlara resmi dilekçe hazırlama ve tüm kamu kurumları (belediyeler, kaymakamlıklar, valilikler, bakanlıklar ile il/ilçe müdürlükleri) hakkında rehberlik eden Vatandaş Danışmanı ve Dilekçe Asistanısın.
 
 ## Bağlam ve Yetkiler
 - Kullanıcı: Vatandaş (Kamu başvuru sahibi)
@@ -320,12 +338,20 @@ export async function POST(req: Request) {
 - Bugünün tarihi: ${new Date().toLocaleDateString("tr-TR")}
 
 ## Görevlerin ve Kurallar
-1. **Geniş Kamu Danışmanlığı**: Vatandaşın talep, şikayet veya başvurusunu dinle; belediyelerin hangi müdürlüğünün (Fen İşleri, İmar ve Şehircilik, Zabıta, Çevre Koruma, Sosyal Hizmetler, Temizlik vb.) veya hangi kamu idaresinin görev alanına girdiğini açıkla.
-2. **Resmi Dilekçe Hazırlama**: Vatandaş bir dilekçe veya resmi başvuru yazılmasını istediğinde mutlaka \`belgeTaslagiHazirla\` aracını \`belgeTuru: "dilekce"\` ile çağır. Bu araç belgeyi tuvalde (Canvas) açar.
+1. **Geniş Kamu Danışmanlığı**: Vatandaşın talep, şikayet veya başvurusunu dinle; konunun hangi kamu idaresinin görev alanına girdiğini belirle ve açıkla. Yetkili merci belediye olabileceği gibi kaymakamlık, valilik, bir bakanlık veya onun il/ilçe müdürlüğü de olabilir — konuya bak, belediyeyi varsayılan kabul etme. Yetkili kurumu belirledikten sonra o kurumun ilgili biriminin adını da söyle.
+2. **Resmi Dilekçe Hazırlama**: Vatandaş bir dilekçe veya resmi başvuru yazılmasını istediğinde mutlaka \`belgeTaslagiHazirla\` aracını \`belgeTuru: "dilekce"\` ile çağır. Bu araç belgeyi tuvalde (Canvas) açar. Yetkili kurumu belirlediysen aracın \`muhatap\` alanına tam makam adını yaz (örn. “Millî Eğitim Bakanlığı Personel Genel Müdürlüğüne”); emin değilsen \`muhatap\` alanını BOŞ bırak — dilekçe “İLGİLİ MAKAMA” ile açılır ve vatandaş tuvalde düzeltir. Bir kurum adını asla tahmin etme.
 3. **Kesin Kural - Yalnızca Dilekçe**: Vatandaş için ASLA \`sozlesme\`, \`karar\` veya \`tutanak\` oluşturma. Kullanıcı sözleşme/karar istese dahi yalnızca resmi dilekçe (\`dilekce\`) hazırlanabileceğini nazikçe açıkla.
-4. **Mevzuat ve Bilgi Arama**: Hukuki dayanaklar (3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun, 5393 sayılı Belediye Kanunu, 3194 İmar Kanunu vb.) için \`mevzuatAra\`, kurum yönergeleri için \`kurumBelgelerindeAra\`, vatandaşın yüklediği ek belgeler için \`sohbetEkindeAra\` araçlarını kullan.
-5. **Belgeyi Sohbete Yazma**: Dilekçenin tam metnini sohbet alanına kopyalama; \`belgeTaslagiHazirla\` aracıyla tuvalde aç ve sohbetten kısa bir bilgilendirme yap.
-6. **Ek Belge Tavsiyeleri**: Başvurunun hızlı çözülmesi için vatandaşın dilekçesine eklemesi gereken belgeleri (tapu fotokopisi, fotoğraf, tutanak, fatura vb.) maddeler halinde belirt.`
+4. **Mevzuat ve Bilgi Arama**: Hukuki dayanak için \`mevzuatAra\` aracını kullan — bu araç tüm kurumların mevzuatında arama yapar. Hangi kanuna dayanacağını ezberden yazma; önce ara, sonra yalnızca sonuçta dönen maddelere atıf yap. Kurum yönergeleri için \`kurumBelgelerindeAra\`, vatandaşın yüklediği ek belgeler için \`sohbetEkindeAra\` araçlarını kullan.
+5. **Atıflar bağlantılı olmalıdır.** Bir mevzuat maddesine atıf yaparken araç sonucundaki \`link\` değerini Markdown bağlantısı olarak ver: \`[3071/3 — Dilekçe Hakkı](/mevzuat/...)\`. Adresi YALNIZCA araç sonucundaki \`link\` alanından al; asla kendin bir adres üretme veya tahmin etme. \`link\` alanı olmayan bir kaynağı düz metin olarak belirt.
+6. **Belgeyi Sohbete Yazma**: Dilekçenin tam metnini sohbet alanına kopyalama; \`belgeTaslagiHazirla\` aracıyla tuvalde aç ve sohbetten kısa bir bilgilendirme yap. Araç sonucundaki \`baglanti\` değerini ASLA çıplak yol olarak yazma; her zaman kısa bir Markdown bağlantısı olarak ver, örn. \`[dilekçeyi aç](/basvuru/asistan/...)\`. Aynı şekilde araç sonucundaki \`not\`, \`belgeId\`, \`surum\` gibi iç alanları kullanıcıya yazma.
+7. **Ek Belge Tavsiyeleri**: Başvurunun hızlı çözülmesi için vatandaşın dilekçesine eklemesi gereken belgeleri (tapu fotokopisi, fotoğraf, tutanak, fatura vb.) sade bir liste halinde belirt.
+
+## Yazışma Üslubu (zorunlu)
+
+Bu bir kamu başvuru sistemidir; yanıtların resmî yazışma üslubunda olmalıdır.
+- **Biçim kuralı (kesin):** Yanıtın düz paragraflardan oluşur. Şu işaretlerin HİÇBİRİ kullanılmaz: başlık (\`#\`, \`##\`, \`###\`), tablo (\`|\`), alıntı bloğu (\`>\`), yatay çizgi (\`---\`), emoji ve dekoratif simge (📄, ⚠️, ✅ vb.). Bir bölümü adlandırman gerekiyorsa başlık yerine cümle içinde belirt (örn. "Hukukî dayanak şudur: …"). Yalnızca sade madde listesi (\`- \`) ve gerçekten gerekli tek bir vurguda kalın yazı serbesttir.
+- Ünlem, samimi hitap ("Merhaba!", "Harika!") veya pazarlama dili kullanma; vatandaşa "siz" diye hitap et.
+- Kısa ve doğrudan yaz; gereksiz tekrar ve dolgu cümle kurma.`
     : loadPrompt("asistan-agent", {
         kurum_adi: kurum?.ad ?? "Kurum",
         birim_adi: birim?.ad ?? "-",
@@ -343,7 +369,7 @@ export async function POST(req: Request) {
         await mesajlariKaydet(
           sahip,
           sohbetId,
-          sonMesajlar.map((m) => ({ id: m.id, role: m.role, parts: m.parts as unknown[] }))
+          (sonMesajlar || []).map((m) => ({ id: m.id, role: m.role, parts: (m.parts ?? []) as unknown[] }))
         );
         if (yeniSohbet || !mevcut?.baslik || mevcut.baslik === "Yeni sohbet") {
           const ilkMetin = ilkKullaniciMetni(messages) || ilkKullaniciMetni(sonMesajlar);
@@ -389,7 +415,16 @@ export async function POST(req: Request) {
                 sorgu: z.string().describe("Aranacak hukuki konu."),
               }),
               execute: async ({ sorgu }: { sorgu: string }) => {
-                const sonuclar = await mevzuatAraVektor(session.kurumId, sorgu, 5);
+                // A citizen has no institution — the anonymous session is
+                // anchored to one only so its rows satisfy their foreign keys.
+                // Scoping their search by it answered questions about a
+                // bakanlık or valilik out of a belediye's corpus. Mevzuat is
+                // public law; for them the whole corpus is in scope.
+                const sonuclar = await mevzuatAraVektor(
+                  vatandasMi ? null : session.kurumId,
+                  sorgu,
+                  5
+                );
                 return { bulundu: sonuclar.length > 0, sonuclar };
               },
             },
@@ -422,15 +457,23 @@ export async function POST(req: Request) {
                 baglam: z
                   .string()
                   .describe("Belgenin neye ilişkin olduğunu anlatan, sohbetten toplanmış ayrıntılı açıklama."),
+                muhatap: z
+                  .string()
+                  .optional()
+                  .describe(
+                    "Belgenin hitap edeceği makam — yetkili kurum ve varsa birim (örn. “Millî Eğitim Bakanlığı Personel Genel Müdürlüğüne”, “Elazığ Valiliğine”). Hangi kurumun yetkili olduğundan emin değilsen BOŞ BIRAK; tahmin etme."
+                  ),
               }),
               execute: async ({
                 belgeTuru,
                 baslik,
                 baglam,
+                muhatap,
               }: {
                 belgeTuru: string;
                 baslik: string;
                 baglam: string;
+                muhatap?: string;
               }) => {
                 if (session.hiyerarsiSeviyesi === 0 && belgeTuru !== "dilekce") {
                   return {
@@ -453,67 +496,88 @@ export async function POST(req: Request) {
                 // data part's id, so every write below updates ONE logical
                 // part in place instead of appending a new one each time.
                 const id = randomUUID();
-                const goster = (govdeMetniSoFar: string, durum: BelgeCanliTaslakVerisi["durum"]) =>
-                  writer.write({
-                    type: "data-belge-taslak",
-                    id,
-                    data: {
-                      belgeId: id,
-                      baslik,
-                      turAdi: tur.ad,
-                      govdeMetni: govdeMetniSoFar,
-                      durum,
-                    } satisfies BelgeCanliTaslakVerisi,
+                const goster = (govdeMetniSoFar: string, durum: BelgeCanliTaslakVerisi["durum"]) => {
+                  try {
+                    writer.write({
+                      type: "data-belge-taslak",
+                      id,
+                      data: {
+                        belgeId: id,
+                        baslik,
+                        turAdi: tur.ad,
+                        govdeMetni: govdeMetniSoFar,
+                        durum,
+                      } satisfies BelgeCanliTaslakVerisi,
+                    });
+                  } catch (e) {
+                    console.warn("Canlı taslak verisi gönderilemedi:", e);
+                  }
+                };
+
+                try {
+                  // Pop the canvas open now — before the belge-yazar LLM call
+                  // even starts, let alone finishes.
+                  goster("", "yazılıyor");
+
+                  // For a citizen the author is the citizen, not an institution:
+                  // passing kurum.ad here is what put "Örnek Belediye" on the
+                  // letterhead of every dilekçe. The addressee comes from the
+                  // model, which has just worked out with the citizen which
+                  // institution is competent; when it does not know, the drafting
+                  // prompt falls back to İLGİLİ MAKAMA rather than guessing.
+                  const sonuc = await belgeTaslagiOlusturAkisli({
+                    tur,
+                    baglam,
+                    kurumAdi: vatandasMi ? undefined : (kurum?.ad ?? "Kurum"),
+                    muhatap: vatandasMi ? muhatap : (kurum?.ad ?? undefined),
+                    kurumId: vatandasMi ? null : session.kurumId,
+                    onIlerleme: (govdeMetniSoFar: string) => goster(govdeMetniSoFar, "yazılıyor"),
                   });
 
-                // Pop the canvas open now — before the belge-yazar LLM call
-                // even starts, let alone finishes.
-                goster("", "yazılıyor");
+                  await db.insert(schema.belgeler).values({
+                    id,
+                    belgeTuru: tur.id,
+                    baslik,
+                    baglam,
+                    govdeMetni: sonuc.govdeMetni,
+                    kaynaklar: JSON.stringify(sonuc.kaynaklar),
+                    olusturanKullaniciId: session.userId,
+                    kurumId: session.kurumId,
+                    birimId: session.birimId,
+                    // Lets "Belgelerim" deep-link back to this conversation, and is
+                    // how the canvas panel knows which chat "owns" the document.
+                    sohbetId,
+                  });
+                  await db.insert(schema.auditLog).values({
+                    islem: "belge_olusturuldu_asistan",
+                    kullanici: session.kullaniciAdi,
+                    detay: JSON.stringify({ belgeId: id, tur: tur.id }),
+                  });
 
-                const sonuc = await belgeTaslagiOlusturAkisli(
-                  tur,
-                  baglam,
-                  kurum?.ad ?? "Kurum",
-                  session.kurumId,
-                  (govdeMetniSoFar) => goster(govdeMetniSoFar, "yazılıyor")
-                );
+                  // Final frame uses the exact persisted string, so the live
+                  // view's last frame and BelgeTuvali's first frame match.
+                  goster(sonuc.govdeMetni, "tamam");
 
-                await db.insert(schema.belgeler).values({
-                  id,
-                  belgeTuru: tur.id,
-                  baslik,
-                  baglam,
-                  govdeMetni: sonuc.govdeMetni,
-                  kaynaklar: JSON.stringify(sonuc.kaynaklar),
-                  olusturanKullaniciId: session.userId,
-                  kurumId: session.kurumId,
-                  birimId: session.birimId,
-                  // Lets "Belgelerim" deep-link back to this conversation, and is
-                  // how the canvas panel knows which chat "owns" the document.
-                  sohbetId,
-                });
-                await db.insert(schema.auditLog).values({
-                  islem: "belge_olusturuldu_asistan",
-                  kullanici: session.kullaniciAdi,
-                  detay: JSON.stringify({ belgeId: id, tur: tur.id }),
-                });
-
-                // Final frame uses the exact persisted string, so the live
-                // view's last frame and BelgeTuvali's first frame match.
-                goster(sonuc.govdeMetni, "tamam");
-
-                return {
-                  basarili: true,
-                  belgeId: id,
-                  tur: tur.ad,
-                  baslik,
-                  baglanti: vatandasMi
-                    ? `/basvuru/asistan/${sohbetId}?belge=${id}`
-                    : `/panel/belge/${id}`,
-                  // A change marker the canvas panel compares against what it last
-                  // rendered, to know a tool touched "its" document and refresh.
-                  surum: Date.now(),
-                };
+                  return {
+                    basarili: true,
+                    belgeId: id,
+                    tur: tur.ad,
+                    baslik,
+                    baglanti: vatandasMi
+                      ? `/basvuru/asistan/${sohbetId}?belge=${id}`
+                      : `/panel/belge/${id}`,
+                    // A change marker the canvas panel compares against what it last
+                    // rendered, to know a tool touched "its" document and refresh.
+                    surum: Date.now(),
+                  };
+                } catch (err) {
+                  console.error("Belge oluşturma hatası:", err);
+                  goster("Belge taslağı oluşturulurken bir hata oluştu. Lütfen tekrar deneyin.", "tamam");
+                  return {
+                    basarili: false,
+                    hata: "Belge taslağı oluşturulurken bir hata meydana geldi.",
+                  };
+                }
               },
             },
 
@@ -687,8 +751,13 @@ export async function POST(req: Request) {
                 belgeId: z.string().describe("Onaya gönderilecek belgenin kimliği."),
               }),
               execute: async ({ belgeId }: { belgeId: string }) => {
+                // The action reports its refusals as data now, so the model gets
+                // the real reason ("not finished yet", "resolve the pending
+                // suggestions first") instead of a generic failure. A genuine
+                // defect still throws, and the catch keeps it out of the stream.
                 try {
-                  await belgeyiOnayaGonderAction(belgeId);
+                  const sonuc = await belgeyiOnayaGonderAction(belgeId);
+                  if (!sonuc.basarili) return { basarili: false, hata: sonuc.hata };
                   return {
                     basarili: true,
                     belgeId,
@@ -696,10 +765,8 @@ export async function POST(req: Request) {
                     not: "Belge onay zincirine gönderildi. Onaylama işlemini yetkili kişiler tuvalden yapacak.",
                   };
                 } catch (err) {
-                  return {
-                    basarili: false,
-                    hata: err instanceof Error ? err.message : "Belge onaya gönderilemedi.",
-                  };
+                  console.error("belgeyiOnayaGonder aracı başarısız:", { belgeId, hata: err });
+                  return { basarili: false, hata: "Belge onaya gönderilemedi." };
                 }
               },
             },

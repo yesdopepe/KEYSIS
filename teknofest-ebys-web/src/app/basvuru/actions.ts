@@ -24,12 +24,17 @@ export async function aiDilekceOlusturAction(ozetKonu: string): Promise<string> 
   const tur = belgeTuruGetir("dilekce");
   if (!tur) throw new Error("Dilekçe türü tanımlı değil.");
 
-  const sonuc = await belgeTaslagiOlusturAkisli(
+  // No addressee and no mevzuat scope on purpose. This form has no
+  // conversation behind it — only a one-line summary — so nothing here knows
+  // which institution is competent, and the previous hardcoded
+  // "Belediye Başkanlığı" put a municipality on the letterhead of every
+  // petition regardless of subject. İLGİLİ MAKAMA is honest about that, and
+  // the citizen edits it on the canvas.
+  const sonuc = await belgeTaslagiOlusturAkisli({
     tur,
-    ozetKonu,
-    "Belediye Başkanlığı / Yetkili Kamu İdaresi",
-    "belediye_ornek"
-  );
+    baglam: ozetKonu,
+    kurumId: null,
+  });
   return sonuc.govdeMetni;
 }
 

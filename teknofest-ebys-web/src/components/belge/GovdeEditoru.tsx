@@ -91,21 +91,28 @@ function bosParagraf(): HTMLElement {
 function initSingleRootDocument(root: HTMLElement, model: ResmiBelge, defaultValue: string) {
   root.innerHTML = "";
 
-  // 1. Antet (T.C., Kurum, Birim)
-  const tc = document.createElement("p");
-  tc.className = "text-center font-bold text-[12pt] tracking-widest uppercase mb-0.5 text-zinc-950";
-  tc.textContent = "T.C.";
-  root.appendChild(tc);
+  // 1. Antet (T.C., Kurum, Birim) — only for a document an institution issues.
+  // A dilekçe is the citizen's own text, so it gets no letterhead: the
+  // placeholder used to render as a real institution name on screen and in
+  // every export.
+  if (model.kurumAdi) {
+    const tc = document.createElement("p");
+    tc.className = "text-center font-bold text-[12pt] tracking-widest uppercase mb-0.5 text-zinc-950";
+    tc.textContent = "T.C.";
+    root.appendChild(tc);
 
-  const kurum = document.createElement("p");
-  kurum.className = "text-center font-bold text-[12pt] uppercase tracking-wider mb-0.5 text-zinc-950";
-  kurum.textContent = model.kurumAdi || "T.C. KURUM BAŞKANLIĞI";
-  root.appendChild(kurum);
+    const kurum = document.createElement("p");
+    kurum.className = "text-center font-bold text-[12pt] uppercase tracking-wider mb-0.5 text-zinc-950";
+    kurum.textContent = model.kurumAdi;
+    root.appendChild(kurum);
 
-  const birim = document.createElement("p");
-  birim.className = "text-center font-normal text-[11pt] text-zinc-900 mb-6";
-  birim.textContent = model.birimAdi || "Birim Adı";
-  root.appendChild(birim);
+    if (model.birimAdi) {
+      const birim = document.createElement("p");
+      birim.className = "text-center font-normal text-[11pt] text-zinc-900 mb-6";
+      birim.textContent = model.birimAdi;
+      root.appendChild(birim);
+    }
+  }
 
   // 2. Sayı, Tarih & Konu
   const metaContainer = document.createElement("div");
@@ -113,12 +120,15 @@ function initSingleRootDocument(root: HTMLElement, model: ResmiBelge, defaultVal
 
   const sayiTarih = document.createElement("div");
   sayiTarih.className = "flex justify-between items-baseline";
-  sayiTarih.innerHTML = `<span><strong>Sayı :</strong> ${model.sayi || "…-…/…"}</span><span><strong>Tarih :</strong> ${model.tarih || new Date().toLocaleDateString("tr-TR")}</span>`;
+  const tarihHtml = `<span><strong>Tarih :</strong> ${model.tarih || new Date().toLocaleDateString("tr-TR")}</span>`;
+  sayiTarih.innerHTML = model.sayi
+    ? `<span><strong>Sayı :</strong> ${model.sayi}</span>${tarihHtml}`
+    : `<span></span>${tarihHtml}`;
   metaContainer.appendChild(sayiTarih);
 
   const konuP = document.createElement("p");
   konuP.className = "font-semibold text-zinc-950";
-  konuP.innerHTML = `<strong>Konu :</strong> ${model.konu || "Belge Konusu"}`;
+  konuP.innerHTML = `<strong>Konu :</strong> ${model.konu ?? ""}`;
   metaContainer.appendChild(konuP);
   root.appendChild(metaContainer);
 
@@ -163,24 +173,28 @@ function initSingleRootDocument(root: HTMLElement, model: ResmiBelge, defaultVal
   }
   root.appendChild(govdeBody);
 
-  // 5. İmza Bloğu
-  const imzaContainer = document.createElement("div");
-  imzaContainer.className = "mt-12 text-right select-text";
-  const imzaYazi = document.createElement("p");
-  imzaYazi.className = "italic text-[10pt] text-zinc-400 select-none mb-1";
-  imzaYazi.textContent = "(İmza)";
-  imzaContainer.appendChild(imzaYazi);
+  // 5. İmza Bloğu — only where someone actually signs on behalf of an
+  // institution. A dilekçe closes with the petitioner's own name block inside
+  // the body, so an extra "(İmza) / Ad SOYAD / Unvan" here just contradicted it.
+  if (model.imza) {
+    const imzaContainer = document.createElement("div");
+    imzaContainer.className = "mt-12 text-right select-text";
+    const imzaYazi = document.createElement("p");
+    imzaYazi.className = "italic text-[10pt] text-zinc-400 select-none mb-1";
+    imzaYazi.textContent = "(İmza)";
+    imzaContainer.appendChild(imzaYazi);
 
-  const adSoyad = document.createElement("p");
-  adSoyad.className = "font-bold text-[12pt] text-zinc-950";
-  adSoyad.textContent = model.imza?.adSoyad || "Ad SOYAD";
-  imzaContainer.appendChild(adSoyad);
+    const adSoyad = document.createElement("p");
+    adSoyad.className = "font-bold text-[12pt] text-zinc-950";
+    adSoyad.textContent = model.imza.adSoyad;
+    imzaContainer.appendChild(adSoyad);
 
-  const unvan = document.createElement("p");
-  unvan.className = "text-[11pt] text-zinc-800";
-  unvan.textContent = model.imza?.unvan || "Unvan";
-  imzaContainer.appendChild(unvan);
-  root.appendChild(imzaContainer);
+    const unvan = document.createElement("p");
+    unvan.className = "text-[11pt] text-zinc-800";
+    unvan.textContent = model.imza.unvan;
+    imzaContainer.appendChild(unvan);
+    root.appendChild(imzaContainer);
+  }
 
   // 6. Ekler (varsa)
   if (model.ekler && model.ekler.length > 0) {

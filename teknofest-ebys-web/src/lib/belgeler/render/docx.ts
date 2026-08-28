@@ -42,14 +42,19 @@ function bos(sayi = 1) {
 export async function docxOlustur(belge: ResmiBelge): Promise<Buffer> {
   const govde: Paragraph[] = [];
 
-  govde.push(ortali("T.C."), ortali(belge.kurumAdi, { bold: true }));
-  if (belge.birimAdi) govde.push(ortali(belge.birimAdi));
-  govde.push(...bos(2));
+  // A dilekçe has no kurumAdi — it is written by a citizen, not issued by an institution — so the whole T.C. antet and the registry number are omitted rather than printed empty or with a placeholder.
+  if (belge.kurumAdi) {
+    govde.push(ortali("T.C."), ortali(belge.kurumAdi, { bold: true }));
+    if (belge.birimAdi) govde.push(ortali(belge.birimAdi));
+    govde.push(...bos(2));
+  }
 
   govde.push(
     new Paragraph({
       tabStops: [{ type: TabStopType.RIGHT, position: convertMillimetersToTwip(165) }],
-      children: [metin(`Sayı\t: ${belge.sayi ?? ""}`), metin(`\t${belge.tarih}`)],
+      children: belge.sayi
+        ? [metin(`Sayı\t: ${belge.sayi}`), metin(`\t${belge.tarih}`)]
+        : [metin(`\t${belge.tarih}`)],
     })
   );
   if (belge.konu) {

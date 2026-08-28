@@ -61,13 +61,18 @@ function ResmiBelgeSayfasi({ belge }: { belge: ResmiBelge }) {
   return (
     <Document title={belge.konu ?? belge.belgeTuruAdi} author={belge.kurumAdi}>
       <Page size="A4" style={s.sayfa}>
-        <Text style={s.ortali}>T.C.</Text>
-        <Text style={s.kurum}>{belge.kurumAdi}</Text>
-        {belge.birimAdi ? <Text style={s.ortali}>{belge.birimAdi}</Text> : null}
+        {/* A dilekçe has no kurumAdi — it is written by a citizen, not issued by an institution — so the whole T.C. antet and the registry number are omitted rather than printed empty or with a placeholder. */}
+        {belge.kurumAdi ? (
+          <>
+            <Text style={s.ortali}>T.C.</Text>
+            <Text style={s.kurum}>{belge.kurumAdi}</Text>
+            {belge.birimAdi ? <Text style={s.ortali}>{belge.birimAdi}</Text> : null}
+          </>
+        ) : null}
 
         <View style={{ marginTop: 22 }}>
           <View style={s.ustBilgiSatiri}>
-            <Text>Sayı : {belge.sayi ?? ""}</Text>
+            {belge.sayi ? <Text>Sayı : {belge.sayi}</Text> : <Text> </Text>}
             <Text>{belge.tarih}</Text>
           </View>
           {belge.konu ? (

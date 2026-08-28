@@ -38,13 +38,38 @@ const Sema = z.object({
  * whole document to finish — the tradeoff is `streamObject` rather than
  * `generateObject`, otherwise identical prompt/lookup/fallback behavior.
  */
-export async function belgeTaslagiOlusturAkisli(
-  tur: BelgeTuruTanimi,
-  baglam: string,
-  kurumAdi: string,
-  kurumId: string,
-  onIlerleme?: (govdeMetniSoFar: string) => void
-): Promise<BelgeTaslakSonucu> {
+/** Neutral salutation for a document whose addressee is not known. */
+export const VARSAYILAN_MUHATAP = "İLGİLİ MAKAMA";
+
+export interface BelgeTaslakGirdisi {
+  tur: BelgeTuruTanimi;
+  baglam: string;
+  /**
+   * The institution the author writes on behalf of. Omitted for a citizen's
+   * dilekçe — there the author is the citizen, and naming an institution here
+   * is what used to put a belediye's name on every petition's letterhead.
+   */
+  kurumAdi?: string;
+  /**
+   * Who the document is addressed to. Defaults to İLGİLİ MAKAMA, which is
+   * already the neutral salutation the renderers fall back to, so a draft with
+   * an unknown addressee matches the exported document rather than guessing an
+   * institution.
+   */
+  muhatap?: string;
+  /** Mevzuat scope. null searches every institution — see mevzuatAraVektor. */
+  kurumId: string | null;
+  onIlerleme?: (govdeMetniSoFar: string) => void;
+}
+
+export async function belgeTaslagiOlusturAkisli({
+  tur,
+  baglam,
+  kurumAdi,
+  muhatap,
+  kurumId,
+  onIlerleme,
+}: BelgeTaslakGirdisi): Promise<BelgeTaslakSonucu> {
   const adaylar = await mevzuatAraVektor(kurumId, baglam, 6);
   const adayMetni = adaylar
     .map((a) => `- kodu: "${a.kodu}" | başlık: ${a.baslik} | özet: ${a.icerik}`)
@@ -54,7 +79,7 @@ export async function belgeTaslagiOlusturAkisli(
 
   try {
     const { model, temperature, maxOutputTokens } = getAgentModel("belge_yazar_agent");
-    const { partialObjectStream, object } = streamObject({
+    const { object } = await generateObject({
       model,
       temperature,
       maxOutputTokens,
@@ -63,28 +88,20 @@ export async function belgeTaslagiOlusturAkisli(
         belge_turu_adi: tur.ad,
         belge_turu_aciklamasi: tur.aciklama,
         icerik_rehberi: tur.icerikRehberi,
-        kurum_adi: kurumAdi,
+        muhatap: muhatap?.trim() || VARSAYILAN_MUHATAP,
+        kurum_adi: kurumAdi?.trim() || "(belge kurum adına değil, yazarın kendi adına yazılıyor)",
         baglam,
         mevzuat_adaylari: adayMetni || "(aday madde bulunamadı)",
       }),
     });
 
-    let sonBildirilen = "";
-    for await (const partial of partialObjectStream) {
-      const metin = partial.govde_metni;
-      if (typeof metin === "string" && metin.length > 0 && metin !== sonBildirilen) {
-        sonBildirilen = metin;
-        onIlerleme?.(metin);
-      }
-    }
-
-    const nihaiNesne = await object;
-    const govdeMetni = nihaiNesne.govde_metni.trim() || varsayilanGovde;
+    const govdeMetni = object.govde_metni?.trim() || varsayilanGovde;
+    onIlerleme?.(govdeMetni);
 
     // Only citations the model was actually shown survive — and each carries
     // the link to its article so a reader can open the source text.
     const linkler = new Map(adaylar.map((a) => [a.kodu, a.link]));
-    const kaynaklar: BelgeKaynagi[] = nihaiNesne.kaynaklar
+    const kaynaklar: BelgeKaynagi[] = (object.kaynaklar || [])
       .filter((k) => linkler.has(k.referans))
       .map((k) => ({ ...k, link: linkler.get(k.referans) }));
 
@@ -117,7 +134,8 @@ export async function belgeOnerisiOlustur(params: {
   mevcutGovde: string;
   baglam: string;
   talimat: string;
-  kurumId: string;
+  /** Mevzuat scope. null searches every institution — see mevzuatAraVektor. */
+  kurumId: string | null;
 }): Promise<BelgeOnerisi | null> {
   const adaylar = await mevzuatAraVektor(
     params.kurumId,

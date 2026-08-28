@@ -245,6 +245,7 @@ export function AsistanSohbet({
   const sonMesajId = messages[messages.length - 1]?.id;
 
   const canliTaslak = useMemo<BelgeCanliTaslakVerisi | null>(() => {
+    if (status === "error") return null;
     let son: BelgeCanliTaslakVerisi | null = null;
     for (const m of messages) {
       for (const part of m.parts) {
@@ -257,7 +258,7 @@ export function AsistanSohbet({
     // As soon as it is "tamam", the document is saved in DB and BelgeTuvaliIstemci renders the full WYSIWYG editor.
     if (!son || son.durum !== "yazılıyor") return null;
     return son;
-  }, [messages]);
+  }, [messages, status]);
 
   useEffect(() => {
     for (const m of messages) {

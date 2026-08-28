@@ -26,10 +26,53 @@ async function auditYaz(kullanici: string, islem: string, detay: object = {}) {
 
 async function belgeYetkiKontrol(belgeId: string, birimId: string, userId?: string) {
   const [belge] = await db.select().from(schema.belgeler).where(eq(schema.belgeler.id, belgeId));
-  if (!belge) throw new Error("Belge bulunamadı.");
+  if (!belge) reddet("Belge bulunamadı.");
   const vatandasaAit = vatandasBelgesiMi(belge);
-  if (belge.birimId !== birimId && !vatandasaAit) throw new Error("Bu belge sizin biriminize ait değil.");
+  if (belge.birimId !== birimId && !vatandasaAit) reddet("Bu belge sizin biriminize ait değil.");
   return belge;
+}
+
+/**
+ * What a workflow action reports back to its form.
+ *
+ * These actions used to throw for *expected* refusals ("this belge is not
+ * finished yet", "resolve the pending suggestions first"). A bare
+ * `<form action={...}>` has nowhere to put a thrown error, and a production
+ * build strips the message to a digest and answers 500 — so every refusal and
+ * every genuine bug looked identical from the browser. Refusals now come back
+ * as data the form can render; only the unexpected still throws, and that
+ * throw is logged first so the digest has a matching server line.
+ */
+export type IsAkisiSonucu = { basarili: true } | { basarili: false; hata: string };
+
+class IsAkisiReddi extends Error {}
+
+/** Marks a refusal the user is meant to read, as opposed to a defect. */
+function reddet(mesaj: string): never {
+  throw new IsAkisiReddi(mesaj);
+}
+
+/**
+ * Runs a workflow action and converts its outcome into IsAkisiSonucu.
+ * A refusal becomes `{ basarili: false }`; anything else is logged with enough
+ * context to identify the row involved, then rethrown so the error boundary
+ * shows a digest that can be matched to that log line.
+ */
+async function isAkisiniYurut(
+  etiket: string,
+  baglam: Record<string, unknown>,
+  islem: () => Promise<void>
+): Promise<IsAkisiSonucu> {
+  try {
+    await islem();
+    return { basarili: true };
+  } catch (err) {
+    if (err instanceof IsAkisiReddi) return { basarili: false, hata: err.message };
+    // redirect() and notFound() throw control-flow signals that must pass through.
+    if (err && typeof err === "object" && "digest" in err) throw err;
+    console.error(`${etiket} başarısız:`, { ...baglam, hata: err });
+    throw err;
+  }
 }
 
 /** Saves edits to the document body — this is the "report editing" surface. */
@@ -99,41 +142,96 @@ export async function belgeMetniKaydet(
 }
 
 /**
+ * Which birim's approval chain a document enters.
+ *
+ * belgeYetkiKontrol deliberately lets any staff member act on a dilekçe
+ * whichever birim owns it (see vatandasBelgesiMi) — that is what lets a memur
+ * pick up a citizen's petition. But the chain used to be built from the
+ * *document's* birim, while /panel lists pending approvals with
+ * `eq(belgeler.birimId, session.birimId)` (lib/cases/queries.ts). A MEB memur
+ * sending a citizen dilekçe upward therefore created a chain inside the
+ * belediye's birim, where no MEB müdür would ever see it: the document went
+ * "up" and disappeared. Taking it over is a move between birimler, so record it
+ * as the havale it actually is rather than editing the row silently.
+ */
+async function onayIcinBirimeAl(
+  belge: typeof schema.belgeler.$inferSelect,
+  session: { userId: string; kullaniciAdi: string; kurumId: string; birimId: string }
+): Promise<string> {
+  if (belge.birimId === session.birimId) return belge.birimId;
+
+  await havaleKaydet({
+    hedefTuru: "belge",
+    hedefId: belge.id,
+    eskiKurumId: belge.kurumId,
+    eskiBirimId: belge.birimId,
+    yeniKurumId: session.kurumId,
+    yeniBirimId: session.birimId,
+    sebep: "Onaya gönderen personelin birimine devralındı.",
+    yapanKullaniciId: session.userId,
+  });
+
+  await db
+    .update(schema.belgeler)
+    .set({ kurumId: session.kurumId, birimId: session.birimId, guncellemeZamani: new Date() })
+    .where(eq(schema.belgeler.id, belge.id));
+
+  await auditYaz(session.kullaniciAdi, "belge_onay_oncesi_devralindi", {
+    belgeId: belge.id,
+    eskiBirimId: belge.birimId,
+    yeniBirimId: session.birimId,
+  });
+
+  return session.birimId;
+}
+
+/**
  * Sends a completed belge into its birim's approval chain — mirrors
  * hitlOnayla's evrak equivalent. Creates only bekliyor steps; nothing here
  * can write onaylandi, which stays exclusively belgeOnayAdimiKarar's job.
  */
-export async function belgeyiOnayaGonder(belgeId: string) {
+export async function belgeyiOnayaGonder(belgeId: string): Promise<IsAkisiSonucu> {
   const session = await oturumZorunluKil();
-  const belge = await belgeYetkiKontrol(belgeId, session.birimId);
-  if (belge.durum !== "tamamlandi") {
-    throw new Error("Yalnızca tamamlanmış bir belge onaya gönderilebilir.");
-  }
 
-  const bekleyenOneriler = await db
-    .select({ id: schema.belgeOnerileri.id })
-    .from(schema.belgeOnerileri)
-    .where(
-      and(
-        eq(schema.belgeOnerileri.hedefTuru, "belge"),
-        eq(schema.belgeOnerileri.hedefId, belgeId),
-        eq(schema.belgeOnerileri.durum, "bekliyor")
-      )
-    );
-  if (bekleyenOneriler.length > 0) {
-    throw new Error("Onaya göndermeden önce bekleyen AI önerilerini kabul edin veya reddedin.");
-  }
+  return isAkisiniYurut("belgeyiOnayaGonder", { belgeId, kullanici: session.kullaniciAdi }, async () => {
+    const belge = await belgeYetkiKontrol(belgeId, session.birimId);
 
-  await db
-    .update(schema.belgeler)
-    .set({ durum: "onay_zincirinde", guncellemeZamani: new Date() })
-    .where(eq(schema.belgeler.id, belgeId));
+    // The button lives on a plain form with no pending state, so a double
+    // submit lands here twice. The second one has already done its job.
+    if (belge.durum === "onay_zincirinde") return;
 
-  await onayZinciriOlustur("belge", belgeId, belge.birimId);
-  await auditYaz(session.kullaniciAdi, "belge_onaya_gonderildi", { belgeId });
+    if (belge.durum !== "tamamlandi") {
+      reddet("Yalnızca tamamlanmış bir belge onaya gönderilebilir.");
+    }
 
-  revalidatePath(`/panel/belge/${belgeId}`);
-  revalidatePath("/panel/belge");
+    const bekleyenOneriler = await db
+      .select({ id: schema.belgeOnerileri.id })
+      .from(schema.belgeOnerileri)
+      .where(
+        and(
+          eq(schema.belgeOnerileri.hedefTuru, "belge"),
+          eq(schema.belgeOnerileri.hedefId, belgeId),
+          eq(schema.belgeOnerileri.durum, "bekliyor")
+        )
+      );
+    if (bekleyenOneriler.length > 0) {
+      reddet("Onaya göndermeden önce bekleyen AI önerilerini kabul edin veya reddedin.");
+    }
+
+    const zincirBirimId = await onayIcinBirimeAl(belge, session);
+
+    await db
+      .update(schema.belgeler)
+      .set({ durum: "onay_zincirinde", guncellemeZamani: new Date() })
+      .where(eq(schema.belgeler.id, belgeId));
+
+    await onayZinciriOlustur("belge", belgeId, zincirBirimId);
+    await auditYaz(session.kullaniciAdi, "belge_onaya_gonderildi", { belgeId, birimId: zincirBirimId });
+
+    revalidatePath(`/panel/belge/${belgeId}`);
+    revalidatePath("/panel/belge");
+    revalidatePath("/panel");
+  });
 }
 
 /** A hierarchy level's decision on a belge's sequential approval chain. */
@@ -142,38 +240,53 @@ export async function belgeOnayAdimiKarar(
   adimId: number,
   karar: "onaylandi" | "reddedildi" | "duzeltme_istendi",
   formData: FormData
-) {
+): Promise<IsAkisiSonucu> {
   const yorum = String(formData.get("yorum") ?? "");
   const session = await oturumZorunluKil();
-  const belge = await belgeYetkiKontrol(belgeId, session.birimId);
-  if (belge.durum !== "onay_zincirinde") throw new Error("Bu belge onay zincirinde değil.");
 
-  const { sonAdimMi } = await adimKararVer({
-    hedefTuru: "belge",
-    hedefId: belgeId,
-    adimId,
-    karar,
-    yorum,
-    kullaniciId: session.userId,
-    hiyerarsiSeviyesi: session.hiyerarsiSeviyesi,
-  });
+  return isAkisiniYurut(
+    "belgeOnayAdimiKarar",
+    { belgeId, adimId, karar, kullanici: session.kullaniciAdi },
+    async () => {
+      const belge = await belgeYetkiKontrol(belgeId, session.birimId);
+      if (belge.durum !== "onay_zincirinde") reddet("Bu belge onay zincirinde değil.");
 
-  await auditYaz(session.kullaniciAdi, `belge_onay_adimi_${karar}`, { belgeId, yorum });
+      // adimKararVer enforces the sequential gate and the level match; each of
+      // its refusals is something the approver should read, not a 500.
+      let sonAdimMi: boolean;
+      try {
+        ({ sonAdimMi } = await adimKararVer({
+          hedefTuru: "belge",
+          hedefId: belgeId,
+          adimId,
+          karar,
+          yorum,
+          kullaniciId: session.userId,
+          hiyerarsiSeviyesi: session.hiyerarsiSeviyesi,
+        }));
+      } catch (err) {
+        reddet(err instanceof Error ? err.message : "Onay adımı işlenemedi.");
+      }
 
-  if (karar === "reddedildi" || karar === "duzeltme_istendi") {
-    await db
-      .update(schema.belgeler)
-      .set({ durum: "taslak", guncellemeZamani: new Date() })
-      .where(eq(schema.belgeler.id, belgeId));
-  } else if (sonAdimMi) {
-    await db
-      .update(schema.belgeler)
-      .set({ durum: "onaylandi", guncellemeZamani: new Date() })
-      .where(eq(schema.belgeler.id, belgeId));
-  }
+      await auditYaz(session.kullaniciAdi, `belge_onay_adimi_${karar}`, { belgeId, yorum });
 
-  revalidatePath(`/panel/belge/${belgeId}`);
-  revalidatePath("/panel/belge");
+      if (karar === "reddedildi" || karar === "duzeltme_istendi") {
+        await db
+          .update(schema.belgeler)
+          .set({ durum: "taslak", guncellemeZamani: new Date() })
+          .where(eq(schema.belgeler.id, belgeId));
+      } else if (sonAdimMi) {
+        await db
+          .update(schema.belgeler)
+          .set({ durum: "onaylandi", guncellemeZamani: new Date() })
+          .where(eq(schema.belgeler.id, belgeId));
+      }
+
+      revalidatePath(`/panel/belge/${belgeId}`);
+      revalidatePath("/panel/belge");
+      revalidatePath("/panel");
+    }
+  );
 }
 
 /**
@@ -182,38 +295,42 @@ export async function belgeOnayAdimiKarar(
  * Onaya Gönder: once a chain exists the belge belongs to this birim's
  * approval process, and rerouting it would orphan those steps.
  */
-export async function belgeHavaleEt(belgeId: string, formData: FormData) {
+export async function belgeHavaleEt(belgeId: string, formData: FormData): Promise<IsAkisiSonucu> {
   const session = await oturumZorunluKil();
-  const belge = await belgeYetkiKontrol(belgeId, session.birimId);
-  if (belge.durum !== "taslak" && belge.durum !== "tamamlandi") {
-    throw new Error("Bu belge yalnızca onaya gönderilmeden önce havale edilebilir.");
-  }
-
   const hedef = String(formData.get("_hedef") ?? "");
   const sebep = String(formData.get("sebep") ?? "");
-  const [yeniKurumId, yeniBirimId] = hedef.split("|");
-  if (!yeniKurumId || !yeniBirimId) throw new Error("Hedef birim seçilmedi.");
 
-  await havaleKaydet({
-    hedefTuru: "belge",
-    hedefId: belgeId,
-    eskiKurumId: belge.kurumId,
-    eskiBirimId: belge.birimId,
-    yeniKurumId,
-    yeniBirimId,
-    sebep,
-    yapanKullaniciId: session.userId,
+  return isAkisiniYurut("belgeHavaleEt", { belgeId, hedef, kullanici: session.kullaniciAdi }, async () => {
+    const belge = await belgeYetkiKontrol(belgeId, session.birimId);
+    if (belge.durum !== "taslak" && belge.durum !== "tamamlandi") {
+      reddet("Bu belge yalnızca onaya gönderilmeden önce havale edilebilir.");
+    }
+
+    const [yeniKurumId, yeniBirimId] = hedef.split("|");
+    if (!yeniKurumId || !yeniBirimId) reddet("Hedef birim seçilmedi.");
+
+    await havaleKaydet({
+      hedefTuru: "belge",
+      hedefId: belgeId,
+      eskiKurumId: belge.kurumId,
+      eskiBirimId: belge.birimId,
+      yeniKurumId,
+      yeniBirimId,
+      sebep,
+      yapanKullaniciId: session.userId,
+    });
+
+    await db
+      .update(schema.belgeler)
+      .set({ kurumId: yeniKurumId, birimId: yeniBirimId, guncellemeZamani: new Date() })
+      .where(eq(schema.belgeler.id, belgeId));
+
+    await auditYaz(session.kullaniciAdi, "belge_havale", { belgeId, yeniKurumId, yeniBirimId, sebep });
+
+    revalidatePath(`/panel/belge/${belgeId}`);
+    revalidatePath("/panel/belge");
+    revalidatePath("/panel");
   });
-
-  await db
-    .update(schema.belgeler)
-    .set({ kurumId: yeniKurumId, birimId: yeniBirimId, guncellemeZamani: new Date() })
-    .where(eq(schema.belgeler.id, belgeId));
-
-  await auditYaz(session.kullaniciAdi, "belge_havale", { belgeId, yeniKurumId, yeniBirimId, sebep });
-
-  revalidatePath(`/panel/belge/${belgeId}`);
-  revalidatePath("/panel/belge");
 }
 
 /**

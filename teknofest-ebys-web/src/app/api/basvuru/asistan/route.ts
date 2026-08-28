@@ -79,13 +79,18 @@ export async function POST(req: Request) {
 
             mevzuatBilgisiSorgula: {
               description:
-                "Vatandaşın talebine ilişkin yasal dayanakları ve kanun maddelerini (3071 sayılı Dilekçe Kanunu, 5393 sayılı Belediye Kanunu, 3194 İmar Kanunu vb.) arar.",
+                "Vatandaşın talebine ilişkin yasal dayanakları ve kanun maddelerini tüm kurumların mevzuatı içinde arar (3071 sayılı Dilekçe Kanunu gibi genel kanunlar ile belediye, valilik, kaymakamlık ve bakanlık mevzuatı dahil).",
               inputSchema: z.object({
                 sorgu: z.string().describe("Aranacak hukuki konu veya anahtar kelimeler (örn: dilekçe hakkı, kaldırım tamiri, ruhsatsız yapı)."),
               }),
               execute: async ({ sorgu }: { sorgu: string }) => {
                 try {
-                  const maddeler = await mevzuatAraVektor("kurum-agnostik", sorgu, 4);
+                  // null = every institution's corpus. The previous
+                  // "kurum-agnostik" was not a kurumId that exists, so the
+                  // OR-filter it built matched nothing but the handful of
+                  // articles published globally — the opposite of the
+                  // institution-agnostic search the name promised.
+                  const maddeler = await mevzuatAraVektor(null, sorgu, 4);
                   return {
                     sonuclar: maddeler.map((m) => ({
                       kodu: m.kodu,

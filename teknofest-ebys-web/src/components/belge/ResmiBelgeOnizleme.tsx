@@ -62,7 +62,11 @@ export function ResmiBelgeOnizleme({
         color: "#000000",
       }}
     >
-      {/* 1. T.C. Antet (Letterhead) */}
+      {/* 1. T.C. Antet (Letterhead) — only for a document an institution issues.
+          A dilekçe is written by a citizen and carries no letterhead; printing a
+          placeholder (or the anonymous session's anchor institution) put a
+          municipality's name on top of every petition. */}
+      {belge.kurumAdi ? (
       <div className="text-center select-text">
         <div className="font-bold tracking-widest text-[12pt] text-zinc-950">T.C.</div>
         <div
@@ -74,7 +78,7 @@ export function ResmiBelgeOnizleme({
             duzenlenebilir && "hover:bg-zinc-100/70 focus:bg-primary/[0.02] focus:ring-1 focus:ring-primary/20 rounded-xs px-1 cursor-text"
           )}
         >
-          {belge.kurumAdi || "T.C. KURUM BAŞKANLIĞI"}
+          {belge.kurumAdi}
         </div>
         <div
           contentEditable={duzenlenebilir}
@@ -85,13 +89,15 @@ export function ResmiBelgeOnizleme({
             duzenlenebilir && "hover:bg-zinc-100/70 focus:bg-primary/[0.02] focus:ring-1 focus:ring-primary/20 rounded-xs px-1 cursor-text"
           )}
         >
-          {belge.birimAdi || "Birim Adı"}
+          {belge.birimAdi}
         </div>
       </div>
+      ) : null}
 
       {/* 2. Sayı, Tarih & Konu (Meta Bilgileri) */}
       <div className="mt-8 grid grid-cols-12 gap-2 text-[11pt] text-zinc-950 border-b border-zinc-200 pb-3">
         <div className="col-span-8 space-y-1.5">
+          {belge.sayi !== undefined ? (
           <div className="flex items-center gap-1.5">
             <span className="font-bold w-14 shrink-0 select-none">Sayı :</span>
             <span
@@ -103,9 +109,10 @@ export function ResmiBelgeOnizleme({
                 duzenlenebilir && "hover:bg-zinc-100/70 focus:bg-primary/[0.02] focus:ring-1 focus:ring-primary/20 rounded-xs px-1 cursor-text"
               )}
             >
-              {belge.sayi || "…-…/…"}
+              {belge.sayi}
             </span>
           </div>
+          ) : null}
           <div className="flex items-center gap-1.5">
             <span className="font-bold w-14 shrink-0 select-none">Konu :</span>
             <span
@@ -189,7 +196,10 @@ export function ResmiBelgeOnizleme({
           ))}
       </div>
 
-      {/* 5. İmza Bloğu (Formal Signature Block) */}
+      {/* 5. İmza Bloğu (Formal Signature Block) — a dilekçe signs itself in the
+          body ("Ad Soyad / T.C. Kimlik No / İletişim"), so a second staff-style
+          signature block below it would only contradict the petitioner. */}
+      {belge.imza ? (
       <div className="mt-14 flex justify-end">
         <div className="text-center min-w-[200px] space-y-1">
           <div className="italic text-[10pt] text-zinc-400 select-none">(İmza)</div>
@@ -202,7 +212,7 @@ export function ResmiBelgeOnizleme({
               duzenlenebilir && "hover:bg-zinc-100/70 focus:bg-primary/[0.02] focus:ring-1 focus:ring-primary/20 rounded-xs px-1 cursor-text"
             )}
           >
-            {belge.imza?.adSoyad || "Ad SOYAD"}
+            {belge.imza.adSoyad}
           </div>
           <div
             contentEditable={duzenlenebilir}
@@ -213,10 +223,11 @@ export function ResmiBelgeOnizleme({
               duzenlenebilir && "hover:bg-zinc-100/70 focus:bg-primary/[0.02] focus:ring-1 focus:ring-primary/20 rounded-xs px-1 cursor-text"
             )}
           >
-            {belge.imza?.unvan || "Unvan"}
+            {belge.imza.unvan}
           </div>
         </div>
       </div>
+      ) : null}
 
       {/* 6. Ekler (Attachments) */}
       {belge.ekler && belge.ekler.length > 0 && (

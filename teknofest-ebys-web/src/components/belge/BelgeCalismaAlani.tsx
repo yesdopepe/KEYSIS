@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useActionState, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   FileText,
@@ -37,6 +37,7 @@ import {
   belgeOnayAdimiKarar,
   belgeHavaleEt,
   belgeyiEvrakaYanitYap,
+  type IsAkisiSonucu,
 } from "@/app/panel/belge/actions";
 import { cn } from "@/lib/utils";
 
@@ -84,6 +85,45 @@ export interface BelgeCalismaAlaniProps {
  * The entire A4 paper is a single continuous editable surface (Word/Google Docs style)
  * with authentic Tinos / Times New Roman typography, 10mm indent, and full justification.
  */
+/**
+ * A workflow form whose server action reports refusals as data.
+ *
+ * These actions used to throw for expected refusals, and a bare
+ * `<form action={...}>` has nowhere to put a thrown error: a production build
+ * redacts the message to a digest and answers HTTP 500, so "this belge is not
+ * finished yet" and a genuine defect looked identical from the browser.
+ * useActionState keeps the returned message and renders it next to the control
+ * that produced it. The fieldset also blocks the double submit that a plain
+ * form has no defence against.
+ */
+function IsAkisiFormu({
+  eylem,
+  className,
+  children,
+}: {
+  eylem: (formData: FormData) => Promise<IsAkisiSonucu>;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const [sonuc, gonder, bekliyor] = useActionState(
+    async (_onceki: IsAkisiSonucu | null, formData: FormData) => eylem(formData),
+    null
+  );
+
+  return (
+    <form action={gonder} className={className}>
+      <fieldset disabled={bekliyor} className="contents">
+        {children}
+      </fieldset>
+      {sonuc && !sonuc.basarili && (
+        <p role="alert" className="mt-2 text-xs font-medium text-destructive">
+          {sonuc.hata}
+        </p>
+      )}
+    </form>
+  );
+}
+
 export function BelgeCalismaAlani({
   belge,
   model,
@@ -370,12 +410,12 @@ export function BelgeCalismaAlani({
                     : "Belgeyi birim amirlerinin onay zincirine gönderebilirsiniz."}
                 </p>
               </div>
-              <form action={belgeyiOnayaGonder.bind(null, belge.id)}>
+              <IsAkisiFormu eylem={belgeyiOnayaGonder.bind(null, belge.id)}>
                 <Button type="submit" disabled={oneriBekliyor} variant="brand" className="gap-1.5">
                   <PaperPlaneTilt size={16} aria-hidden="true" />
                   Onaya Gönder
                 </Button>
-              </form>
+              </IsAkisiFormu>
             </Card>
           )}
 
@@ -404,24 +444,24 @@ export function BelgeCalismaAlani({
                 <div className="space-y-2 border-t border-border pt-4 mt-2">
                   <p className="text-sm font-semibold text-foreground">Bu adım sizin onayınızı bekliyor</p>
                   <div className="flex flex-wrap gap-2">
-                    <form action={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "onaylandi")}>
+                    <IsAkisiFormu eylem={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "onaylandi")}>
                       <Button type="submit" variant="brand">
                         <CheckCircle size={16} aria-hidden="true" />
                         Onayla
                       </Button>
-                    </form>
-                    <form action={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "duzeltme_istendi")}>
+                    </IsAkisiFormu>
+                    <IsAkisiFormu eylem={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "duzeltme_istendi")}>
                       <Button type="submit" variant="outline">
                         <ArrowUUpLeft size={16} aria-hidden="true" />
                         Düzeltme İste
                       </Button>
-                    </form>
-                    <form action={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "reddedildi")}>
+                    </IsAkisiFormu>
+                    <IsAkisiFormu eylem={belgeOnayAdimiKarar.bind(null, belge.id, siradakiAdimId, "reddedildi")}>
                       <Button type="submit" variant="destructive">
                         <XCircle size={16} aria-hidden="true" />
                         Reddet
                       </Button>
-                    </form>
+                    </IsAkisiFormu>
                   </div>
                 </div>
               )}
@@ -434,7 +474,7 @@ export function BelgeCalismaAlani({
                 <ArrowsLeftRight size={16} className="text-primary" aria-hidden="true" />
                 Başka bir kuruma/birime havale et
               </h3>
-              <form action={belgeHavaleEt.bind(null, belge.id)} className="space-y-3">
+              <IsAkisiFormu eylem={belgeHavaleEt.bind(null, belge.id)} className="space-y-3">
                 <select name="_hedef" className={`${inputClasses} bg-card`} required defaultValue="">
                   <option value="" disabled>
                     Kurum / birim seçin
@@ -449,7 +489,7 @@ export function BelgeCalismaAlani({
                 <Button type="submit" variant="outline" size="sm">
                   Havale Et
                 </Button>
-              </form>
+              </IsAkisiFormu>
             </Card>
           )}
 

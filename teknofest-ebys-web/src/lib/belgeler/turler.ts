@@ -29,11 +29,16 @@ export const BELGE_TURLERI: BelgeTuruTanimi[] = [
     aciklama: "Vatandaşın kamu kurum ve kuruluşlarına sunduğu resmi başvuru, talep ve şikayet belgesi.",
     minHiyerarsiSeviyesi: 0,
     icerikRehberi:
-      "3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun ve resmi yazışma kurallarına uygun olarak şunları kapsar: " +
-      "Muhatap idare/makam başlığı (T.C. [Kurum Adı] / [Birim Adı] Başkanlığına/Müdürlüğüne), açık ve net konu başlığı, " +
-      "olayın/ihtiyacın gerekçeli ve somut açıklaması, varsa ada/parsel/adres detayları, kanuni dayanaklar (3071, 5393 vb.), " +
-      "idareden talep edilen somut netice/aksiyon, 'Gereğini saygılarımla arz ederim' kapanışı, tarih, " +
-      "başvuru sahibi adı-soyadı, T.C. Kimlik No, iletişim/adres bilgileri ve ekler listesi.",
+      "3071 sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun ve resmî yazışma kurallarına uygun bir dilekçe şu sırayı izler:\n" +
+      "1) Makam başlığı: yalnızca 'Muhatap Makam' olarak verilen değer, tek başına bir satır halinde, büyük harfle.\n" +
+      "2) Konu satırı YAZILMAZ — belge şablonu 'Konu :' alanını başlıktan kendisi üretir; gövdeye ikinci bir Konu satırı yazılması belgede çift konu oluşturur.\n" +
+      "3) Açıklama ve gerekçe: olayın ne zaman, nerede, nasıl gerçekleştiği; varsa adres, ada/parsel, tarih, sayı gibi somut bilgiler. " +
+      "Doğrudan olayın anlatımıyla başlar; 'Sayın Yetkili', 'Merhaba' gibi bir selamlama satırı KULLANILMAZ.\n" +
+      "4) Hukukî dayanak: yalnızca aday mevzuat listesinde yer alan maddeler; uygun madde yoksa bu bölüm yazılmaz.\n" +
+      "5) Talep: idareden istenen somut işlem, tek ve açık bir cümlede.\n" +
+      "6) Kapanış: TEK bir kapanış cümlesi — 'Gereğini saygılarımla arz ederim.' Vatandaş idareye arz eder, rica etmez; kapanış cümlesi tekrarlanmaz.\n" +
+      "7) Tarih, ad-soyad, T.C. Kimlik No, adres ve iletişim bilgileri; her biri kendi satırında.\n" +
+      "8) Varsa 'EKLER:' başlığı altında numaralandırılmış ek listesi.",
   },
   {
     id: "tutanak",

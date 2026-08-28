@@ -118,18 +118,35 @@ export interface MevzuatSonucu {
   kodu: string;
   baslik: string;
   icerik: string;
-  /** In-app link to the full article, so a citation can be followed. */
+  /**
+   * In-app link to the full article, so a citation can be followed. Staff get
+   * the panel route; an unscoped (citizen) search gets the public one, because
+   * /panel/** needs a session and mevzuatMaddesiGetir is kurum-scoped — a panel
+   * link handed to a citizen only 404s. Both routes exist, so a citation is
+   * always followable.
+   */
   link: string;
   skor: number;
 }
 
 /**
- * Vector search over the corpus visible to one institution: its own articles
- * plus the global ones. kurumId must come from the session, never from a
- * model-supplied tool argument.
+ * Vector search over the mevzuat corpus.
+ *
+ * With a kurumId, the visible corpus is that institution's own articles plus
+ * the global ones — the tenant boundary every staff-side caller relies on, and
+ * that kurumId must come from the session, never from a model-supplied tool
+ * argument.
+ *
+ * `null` means no scoping at all: search every institution's articles. That is
+ * for citizen queries only, and it is a deliberate decision at the call site
+ * rather than a value any caller can be tricked into supplying. A citizen has
+ * no institution — the anonymous session is anchored to one purely so its rows
+ * satisfy their foreign keys — so scoping their search by it answered
+ * questions about a bakanlık or valilik out of a belediye's corpus, or not at
+ * all. The corpus is public law; there is nothing to isolate.
  */
 export async function mevzuatAraVektor(
-  kurumId: string,
+  kurumId: string | null,
   sorgu: string,
   topK = 5
 ): Promise<MevzuatSonucu[]> {
@@ -137,12 +154,14 @@ export async function mevzuatAraVektor(
   const sonuclar = await ara(
     KOLEKSIYONLAR.mevzuat,
     vektor,
-    {
-      should: [
-        { key: "kurumId", value: kurumId },
-        { key: "kurumId", value: GLOBAL_KURUM_SENTINEL },
-      ],
-    },
+    kurumId === null
+      ? {}
+      : {
+          should: [
+            { key: "kurumId", value: kurumId },
+            { key: "kurumId", value: GLOBAL_KURUM_SENTINEL },
+          ],
+        },
     topK
   );
 
@@ -151,7 +170,7 @@ export async function mevzuatAraVektor(
     kodu: String(s.payload.kodu ?? ""),
     baslik: String(s.payload.baslik ?? ""),
     icerik: String(s.payload.icerik ?? ""),
-    link: `/panel/mevzuat/${s.id}`,
+    link: kurumId === null ? `/mevzuat/${s.id}` : `/panel/mevzuat/${s.id}`,
     skor: Number(s.skor.toFixed(3)),
   }));
 }
@@ -189,6 +208,27 @@ export async function mevzuatMaddesiGetir(kurumId: string, maddeId: string) {
         )
       )
     );
+  return madde ?? null;
+}
+
+/**
+ * Unscoped single-article read for the public /mevzuat/[id] page.
+ *
+ * Deliberately not kurum-scoped, unlike mevzuatMaddesiGetir: mevzuat is
+ * published law, and a citizen searching the whole corpus has to be able to
+ * open what the search returned. The panel route keeps the scoped getter so a
+ * staff member still only browses their own institution's corpus.
+ */
+export async function mevzuatMaddesiGetirGenel(maddeId: string) {
+  const [madde] = await db
+    .select({
+      id: schema.mevzuatMaddeleri.id,
+      kodu: schema.mevzuatMaddeleri.kodu,
+      baslik: schema.mevzuatMaddeleri.baslik,
+      icerik: schema.mevzuatMaddeleri.icerik,
+    })
+    .from(schema.mevzuatMaddeleri)
+    .where(eq(schema.mevzuatMaddeleri.id, maddeId));
   return madde ?? null;
 }
 

@@ -144,19 +144,20 @@ class UdfYazar {
 export function udfOlustur(belge: ResmiBelge): Buffer {
   const y = new UdfYazar();
 
-  y.duz("T.C.", { hizalama: "orta" });
-  y.duz(belge.kurumAdi, { hizalama: "orta", kalin: true });
-  if (belge.birimAdi) y.duz(belge.birimAdi, { hizalama: "orta" });
-  y.bos(2);
+  // A dilekçe has no kurumAdi — it is written by a citizen, not issued by an institution — so the whole T.C. antet and the registry number are omitted rather than printed empty or with a placeholder.
+  if (belge.kurumAdi) {
+    y.duz("T.C.", { hizalama: "orta" });
+    y.duz(belge.kurumAdi, { hizalama: "orta", kalin: true });
+    if (belge.birimAdi) y.duz(belge.birimAdi, { hizalama: "orta" });
+    y.bos(2);
+  }
 
   y.paragraf({
     hizalama: "sol",
     tabDurak: 467,
-    parcalar: [
-      { metin: `Sayı : ${belge.sayi ?? ""}` },
-      { metin: "", tab: true },
-      { metin: belge.tarih },
-    ],
+    parcalar: belge.sayi
+      ? [{ metin: `Sayı : ${belge.sayi}` }, { metin: "", tab: true }, { metin: belge.tarih }]
+      : [{ metin: "", tab: true }, { metin: belge.tarih }],
   });
   if (belge.konu) y.duz(`Konu : ${belge.konu}`);
   y.bos(2);
