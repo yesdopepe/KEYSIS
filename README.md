@@ -15,6 +15,7 @@
   <img src="https://img.shields.io/badge/PostgreSQL-Drizzle_ORM-336791?style=flat&logo=postgresql" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Qdrant-Vector_Search-DC2626?style=flat" alt="Qdrant" />
   <img src="https://img.shields.io/badge/TailwindCSS-v4-38B2AC?style=flat&logo=tailwindcss" alt="TailwindCSS" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT" />
 </p>
 
 ---
@@ -112,3 +113,10 @@ Tohumlanan tüm demo hesapların parolası **`keysis123`** olarak ayarlanmışt�
 - 📄 **Resmî Yazışma Standardı:** *Resmî Yazışmalarda Uygulanacak Usul ve Esaslar Hakkında Yönetmelik* kurallarına tam uyumlu metin üretimi.
 - 🖨️ **Çoklu Dışa Aktarım:** Tek modelden PDF, Word (DOCX) ve UYAP (UDF) formatlarında çıktı alma.
 - 🎨 **Modern ve Erişilebilir Arayüz:** Canlı belge tuvali (canvas), karanlık mod, micro-animasyonlar ve tam duyarlı mobil tasarım.
+
+---
+
+## 📄 Lisans
+
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına göz atabilirsiniz.
+
