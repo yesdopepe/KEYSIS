@@ -1,4 +1,4 @@
-# EBYS + AI Ajan Katmanı
+# KEYSİS — Kapsamlı Evrak Yönetim Sistemi
 
 Elektronik Belge Yönetim Sistemi ve üzerine kurulu AI ajan katmanı: vatandaş
 dilekçelerini sınıflandırır, mevzuatla ilişkilendirir, resmi yazı taslağı

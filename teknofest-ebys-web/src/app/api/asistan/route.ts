@@ -96,7 +96,7 @@ async function baslikUret(metin: string): Promise<string> {
       model,
       temperature: temperature ?? 0.3,
       maxOutputTokens: maxOutputTokens ?? 60,
-      prompt: `Sen resmi bir EBYS asistanısın. Aşağıdaki kullanıcı mesajının konusunu özetleyen en fazla 3-5 kelimelik, net, kurumsal ve Türkçe bir sohbet başlığı yaz. Tırnak, nokta veya selamlama ekleme. Sadece başlığı döndür.\n\nKullanıcı Mesajı: ${metin.slice(0, 600)}`,
+      prompt: `Sen resmi bir KEYSİS asistanısın. Aşağıdaki kullanıcı mesajının konusunu özetleyen en fazla 3-5 kelimelik, net, kurumsal ve Türkçe bir sohbet başlığı yaz. Tırnak, nokta veya selamlama ekleme. Sadece başlığı döndür.\n\nKullanıcı Mesajı: ${metin.slice(0, 600)}`,
     });
     const temiz = text.trim().replace(/^["'`]|["'`]$/g, "").replace(/^Başlık\s*:\s*/i, "").trim();
     return temiz.slice(0, 80) || metin.slice(0, 50).trim() || "Yeni sohbet";
@@ -330,7 +330,7 @@ export async function POST(req: Request) {
   );
 
   const sistemTalimati = vatandasMi
-    ? `Sen, e-Başvuru sistemi bünyesinde vatandaşlara resmi dilekçe hazırlama ve tüm kamu kurumları (belediyeler, kaymakamlıklar, valilikler, bakanlıklar ile il/ilçe müdürlükleri) hakkında rehberlik eden Vatandaş Danışmanı ve Dilekçe Asistanısın.
+    ? `Sen, KEYSİS (Kapsamlı Evrak Yönetim Sistemi) bünyesinde vatandaşlara resmi dilekçe hazırlama ve tüm kamu kurumları (belediyeler, kaymakamlıklar, valilikler, bakanlıklar ile il/ilçe müdürlükleri) hakkında rehberlik eden Vatandaş Danışmanı ve Dilekçe Asistanısın.
 
 ## Bağlam ve Yetkiler
 - Kullanıcı: Vatandaş (Kamu başvuru sahibi)

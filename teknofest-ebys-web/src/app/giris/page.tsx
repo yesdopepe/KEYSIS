@@ -1,11 +1,11 @@
 "use client";
 
 import { useActionState } from "react";
-import Link from "next/link";
-import { Buildings, SignIn, Warning } from "@phosphor-icons/react/ssr";
+import { SignIn, Warning } from "@phosphor-icons/react/ssr";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Field, inputClasses } from "@/components/ui/Field";
+import { Logo } from "@/components/Logo";
 import { girisYap } from "./actions";
 
 export default function GirisSayfasi() {
@@ -14,15 +14,10 @@ export default function GirisSayfasi() {
   return (
     <main className="flex-1 flex items-center justify-center px-4 py-12">
       <Card className="w-full max-w-sm p-6">
-        <div className="mb-2 flex items-center gap-2.5">
-          <span className="flex h-10 w-10 items-center justify-center rounded-[var(--radius-control)] bg-primary text-on-primary">
-            <Buildings size={20} weight="fill" aria-hidden="true" />
-          </span>
-          <Link href="/" className="font-heading text-sm font-semibold text-muted-foreground hover:text-foreground">
-            e-Başvuru
-          </Link>
+        <div className="mb-6 flex flex-col items-center justify-center text-center">
+          <Logo variant="full" size="2xl" className="max-w-[240px]" />
         </div>
-        <h1 className="font-heading text-xl font-semibold text-foreground">Personel Girişi</h1>
+        <h1 className="font-heading text-xl font-semibold text-foreground text-center">Personel Girişi</h1>
 
         <form action={formAction} className="mt-5 space-y-4">
           <Field label="Kullanıcı Adı" htmlFor="kullanici-adi" required>
@@ -50,7 +45,7 @@ export default function GirisSayfasi() {
             <br />
             Demo (Valilik): memur_elazig / mudur_elazig / baskan_elazig
             <br />
-            (şifre: ebys123)
+            (şifre: keysis123)
           </p>
         </form>
       </Card>

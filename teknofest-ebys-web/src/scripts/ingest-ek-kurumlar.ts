@@ -33,7 +33,7 @@ import { db, schema } from "../lib/db";
 import { getEmbeddingModel } from "../lib/ai/client";
 import { mevzuatMetniParcala } from "../lib/mevzuat/parcala";
 
-const DEMO_SIFRE = "ebys123";
+const DEMO_SIFRE = "keysis123";
 const DEMO_SIFRE_HASH = bcrypt.hashSync(DEMO_SIFRE, 10);
 
 const DATA_DIR = path.resolve(__dirname, "../../data");

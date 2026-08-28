@@ -17,7 +17,7 @@ import {
   mevzuatMaddeleri,
 } from "./schema";
 
-const DEMO_SIFRE_HASH = bcrypt.hashSync("ebys123", 10);
+const DEMO_SIFRE_HASH = bcrypt.hashSync("keysis123", 10);
 
 async function main() {
   console.log("Seeding...");

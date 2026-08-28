@@ -1,5 +1,5 @@
 [Unit]
-Description=EBYS Docling Ingestion Service
+Description=KEYSİS Docling Ingestion Service
 After=network.target
 
 [Service]

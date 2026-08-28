@@ -2,9 +2,10 @@
 
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
-import { Buildings, List, X, SignOut } from "@phosphor-icons/react/ssr";
+import { List, X, SignOut } from "@phosphor-icons/react/ssr";
 import { cikisYap } from "@/app/giris/actions";
 import { TemaDegistirici } from "@/components/tema/tema-degistirici";
+import { Logo } from "@/components/Logo";
 
 export interface NavItem {
   href: string;
@@ -31,13 +32,8 @@ export function AppShell({ navItems, activeHref, children, session }: AppShellPr
   return (
     <div className="flex min-h-screen flex-1">
       {/* Mobile top bar */}
-      <div className="fixed inset-x-0 top-0 z-30 flex h-14 items-center justify-between border-b border-border bg-card px-4 md:hidden">
-        <Link href="/" className="flex items-center gap-2 font-heading text-sm font-semibold text-foreground">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[var(--radius-control)] bg-primary text-on-primary">
-            <Buildings size={16} weight="fill" aria-hidden="true" />
-          </span>
-          e-Başvuru
-        </Link>
+      <div className="fixed inset-x-0 top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-card px-4 md:hidden">
+        <Logo variant="full" size="md" />
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
@@ -65,13 +61,8 @@ export function AppShell({ navItems, activeHref, children, session }: AppShellPr
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex h-14 items-center justify-between border-b border-border px-4 md:h-16">
-          <Link href="/" className="flex items-center gap-2.5 font-heading font-semibold text-foreground">
-            <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-control)] bg-primary text-on-primary">
-              <Buildings size={18} weight="fill" aria-hidden="true" />
-            </span>
-            e-Başvuru
-          </Link>
+        <div className="flex h-18 md:h-20 items-center justify-between border-b border-border px-4 py-3">
+          <Logo variant="full" size="xl" className="max-w-[190px]" />
           <button
             type="button"
             onClick={() => setMobileOpen(false)}
@@ -138,7 +129,7 @@ export function AppShell({ navItems, activeHref, children, session }: AppShellPr
       </aside>
 
       {/* Main content */}
-      <div className="min-w-0 flex-1 pt-14 md:pt-0">{children}</div>
+      <div className="min-w-0 flex-1 pt-16 md:pt-0">{children}</div>
     </div>
   );
 }

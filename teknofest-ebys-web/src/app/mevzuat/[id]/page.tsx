@@ -19,7 +19,7 @@ import { Card } from "@/components/ui/card";
  * and no institution's identity is disclosed.
  */
 export const metadata: Metadata = {
-  title: "Mevzuat Maddesi — e-Başvuru",
+  title: "Mevzuat Maddesi — KEYSİS",
   description: "Dilekçenizde dayanak gösterilen kanun veya yönetmelik maddesinin tam metni.",
 };
 

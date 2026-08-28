@@ -35,8 +35,15 @@ const belgeFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "e-Başvuru — Akıllı Evrak ve Yazışma Sistemi",
-  description: "Kamu evrak ve yazışma süreçleri için yapay zeka destekli agent sistemi.",
+  title: "KEYSİS — Kapsamlı Evrak Yönetim Sistemi",
+  description: "Kamu evrak ve resmi yazışma süreçleri için yapay zeka destekli Kapsamlı Evrak Yönetim Sistemi.",
+  icons: {
+    icon: [
+      { url: "/icon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

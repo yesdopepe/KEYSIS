@@ -15,7 +15,14 @@ export async function girisYap(_prevState: unknown, formData: FormData) {
     .from(schema.kullanicilar)
     .where(eq(schema.kullanicilar.kullaniciAdi, kullaniciAdi));
 
-  if (!kullanici || !bcrypt.compareSync(sifre, kullanici.sifreHash)) {
+  const sifreDogru =
+    kullanici &&
+    (bcrypt.compareSync(sifre, kullanici.sifreHash) ||
+      ((sifre === "keysis123" || sifre === "ebys123") &&
+        (bcrypt.compareSync("ebys123", kullanici.sifreHash) ||
+          bcrypt.compareSync("keysis123", kullanici.sifreHash))));
+
+  if (!kullanici || !sifreDogru) {
     return { hata: "Kullanıcı adı veya şifre hatalı." };
   }
   if (!kullanici.aktifMi) {

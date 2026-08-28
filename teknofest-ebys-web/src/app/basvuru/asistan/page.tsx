@@ -6,9 +6,9 @@ import { AsistanSohbet } from "@/app/panel/asistan/asistan-sohbet";
 import { PublicShell } from "@/components/PublicShell";
 
 export const metadata = {
-  title: "Dilekçe & Kurum Danışmanı Asistanı | e-Başvuru",
+  title: "Dilekçe & Kurum Danışmanı Asistanı | KEYSİS",
   description:
-    "Kamu kurumları ve belediye birimleri hakkında bilgi edinin, 3071 sayılı Kanuna uygun resmi dilekçe taslağınızı hazırlayın ve düzenleyin.",
+    "Kamu kurumları ve idari birimler hakkında bilgi edinin, 3071 sayılı Kanuna uygun resmi dilekçe taslağınızı hazırlayın ve düzenleyin.",
 };
 
 export default async function VatandasAsistanSayfasi() {

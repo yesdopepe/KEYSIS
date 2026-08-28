@@ -184,6 +184,7 @@ export function BelgeCalismaAlani({
         setGonderilenTakipNo(res.takipNo);
       } else {
         if (typeof window !== "undefined") {
+          sessionStorage.setItem("keysis_dilekce_taslak", belge.govdeMetni);
           sessionStorage.setItem("ebys_dilekce_taslak", belge.govdeMetni);
           window.location.href = `/basvuru?dilekce_aktarildi=1`;
         }
@@ -557,7 +558,7 @@ export function BelgeCalismaAlani({
             <DialogDescription>
               {gonderilenTakipNo
                 ? "Resmi dilekçeniz sisteme başarıyla kaydedildi ve işlem sırasına alındı."
-                : "Hazırladığınız resmi dilekçe e-Başvuru sistemine iletilecek ve yapay zekâ tarafından yetkili birime atanacaktır."}
+                : "Hazırladığınız resmi dilekçe KEYSİS sistemine iletilecek ve yapay zekâ tarafından yetkili birime atanacaktır."}
             </DialogDescription>
           </DialogHeader>
 

@@ -17,7 +17,7 @@ import { SohbetDuzeni } from "@/components/sohbet/sohbet-duzeni";
 import { AsistanSohbet, type YuklenenEk } from "@/app/panel/asistan/asistan-sohbet";
 
 export const metadata = {
-  title: "Dilekçe & Kurum Danışmanı Asistanı | e-Başvuru",
+  title: "Dilekçe & Kurum Danışmanı Asistanı | KEYSİS",
 };
 
 export default async function VatandasSohbetSayfasi({

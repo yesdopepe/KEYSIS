@@ -1,6 +1,6 @@
-# EBYS + AI Ajan Katmanı — MVP Görev Yol Haritası
+# KEYSİS (Kapsamlı Evrak Yönetim Sistemi) — MVP Görev Yol Haritası
 
-Bu dosya, Teknofest EBYS projesinin 2 haftalık MVP geliştirme yol haritasıdır.
+Bu dosya, Teknofest KEYSİS (Kapsamlı Evrak Yönetim Sistemi) projesinin 2 haftalık MVP geliştirme yol haritasıdır.
 Antigravity bu dosyayı her konuşmada okur ve mevcut duruma göre sıradaki
 aşamadan devam eder. **Kapsam dışı maddeleri (Bölüm 2) asla önerme veya implemente etme.**
 

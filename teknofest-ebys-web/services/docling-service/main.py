@@ -19,7 +19,7 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="EBYS Docling Ingestion Service")
+app = FastAPI(title="KEYSİS Docling Ingestion Service")
 
 app.add_middleware(
     CORSMiddleware,

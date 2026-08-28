@@ -66,11 +66,13 @@ function BasvuruIcerik() {
     if (typeof window !== "undefined") {
       const kaydedilen =
         sessionStorage.getItem("otomatik_dilekce_metni") ||
+        sessionStorage.getItem("keysis_dilekce_taslak") ||
         sessionStorage.getItem("ebys_dilekce_taslak");
       if (kaydedilen && kaydedilen.trim().length > 0) {
         setDilekceMetni(kaydedilen.trim());
         setAsistandanAktarildi(true);
         sessionStorage.removeItem("otomatik_dilekce_metni");
+        sessionStorage.removeItem("keysis_dilekce_taslak");
         sessionStorage.removeItem("ebys_dilekce_taslak");
       }
     }
